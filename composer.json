@@ -8,10 +8,16 @@
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "inertiajs/inertia-laravel": "^0.4.3",
+        "intervention/image": "^2.6",
         "laravel/framework": "^8.54",
+        "laravel/jetstream": "^2.4",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "mcamara/laravel-localization": "^1.6"
+        "livewire/livewire": "^2.6",
+        "mcamara/laravel-localization": "^1.6",
+        "santigarcor/laratrust": "^6.3",
+        "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
