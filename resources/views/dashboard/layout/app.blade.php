@@ -216,14 +216,17 @@
                                 
                                 @if (auth()->user()->id == 1)
                                     
-                                    {{-- <a href="{{ route('dashboard.admin.edit',auth()->user()->id) }}" class="btn btn-default btn-flat">@lang('dashboard.edit_admin')</a> --}}
+                                    {{-- <a href="{{ route('dashboard.admin.edit',auth()->user()->id) }}" 
+                                        class="btn btn-default btn-flat">
+                                        @lang('dashboard.edit_admin')
+                                    </a> --}}
 
                                 @endif
 
                                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">@lang('dashboard.logout')</a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('dashboard.logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
 

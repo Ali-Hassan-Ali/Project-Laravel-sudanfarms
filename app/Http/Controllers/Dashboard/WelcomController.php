@@ -12,12 +12,12 @@ class WelcomController extends Controller
         //create read update delete
         $this->middleware(['permission:dashboard_read'])->only('index');
 
-    }//end of constructor
+    }//end of constructor 
     
     public function index()
     {
         return view('dashboard.welcome');
 
-    }//end of index
+    }//end of index function
     
 }//end of controller
