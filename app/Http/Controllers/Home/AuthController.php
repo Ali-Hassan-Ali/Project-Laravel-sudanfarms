@@ -4,24 +4,36 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Auth;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
-    public function index()
+    public function login()
     {
         if (Auth::guard('web')->check()) {
 
             return redirect()->route('welcome.index');    
         }
 
-        return view('home.login.index');
+        return view('home.auth.login');
 
     }//end of index login function
 
-    public function store(Request $request)
+    public function register()
     {
-       $request->validate([
+        if (Auth::guard('web')->check()) {
+
+            return redirect()->route('welcome.index');    
+        }
+        
+        return view('home.auth.register');
+
+    }//end of index register function
+
+    public function store_login(Request $request)
+    {
+        $request->validate([
             'email'     => ['required', 'email'],
             'password'  => ['required'],
         ]);
@@ -39,7 +51,6 @@ class LoginController extends Controller
                     if (\Auth::guard('web')->attempt([
                         'email'    => $request->email, 
                         'password' => $request->password])) {
-
                         return redirect()->route('welcome.index');
 
                     } else {
@@ -68,13 +79,50 @@ class LoginController extends Controller
 
     }//end of login store function
 
-    public function seller_logout()
+    public function store_register(Request $request)
     {
 
+        $request->validate([
+            'name'      => ['required', 'max:15'],
+            'username'  => ['required', 'unique:users','max:20'],
+            'email'     => ['required', 'email','unique:users','max:25'],
+            'password'  => ['required','confirmed','max:20'],
+        ]);
+
+        try {
+
+            if (Auth::guard('web')->check()) {
+
+                return redirect()->route('welcome.index');
+                
+            } else {
+
+                $user = User::create($request->all());
+
+                if (\Auth::guard('web')->attempt([
+                    'email'    => $user->email, 
+                    'password' => $user->password])) {
+
+                    return redirect()->route('welcome.index');
+
+                }
+                
+            }//end of if auth
+            
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            
+        }//end of try catch
+
+    }//end of login store function
+
+    public function user_logout()
+    {
         Auth::guard('web')->logout();
 
-        return $this->index();
+        return $this->login();
 
-    }//end of logout seller
+    }//end of logout user
 
 }//end of controller

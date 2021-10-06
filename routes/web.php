@@ -2,15 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Home\LoginController;
+use App\Http\Controllers\Home\AuthController;
 use App\Http\Controllers\Home\WelcomController;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
 
-    Route::get('login', [LoginController::class,'index'])->name('home.login.index');
-    Route::post('login', [LoginController::class,'store'])->name('home.login.store');
-    Route::post('logout', [LoginController::class,'seller_logout'])->name('home.logout');
+    Route::get('login', [AuthController::class,'login'])->name('home.login');
+    Route::post('login', [AuthController::class,'store_login'])->name('home.login.store');
+
+    Route::get('register', [AuthController::class,'register'])->name('home.register');
+    Route::post('register', [AuthController::class,'store_register'])->name('home.register.store');
+
+    Route::post('logout', [AuthController::class,'user_logout'])->name('home.logout');
 
     Route::get('/', [WelcomController::class,'index'])->name('welcome.index');
 
