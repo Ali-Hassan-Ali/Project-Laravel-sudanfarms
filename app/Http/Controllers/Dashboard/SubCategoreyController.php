@@ -4,34 +4,34 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categorey;
-use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
 
-class CategoreyController extends Controller
+class SubCategoreyController extends Controller
 {
-
     public function __construct()
     {
         //create read update delete
-        $this->middleware(['permission:categoreys_read'])->only('index');
-        $this->middleware(['permission:categoreys_create'])->only('create','store');
-        $this->middleware(['permission:categoreys_update'])->only('edit','update');
-        $this->middleware(['permission:categoreys_delete'])->only('destroy');
+        $this->middleware(['permission:sub_categoreys_read'])->only('index');
+        $this->middleware(['permission:sub_categoreys_create'])->only('create','store');
+        $this->middleware(['permission:sub_categoreys_update'])->only('edit','update');
+        $this->middleware(['permission:sub_categoreys_delete'])->only('destroy');
 
     }//end of constructor
 
     public function index()
     {
-        $categoreys = Categorey::whenSearch(request()->search)->latest()->paginate(10);
+        $sub_categoreys = Categorey::where('sub_categoreys',"1")->whenSearch(request()->search)->latest()->paginate(10);
 
-        return view('dashboard.categoreys.index', compact('categoreys'));
+        return view('dashboard.sub_categoreys.index', compact('sub_categoreys'));
+
     }//end of index
 
     
     public function create()
     {
-        return view('dashboard.categoreys.create');
+        $categoreys = Categorey::where('sub_categoreys',0)->get();
+
+        return view('dashboard.sub_categoreys.create',compact('categoreys'));
     }//end of create
 
     
@@ -43,25 +43,32 @@ class CategoreyController extends Controller
             'name_en' => ['required','max:255']
         ]);
 
-        // try {
+        try {
+
+            $request['sub_categoreys'] = '1';
 
             categorey::create($request->all());
 
             session()->flash('success', __('dashboard.added_successfully'));
-            return redirect()->route('dashboard.categoreys.index');
+            return redirect()->route('dashboard.sub_categoreys.index');
 
-        // } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-            // return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        // }//end try
+        }//end try
 
     }//end of store
 
     
-    public function edit(Categorey $categorey)
+    public function edit($id)
     {
-        return view('dashboard.categoreys.edit', compact('categorey'));
+        $categorey = Categorey::find($id);
+
+        $categoreys = Categorey::where('sub_categoreys','0')->get();
+
+        return view('dashboard.sub_categoreys.edit', compact('categorey','categoreys'));
+
     }//end of edit
 
     
@@ -75,10 +82,12 @@ class CategoreyController extends Controller
 
         try {
 
+            $request['sub_categoreys'] = '1';
+            
             $categorey->update($request->all());
 
             session()->flash('success', __('dashboard.updated_successfully'));
-            return redirect()->route('dashboard.categoreys.index');
+            return redirect()->route('dashboard.sub_categoreys.index');
 
          } catch (\Exception $e) {
 
@@ -95,7 +104,7 @@ class CategoreyController extends Controller
 
             $categorey->delete();
             session()->flash('success', __('dashboard.deleted_successfully'));
-            return redirect()->route('dashboard.categoreys.index');
+            return redirect()->route('dashboard.sub_categoreys.index');
 
          } catch (\Exception $e) {
 
@@ -104,5 +113,5 @@ class CategoreyController extends Controller
         }//end try
         
     }//end pf destroy
-
-}//end pf controller
+    
+}//end of controller

@@ -4,7 +4,8 @@
 return [
 
 
-    'location_en'        => 'localization',
+    'logout'             => 'logout',
+    'created_at'         => 'created at',
     'payment'            => 'payment image', 
     'home'               => 'Home Page',
     'dashboard'          => 'Dashboard',
@@ -63,6 +64,7 @@ return [
     'color1'             => 'color1',
     'color2'             => 'color2',
 
+    'sub_categoreys'         => 'sub categoreys',
 
     'categories'             => 'Min Categories',
     'parent_categorys'       => 'Min Categories',

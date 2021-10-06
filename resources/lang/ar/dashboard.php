@@ -2,7 +2,8 @@
 
 return [
 
-    'location_ar'      => 'الموقع',
+    'logout'           => 'تسجيل الخروج',
+    'created_at'       => 'تاريخ الانشاء',
     'payment'          => 'صور وسائل الدفع',
     'home'             => 'الصفحه الرئيسية',
     'dashboard'        => 'الرئيسية',
@@ -67,6 +68,7 @@ return [
     'categories_name_sub_ar' => 'القسم الفرع بالغة العربية',
     'categories_name_sub_en' => 'القسم الفرع بالغة الإنجليزية',
   
+    'sub_categoreys'         => 'الاقسام الفرعية',
 
     'markets'       => 'المتاجر',
     'name_ar'       => 'الاسم باللغة العربية',

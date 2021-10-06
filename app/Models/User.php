@@ -75,6 +75,6 @@ class User extends Authenticatable
             // ->orWhere('phone', 'like', "%$search%");
         });
         
-    }//end ofscopeWhenSearch`  
+    }//end ofscopeWhenSearch
 
 }//end of model

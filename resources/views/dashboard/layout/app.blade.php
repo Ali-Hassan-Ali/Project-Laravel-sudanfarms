@@ -121,8 +121,8 @@
         {{--<!-- Logo -->--}}
         <a href="{{ asset('dashboard') }}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>R</b>LC</span>
-            <span class="logo-lg"><b>RedLine</b></span>
+            <span class="logo-mini"><b>S</b>FC</span>
+            <span class="logo-lg"><b>Sudanfarms</b></span>
         </a>
 
         <nav class="navbar navbar-static-top">
@@ -222,7 +222,7 @@
                                     </a> --}}
 
                                 @endif
-
+                                
                                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">@lang('dashboard.logout')</a>
 

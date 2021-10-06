@@ -1,29 +1,28 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\Home\LoginController;
+use App\Http\Controllers\Home\WelcomController;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
+function () {
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+    Route::get('login', [LoginController::class,'index'])->name('home.login.index');
+    Route::post('login', [LoginController::class,'store'])->name('home.login.store');
+    Route::post('logout', [LoginController::class,'seller_logout'])->name('home.logout');
+
+    Route::get('/', [WelcomController::class,'index'])->name('welcome.index');
+
+    Route::middleware(['auth'])->group(function () {
+        //user routes
+        // Route::resource('users', UserController::class)->except(['show']);
+
+        //categoreys routes
+        // Route::resource('categoreys', CategoreyController::class)->except(['show']);
+
+    }); //end of dashboard routesz
+
+    // Auth::routes(['register'=> false,'login'=> false]);
+
+});//LaravelLocalization

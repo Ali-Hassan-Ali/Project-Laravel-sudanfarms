@@ -33,7 +33,13 @@
 
             @if (auth()->user()->hasPermission('categoreys_read'))
                 <li class="{{ Route::Is(['dashboard.categoreys.index','dashboard.categoreys.create','dashboard.categoreys.edit']) ? 'active' : '' }}">
-                    <a href="{{ route('dashboard.categoreys.index') }}"><i class="fa fa-list-alt"></i><span>@lang('dashboard.categorey')</span></a>
+                    <a href="{{ route('dashboard.categoreys.index') }}"><i class="fa fa-list-alt"></i><span>@lang('dashboard.categories')</span></a>
+                </li>
+            @endif
+
+            @if (auth()->user()->hasPermission('sub_categoreys_read'))
+                <li class="{{ Route::Is(['dashboard.sub_categoreys.index','dashboard.sub_categoreys.create','dashboard.sub_categoreys.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.sub_categoreys.index') }}"><i class="fa fa-list-alt"></i><span>@lang('dashboard.sub_categoreys')</span></a>
                 </li>
             @endif
 

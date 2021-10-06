@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Dashboard\WelcomController;
 use App\Http\Controllers\Dashboard\UserController;
-use App\Http\Controllers\Dashboard\CategoreyController;
 use App\Http\Controllers\Dashboard\LoginController;
+use App\Http\Controllers\Dashboard\CategoreyController;
+use App\Http\Controllers\Dashboard\SubCategoreyController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
@@ -22,6 +23,9 @@ function () {
 
         //categoreys routes
         Route::resource('categoreys', CategoreyController::class)->except(['show']);
+
+        //sub categoreys routes
+        Route::resource('sub_categoreys', SubCategoreyController::class)->except(['show']);
 
     }); //end of dashboard routesz
 

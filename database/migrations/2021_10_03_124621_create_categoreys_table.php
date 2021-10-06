@@ -17,7 +17,8 @@ class CreateCategoreysTable extends Migration
             $table->id();
             $table->string('name_ar');
             $table->string('name_en');
-            $table->string('parent_id');
+            $table->string('slug')->default('slug');
+            $table->string('sub_categoreys')->default('0');
             $table->timestamps();
         });
     }

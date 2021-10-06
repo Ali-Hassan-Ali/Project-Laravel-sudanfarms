@@ -53,7 +53,7 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            {{-- <h3>{{ $clients_count }}</h3> --}}
+                            <h3>{{ $clients_count }}</h3>
 
                             <p>@lang('dashboard.clients')</p>
                         </div>
@@ -68,14 +68,14 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-red">
                         <div class="inner">
-                            {{-- <h3>{{ $admins_count }}</h3> --}}
+                            <h3>{{ $admins_count }}</h3>
 
                             <p>@lang('dashboard.users')</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-users-cog"></i>
                         </div>
-                        {{-- <a href="{{ route('dashboard.users.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                        <a href="{{ route('dashboard.users.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 

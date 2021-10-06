@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class WelcomController extends Controller
 {
@@ -16,7 +17,10 @@ class WelcomController extends Controller
     
     public function index()
     {
-        return view('dashboard.welcome');
+        $admins_count    = User::whereRoleIs('admin')->count();
+        $clients_count   = User::whereRoleIs('clients')->count();
+
+        return view('dashboard.welcome',compact('admins_count','clients_count'));
 
     }//end of index function
     
