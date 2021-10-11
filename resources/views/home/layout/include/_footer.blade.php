@@ -1,0 +1,140 @@
+<section class="news-part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5 col-lg-6 col-xl-7">
+                    <div class="news-text">
+                        <h2>إشترك في النشرة الإخبارية عبر بريدك </h2>
+                        <p>أدخل بريدك الإلكتروني وأشترك سوف تتلقى جميع الأخبار والعروض</p>
+                    </div>
+                </div>
+                <div class="col-md-7 col-lg-6 col-xl-5">
+                    <form class="news-form"><input type="text" placeholder="أدخل بريدك الإلكتروني"><button><span><i class="icofont-ui-email"></i> إشتراك</span></button></form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="intro-part">
+        <div class="container">
+            <div class="row intro-content">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon"><i class="fas fa-truck"></i></div>
+                        <div class="intro-content">
+                            <h5>خدمة التوصيل السريع</h5>
+                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon"><i class="fas fa-sync-alt"></i></div>
+                        <div class="intro-content">
+                            <h5>سياسة إرجاع معينة</h5>
+                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon"><i class="fas fa-headset"></i></div>
+                        <div class="intro-content">
+                            <h5>نظام دعم سريع</h5>
+                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon"><i class="fas fa-lock"></i></div>
+                        <div class="intro-content">
+                            <h5>طرق دفع آمنه</h5>
+                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="footer-widget"><a class="footer-logo" href="#"><img src="images/logo.svg" alt="logo"></a>
+                        <p class="footer-desc"> أول موقع للتسويق الزراعي و الحيواني في السودان هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي.</p>
+                        <ul class="footer-social">
+                            <li><a class="icofont-facebook" href="#"></a></li>
+                            <li><a class="icofont-twitter" href="#"></a></li>
+                            <li><a class="icofont-instagram" href="#"></a></li>
+                            <li><a class="icofont-pinterest" href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="footer-widget">
+                        <h3 class="footer-title">روابط سريعة</h3>
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="about.html">من نحن</a></li>
+                                <li><a href="manager-word.html">كلمة المدير</a></li>
+                                <li><a href="gallery.html">مكتبة الصور</a></li>
+                                <li><a href="videos.html">معرض الأفلام</a></li>
+                                <li><a href="blogs.html">المطبوعات</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                                <li><a href="evacuation-responsibilaty.html">إخلاء المسؤولية</a></li>
+                                <li><a href="terms-conditions.html">شروط و احكام</a></li>
+                                <li><a href="privacy.html">الخصوصية</a></li>
+                                <li><a href="Copyrights.html">حقوق الطبع</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="footer-widget contact">
+                        <h3 class="footer-title">تواصل معنا</h3>
+                        <ul class="footer-contact">
+                            <li><i class="icofont-ui-email"></i>
+                                <p><span>info@sudanfarms.com</span><span>slaes@sudanfarms.com</span></p>
+                            </li>
+                            <li><i class="icofont-ui-touch-phone"></i>
+                                <p><span>313 4444 12 (249+)</span><span>339 3343 96 (249+)</span></p>
+                            </li>
+                            <li><i class="icofont-location-pin"></i>
+                                <p>السودان - الخرطوم - شارع عبدالله الطيب</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="footer-widget">
+                        <h3 class="footer-title">المنتجات</h3>
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="categories.html">الخضروات</a></li>
+                                <li><a href="categories.html">الفواكة</a></li>
+                                <li><a href="categories.html">الأعلاف</a></li>
+                                <li><a href="categories.html">التمور</a></li>
+                                <li><a href="categories.html">البهارات</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="categories.html">الحبوب</a></li>
+                                <li><a href="categories.html">الدواجن</a></li>
+                                <li><a href="categories.html">الأسماك</a></li>
+                                <li><a href="categories.html">المواشي</a></li>
+                                <li><a href="categories.html">البزور الزيتية</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="content">
+                    <p class="footer-copytext"><span>&copy;</span> جميع حقوق الموقع محفوظة لـ<a target="_blank" href="#">مزارع السودان </a></p>
+                </div>
+            </div>
+        </div>
