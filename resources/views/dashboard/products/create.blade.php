@@ -103,12 +103,12 @@
 
                         <div class="form-group">
                             <label>@lang('dashboard.start_time')</label>
-                            <input type="time" name="start_time" class="form-control" value="{{ old('start_time') }}">
+                            <input type="date" name="start_time" class="form-control" value="{{ old('start_time') }}">
                         </div>
 
                         <div class="form-group">
                             <label>@lang('dashboard.end_time')</label>
-                            <input type="time" name="end_time" class="form-control" value="{{ old('end_time') }}">
+                            <input type="date" name="end_time" class="form-control" value="{{ old('end_time') }}">
                         </div>
 
                         <div class="form-group">

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.app')
+@extends('dashboard.layout.app')
 
 @section('content')
 
@@ -35,44 +35,46 @@
                         {{ method_field('put') }}
 
                         @php
-                            $names = ['ar','en'];
+                            $names  = ['name_ar','name_en'];
+                            $descr  = ['description_ar','description_en'];
+                            $qguard = ['quantity_guard_ar','quantity_guard_en'];
                         @endphp
 
                         @foreach ($names as $name)
 
                             <div class="form-group">
-                                <label>@lang('dashboard.name_' . $name)</label>
-                                <input type="text" name="{{ 'name_'. $name }}" class="form-control" value="{{ $product->getTranslation('name',$name)}}">
+                                <label>@lang('dashboard.' . $name)</label>
+                                <input type="text" name="{{ $name }}" class="form-control" value="{{ $product[$name] }}">
                             </div>
                             
                         @endforeach
 
-                        @foreach ($names as $desc)
+                        @foreach ($descr as $desc)
 
                             <div class="form-group">
                                 <label>@lang('dashboard.' . $desc)</label>
-                                <textarea type="text" name="{{ 'descp_'. $desc }}" class="ckeditor form-control">{{ $product->getTranslation('description',$desc) }}</textarea>
+                                <textarea type="text" name="{{ $desc }}" class="ckeditor form-control">{{ $product[$desc] }}</textarea>
                             </div>
                             
                         @endforeach
 
                         <div class="form-group">
                             <label>@lang('dashboard.categorey')</label>
-                            <select name="category_id" class="form-control">
+                            <select name="sub_category_id" class="form-control">
                                 <option value="">@lang('dashboard.all_categories')</option>
-                                @foreach ($categorys as $category)
-                                    <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                @foreach ($sub_categoreys as $category)
+                                    <option value="{{ $category->id }}" {{ $product->sub_category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>@lang('dashboard.image')</label>
-                            <input type="file" name="image" class="form-control image">
+                            <input type="file" multiple name="image[]" class="form-control image">
                         </div>
 
                         <div class="form-group">
-                            <img src="{{ $product->image_path }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
+                            <img src="{{ asset('uploads/product_image/default.jpg') }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
                         </div>
 
                         <div class="form-group">
@@ -81,15 +83,39 @@
                         </div>
 
                         <div class="form-group">
+                            <label>@lang('dashboard.price_decount')</label>
+                            <input type="number" step="0.01" step="any" name="price_decount" class="form-control" value="{{ $product->price_decount }}">
+                        </div>
+
+                        <div class="form-group">
                             <label>@lang('dashboard.quantity')</label>
                             <input type="number" name="quantity" class="form-control" value="{{ $product->quantity }}">
+                        </div>
+
+                        @foreach ($qguard as $name)
+
+                            <div class="form-group">
+                                <label>@lang('dashboard.' . $name)</label>
+                                <input type="text" name="{{ $name }}" class="form-control" value="{{ $product[$name] }}">
+                            </div>
+                            
+                        @endforeach
+
+                        <div class="form-group">
+                            <label>@lang('dashboard.start_time')</label>
+                            <input type="data" name="start_time" class="form-control" value="{{ $product->start_time }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>@lang('dashboard.end_time')</label>
+                            <input type="data" name="end_time" class="form-control" value="{{ $product->end_time }}">
                         </div>
 
                         <div class="form-group">
                             <label>@lang('dashboard.stars')</label>
                             <select name="stars" class="form-control">
                                 @for ($i = 1; $i < 7; $i++)
-                                    <option value="{{ $i }}" {{ $product->stars == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                    <option value="{{ $i }}" {{ $i == $product->stars ? 'selected' : '' }}>{{ $i }}</option>
                                 @endfor
                             </select>
                         </div>

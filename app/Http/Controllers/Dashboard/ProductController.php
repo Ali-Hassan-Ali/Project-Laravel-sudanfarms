@@ -98,7 +98,7 @@ class ProductController extends Controller
     {
         $sub_categoreys = Categorey::where('sub_categoreys','1')->get();
 
-        return view('dashboard.products.edit','sub_categoreys');
+        return view('dashboard.products.edit',compact('sub_categoreys','product'));
 
     }//end of edit
 
@@ -106,21 +106,24 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+
         $request->validate([
-            'name_ar'         => 'required',
-            'name_en'         => 'required',
-            'quantity'        => 'required',
-            'quantity_guard'  => 'required',
-            'start_time'      => 'required',
-            'end_time'        => 'required',
-            'description_ar'  => 'required',
-            'description_en'  => 'required',
-            'price'           => 'required',
-            'price_decount'   => 'required',
-            'sub_category_id' => 'required',
-            'user_id'         => 'required',
-            'image'           => 'required',
+            'name_ar'           => 'required',
+            'name_en'           => 'required',
+            'quantity'          => 'required',
+            'quantity_guard_ar' => 'required',
+            'quantity_guard_en' => 'required',
+            'start_time'        => 'required',
+            'end_time'          => 'required',
+            'description_ar'    => 'required',
+            'description_en'    => 'required',
+            'price'             => 'required',
+            'price_decount'     => 'required',
+            'sub_category_id'   => 'required',
+            // 'user_id'         => 'required',
+            // 'image'           => 'image',
         ]);
+
 
         $request_data = $request->except('image');
 
@@ -128,19 +131,34 @@ class ProductController extends Controller
 
         $product->update($request_data);
 
-        foreach ($request->image as $imag) {
+        if ($request->image) {
+
+            $product_image = ImageProduct::where('product_id', $product->id)->get();
+
 
             foreach ($product_image as  $image) {
                 
                 Storage::disk('public_uploads')->delete($image->image);
+
+                $image->delete();
             }
 
-            ImageProduct::create([
-                'product_id' => $products->id,
-                'image'      => $request->file('image')->store('product'),
-            ]);
+            
+            foreach ($request->image as $key=>$imag) {
 
-        }//end of foreach
+                $request_image['imag'][$key] = $imag->store('product_images','public_uploads');
+
+            }//end of foreach
+
+            foreach ($request_image['imag'] as $image) {
+
+                ImageProduct::create([
+                    'product_id' => $product->id,
+                    'image'      => $image,
+                ]);
+            }
+
+        }//end fo if image
 
         return redirect()->route('dashboard.products.index');
 
@@ -155,11 +173,11 @@ class ProductController extends Controller
 
                 $product_image = ImageProduct::where('product_id', $product->id)->get();
 
+
                 foreach ($product_image as  $image) {
                     
                     Storage::disk('public_uploads')->delete($image->image);
                 }
-
 
             } //end of if
 
