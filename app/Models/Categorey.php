@@ -37,4 +37,10 @@ class Categorey extends Model
         });
         
     }//end ofscopeWhenSearch`
-}
+
+    public function product()
+    {
+        return $this->hasMany(Categorey::class,'sub_category_id');
+    }//end of belongsTo category
+    
+}//end of model

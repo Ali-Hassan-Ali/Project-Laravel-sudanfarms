@@ -35,10 +35,21 @@ return [
     'the_total_amount' => 'المبلغ الكلي',
     'price_cart'       => 'سعر البطاقة',
     'number'           => 'العدد',
+
+    'products'         => 'المنتجات',
+    'description_ar'   => 'الوصف باللغة العربية',
+    'description_en'   => 'الوصف باللغة الانجليزية',
+    'categorey'        => 'القسم',
+    'price'            => 'السعر',
+    'price_decount'    => 'سعر التخفيض',
+    'quantity_guard_ar'=> 'اسم الكمية بلعربي',
+    'quantity_guard_en'=> 'اسم الكمية بلانجلزي',
+    'start_time'       => 'المنتج متوفر من الفتره',
+    'end_time'         => 'المنتج متوفر الي نهاية الفتره',
     'product'          => 'المنتج',
     'order_number'     => 'رقم الطلب',
     'value_added_tax'  => 'ضريبة القيمة المضافة',
-    'client'           => 'العميل',
+    'clients'          => 'العميل',
 
 
     'cliants'               => 'العملاء',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Product;
 
 class WelcomController extends Controller
 {
@@ -19,8 +20,9 @@ class WelcomController extends Controller
     {
         $admins_count    = User::whereRoleIs('admin')->count();
         $clients_count   = User::whereRoleIs('clients')->count();
+        $products_count  = Product::count();
 
-        return view('dashboard.welcome',compact('admins_count','clients_count'));
+        return view('dashboard.welcome',compact('admins_count','clients_count','products_count'));
 
     }//end of index function
     

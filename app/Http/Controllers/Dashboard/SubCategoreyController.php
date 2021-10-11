@@ -20,7 +20,7 @@ class SubCategoreyController extends Controller
 
     public function index()
     {
-        $sub_categoreys = Categorey::where('sub_categoreys',"1")->whenSearch(request()->search)->latest()->paginate(10);
+        $sub_categoreys = Categorey::where('sub_categoreys','1')->whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.sub_categoreys.index', compact('sub_categoreys'));
 

@@ -38,10 +38,21 @@ return [
     'the_total_amount' => 'The Total Amount',
     'price_cart'       => 'Price Of Card',
     'number'           => 'The Number',
+
+    'products'         => 'products',
     'product'          => 'The Product',
+    'description_ar'   => 'description arbic',
+    'description_en'   => 'description english',
+    'categorey'        => 'categorey',
+    'price'            => 'price',
+    'price_decount'    => 'price decount',
+    'quantity_guard_ar'=> 'quantity guard arbic',
+    'quantity_guard_en'=> 'quantity guard english',
+    'start_time'       => 'start time',
+    'end_time'         => 'end time',
     'order_number'     => 'Order Number',
     'value_added_tax'  => 'Value Added Tax',
-    'client'           => 'Client',
+    'clients'          => 'Client',
 
 
 	'cliants'               => 'cliants',

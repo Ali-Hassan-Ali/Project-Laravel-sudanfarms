@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\LoginController;
 use App\Http\Controllers\Dashboard\CategoreyController;
 use App\Http\Controllers\Dashboard\SubCategoreyController;
+use App\Http\Controllers\Dashboard\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
@@ -26,6 +27,9 @@ function () {
 
         //sub categoreys routes
         Route::resource('sub_categoreys', SubCategoreyController::class)->except(['show']);
+
+        //products routes
+        Route::resource('products', ProductController::class)->except(['show']);
 
     }); //end of dashboard routesz
 

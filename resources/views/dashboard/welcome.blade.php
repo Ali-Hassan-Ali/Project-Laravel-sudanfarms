@@ -38,14 +38,14 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-green">
                         <div class="inner">
-                            {{-- <h3>{{ $products_count }}</h3> --}}
+                            <h3>{{ $products_count }}</h3>
 
                             <p>@lang('dashboard.products')</p>
                         </div>
                         <div class="icon">
                             <i class="fab fa-product-hunt"></i>
                         </div>
-                        {{-- <a href="{{ route('dashboard.products.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                        <a href="{{ route('dashboard.products.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                         <div class="icon">
                             <i class="fa fa-users"></i>
                         </div>
-                        {{-- <a href="{{ route('dashboard.clients.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                        <a href="{{ route('dashboard.users.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 

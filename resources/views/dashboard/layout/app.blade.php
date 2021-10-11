@@ -223,7 +223,7 @@
 
                                 @endif
                                 
-                                <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
+                                <a href="{{ route('dashboard.logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">@lang('dashboard.logout')</a>
 
                                 <form id="logout-form" action="{{ route('dashboard.logout') }}" method="POST" style="display: none;">

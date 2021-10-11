@@ -99,6 +99,8 @@ class AuthController extends Controller
 
                 $user = User::create($request->all());
 
+                $user->attachRole('clients');
+
                 if (\Auth::guard('web')->attempt([
                     'email'    => $user->email, 
                     'password' => $user->password])) {
