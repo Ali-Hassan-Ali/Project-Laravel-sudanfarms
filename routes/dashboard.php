@@ -6,14 +6,15 @@ use App\Http\Controllers\Dashboard\LoginController;
 use App\Http\Controllers\Dashboard\CategoreyController;
 use App\Http\Controllers\Dashboard\SubCategoreyController;
 use App\Http\Controllers\Dashboard\ProductController;
+use App\Http\Controllers\Dashboard\CategoryDealerController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
 
-    Route::get('/Dashboard/login', [LoginController::class,'index'])->name('dashboard.login.index');
-    Route::post('/Dashboard/login', [LoginController::class,'store'])->name('dashboard.login.store');
-    Route::post('/Dashboard/logout', [LoginController::class,'seller_logout'])->name('dashboard.logout');
+    Route::get('/dashboard/login', [LoginController::class,'index'])->name('dashboard.login.index');
+    Route::post('/dashboard/login', [LoginController::class,'store'])->name('dashboard.login.store');
+    Route::post('/dashboard/logout', [LoginController::class,'seller_logout'])->name('dashboard.logout');
 
     Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
 
@@ -30,6 +31,9 @@ function () {
 
         //products routes
         Route::resource('products', ProductController::class)->except(['show']);
+
+        //category_dealers routes
+        Route::resource('category_dealers', CategoryDealerController::class)->except(['show']);
 
     }); //end of dashboard routesz
 

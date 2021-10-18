@@ -49,6 +49,12 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasPermission('category_dealers_read'))
+                <li class="{{ Route::Is(['dashboard.category_dealers.index','dashboard.category_dealers.create','dashboard.category_dealers.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.category_dealers.index') }}"><i class="fab fa-product-hunt"></i><span> @lang('dashboard.category_dealers') </span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('cupons_read'))
                 <li class="{{ Route::Is(['dashboard.cupons.index','dashboard.cupons.create','dashboard.cupons.edit']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.cupons.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.cupons')</span></a>

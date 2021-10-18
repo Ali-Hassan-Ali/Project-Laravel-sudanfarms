@@ -52,6 +52,9 @@ return [
     'clients'          => 'العميل',
 
 
+    'category_dealers'      => 'اقسام المورودون',
+    // 'category_dealers'      => 'العملاء',
+
     'cliants'               => 'العملاء',
     'users'                 => 'المشرفين',
     'name'                  => 'الاسم',

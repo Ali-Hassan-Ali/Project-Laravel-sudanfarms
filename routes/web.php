@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Home\AuthController;
 use App\Http\Controllers\Home\WelcomController;
+use App\Http\Controllers\Home\ProfileController;
+use App\Http\Controllers\Home\PromotedDealerController;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
@@ -19,7 +21,11 @@ function () {
     Route::get('/', [WelcomController::class,'index'])->name('welcome.index');
 
     Route::middleware(['auth'])->group(function () {
-        //user routes
+        //profile routes
+        Route::get('/my_acount', [ProfileController::class,'index'])->name('profile.index');
+
+        Route::get('/promoted_dealers', [PromotedDealerController::class,'index'])->name('promoted_dealers.index');
+        Route::post('/promoted_dealers', [PromotedDealerController::class,'store'])->name('promoted_dealers.store');
         // Route::resource('users', UserController::class)->except(['show']);
 
         //categoreys routes

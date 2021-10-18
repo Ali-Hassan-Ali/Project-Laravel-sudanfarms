@@ -54,6 +54,7 @@ return [
     'value_added_tax'  => 'Value Added Tax',
     'clients'          => 'Client',
 
+    'category_dealers'      => 'category dealers',
 
 	'cliants'               => 'cliants',
     'users'                 => 'Users',

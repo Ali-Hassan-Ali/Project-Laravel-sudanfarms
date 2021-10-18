@@ -62,7 +62,7 @@
                 </a>
 
                 @auth
-                    <a href="profile.html" class="header-widget" title="حسابي">
+                    <a href="{{ route('profile.index') }}" class="header-widget" title="حسابي">
                         <img src="{{ auth()->user()->image_path }}" alt="user">
                         <span>{{ auth()->user()->name }}</span>
                     </a>
@@ -256,7 +256,7 @@
     <aside class="nav-sidebar">
         <div class="nav-header"><a href="#"><img src="{{ asset('home_files/image/logo.svg') }}" alt="logo"></a><button class="nav-close"><i class="icofont-close"></i></button></div>
         <div class="nav-content">
-            <div class="nav-btn"><a href="register.html" class="btn btn-inline"><i class="fa fa-unlock-alt"></i><span>إنضم الآن</span></a></div>
+            <div class="nav-btn"><a href="{{ route('home.register') }}" class="btn btn-inline"><i class="fa fa-unlock-alt"></i><span>إنضم الآن</span></a></div>
             <div class="nav-select-group">
                 <div class="nav-select"><i class="icofont-login"></i>
                     <a href="{{ route('home.login') }}">دخول</a>
@@ -266,7 +266,7 @@
                 </div>
             </div>
             <ul class="nav-list">
-                <li><a class="nav-link" href="index.html"><i class="icofont-home"></i><span>الرئيسية</span></a>
+                <li><a class="nav-link" href="/"><i class="icofont-home"></i><span>الرئيسية</span></a>
                 </li>
                 <li><a class="nav-link" href="categories.html"><i class="icofont-food-cart"></i><span>تسوق</span></a>
                 </li>

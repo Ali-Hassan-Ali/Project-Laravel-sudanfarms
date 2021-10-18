@@ -75,10 +75,10 @@
                         </form>
                     </div>
                     <div class="user-form-remind">
-                        <p>لديك حساب ?<a href="login.html">تسجيل دخول</a></p>
+                        <p>لديك حساب ?<a href="{{ route('home.login') }}">تسجيل دخول</a></p>
                     </div>
                     <div class="user-form-footer">
-                        <p>مزارع السودان | &COPY; جميع الحقوق محفوظة لـ <a href="#">مزارع السودان</a></p>
+                        <p>مزارع السودان | &COPY; جميع الحقوق محفوظة لـ <a href="{{ route('home.login') }}">مزارع السودان</a></p>
                     </div>
                 </div>
             </div>

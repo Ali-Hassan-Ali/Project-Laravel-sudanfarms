@@ -12,13 +12,15 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
+
         'super_admin' => [
-            'dashboard'      => 'r',
-            'users'          => 'c,r,u,d',
-            'admins'         => 'c,r,u,d',
-            'categoreys'     => 'c,r,u,d',
-            'sub_categoreys' => 'c,r,u,d',
-            'products'       => 'c,r,u,d',
+            'dashboard'        => 'r',
+            'users'            => 'c,r,u,d',
+            'admins'           => 'c,r,u,d',
+            'categoreys'       => 'c,r,u,d',
+            'sub_categoreys'   => 'c,r,u,d',
+            'products'         => 'c,r,u,d',
+            'category_dealers' => 'c,r,u,d',
         ],
         
         'admin' => [
