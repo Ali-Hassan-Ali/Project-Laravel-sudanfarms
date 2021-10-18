@@ -43,18 +43,18 @@ class CategoreyController extends Controller
             'name_en' => ['required','max:255']
         ]);
 
-        // try {
+        try {
 
             categorey::create($request->all());
 
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.categoreys.index');
 
-        // } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-            // return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        // }//end try
+        }//end try
 
     }//end of store
 

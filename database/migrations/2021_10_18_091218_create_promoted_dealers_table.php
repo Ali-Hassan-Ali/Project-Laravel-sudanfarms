@@ -15,21 +15,27 @@ class CreatePromotedDealersTable extends Migration
     {
         Schema::create('promoted_dealers', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name_ar')->unique();
-            $table->string('company_name_en')->unique();
-            $table->string('company_logo')->unique();
-            $table->string('company_certificate')->unique();
-            $table->string('category_dealer_id')->unique();
-            $table->string('email')->unique();
-            $table->string('phone_master')->unique();
-            $table->string('phone')->unique();
-            $table->string('other_phone')->unique();
-            $table->string('web_site')->unique();
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('status')->default('0');
+            $table->string('company_name_ar')->nullable();
+            $table->string('company_name_en')->nullable();
+
+            $table->string('company_logo')->nullable();
+            $table->string('company_certificate')->nullable();
+            
+            $table->string('category_dealer_id')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone_master')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('other_phone')->nullable();
+            $table->string('web_site')->nullable();
             $table->string('country')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('title')->nullable();
             $table->string('description')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

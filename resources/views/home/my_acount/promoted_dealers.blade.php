@@ -15,22 +15,29 @@
 	                    <h4>إعداد باقة</h4>
 	                </div>
 	                <div class="account-content">
-	                	<form action="{{ route('promoted_dealers.store') }}" method="post">
+	                	<form action="{{ route('promoted_dealers.store') }}" method="post" enctype="multipart/form-data">
 	                		@csrf
 		                    <div class="row">
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">إسم الشركة</label>
-		                            	<input class="form-control" type="text" name="company_name" placeholder="إسم الشركة">
+		                            	<input class="form-control" type="text" name="company_name_ar" placeholder="إسم الشركة">
+		                            </div>
+		                        </div>
+
+		                        <div class="col-md-6 col-lg-4">
+		                            <div class="form-group">
+		                            	<label class="form-label">إسم الشركة</label>
+		                            	<input class="form-control" type="text" name="company_name_en" placeholder="إسم الشركة">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group"><label class="form-label">الفئة</label>
 		                                <select name="category_dealer_id" class="form-control">
-		                                    <option value="1">الشحن</option>
-		                                    <option value="2">شركة</option>
-		                                    <option value="3">تاجر</option>
+		                                	@foreach (App\Models\CategoryDealer::all() as $data)
+		                                    	<option value="{{ $data->id }}">{{ $data->name }}</option>
+		                                	@endforeach
 		                                </select>
 		                            </div>
 		                        </div>
