@@ -4,12 +4,16 @@
 return [
 
 
+    'available'          => 'available',
+    'not_available'      => 'not available',
+    
     'logout'             => 'logout',
     'created_at'         => 'created at',
     'payment'            => 'payment image', 
     'home'               => 'Home Page',
     'dashboard'          => 'Dashboard',
     'add'                => 'Add',
+    'show'               => 'Show',
     'edit' 	             => 'Edit',
     'delete'             => 'Delete',
     'search'             => 'Search',
@@ -53,6 +57,21 @@ return [
     'order_number'     => 'Order Number',
     'value_added_tax'  => 'Value Added Tax',
     'clients'          => 'Client',
+
+    'promoted_dealers'      => 'promoted dealers',
+    'company_name_ar'       => 'company name arbic',
+    'company_name_en'       => 'company name english',
+    'company_logo'          => 'company logo',
+    'company_certificate'   => 'company certificate',
+    'category_dealer'       => 'category dealer',
+    'phone_master'          => 'phone master',
+    'other_phone'           => 'other phone',
+    'web_site'              => 'web site',
+    'country'               => 'country',
+    'state'                 => 'state',
+    'city'                  => 'city',
+    'title'                 => 'title',
+    'description'           => 'description',
 
     'category_dealers'      => 'category dealers',
 

@@ -2,12 +2,16 @@
 
 return [
 
+    'available'        => 'مفعل',
+    'not_available'    => 'غير مفعل',
+
     'logout'           => 'تسجيل الخروج',
     'created_at'       => 'تاريخ الانشاء',
     'payment'          => 'صور وسائل الدفع',
     'home'             => 'الصفحه الرئيسية',
     'dashboard'        => 'الرئيسية',
     'add'              => 'إضافة',
+    'show'             => 'عرض',
     'edit'             => 'تعديل',
     'delete'           => 'حذف',
     'search'           => 'بحث',
@@ -50,6 +54,21 @@ return [
     'order_number'     => 'رقم الطلب',
     'value_added_tax'  => 'ضريبة القيمة المضافة',
     'clients'          => 'العميل',
+    
+    'promoted_dealers'      => 'طلبات حساب',
+    'company_name_ar'       => 'اسم الشركة باللغة العربية',
+    'company_name_en'       => 'اسم شركة باللغة الانجليزية',
+    'company_logo'          => 'شعار الشركة',
+    'company_certificate'   => 'شهادة الشركة',
+    'category_dealer'       => 'نوع الحساب',
+    'phone_master'          => 'الهاتف الاساسي',
+    'other_phone'           => 'هاتف اخر',
+    'web_site'              => 'رابط الموقع او الصفحه',
+    'country'               => 'بلد',
+    'state'                 => 'الحالة',
+    'city'                  => 'مدينة',
+    'title'                 => 'العنوان',
+    'description'           => 'الوصف',
 
 
     'category_dealers'      => 'اقسام المورودون',

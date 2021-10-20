@@ -19,8 +19,9 @@ return [
             'admins'           => 'c,r,u,d',
             'categoreys'       => 'c,r,u,d',
             'sub_categoreys'   => 'c,r,u,d',
-            'products'         => 'c,r,u,d',
+            'products'         => 'c,r,u,d,s',
             'category_dealers' => 'c,r,u,d',
+            'promoted_dealers' => 'c,r,u,d,s',
         ],
         
         'admin' => [
@@ -34,6 +35,7 @@ return [
         'c' => 'create',
         'r' => 'read',
         'u' => 'update',
-        'd' => 'delete'
+        'd' => 'delete',
+        's' => 'show',
     ]
 ];

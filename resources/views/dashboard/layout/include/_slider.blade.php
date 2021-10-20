@@ -55,9 +55,9 @@
                 </li>
             @endif
 
-            @if (auth()->user()->hasPermission('cupons_read'))
-                <li class="{{ Route::Is(['dashboard.cupons.index','dashboard.cupons.create','dashboard.cupons.edit']) ? 'active' : '' }}">
-                    <a href="{{ route('dashboard.cupons.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.cupons')</span></a>
+            @if (auth()->user()->hasPermission('promoted_dealers_read'))
+                <li class="{{ Route::Is(['dashboard.promoted_dealers.index','dashboard.promoted_dealers.create','dashboard.promoted_dealers.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.promoted_dealers.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.promoted_dealers')</span></a>
                 </li>
             @endif
 

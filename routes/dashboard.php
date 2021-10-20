@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\CategoreyController;
 use App\Http\Controllers\Dashboard\SubCategoreyController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\CategoryDealerController;
+use App\Http\Controllers\Dashboard\PromotedDealerController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
@@ -34,6 +35,9 @@ function () {
 
         //category_dealers routes
         Route::resource('category_dealers', CategoryDealerController::class)->except(['show']);
+
+        //promoted_dealers routes
+        Route::resource('promoted_dealers', PromotedDealerController::class);
 
     }); //end of dashboard routesz
 

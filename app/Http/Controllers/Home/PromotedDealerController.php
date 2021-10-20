@@ -19,7 +19,7 @@ class PromotedDealerController extends Controller
 
         $request->validate([
             'company_name_ar'     => ['required','max:255'],
-            'company_name_en'     => ['required','max:255']
+            'company_name_en'     => ['required','max:255'],
             'company_logo'        => ['required'],
             'company_certificate' => ['required'],
             'category_dealer_id'  => ['required'],
