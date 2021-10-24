@@ -23,9 +23,16 @@ function () {
     Route::middleware(['auth'])->group(function () {
         //profile routes
         Route::get('/my_acount', [ProfileController::class,'index'])->name('profile.index');
+        Route::get('/change_password', [ProfileController::class,'passwprd_index'])->name('change_password.index');
+        Route::post('/change_password', [ProfileController::class,'passwprd_store'])->name('change_password.store');
 
+        //promoted_dealers route
         Route::get('/promoted_dealers', [PromotedDealerController::class,'index'])->name('promoted_dealers.index');
         Route::post('/promoted_dealers', [PromotedDealerController::class,'store'])->name('promoted_dealers.store');
+        Route::get('/promoted_dealers.edit', [PromotedDealerController::class,'edit'])->name('promoted_dealers.edit');
+        Route::post('/promoted_dealers.update', [PromotedDealerController::class,'update'])->name('promoted_dealers.update');
+        Route::get('/promoted_dealers.destroy', [PromotedDealerController::class,'update'])->name('promoted_dealers.destroy');
+
         // Route::resource('users', UserController::class)->except(['show']);
 
         //categoreys routes
