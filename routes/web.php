@@ -6,6 +6,7 @@ use App\Http\Controllers\Home\AuthController;
 use App\Http\Controllers\Home\WelcomController;
 use App\Http\Controllers\Home\ProfileController;
 use App\Http\Controllers\Home\PromotedDealerController;
+use App\Http\Controllers\Home\ProductController;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
@@ -32,6 +33,9 @@ function () {
         Route::get('/promoted_dealers.edit', [PromotedDealerController::class,'edit'])->name('promoted_dealers.edit');
         Route::post('/promoted_dealers.update', [PromotedDealerController::class,'update'])->name('promoted_dealers.update');
         Route::get('/promoted_dealers.destroy', [PromotedDealerController::class,'update'])->name('promoted_dealers.destroy');
+
+        //products routes
+        Route::resource('products', ProductController::class)->except(['show']);
 
         // Route::resource('users', UserController::class)->except(['show']);
 

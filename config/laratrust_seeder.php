@@ -16,6 +16,7 @@ return [
         'super_admin' => [
             'dashboard'        => 'r',
             'users'            => 'c,r,u,d',
+            'clients'          => 'c,r,u,d',
             'admins'           => 'c,r,u,d',
             'categoreys'       => 'c,r,u,d',
             'sub_categoreys'   => 'c,r,u,d',

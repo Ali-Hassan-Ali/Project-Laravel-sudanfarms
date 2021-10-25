@@ -53,7 +53,8 @@ class User extends Authenticatable
      * @var array
      */
 
-    protected $appends = ['image_path','profile_photo_url'];
+    // protected $appends = ['image_path','profile_photo_url'];
+    protected $appends = ['image_path'];
 
     public function getImagePathAttribute()
     {

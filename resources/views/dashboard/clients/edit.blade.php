@@ -6,11 +6,11 @@
     
     <section class="content-header">
 
-        <h1>@lang('dashboard.users')</h1>
+        <h1>@lang('dashboard.clients')</h1>
 
         <ol class="breadcrumb">
             <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-            <li><a href="{{ route('dashboard.users.index') }}"> @lang('dashboard.users')</a></li>
+            <li><a href="{{ route('dashboard.clients.index') }}"> @lang('dashboard.clients')</a></li>
             <li class="active">@lang('dashboard.edit')</li>
         </ol>
     </section>
@@ -36,7 +36,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('dashboard.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.clients.update', $client->id) }}" method="post" enctype="multipart/form-data">
 
                     {{ csrf_field() }}
                     {{ method_field('put') }}
@@ -44,7 +44,7 @@
 
                     <div class="form-group">
                         <label>@lang('dashboard.name')</label>
-                        <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ $user->name }}">
+                        <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ $client->name }}">
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -53,11 +53,61 @@
                     </div>
 
                     <div class="form-group">
+                        <label>@lang('dashboard.username')</label>
+                        <input type="text" name="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" value="{{ $client->username }}">
+                        @if ($errors->has('username'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('username') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
                         <label>@lang('dashboard.email')</label>
-                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ $user->email }}">
+                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ $client->email }}">
                         @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.phone')</label>
+                        <input type="phone" name="phone" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ $client->phone }}">
+                        @if ($errors->has('phone'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('phone') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.country')</label>
+                        <input type="text" name="country" class="form-control {{ $errors->has('country') ? ' is-invalid' : '' }}" value="{{ $client->country }}">
+                        @if ($errors->has('country'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('country') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.city')</label>
+                        <input type="text" name="city" class="form-control {{ $errors->has('city') ? ' is-invalid' : '' }}" value="{{ $client->city }}">
+                        @if ($errors->has('city'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('city') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.title')</label>
+                        <input type="text" name="title" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" value="{{ $client->title }}">
+                        @if ($errors->has('title'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('title') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -73,45 +123,8 @@
                     </div>
 
                     <div class="form-group">
-                        <img src="{{ $user->image_path }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
+                        <img src="{{ $client->image_path }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
                     </div>
-
-                    <div class="form-group">
-                        <label>@lang('dashboard.permissions')</label>
-                        <div class="nav-tabs-custom">
-
-                            @php
-                                $models = ['users', 'cupons','parent_categorys','sub_categories','markets','carts','carts_store','how_to_use','generate_carts','settings'];
-                                $maps = ['create', 'read', 'update', 'delete'];
-                            @endphp
-
-                            <ul class="nav nav-tabs">
-                                @foreach ($models as $index=>$model)
-                                    <li class="nav-item"><a class="nav-link {{ $index == 0 ? 'active' : '' }}" href="#{{ $model }}" data-toggle="tab">@lang('dashboard.' . $model)</a></li>
-                                @endforeach
-                            </ul>
-
-                            <div class="tab-content">
-
-                                @foreach ($models as $index=>$model)
-
-                                    <div class="tab-pane {{ $index == 0 ? 'active' : '' }} my-3 mb-5" id="{{ $model }}">
-
-                                        @foreach ($maps as $map)
-                                            {{--create_users--}}
-                                            <label class="mx-2"><input type="checkbox" name="permissions[]" {{ $user->hasPermission($model . '_' . $map) ? 'checked' : '' }} value="{{ $model . '_' . $map }}"> @lang('dashboard.' . $map)</label>
-                                        @endforeach
-
-                                    </div>
-
-                                @endforeach
-
-                            </div><!-- end of tab content -->
-
-                        </div><!-- end of nav tabs -->
-
-                    </div>
-
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.edit')</button>

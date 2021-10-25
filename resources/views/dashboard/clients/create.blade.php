@@ -6,11 +6,11 @@
     
     <section class="content-header">
 
-        <h1>@lang('dashboard.users')</h1>
+        <h1>@lang('dashboard.clients')</h1>
 
         <ol class="breadcrumb">
             <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-            <li><a href="{{ route('dashboard.users.index') }}"> @lang('dashboard.users')</a></li>
+            <li><a href="{{ route('dashboard.clients.index') }}"> @lang('dashboard.clients')</a></li>
             <li class="active">@lang('dashboard.add')</li>
         </ol>
     </section>
@@ -27,7 +27,7 @@
 
                 {{-- @include('partials._errors') --}}
 
-                <form action="{{ route('dashboard.users.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.clients.store') }}" method="post" enctype="multipart/form-data">
 
                     {{ csrf_field() }}
                     {{ method_field('post') }}
@@ -38,8 +38,33 @@
                     </div>
 
                     <div class="form-group">
+                        <label>@lang('dashboard.username')</label>
+                        <input type="text" name="username" class="form-control" value="{{ old('username') }}">
+                    </div>
+
+                    <div class="form-group">
                         <label>@lang('dashboard.email')</label>
                         <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.phone')</label>
+                        <input type="phone" name="phone" class="form-control" value="{{ old('phone') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.country')</label>
+                        <input type="text" name="country" class="form-control" value="{{ old('country') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.city')</label>
+                        <input type="text" name="city" class="form-control" value="{{ old('city') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.title')</label>
+                        <input type="text" name="title" class="form-control" value="{{ old('title') }}">
                     </div>
 
                     <div class="form-group">
@@ -59,47 +84,6 @@
                     <div class="form-group">
                         <label>@lang('dashboard.password_confirmation')</label>
                         <input type="password" name="password_confirmation" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label>@lang('dashboard.permissions')</label>
-                        <div class="nav-tabs-custom">
-
-                            @php
-                                $models = ['users','categoreys','products','clients','orders','cupons','supports','gallerys','payments','settings'];
-                                $maps = ['create', 'read', 'update', 'delete'];
-                            @endphp
-
-                            <ul class="nav nav-tabs">
-                                @foreach ($models as $index=>$model)
-                                    <li class="{{ $index == 0 ? 'active' : '' }}"><a href="#{{ $model }}" data-toggle="tab">@lang('dashboard.' . $model)</a></li>
-                                @endforeach
-                            </ul>
-
-                            <div class="tab-content">
-
-                                @foreach ($models as $index=>$model)
-
-                                    @if ($model == 'settings')
-                                        @php
-                                            $maps = ['read'];
-                                        @endphp
-                                    @endif
-
-                                    <div class="tab-pane {{ $index == 0 ? 'active' : '' }}" id="{{ $model }}">
-
-                                        @foreach ($maps as $map)
-                                            <label><input type="checkbox" name="permissions[]" value="{{ $model . '_' . $map }}"> @lang('dashboard.' . $map)</label>
-                                        @endforeach
-
-                                    </div>
-
-                                @endforeach
-
-                            </div><!-- end of tab content -->
-                            
-                        </div><!-- end of nav tabs -->
-                        
                     </div>
 
                     <div class="form-group">

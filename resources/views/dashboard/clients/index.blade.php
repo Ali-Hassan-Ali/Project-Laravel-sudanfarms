@@ -8,11 +8,11 @@
     
     <section class="content-header">
 
-        <h1>@lang('dashboard.users')</h1>
+        <h1>@lang('dashboard.clients')</h1>
 
         <ol class="breadcrumb">
             <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-            <li class="active">@lang('dashboard.users')</li>
+            <li class="active">@lang('dashboard.clients')</li>
         </ol>
 
     </section>
@@ -23,9 +23,9 @@
 
             <div class="box-header with-border">
 
-                <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.users') <small>{{ $users->total() }}</small></h3>
+                <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.clients') <small>{{ $clients->total() }}</small></h3>
 
-                <form action="{{ route('dashboard.users.index') }}" method="get">
+                <form action="{{ route('dashboard.clients.index') }}" method="get">
 
                     <div class="row">
 
@@ -35,8 +35,8 @@
 
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> @lang('dashboard.search')</button>
-                            @if (auth()->user()->hasPermission('users_create'))
-                                <a href="{{ route('dashboard.users.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
+                            @if (auth()->user()->hasPermission('clients_create'))
+                                <a href="{{ route('dashboard.clients.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                             @else
                                 <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                             @endif
@@ -49,7 +49,7 @@
 
             <div class="box-body">
 
-                @if ($users->count() > 0)
+                @if ($clients->count() > 0)
 
                     <div class="table-responsive">
 
@@ -67,21 +67,21 @@
                             </thead>
                             
                             <tbody>
-                            @foreach ($users as $index=>$user)
+                            @foreach ($clients as $index=>$client)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $user->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
-                                    <td>{{ $user->created_at->toFormattedDateString() }}</td>
+                                    <td>{{ $client->name }}</td>
+                                    <td>{{ $client->email }}</td>
+                                    <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $client->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
+                                    <td>{{ $client->created_at->toFormattedDateString() }}</td>
                                     <td>
-                                        @if (auth()->user()->hasPermission('users_update'))
-                                            <a href="{{ route('dashboard.users.edit', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                        @if (auth()->user()->hasPermission('clients_update'))
+                                            <a href="{{ route('dashboard.clients.edit', $client->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                         @else
                                             <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                         @endif
-                                        @if (auth()->user()->hasPermission('users_delete'))
-                                            <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="post" style="display: inline-block">
+                                        @if (auth()->user()->hasPermission('clients_delete'))
+                                            <form action="{{ route('dashboard.clients.destroy', $client->id) }}" method="post" style="display: inline-block">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
                                                 <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
@@ -97,7 +97,7 @@
 
                         </table><!-- end of table -->
                         
-                        {{ $users->appends(request()->query())->links() }}
+                        {{ $clients->appends(request()->query())->links() }}
 
                     </div><!-- end of table  responsive-->
                     
