@@ -353,5 +353,6 @@
     
 </script>
 @stack('welcome')
+@stack('products')
 </body>
 </html>

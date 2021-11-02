@@ -45,6 +45,10 @@
     <script src="{{ asset('home_files/js/venobox.js') }}"></script>
     <script src="{{ asset('home_files/js/slick.js') }}"></script>
     <script src="{{ asset('home_files/js/main.js') }}"></script>
+
+    {{--custom js--}}
+    <script src="{{ asset('home_files/js/custom/image_preview.js') }}"></script>
+    
     <script>
         $('.counter').counterUp({
             delay: 10,

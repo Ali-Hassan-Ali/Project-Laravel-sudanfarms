@@ -59,7 +59,7 @@ class Product extends Model
             
         }//end of if
 
-    }//end of get name
+    }//end of get description
 
     public function scopeWhenSearch($query , $search) 
     {
@@ -74,7 +74,7 @@ class Product extends Model
             ->orWhere('quantity', 'like', "%$search%");
         });
         
-    }//end ofscopeWhenSearch`
+    }//end of scopeWhenSearch`
 
     public function user()
     {

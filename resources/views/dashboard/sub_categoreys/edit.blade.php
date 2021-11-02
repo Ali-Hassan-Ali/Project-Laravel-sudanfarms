@@ -46,10 +46,11 @@
 
                         <div class="form-group">
                           <label>categoreys</label>
-                          <select class="form-control">
-                                @foreach ($categoreys as $categorey)
+                          <select name="sub_categoreys" class="form-control">
+                                @foreach ($categoreys as $category)
 
-                                    <option value="{{ $categorey->id }}">{{ $categorey->name }}</option>
+                                    <option value="{{ $category->id }}" 
+                                        {{ $category->id == $categorey->sub_categoreys ? 'selected' : '' }}>{{ $category->name }}</option>
                                     
                                 @endforeach
                           </select>

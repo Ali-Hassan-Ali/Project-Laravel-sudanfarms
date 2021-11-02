@@ -34,7 +34,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $sub_categoreys = Categorey::where('sub_categoreys','1')->get();
+        $sub_categoreys = Categorey::where('sub_categoreys','0')->get();
 
         return view('dashboard.products.create',compact('sub_categoreys'));
 
@@ -43,7 +43,6 @@ class ProductController extends Controller
    
     public function store(Request $request)
     {
-
         $request->validate([
             'name_ar'           => 'required',
             'name_en'           => 'required',
@@ -93,10 +92,11 @@ class ProductController extends Controller
         return view('dashboard.products.show',compact('product'));
     }//en end of show
 
+
     
     public function edit(Product $product)
     {
-        $sub_categoreys = Categorey::where('sub_categoreys','1')->get();
+        $sub_categoreys = Categorey::where('sub_categoreys','0')->get();
 
         return view('dashboard.products.edit',compact('sub_categoreys','product'));
 
@@ -172,7 +172,6 @@ class ProductController extends Controller
             if ($product->image != 'default.png') {
 
                 $product_image = ImageProduct::where('product_id', $product->id)->get();
-
 
                 foreach ($product_image as  $image) {
                     

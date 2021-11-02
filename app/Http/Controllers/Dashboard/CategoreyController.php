@@ -105,4 +105,13 @@ class CategoreyController extends Controller
         
     }//end pf destroy
 
+    public function sub_categoreys($id)
+    {
+    
+        $categoreys = Categorey::where('sub_categoreys',$id)->get();
+
+        return response()->json($categoreys);
+
+    }//end of  sub_categoreys 
+
 }//end pf controller

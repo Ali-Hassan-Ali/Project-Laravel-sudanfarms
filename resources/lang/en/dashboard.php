@@ -110,6 +110,10 @@ return [
     'name_ar'       => 'Arabic Name',
     'name_en'       => 'English Name',
 
+    'setting_banners' => 'Setting Banners',
+    'title_ar'        => 'Arabic Title',
+    'title_en'        => 'English Title',
+
 
     'carts'             => 'Carts Category',
     'carts_detail'      => 'Carts Details',

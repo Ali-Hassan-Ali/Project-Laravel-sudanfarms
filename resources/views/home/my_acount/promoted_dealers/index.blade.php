@@ -123,16 +123,28 @@
 	                            <div class="col-sm-12">
 	                                <div class="form-group">
 	                                	<label class="form-label">رفع شعار الشركة</label>
-	                                    <input class="form-control" type="file" name="company_logo">
+	                                    <input class="form-control" type="file" id="company-logo" name="company_logo">
 	                                </div>
 	                            </div>
 
 	                            <div class="col-sm-12">
+		                            <div class="form-group">
+				                        <img src="#" style="width: 100px" class="img-thumbnail company-logo" alt="">
+				                    </div>
+				                </div>
+
+	                            <div class="col-sm-12">
 	                                <div class="form-group">
 	                                	<label class="form-label">شهاده الشركه</label>
-	                                    <input class="form-control" type="file" name="company_certificate">
+	                                    <input class="form-control" type="file" id="company-certificate" name="company_certificate">
 	                                </div>
 	                            </div>
+
+	                            <div class="col-sm-12">
+		                            <div class="form-group">
+				                        <img src="#" style="width: 100px" class="img-thumbnail company-certificate" alt="">
+				                    </div>
+				                </div>
 
 	                            <div class="col-md-6 col-lg-4 mx-auto">
 	                                <div class="form-group">

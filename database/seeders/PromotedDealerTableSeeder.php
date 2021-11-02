@@ -13,21 +13,26 @@ class PromotedDealerTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\PromotedDealer::create([
-            'user_id'            => '1',
-            'company_name_ar'    => 'name_ar',
-            'company_name_en'    => 'name_en',
-            'category_dealer_id' => '1',
-            'email'              => 'email@gmail.com',
-            'phone_master'       => '123143413',
-            'phone'              => '123143413',
-            'other_phone'        => '123143413',
-            'web_site'           => 'web-site.com',
-            'country'            => 'country',
-            'city'               => 'city',
-            'title'              => 'title',
-            'description'        => 'description',
-        ]);
+        $name = ['شركة سيدتك للزراعة','شركة حلا الدولية',''];
+
+        foreach ($name as  $data) {
+            
+            \App\Models\PromotedDealer::create([
+                'user_id'            => '1',
+                'company_name_ar'    => $data,
+                'company_name_en'    => $data,
+                'category_dealer_id' => '1',
+                'email'              => 'email@gmail.com',
+                'phone_master'       => '123143413',
+                'phone'              => '123143413',
+                'other_phone'        => '123143413',
+                'web_site'           => 'web-site.com',
+                'country'            => 'country',
+                'city'               => 'city',
+                'title'              => 'title',
+                'description'        => 'description',
+            ]);
+        }//end of foreach
 
     }//end of run 
 

@@ -58,13 +58,21 @@
                             
                         @endforeach
 
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label>@lang('dashboard.categorey')</label>
-                            <select name="sub_category_id" class="form-control">
+                            <select id="select-category" class="form-control">
                                 <option value="">@lang('dashboard.all_categories')</option>
                                 @foreach ($sub_categoreys as $category)
-                                    <option value="{{ $category->id }}" {{ old('sub_category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" data-id="{{ $category->id }}" data-url="{{ route('dashboard.sub_categorys',$category->id) }}"
+                                        {{ old('sub_category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                 @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>@lang('dashboard.categorey')</label>
+                            <select name="sub_category_id" id="select-sub-category" class="form-control">                            
+                                    <option value=""></option>
                             </select>
                         </div>
 
@@ -135,3 +143,39 @@
     </div><!-- end of content wrapper -->
 
 @endsection
+
+@push('products')
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(document).on('change', '#select-category', function(e) {
+                e.preventDefault();
+
+                var $option   = $(this).find(":selected");
+                var url       = $option.data('url');
+                var method    = 'get';
+
+                $.ajax({
+                    url: url,
+                    method: method,
+                    success: function (data) {
+                        
+                        $.each(data, function(index, category) {
+                            
+                            var html = '<option value="'+category.id+'">'+category.name+'</option>';
+
+                            $('#select-sub-category').empty('');
+
+                            $('#select-sub-category').append(html);
+
+                        });//end of each
+
+                    }//end of success
+
+                });//endof ajax
+                
+            });//end od change product
+            
+        });//end of redy
+    </script>
+@endpush

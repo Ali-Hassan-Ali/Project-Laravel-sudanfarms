@@ -20,7 +20,7 @@ class SubCategoreyController extends Controller
 
     public function index()
     {
-        $sub_categoreys = Categorey::where('sub_categoreys','1')->whenSearch(request()->search)->latest()->paginate(10);
+        $sub_categoreys = Categorey::where('sub_categoreys','>','0')->whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.sub_categoreys.index', compact('sub_categoreys'));
 
@@ -37,15 +37,13 @@ class SubCategoreyController extends Controller
     
     public function store(Request $request)
     {
-
+        
         $request->validate([
             'name_ar' => ['required','max:255'],
             'name_en' => ['required','max:255']
         ]);
 
         try {
-
-            $request['sub_categoreys'] = '1';
 
             categorey::create($request->all());
 
@@ -72,9 +70,8 @@ class SubCategoreyController extends Controller
     }//end of edit
 
     
-    public function update(Request $request, Categorey $categorey)
+    public function update(Request $request, $id)
     {
-        
         $request->validate([
             'name_ar'   => ['required','max:255'],
             'name_en'   => ['required','max:255'],
@@ -82,10 +79,10 @@ class SubCategoreyController extends Controller
 
         try {
 
-            $request['sub_categoreys'] = '1';
+            $categorey = Categorey::find($id);
             
             $categorey->update($request->all());
-
+            
             session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.sub_categoreys.index');
 
@@ -98,9 +95,11 @@ class SubCategoreyController extends Controller
     }//end of update
 
     
-    public function destroy(Categorey $categorey)
+    public function destroy($id)
     {
         try {
+
+            $categorey = Categorey::find($id);
 
             $categorey->delete();
             session()->flash('success', __('dashboard.deleted_successfully'));

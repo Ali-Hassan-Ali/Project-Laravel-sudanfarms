@@ -86,25 +86,30 @@
             @endif
 
             @if (auth()->user()->hasPermission('settings_read'))
-                <li class="{{  Route::Is(['dashboard.service.index','dashboard.contact_us.index','dashboard.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="height: auto;">
+                <li class="{{ Route::Is(['dashboard.settings.index','dashboard.contact_us.index','dashboard.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="height: auto;">
                   
                   <a href="#">
-                    <i class="fa fa-gear"></i> <span>@lang('dashboard.settings')</span>
+                    <i class="fa fa-gear"></i> 
+                    <span>@lang('dashboard.settings')</span>
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
                   </a>
                       
-                  <ul class="treeview-menu {{  Route::Is(['dashboard.service.index','dashboard.contact_us.index','dashboard.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.service.index','dashboard.contact_us.index','dashboard.social_links.index']) ? 'block' : 'none' }};">
-                    <li class="{{ Route::Is('dashboard.service.index') ? 'active' : '' }}">
-                        <a href="{{ route('dashboard.service.index') }}"><i class="fa fa-concierge-bell"></i> @lang('dashboard.services')</a>
+                  <ul class="treeview-menu {{  Route::Is(['dashboard.settings.index','dashboard.contact_us.index','dashboard.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.service.index','dashboard.contact_us.index','dashboard.social_links.index']) ? 'block' : 'none' }};">
+
+                    <li class="{{ Route::Is('dashboard.settings.index') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.setting_banners.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('dashboard.setting_banners')
+                        </a>
                     </li>
-                    <li class="{{ Route::Is('dashboard.contact_us.index') ? 'active' : '' }}">
+                    {{-- <li class="{{ Route::Is('dashboard.contact_us.index') ? 'active' : '' }}">
                         <a href="{{ route('dashboard.contact_us.index') }}"><i class="fa fa-address-book"></i> @lang('dashboard.contact_us')</a>
                     </li>
                     <li class="{{ Route::Is('dashboard.social_links.index') ? 'active' : '' }}">
                         <a href="{{ route('dashboard.social_links.index') }}"><i class="fa fa-link"></i> @lang('dashboard.social_links')</a>
-                    </li>
+                    </li> --}}
                   </ul>
 
                 </li>

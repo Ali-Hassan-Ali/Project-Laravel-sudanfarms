@@ -5,86 +5,59 @@
 @section('title', __('home.welcome'))   
 
     <section class="home-index-slider slider-arrow slider-dots">
-        <div class="banner-part banner-1">
+        @foreach (App\Models\SettingBanner::all() as $index=>$data)
+            
+        <div class="banner-part banner-{{ $index++ }}">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-lg-6">
                         <div class="banner-content">
-                            <h1>الخضروات</h1>
-                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع.</p>
-                            <div class="banner-btn"><a class="btn btn-inline" href="categories.html"><i class="fas fa-shopping-basket"></i><span>تسوق الآن</span></a><a class="btn btn-outline" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></div>
+                            <h1>{{ $data->title }}</h1>
+                            <p>{{ $data->description }}</p>
+                            <div class="banner-btn">
+                                <a class="btn btn-inline" href="categories.html">
+                                    <i class="fas fa-shopping-basket"></i>
+                                    <span>تسوق الآن</span>
+                                </a>
+                                <a class="btn btn-outline" href="offer.html">
+                                    <i class="icofont-sale-discount"></i>
+                                    <span>العروض</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
-                        <div class="banner-img"><img src="images/home/index/01.png" alt="index"></div>
+                        <div class="banner-img"><img src="{{ $data->image_path }}" alt="index"></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="banner-part banner-4" style="background: url(images/home/classic/04.jpg);">
-            <div class="container">
-                <div class="row align-items-center">
+        @endforeach
 
-                    <div class="col-md-6 col-lg-6">
-                        <div class="banner-content">
-                            <h1 class="text-white">الأسماك</h1>
-                            <p class="text-white">هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع.</p>
-                            <div class="banner-btn"><a class="btn btn-inline" href="categories.html"><i class="fas fa-shopping-basket"></i><span>تسوق الآن</span></a><a class="btn btn-outline" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="banner-part banner-2" style="background: url(images/home/classic/03.jpg);">
-            <div class="container">
-                <div class="row align-items-center">
-                    
-                    <div class="col-md-6 col-lg-6">
-                        <div class="banner-img"><img src="images/home/classic/03.jpg" alt="index"></div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-6">
-                        <div class="banner-content">
-                            <h1 class="text-white">المواشي</h1>
-                            <p class="text-white">هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع.</p>
-                            <div class="banner-btn"><a class="btn btn-inline" href="offer.html"><i class="fas fa-shopping-basket"></i><span>تسوق الآن</span></a><a class="btn btn-outline" href="categories.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="banner-part banner-3">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 col-lg-6">
-                        <div class="banner-img"><img src="images/home/index/03.png" alt="index"></div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="banner-content">
-                            <h1>الفواكة</h1>
-                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع.</p>
-                            <div class="banner-btn"><a class="btn btn-inline" href="categories.html"><i class="fas fa-shopping-basket"></i><span>تسوق الآن</span></a><a class="btn btn-outline" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
+
     <section class="section suggest-part">
         <div class="container">
             <ul class="suggest-slider slider-arrow">
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/1.jpg" alt="suggest">
+                <li>
+                    <a class="suggest-card" href="categories.html">
+                    <img src="images/catego/1.jpg" alt="suggest">
                         <h5>الخضروات <span>34 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/2.jpg" alt="suggest">
+                    </a>
+                </li>
+                <li>
+                    <a class="suggest-card" href="categories.html">
+                        <img src="images/catego/2.jpg" alt="suggest">
                         <h5>الفواكة <span>89 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/3.jpg" alt="suggest">
+                    </a>
+                </li>
+                <li>
+                    <a class="suggest-card" href="categories.html">
+                        <img src="images/catego/3.jpg" alt="suggest">
                         <h5>الأسمدة و المبيدات <span>45 عنصر</span></h5>
-                    </a></li>
+                    </a>
+                </li>
                 <li><a class="suggest-card" href="categories.html"><img src="images/catego/4.jpg" alt="suggest">
                         <h5>التمور <span>83 عنصر</span></h5>
                     </a></li>

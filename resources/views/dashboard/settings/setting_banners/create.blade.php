@@ -2,17 +2,17 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.sub_categoreys')  .' - '. __('dashboard.add'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.setting_banners')  .' - '. __('dashboard.add'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.categorey')</h1>
+            <h1>@lang('dashboard.setting_banners')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li><a href="{{ route('dashboard.sub_categoreys.index') }}"> @lang('dashboard.sub_categoreys')</a></li>
+                <li><a href="{{ route('dashboard.settings.setting_banners.index') }}"> @lang('dashboard.setting_banners')</a></li>
                 <li class="active">@lang('dashboard.add')</li>
             </ol>
 
@@ -28,16 +28,26 @@
 
                 <div class="box-body">
 
-                    {{-- @include('partials._errors') --}}
+                    @include('partials._errors')
 
-                    <form action="{{ route('dashboard.sub_categoreys.store') }}" method="post">
+                    <form action="{{ route('dashboard.settings.setting_banners.store') }}" method="post" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['name_ar','name_en'];
+                            $names = ['title_ar','title_en'];
+                            $descr = ['description_ar','description_en'];
                         @endphp
+
+                        <div class="form-group">
+                            <label>@lang('dashboard.image')</label>
+                            <input type="file" name="image" class="form-control image">
+                        </div>
+
+                        <div class="form-group">
+                            <img src="{{ asset('uploads/product_image/default.jpg') }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
+                        </div>
 
                         @foreach ($names as $name)
 
@@ -48,16 +58,14 @@
                             
                         @endforeach
 
-                        <div class="form-group">
-                          <label>categoreys</label>
-                          <select name="sub_categoreys" class="form-control">
-                                @foreach ($categoreys as $categorey)
+                        @foreach ($descr as $desc)
 
-                                    <option value="{{ $categorey->id }}">{{ $categorey->name }}</option>
-                                    
-                                @endforeach
-                          </select>
-                        </div>
+                            <div class="form-group">
+                                <label>@lang('dashboard.' . $desc)</label>
+                                <textarea type="text" name="{{ $desc }}" class="ckeditor form-control">{{ old($desc) }}</textarea>
+                            </div>
+                            
+                        @endforeach
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</button>

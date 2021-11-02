@@ -12,6 +12,9 @@ use App\Http\Controllers\Dashboard\CategoryDealerController;
 use App\Http\Controllers\Dashboard\PromotedDealerController;
 use App\Http\Controllers\Dashboard\ClientsController;
 
+//Setting Controller
+use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
+
 
 
 Route::group([
@@ -37,12 +40,13 @@ function () {
 
         //categoreys routes
         Route::resource('categoreys', CategoreyController::class)->except(['show']);
+        Route::get('sub_category/{id}', [CategoreyController::class, 'sub_categoreys'])->name('sub_categorys');
 
         //sub categoreys routes
         Route::resource('sub_categoreys', SubCategoreyController::class)->except(['show']);
 
         //products routes
-        Route::resource('products', ProductController::class)->except(['show']);
+        Route::resource('products', ProductController::class);
 
         //category_dealers routes
         Route::resource('category_dealers', CategoryDealerController::class)->except(['show']);
@@ -50,6 +54,14 @@ function () {
         //promoted_dealers routes
         Route::resource('promoted_dealers', PromotedDealerController::class);
 
-    }); //end of dashboard routesz
+
+        Route::prefix('settings')->name('settings.')->group(function () {
+
+            //setting_banners routes
+            Route::resource('setting_banners', SettingBannerController::class)->except(['show']);
+
+        }); //end of settings routes
+
+    }); //end of dashboard routes
 
 });//LaravelLocalization
