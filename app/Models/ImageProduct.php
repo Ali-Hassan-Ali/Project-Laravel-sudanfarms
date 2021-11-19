@@ -11,4 +11,12 @@ class ImageProduct extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['image_path'];
+
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+
+    }//end of get image path
+
 }//end of model

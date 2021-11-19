@@ -68,7 +68,7 @@ class ProductController extends Controller
 
         foreach ($request->image as $key=>$imag) {
 
-            $request_image['imag'][$key] = $imag->store('product_images','public_uploads');
+            $request_image['imag'][$key] = $imag->store('product_images','public');
 
         }//end of foreach
 
@@ -79,7 +79,6 @@ class ProductController extends Controller
                 'image'      => $image,
             ]);
         }
-
 
         return redirect()->route('dashboard.products.index');
 
@@ -98,7 +97,9 @@ class ProductController extends Controller
     {
         $sub_categoreys = Categorey::where('sub_categoreys','0')->get();
 
-        return view('dashboard.products.edit',compact('sub_categoreys','product'));
+        $categoreys     = Categorey::where('sub_categoreys',$product->sub_category_id)->get();
+        return $categoreys;
+        return view('dashboard.products.edit',compact('sub_categoreys','product','categoreys'));
 
     }//end of edit
 
@@ -137,8 +138,8 @@ class ProductController extends Controller
 
 
             foreach ($product_image as  $image) {
-                
-                Storage::disk('public_uploads')->delete($image->image);
+
+                Storage::disk('local')->delete('public/' . $image->image);
 
                 $image->delete();
             }
@@ -146,7 +147,7 @@ class ProductController extends Controller
             
             foreach ($request->image as $key=>$imag) {
 
-                $request_image['imag'][$key] = $imag->store('product_images','public_uploads');
+                $request_image['imag'][$key] = $imag->store('product_images','public');
 
             }//end of foreach
 
@@ -175,7 +176,9 @@ class ProductController extends Controller
 
                 foreach ($product_image as  $image) {
                     
-                    Storage::disk('public_uploads')->delete($image->image);
+                    Storage::disk('local')->delete('public/' . $image->image);
+
+                    $image->delete();
                 }
 
             } //end of if

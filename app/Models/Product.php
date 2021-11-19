@@ -11,13 +11,7 @@ class Product extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['name','description','quantity_guard','image_path'];
-
-    public function getImagePathAttribute()
-    {
-        return asset('uploads/' . $this->image);
-
-    }//end of get image path
+    protected $appends = ['name','description','quantity_guard'];
 
     public function getNameAttribute()
     {

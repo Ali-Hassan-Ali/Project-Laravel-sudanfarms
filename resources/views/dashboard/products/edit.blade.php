@@ -69,12 +69,27 @@
                         </div>
 
                         <div class="form-group">
+                            <label>@lang('dashboard.categorey')</label>
+                            <select name="sub_category_id" id="select-sub-category" class="form-control">                            
+                                    <option value=""></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label>@lang('dashboard.image')</label>
                             <input type="file" multiple name="image[]" class="form-control image">
                         </div>
 
+                        @php
+                            $images = App\Models\ImageProduct::where('product_id',$product->id)->get();
+                        @endphp
+
                         <div class="form-group">
-                            <img src="{{ asset('uploads/product_image/default.jpg') }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
+                            @foreach ($images as $image)
+
+                                <img src="{{ $image->image_path }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
+                                
+                            @endforeach
                         </div>
 
                         <div class="form-group">
