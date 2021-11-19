@@ -26,6 +26,9 @@ function () {
     Route::get('contact', [HeaderController::class,'contact'])->name('home.contact');
     Route::post('contact', [HeaderController::class,'contactStore'])->name('home.contact.store');
 
+    //header suppliers
+    Route::get('suppliers', [HeaderController::class,'supplier'])->name('home.supplier');
+
     Route::middleware(['auth'])->group(function () {
         //profile routes
         Route::get('/my_acount', [ProfileController::class,'index'])->name('profile.index');

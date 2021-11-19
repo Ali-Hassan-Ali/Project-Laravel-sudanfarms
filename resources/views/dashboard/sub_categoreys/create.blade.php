@@ -30,7 +30,7 @@
 
                     {{-- @include('partials._errors') --}}
 
-                    <form action="{{ route('dashboard.sub_categoreys.store') }}" method="post">
+                    <form action="{{ route('dashboard.sub_categoreys.store') }}" method="post" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
                         {{ method_field('post') }}
@@ -57,6 +57,15 @@
                                     
                                 @endforeach
                           </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>@lang('dashboard.image')</label>
+                            <input type="file" name="image" class="form-control image">
+                        </div>
+
+                        <div class="form-group">
+                            <img src="{{ asset('storage/sub_categorey_images/default.png') }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
                         </div>
 
                         <div class="form-group">

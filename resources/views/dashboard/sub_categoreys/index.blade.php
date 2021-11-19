@@ -58,7 +58,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>@lang('dashboard.name')</th>
-                                    {{-- <th>@lang('dashboard.count')</th> --}}
+                                    <th>@lang('dashboard.image')</th>
+                                    <th>@lang('dashboard.count')</th>
                                     {{-- <th>@lang('dashboard.related_products')</th> --}}
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
@@ -70,7 +71,10 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $sub_categorey->name }}</td>
-                                        {{-- <td>{{ $sub_categorey->proudut->count() }}</td> --}}
+                                        <td>
+                                            <img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $sub_categorey->image_path }}" style="width: 100px;" class="img-thumbnail" alt="">
+                                        </td>
+                                        <td>{{ $sub_categorey->product->count() }}</td>
                                         {{-- <td><a href="{{ route('dashboard.products.index',['category_id'=>$sub_categorey->id]) }}" class="btn btn-info">@lang('dashboard.read')</a></td> --}}
                                         <td>{{ $sub_categorey->created_at->toFormattedDateString() }}</td>
                                         <td>

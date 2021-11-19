@@ -7,7 +7,7 @@
     <section class="home-index-slider slider-arrow slider-dots">
         @foreach (App\Models\SettingBanner::all() as $index=>$data)
             
-        <div class="banner-part banner-{{ $index++ }}">
+        <div class="banner-part banner-{{ $index++ }}" style="background: url({{ $data->image_path }}); width: 651px; position: relative; right: -651px; top: 0px; z-index: 998; opacity: 0; transition: opacity 600ms ease 0s;">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-lg-6">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
-                        <div class="banner-img"><img src="{{ $data->image_path }}" alt="index"></div>
+                        {{-- <div class="banner-img"><img src="{{ $data->image_path }}" alt="index"></div> --}}
                     </div>
                 </div>
             </div>
@@ -40,94 +40,20 @@
     <section class="section suggest-part">
         <div class="container">
             <ul class="suggest-slider slider-arrow">
-                <li>
-                    <a class="suggest-card" href="categories.html">
-                    <img src="images/catego/1.jpg" alt="suggest">
-                        <h5>الخضروات <span>34 عنصر</span></h5>
-                    </a>
-                </li>
-                <li>
-                    <a class="suggest-card" href="categories.html">
-                        <img src="images/catego/2.jpg" alt="suggest">
-                        <h5>الفواكة <span>89 عنصر</span></h5>
-                    </a>
-                </li>
-                <li>
-                    <a class="suggest-card" href="categories.html">
-                        <img src="images/catego/3.jpg" alt="suggest">
-                        <h5>الأسمدة و المبيدات <span>45 عنصر</span></h5>
-                    </a>
-                </li>
-                <li><a class="suggest-card" href="categories.html">
-                    <img src="images/catego/4.jpg" alt="suggest">
-                        <h5>التمور <span>83 عنصر</span></h5>
-                    </a>
-                </li>
-                <li><a class="suggest-card" href="categories.html">
-                    <img src="images/catego/5.jpg" alt="suggest">
-                        <h5>البهارات <span>40 عنصر</span></h5>
-                    </a>
-                </li>
-                <li><a class="suggest-card" href="categories.html">
-                    <img src="images/catego/6.jpg" alt="suggest">
-                        <h5>الحبوب <span>57 عنصر</span></h5>
-                    </a>
-                </li>
-                <li><a class="suggest-card" href="categories.html">
-                    <img src="images/catego/7.jpg" alt="suggest">
-                        <h5>الدواجن والطيور <span>23 عنصر</span></h5>
-                    </a>
-                </li>
-                <li><a class="suggest-card" href="categories.html">
-                    <img src="images/catego/8.jpg" alt="suggest">
-                        <h5>الأسماك <span>97 عنصر</span></h5>
-                    </a>
-                </li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/9.jpg" alt="suggest">
-                        <h5>المواشي و الاغنام <span>12 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/10.jpg" alt="suggest">
-                        <h5>البزور الزيتية <span>20 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/11.jpg" alt="suggest">
-                        <h5>الاقطان <span>55 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/12.jpg" alt="suggest">
-                        <h5>الصمغ العربي <span>69 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/13.jpg" alt="suggest">
-                        <h5>التقاوي <span>80 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/14.jpg" alt="suggest">
-                        <h5>الشتول <span>40 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/15.jpg" alt="suggest">
-                        <h5>المعدات الزراعية <span>59 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/16.jpg" alt="suggest">
-                        <h5>الاخشاب <span>70 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/17.jpg" alt="suggest">
-                        <h5>النحل والنحالين <span>99 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/18.jpg" alt="suggest">
-                        <h5>الزهور <span>100 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/19.jpg" alt="suggest">
-                        <h5>النباتات الطبية والعطرية <span>80 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/20.jpg" alt="suggest">
-                        <h5>الحليب ومشتقاته <span>75 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/21.jpg" alt="suggest">
-                        <h5>بيع وشراء الاراضي الزراعية <span>12 عنصر</span></h5>
-                    </a></li>
-                <li><a class="suggest-card" href="categories.html"><img src="images/catego/22.jpg" alt="suggest">
-                        <h5>الاعلاف <span>34 عنصر</span></h5>
-                    </a></li>
+
+                @foreach ($sub_categoreys as $category)
+                    <li>
+                        <a class="suggest-card" href="categories.html">
+                        <img src="{{ $category->image_path }}" alt="suggest">
+                            <h5>{{ $category->name }}<span>{{ $category->product->count() }} @lang('home.item')</span></h5>
+                        </a>
+                    </li>
+                @endforeach
+
             </ul>
         </div>
     </section>
+    
     <section class="section recent-part">
         <div class="container">
             <div class="row">

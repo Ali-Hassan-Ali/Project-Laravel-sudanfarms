@@ -62,6 +62,8 @@ return [
     'dollar'       => 'Dollars',
     'kuwaiti'      => 'Qatars',
 
+    'item'      => 'item',
+
     'confirm_delete'       => 'Confirm Delete',
     'added_successfully'   => 'Added Successfully',
     'updated_successfully' => 'Updated Successfully',

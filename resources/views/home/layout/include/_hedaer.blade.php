@@ -122,7 +122,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="suppliers.html">الموردون</a>
+                            <li class="navbar-item"><a class="navbar-link" href="{{ route('home.supplier') }}">الموردون</a>
                             </li>
                             <li class="navbar-item"><a class="navbar-link" href="orders.html">التجار والسمتهلكين</a></li>
                             <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="javascript:void(0);">المركز الإعلامي</a>
@@ -302,7 +302,7 @@
             <i class="fas fa-home"></i><span>الرئيسية</span>
         </a>
         <button class="cate-btn" title="الأقسام"><i class="fas fa-list"></i><span>الأقسام</span></button>
-        <a href="suppliers.html" title="لموردون"><i class="fas fa-users"></i><span>الموردون</span></a>
+        <a href="{{ route('home.supplier') }}" title="لموردون"><i class="fas fa-users"></i><span>الموردون</span></a>
         <a href="categories.html" title="تسوق"><i class="fas fa-shopping-basket"></i>
             <span>تسوق</span>
         </a>

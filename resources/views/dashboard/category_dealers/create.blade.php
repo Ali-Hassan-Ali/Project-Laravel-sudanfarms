@@ -28,7 +28,7 @@
 
                 <div class="box-body">
 
-                    {{-- @include('partials._errors') --}}
+                    @include('partials._errors')
 
                     <form action="{{ route('dashboard.category_dealers.store') }}" method="post">
 
@@ -49,7 +49,9 @@
                         @endforeach
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> @lang('dashboard.add')
+                            </button>
                         </div>
 
                     </form><!-- end of form -->

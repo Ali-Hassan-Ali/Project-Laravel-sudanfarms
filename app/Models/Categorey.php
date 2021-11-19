@@ -11,7 +11,13 @@ class Categorey extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['name'];
+    protected $appends = ['name','image_path'];
+
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+
+    }//end of get image path
 
     public function getNameAttribute()
     {
@@ -33,14 +39,13 @@ class Categorey extends Model
 
             return $q->where('name_ar' , 'like', "%$search%")
             ->orWhere('name_en', 'like', "%$search%");
-            // ->orWhere('phone', 'like', "%$search%");
         });
         
     }//end ofscopeWhenSearch`
 
     public function product()
     {
-        return $this->hasMany(Categorey::class,'sub_category_id');
+        return $this->hasMany(Categorey::class,'sub_categoreys');
     }//end of belongsTo category
     
 }//end of model

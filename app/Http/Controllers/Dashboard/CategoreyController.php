@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Categorey;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
@@ -40,7 +41,8 @@ class CategoreyController extends Controller
 
         $request->validate([
             'name_ar' => ['required','max:255'],
-            'name_en' => ['required','max:255']
+            'name_en' => ['required','max:255'],
+            'image'   => ['required','image'],
         ]);
 
         try {

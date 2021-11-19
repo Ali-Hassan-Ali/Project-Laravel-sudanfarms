@@ -27,25 +27,30 @@
 
                 <div class="box-body">
 
-                    {{-- @include('partials._errors') --}}
+                    @include('partials._errors')
 
                     <form action="{{ route('dashboard.category_dealers.update', $categoryDealer->id) }}" method="post">
 
                         {{ csrf_field() }}
                         {{ method_field('put') }}
 
-                        <div class="form-group">
-                            <label>@lang('dashboard.name_ar')</label>
-                            <input type="text" name="name_ar" class="form-control" value="{{ $categoryDealer->name_ar }}">
-                        </div>
+                        @php
+                            $names = ['name_ar','name_en'];
+                        @endphp
+
+                        @foreach ($names as $name)
+
+                            <div class="form-group">
+                                <label>@lang('dashboard.' . $name)</label>
+                                <input type="text" name="{{ $name }}" class="form-control" value="{{ $categoryDealer[$name] }}">
+                            </div>
+                            
+                        @endforeach
 
                         <div class="form-group">
-                            <label>@lang('dashboard.name_en')</label>
-                            <input type="text" name="name_en" class="form-control" value="{{ $categoryDealer->name_en }}">
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> @lang('dashboard.edit')</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-edit"></i> @lang('dashboard.edit')
+                            </button>
                         </div>
 
                     </form><!-- end of form -->

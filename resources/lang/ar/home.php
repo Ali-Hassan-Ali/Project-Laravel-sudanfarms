@@ -66,6 +66,8 @@ return [
     'sudanese'     => 'سوداني',
     'dollar'       => 'دولار',
     'kuwaiti'      => 'قطري',
+    
+    'item'      => 'عنصر',
 
     'confirm_delete'       => '!تأكيد الحذف',
     'added_successfully'   => 'تم اضافه البيانات بنجاح',

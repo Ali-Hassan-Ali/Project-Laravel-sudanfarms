@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Categorey;
 use Illuminate\Http\Request;
 
@@ -40,12 +41,17 @@ class SubCategoreyController extends Controller
         
         $request->validate([
             'name_ar' => ['required','max:255'],
-            'name_en' => ['required','max:255']
+            'name_en' => ['required','max:255'],
+            'image'   => ['required','image'],
         ]);
 
         try {
 
-            categorey::create($request->all());
+            $request_data = $request->except('image');
+
+            $request_data['image'] = $request->file('image')->store('sub_categorey_images','public');
+
+            categorey::create($request_data);
 
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.sub_categoreys.index');
@@ -80,8 +86,17 @@ class SubCategoreyController extends Controller
         try {
 
             $categorey = Categorey::find($id);
+
+            if ($request->image) {
+                
+                $request_data = $request->except('image');
+
+                Storage::disk('local')->delete('public/' . $categorey->image);
+
+                $request_data['image'] = $request->file('image')->store('sub_categorey_images','public');
+            }
             
-            $categorey->update($request->all());
+            $categorey->update($request_data);
             
             session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.sub_categoreys.index');
@@ -100,6 +115,8 @@ class SubCategoreyController extends Controller
         try {
 
             $categorey = Categorey::find($id);
+
+            Storage::disk('local')->delete('public/' . $categorey->image);
 
             $categorey->delete();
             session()->flash('success', __('dashboard.deleted_successfully'));

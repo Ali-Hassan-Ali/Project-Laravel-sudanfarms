@@ -29,7 +29,7 @@
 
                     {{-- @include('partials._errors') --}}
 
-                    <form action="{{ route('dashboard.sub_categoreys.update', $categorey->id) }}" method="post">
+                    <form action="{{ route('dashboard.sub_categoreys.update', $categorey->id) }}" method="post" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
                         {{ method_field('put') }}
@@ -57,7 +57,18 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> @lang('dashboard.edit')</button>
+                            <label>@lang('dashboard.image')</label>
+                            <input type="file" name="image" class="form-control image">
+                        </div>
+
+                        <div class="form-group">
+                            <img src="{{ $categorey->image_path }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-edit"></i> @lang('dashboard.edit')
+                            </button>
                         </div>
 
                     </form><!-- end of form -->
