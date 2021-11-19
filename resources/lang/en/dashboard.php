@@ -74,6 +74,8 @@ return [
     'description'           => 'description',
 
     'category_dealers'      => 'category dealers',
+    'contacts'              => 'contacts',
+    'body'                  => 'body',
 
 	'cliants'               => 'cliants',
     'users'                 => 'Users',

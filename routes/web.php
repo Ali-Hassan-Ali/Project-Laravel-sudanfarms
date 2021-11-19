@@ -7,6 +7,7 @@ use App\Http\Controllers\Home\WelcomController;
 use App\Http\Controllers\Home\ProfileController;
 use App\Http\Controllers\Home\PromotedDealerController;
 use App\Http\Controllers\Home\ProductController;
+use App\Http\Controllers\Home\HeaderController;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
@@ -20,6 +21,10 @@ function () {
     Route::post('logout', [AuthController::class,'user_logout'])->name('home.logout');
 
     Route::get('/', [WelcomController::class,'index'])->name('welcome.index');
+
+    //header contact
+    Route::get('contact', [HeaderController::class,'contact'])->name('home.contact');
+    Route::post('contact', [HeaderController::class,'contactStore'])->name('home.contact.store');
 
     Route::middleware(['auth'])->group(function () {
         //profile routes

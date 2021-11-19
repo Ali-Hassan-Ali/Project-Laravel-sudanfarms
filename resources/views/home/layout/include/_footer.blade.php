@@ -8,7 +8,10 @@
                     </div>
                 </div>
                 <div class="col-md-7 col-lg-6 col-xl-5">
-                    <form class="news-form"><input type="text" placeholder="أدخل بريدك الإلكتروني"><button><span><i class="icofont-ui-email"></i> إشتراك</span></button></form>
+                    <form class="news-form">
+                        <input type="text" placeholder="أدخل بريدك الإلكتروني">
+                        <button><span><i class="icofont-ui-email"></i> إشتراك</span></button>
+                    </form>
                 </div>
             </div>
         </div>

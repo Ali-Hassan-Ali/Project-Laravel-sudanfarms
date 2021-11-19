@@ -61,6 +61,12 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasPermission('contacts_read'))
+                <li class="{{ Route::Is(['dashboard.contacts.index','dashboard.contacts.create','dashboard.contacts.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.contacts.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.contacts')</span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('orders_read'))
                 <li class="{{ Route::Is(['dashboard.orders.index','dashboard.orders.show']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.orders.index') }}"><i class="fa fa-shopping-cart"></i><span>@lang('dashboard.orders')</span></a>

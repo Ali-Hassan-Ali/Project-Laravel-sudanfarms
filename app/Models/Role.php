@@ -7,4 +7,4 @@ use Laratrust\Models\LaratrustRole;
 class Role extends LaratrustRole
 {
     public $guarded = [];
-}
+}//end of model

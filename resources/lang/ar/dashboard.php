@@ -72,6 +72,8 @@ return [
 
 
     'category_dealers'      => 'اقسام المورودون',
+    'contacts'              => 'تواصل معنا',
+    'body'                  => 'الموضوع',
     // 'category_dealers'      => 'العملاء',
 
     'cliants'               => 'العملاء',

@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\CategoryDealerController;
 use App\Http\Controllers\Dashboard\PromotedDealerController;
 use App\Http\Controllers\Dashboard\ClientsController;
+use App\Http\Controllers\Dashboard\ContactController;
 
 //Setting Controller
 use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
@@ -53,6 +54,9 @@ function () {
 
         //promoted_dealers routes
         Route::resource('promoted_dealers', PromotedDealerController::class);
+
+        //contacts routes
+        Route::resource('contacts', ContactController::class)->except(['show','store','create','edit','update']);
 
 
         Route::prefix('settings')->name('settings.')->group(function () {

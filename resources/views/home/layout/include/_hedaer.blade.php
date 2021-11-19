@@ -33,7 +33,7 @@
                     <ul class="header-top-list">
                         <li><a href="offer.html">العروض</a></li>
                         <li><a href="faq.html">مساعدة</a></li>
-                        <li><a href="contact.html">تواصل معنا</a></li>
+                        <li><a href="{{ route('home.contact') }}">تواصل معنا</a></li>
                     </ul>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                                     <li><a href="downloads.html">المزيد</a></li>
                                 </ul>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="contact.html">إتصل بنا</a>
+                            <li class="navbar-item"><a class="navbar-link" href="{{ route('home.contact') }}">إتصل بنا</a>
                             </li>
                         </ul>
                         <div class="navbar-info-group">
@@ -281,7 +281,7 @@
                 <li><a class="nav-link" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></li>
                 <li><a class="nav-link" href="profile.html"><i class="icofont-user-alt-3"></i><span>الملف الشخصي</span></a></li>
                 <li><a class="nav-link" href="faq.html"><i class="icofont-question-circle"></i><span>مساعدة</span></a></li>
-                <li><a class="nav-link" href="contact.html"><i class="icofont-contacts"></i><span>تواصل معنا</span></a></li>
+                <li><a class="nav-link" href="{{ route('home.contact') }}"><i class="icofont-contacts"></i><span>تواصل معنا</span></a></li>
                 <li><a class="nav-link" href="#"><i class="icofont-logout"></i><span>تسجيل خروج</span></a></li>
             </ul>
             <div class="nav-info-group">
@@ -297,7 +297,19 @@
             </div>
         </div>
     </aside>
-    <menu class="mobile-menu"><a href="index.html" title="Home Page"><i class="fas fa-home"></i><span>الرئيسية</span></a><button class="cate-btn" title="الأقسام"><i class="fas fa-list"></i><span>الأقسام</span></button><a href="suppliers.html" title="لموردون"><i class="fas fa-users"></i><span>الموردون</span></a><a href="categories.html" title="تسوق"><i class="fas fa-shopping-basket"></i><span>تسوق</span></a><a href="contact.html" title="إتصل بنا"><i class="fas fa-phone"></i><span>إتصل بنا</span></a></menu>
+    <menu class="mobile-menu">
+        <a href="/" title="Home Page">
+            <i class="fas fa-home"></i><span>الرئيسية</span>
+        </a>
+        <button class="cate-btn" title="الأقسام"><i class="fas fa-list"></i><span>الأقسام</span></button>
+        <a href="suppliers.html" title="لموردون"><i class="fas fa-users"></i><span>الموردون</span></a>
+        <a href="categories.html" title="تسوق"><i class="fas fa-shopping-basket"></i>
+            <span>تسوق</span>
+        </a>
+        <a href="{{ route('home.contact') }}" title="إتصل بنا">
+            <i class="fas fa-phone"></i><span>إتصل بنا</span>
+        </a>
+    </menu>
 
 
     <div class="modal fade" id="product-view">

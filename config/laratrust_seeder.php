@@ -23,6 +23,7 @@ return [
             'products'         => 'c,r,u,d,s',
             'category_dealers' => 'c,r,u,d',
             'promoted_dealers' => 'c,r,u,d,s',
+            'contacts'         => 'd,r,s',
             'settings'         => 'c,r,u,d,s',
         ],
         
