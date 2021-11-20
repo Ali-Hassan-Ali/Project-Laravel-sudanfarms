@@ -120,14 +120,14 @@
                             <ul>
                                 @foreach ($subcategory as $category)
 
-                                    <li><a href="categories.html">{{ $category->name }}</a></li>
+                                    <li><a href="{{ route('category.show',$category->id) }}">{{ $category->name }}</a></li>
                                 
                                 @endforeach
                             </ul>
                             <ul>
                                 @foreach ($sub_category as $category)
 
-                                    <li><a href="categories.html">{{ $category->name }}</a></li>
+                                    <li><a href="{{ route('category.show',$category->id) }}">{{ $category->name }}</a></li>
                                 
                                 @endforeach
                             </ul>

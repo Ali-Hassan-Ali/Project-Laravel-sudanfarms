@@ -44,7 +44,7 @@
 
                 @foreach ($sub_categoreys as $category)
                     <li>
-                        <a class="suggest-card" href="categories.html">
+                        <a class="suggest-card" href="{{ route('category.show',$category->id) }}">
                         <img src="{{ $category->image_path }}" alt="suggest">
                             <h5>{{ $category->name }}<span>{{ $category->product->count() }} @lang('home.item')</span></h5>
                         </a>
