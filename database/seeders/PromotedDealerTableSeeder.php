@@ -13,7 +13,7 @@ class PromotedDealerTableSeeder extends Seeder
      */
     public function run()
     {
-        $name = ['شركة سيدتك للزراعة','شركة حلا الدولية',''];
+        $name = ['شركة سيدتك للزراعة','شركة قريت إيرث','شركة حلا الدولية','شركة تست للزراعة','شركة الزراعة الدولية'];
 
         foreach ($name as  $data) {
             

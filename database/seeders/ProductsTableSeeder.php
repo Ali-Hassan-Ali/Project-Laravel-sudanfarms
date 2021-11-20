@@ -17,7 +17,7 @@ class ProductsTableSeeder extends Seeder
 
         foreach ($name as $data) {
             
-            \App\Models\Product::create([
+            $product = \App\Models\Product::create([
                 'name_ar'            => 'name ar',
                 'name_en'            => 'name en',
                 'quantity'           => '22',
@@ -36,8 +36,16 @@ class ProductsTableSeeder extends Seeder
         }//end of foreach
 
         foreach ($name as $data) {
+
+            \App\Models\ImageProduct::create([
+                'product_id'    => $data,
+            ]);
+
+        }//end of foreach
+
+        foreach ($name as $data) {
             
-            \App\Models\Product::create([
+            $product = \App\Models\Product::create([
                 'name_ar'            => 'name ar',
                 'name_en'            => 'name en',
                 'quantity'           => '22',
@@ -51,6 +59,16 @@ class ProductsTableSeeder extends Seeder
                 'price'              => '200',
                 'sub_category_id'    => $data,
                 'user_id'            => '1',
+            ]);
+
+        }//end of foreach
+
+        $name_new = ['6','7','8','9','10'];
+        
+        foreach ($name_new as $data) {
+
+            \App\Models\ImageProduct::create([
+                'product_id'    => $data,
             ]);
 
         }//end of foreach

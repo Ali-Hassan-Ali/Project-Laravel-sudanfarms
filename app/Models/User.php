@@ -73,4 +73,9 @@ class User extends Authenticatable
         
     }//end ofscopeWhenSearch
 
+    public function promoted()
+    {
+        return $this->hasMany(PromotedDealer::class,'user_id');
+    }
+
 }//end of model

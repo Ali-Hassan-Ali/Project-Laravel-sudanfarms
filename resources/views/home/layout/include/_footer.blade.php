@@ -113,19 +113,23 @@
                     <div class="footer-widget">
                         <h3 class="footer-title">المنتجات</h3>
                         <div class="footer-links">
+                            @php
+                                $subcategory  = App\Models\Categorey::where('sub_categoreys','>','0')->latest()->paginate(5);
+                                $sub_category = App\Models\Categorey::where('sub_categoreys','>','0')->paginate(5);
+                            @endphp
                             <ul>
-                                <li><a href="categories.html">الخضروات</a></li>
-                                <li><a href="categories.html">الفواكة</a></li>
-                                <li><a href="categories.html">الأعلاف</a></li>
-                                <li><a href="categories.html">التمور</a></li>
-                                <li><a href="categories.html">البهارات</a></li>
+                                @foreach ($subcategory as $category)
+
+                                    <li><a href="categories.html">{{ $category->name }}</a></li>
+                                
+                                @endforeach
                             </ul>
                             <ul>
-                                <li><a href="categories.html">الحبوب</a></li>
-                                <li><a href="categories.html">الدواجن</a></li>
-                                <li><a href="categories.html">الأسماك</a></li>
-                                <li><a href="categories.html">المواشي</a></li>
-                                <li><a href="categories.html">البزور الزيتية</a></li>
+                                @foreach ($sub_category as $category)
+
+                                    <li><a href="categories.html">{{ $category->name }}</a></li>
+                                
+                                @endforeach
                             </ul>
                         </div>
                     </div>
