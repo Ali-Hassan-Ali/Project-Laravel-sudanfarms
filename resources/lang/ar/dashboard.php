@@ -57,6 +57,7 @@ return [
     
     'promoted_dealers'      => 'طلبات حساب',
     'company_name_ar'       => 'اسم الشركة باللغة العربية',
+    'company'               => 'شركه',
     'company_name_en'       => 'اسم شركة باللغة الانجليزية',
     'company_logo'          => 'شعار الشركة',
     'company_certificate'   => 'شهادة الشركة',

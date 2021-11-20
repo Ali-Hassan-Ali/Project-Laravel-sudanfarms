@@ -17,7 +17,7 @@
                             </div>
                             <form action="{{ route('home.logout') }}" method="post" id="logout-user-form" style="display: none;">
                                 @csrf
-                                
+
                             </form>
                         @else
                             <div class="header-select"><i class="icofont-login"></i>
@@ -109,7 +109,7 @@
                                                         <ul class="megamenu-list">
                                                             @foreach (App\Models\Categorey::where('sub_categoreys',$category->id)->get() as $sub_category)
                                                                 
-                                                                <li><a href="single-product.html">{{ $sub_category->name }}</a></li>
+                                                                <li><a href="{{ route('category.show',$sub_category->id) }}">{{ $sub_category->name }}</a></li>
 
                                                             @endforeach
                                                         </ul>
@@ -164,7 +164,7 @@
                     <ul class="dropdown-list">
                         @foreach (App\Models\Categorey::where('sub_categoreys',$category->id)->get() as $sub_category)
 
-                            <li><a href="single-product.html">{{ $sub_category->name }}</a></li>
+                            <li><a href="{{ route('category.show',$sub_category->id) }}">{{ $sub_category->name }}</a></li>
 
                         @endforeach
                     </ul>

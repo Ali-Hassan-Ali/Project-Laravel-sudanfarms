@@ -28,6 +28,9 @@ function () {
 
     //header suppliers
     Route::get('suppliers', [HeaderController::class,'supplier'])->name('home.supplier');
+    Route::get('product/{product}', [HeaderController::class,'show_product'])->name('product.show');
+    Route::get('category/{id}', [HeaderController::class,'show_category'])->name('category.show');
+
 
     Route::middleware(['auth'])->group(function () {
         //profile routes
@@ -43,7 +46,7 @@ function () {
         Route::get('/promoted_dealers.destroy', [PromotedDealerController::class,'update'])->name('promoted_dealers.destroy');
 
         //products routes
-        Route::resource('products', ProductController::class)->except(['show']);
+        Route::resource('products', ProductController::class);
 
         // Route::resource('users', UserController::class)->except(['show']);
 

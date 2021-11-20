@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>مزارع السودان - الرئيسية</title>
     <link rel="icon" href="{{ asset('home_files/image/logo.svg') }}">
-    {{-- <link rel="stylesheet" href="http://clickgrafix.cloud/sd-farm/fonts/flaticon/flaticon.css"> --}}
-    {{-- <link rel="stylesheet" href="http://clickgrafix.cloud/sd-farm/fonts/icofont/icofont.min.css"> --}}
-    {{-- <link rel="stylesheet" href="http://clickgrafix.cloud/sd-farm/fonts/fontawesome/fontawesome.min.css"> --}}
+    
     {{-- font awesome --}}
     <link rel="stylesheet" href="{{ asset('home_files/fonts/flaticon/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/fonts/icofont/icofont.min.css') }}">
@@ -23,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/contact.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/product-details.css') }}">
 </head>
 
 <body>

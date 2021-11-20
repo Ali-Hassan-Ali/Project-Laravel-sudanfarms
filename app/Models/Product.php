@@ -79,5 +79,10 @@ class Product extends Model
     {
         return $this->belongsTo(Categorey::class,'sub_category_id');
     }//end of belongsTo category
+
+    public function imageProduct()
+    {
+        return $this->hasMany(imageProduct::class,'product_id');
+    }//end of hasMany image product
     
 }//end of model

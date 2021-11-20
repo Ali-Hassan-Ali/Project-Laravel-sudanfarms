@@ -60,6 +60,7 @@ return [
 
     'promoted_dealers'      => 'promoted dealers',
     'company_name_ar'       => 'company name arbic',
+    'company'               => 'company',
     'company_name_en'       => 'company name english',
     'company_logo'          => 'company logo',
     'company_certificate'   => 'company certificate',

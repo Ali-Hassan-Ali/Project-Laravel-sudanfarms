@@ -62,7 +62,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-xl-3">
-                    <div class="footer-widget"><a class="footer-logo" href="#"><img src="images/logo.svg" alt="logo"></a>
+                    <div class="footer-widget"><a class="footer-logo" href="#"><img src="{{ asset('home_files/image/logo.svg') }}" alt="logo"></a>
                         <p class="footer-desc"> أول موقع للتسويق الزراعي و الحيواني في السودان هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي.</p>
                         <ul class="footer-social">
                             <li><a class="icofont-facebook" href="#"></a></li>

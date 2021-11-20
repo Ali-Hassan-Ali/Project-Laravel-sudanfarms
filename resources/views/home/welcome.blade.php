@@ -5,6 +5,7 @@
 @section('title', __('home.welcome'))   
 
     <section class="home-index-slider slider-arrow slider-dots">
+        
         @foreach (App\Models\SettingBanner::all() as $index=>$data)
             
         <div class="banner-part banner-{{ $index++ }}" style="background: url({{ $data->image_path }}); width: 651px; position: relative; right: -651px; top: 0px; z-index: 998; opacity: 0; transition: opacity 600ms ease 0s;">
@@ -82,7 +83,7 @@
                                     $promoted_dealer = App\Models\PromotedDealer::where('user_id',$user_id)->first();
 
                                 @endphp
-                                <a class="product-image" href="single-product.html">
+                                <a class="product-image" href="{{ route('product.show',$product->id) }}">
                                     <img src="{{ $image_product->image_path }}" alt="product" style="width: 100%;">
                                 </a>
                                 <div class="product-widget">
@@ -102,7 +103,7 @@
                                     <a href="#">({{ $product->stars }})</a>
                                 </div>
                                 <h6 class="product-name">
-                                    <a href="single-product.html">{{ $product->name }}</a>
+                                    <a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a>
                                 </h6>
                                 <h6 class="product-price mb-0">
                                     <span>{{ $promoted_dealer->name }}</span>
@@ -178,7 +179,7 @@
                                     $promoted_dealer = App\Models\PromotedDealer::where('user_id',$user_id)->first();
 
                                 @endphp
-                                <a class="feature-image" href="#">
+                                <a class="feature-image" href="{{ route('product.show',$product->id) }}">
                                     <img src="{{ $image_product->image_path }}" alt="product">
                                 </a>
                                 <div class="feature-widget">
@@ -194,10 +195,11 @@
                                         <i class="active icofont-star"></i>
                                     @endfor
                                     {{-- <i class="icofont-star"></i> --}}
-                                    <a href="#">{{ $promoted_dealer->name }}</a>
+                                    <a href="{{ route('product.show',$product->id) }}">{{ $promoted_dealer->name }}</a>
                                 </div>
                                 <h6 class="feature-price">
-                                    <del>SDG{{ $product->price }}</del><span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
+                                    <del>SDG{{ $product->price }}</del>
+                                    <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
                                 </h6>
                                 <p class="feature-desc">{{ $product->description }}</p>
                                 <button class="product-add" title="@lang('home.add_cart')">
@@ -275,7 +277,7 @@
                                         $promoted_dealer = App\Models\PromotedDealer::where('user_id',$user_id)->first();
 
                                     @endphp
-                                    <a class="product-image" href="single-product.html">
+                                    <a class="product-image" href="{{ route('product.show',$product->id) }}">
                                         <img src="{{ $image_product->image_path }}" alt="product">
                                     </a>
                                     <div class="product-widget">
@@ -293,10 +295,11 @@
                                         <a href="#">({{ $product->stars }})</a>
                                     </div>
                                     <h6 class="product-name">
-                                        <a href="single-product.html">{{ $product->name }}</a>
+                                        <a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a>
                                     </h6>
                                     <h6 class="product-price mb-0">
-                                        <del>SDG{{ $product->price }}</del><span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
+                                        <del>SDG{{ $product->price }}</del>
+                                        <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
                                     </h6>
                                     <h6 class="product-price"><span>{{ $promoted_dealer->name }}</span></h6>
                                     <button class="product-add" title="@lang('home.add_cart')">
@@ -890,4 +893,4 @@
     </section> 
 
 
-@endsection 
+@endsection

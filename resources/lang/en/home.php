@@ -136,6 +136,8 @@ return [
     
     'price'          => 'price',
     'product'        => 'product',
+    'prev_product'   => 'prev product',
+    'next_product'   => 'next product',
     'totle_price'    => 'Totle Price',
     'no_cart'        => 'No items in Cart!',
     'no_phone'       => 'Mobile number needs to be activated',
