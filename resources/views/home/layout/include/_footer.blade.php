@@ -79,7 +79,7 @@
                             <ul>
                                 <li><a href="about.html">من نحن</a></li>
                                 <li><a href="manager-word.html">كلمة المدير</a></li>
-                                <li><a href="gallery.html">مكتبة الصور</a></li>
+                                <li><a href="{{ route('gallerys.index') }}">@lang('dashboard.gallerys')</a></li>
                                 <li><a href="videos.html">معرض الأفلام</a></li>
                                 <li><a href="blogs.html">المطبوعات</a></li>
                             </ul>

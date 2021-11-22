@@ -10,6 +10,8 @@ use App\Models\Categorey;
 use App\Models\ImageProduct;
 use App\Models\PromotedDealer;
 use App\Models\CategoryDealer;
+use App\Models\GalleryCategory;
+use App\Models\Gallery;
 
 class HeaderController extends Controller
 {
@@ -92,5 +94,13 @@ class HeaderController extends Controller
         return view('home.header.categories',compact('categorey','min_product'));
 
     }//end of categorey
+
+    public function gallerys()
+    {
+        $gallery_categorys = GalleryCategory::all();
+        $gallerys          = Gallery::all();
+
+        return view('home.header.gallerys.index',compact('gallery_categorys','gallerys'));
+    }//end of gallerys
 
 }//end of controller

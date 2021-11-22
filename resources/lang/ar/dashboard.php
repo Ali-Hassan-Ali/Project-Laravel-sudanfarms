@@ -192,6 +192,9 @@ return [
     'smart_email'       => 'بريد إلكتروني ذكي',
     
     'settings'          => 'الإعدادات',
+    
+    'gallery_categorys' => 'اقسام الصور',
+    'gallerys'          => 'معرض الصور',
 
     
 

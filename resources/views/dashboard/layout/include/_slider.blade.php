@@ -61,6 +61,19 @@
                 </li>
             @endif
 
+
+            @if (auth()->user()->hasPermission('gallery_categorys_read'))
+                <li class="{{ Route::Is(['dashboard.settings.gallery_categorys.index','dashboard.settings.gallery_categorys.create','dashboard.settings.gallery_categorys.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.settings.gallery_categorys.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.gallery_categorys')</span></a>
+                </li>
+            @endif
+
+            @if (auth()->user()->hasPermission('gallerys_read'))
+                <li class="{{ Route::Is(['dashboard.settings.gallerys.index','dashboard.settings.gallerys.create','dashboard.settings.gallerys.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.settings.gallerys.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.gallerys')</span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('contacts_read'))
                 <li class="{{ Route::Is(['dashboard.contacts.index','dashboard.contacts.create','dashboard.contacts.edit']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.contacts.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.contacts')</span></a>
@@ -70,12 +83,6 @@
             @if (auth()->user()->hasPermission('orders_read'))
                 <li class="{{ Route::Is(['dashboard.orders.index','dashboard.orders.show']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.orders.index') }}"><i class="fa fa-shopping-cart"></i><span>@lang('dashboard.orders')</span></a>
-                </li>
-            @endif
-
-            @if (auth()->user()->hasPermission('gallerys_read'))
-                <li class="{{ Route::Is(['dashboard.gallerys.index','dashboard.gallerys.create','dashboard.gallerys.edit']) ? 'active' : '' }}">
-                    <a href="{{ route('dashboard.gallerys.index') }}"><i class="fa fa-picture-o"></i><span>@lang('dashboard.gallerys')</span></a>
                 </li>
             @endif
 

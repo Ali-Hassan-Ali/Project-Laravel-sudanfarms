@@ -15,13 +15,13 @@
 
     {{-- css venobox --}}
     <link rel="stylesheet" href="{{ asset('home_files/css/nice-select.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/venobox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/slick.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/contact.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/product-details.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/venobox.min.css') }}">
 </head>
 
 <body>
@@ -37,15 +37,16 @@
     <script src="{{ asset('home_files/js/popper.min.js') }}"></script>
     <script src="{{ asset('home_files/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('home_files/js/nice-select.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/venobox.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/viewbox.min.js') }}"></script>
     <script src="{{ asset('home_files/js/countdown.min.js') }}"></script>
     <script src="{{ asset('home_files/js/slick.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/jquery.viewbox.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/jquery.mixitup.js') }}"></script>
     <script src="{{ asset('home_files/js/waypoints.min.js') }}"></script>
     <script src="{{ asset('home_files/js/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset('home_files/js/nice-select.js') }}"></script>
     <script src="{{ asset('home_files/js/countdown.js') }}"></script>
     <script src="{{ asset('home_files/js/accordion.js') }}"></script>
-    <script src="{{ asset('home_files/js/venobox.js') }}"></script>
     <script src="{{ asset('home_files/js/slick.js') }}"></script>
     <script src="{{ asset('home_files/js/main.js') }}"></script>
 
@@ -59,6 +60,7 @@
         });
     </script>
     @stack('products')
+    @stack('gallery')
 </body>
 
 </html>

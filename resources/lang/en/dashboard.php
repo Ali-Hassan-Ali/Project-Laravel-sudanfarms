@@ -197,4 +197,7 @@ return [
 
     'settings'          => 'Settings',
 
+    'gallery_categorys' => 'gallery categorys',
+    'gallerys'          => 'gallerys',
+
 ];

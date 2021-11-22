@@ -25,6 +25,8 @@ return [
             'promoted_dealers' => 'c,r,u,d,s',
             'contacts'         => 'd,r,s',
             'settings'         => 'c,r,u,d,s',
+            'gallery_categorys'=> 'c,r,u,d',
+            'gallerys'         => 'c,r,u,d',
         ],
         
         'admin' => [

@@ -16,6 +16,8 @@ use App\Http\Controllers\Dashboard\ContactController;
 //Setting Controller
 use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
 use App\Http\Controllers\Dashboard\Setting\SettingController;
+use App\Http\Controllers\Dashboard\Setting\GalleryCategoryController;
+use App\Http\Controllers\Dashboard\Setting\GalleryController;
 
 
 
@@ -64,6 +66,10 @@ function () {
 
             //setting_banners routes
             Route::resource('setting_banners', SettingBannerController::class)->except(['show']);
+
+            //setting routes gallery_categorys
+            Route::resource('gallery_categorys', GalleryCategoryController::class)->except(['show']);
+            Route::resource('gallerys', GalleryController::class)->except(['show']);
 
             //settings route
             Route::get('social_links', [SettingController::class,'social_links'])->name('social_links.index');
