@@ -58,6 +58,7 @@
             time: 4000
         });
     </script>
+    @stack('products')
 </body>
 
 </html>

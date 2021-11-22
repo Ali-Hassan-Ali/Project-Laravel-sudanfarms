@@ -47,6 +47,7 @@ function () {
 
         //products routes
         Route::resource('products', ProductController::class);
+        Route::get('sub_category/{id}', [ProductController::class, 'sub_categoreys'])->name('home.sub_categorys');
 
         // Route::resource('users', UserController::class)->except(['show']);
 

@@ -44,24 +44,33 @@
                 </div>
                 <div class="col-lg-6">
                     <ul class="product-navigation">
-                        <li class="product-nav-prev">
-                        	<a href="{{ route('product.show',$prev_product->id) }}">
-                        		<i class="icofont-arrow-right" style="margin-left: 4px;"></i>@lang('home.prev_product')
-                        		<span class="product-nav-popup">
-                        			<img src="{{ $prev_image_product->image_path }}" alt="product">
-                        			<small>{{ $prev_product->name }}</small>
-                        		</span>
-                        	</a>
-                        </li>
-                        <li class="product-nav-next">
-                    		<a href="{{ route('product.show',$next_product->id) }}">@lang('home.next_product')<i class="icofont-arrow-left"></i>
-	                    		<span class="product-nav-popup">
-	                    			<img src="{{ $next_image_product->image_path }}" alt="product">
-	                    			<small>{{ $next_product->name }}</small>
-	                    		</span>
-                    		</a>
-                    	</li>
+                        @if (!$prev_image_product == '0')
+
+                            <li class="product-nav-prev">
+                                <a href="{{ route('product.show',$prev_product->id) }}">
+                                    <i class="icofont-arrow-right" style="margin-left: 4px;"></i>@lang('home.prev_product')
+                                    <span class="product-nav-popup">
+                                        <img src="{{ $prev_image_product->image_path }}" alt="product">
+                                        <small>{{ $prev_product->name }}</small>
+                                    </span>
+                                </a>
+                            </li>
+
+                        @endif
+                        @if (!$next_image_product == '0')
+                            
+                            <li class="product-nav-next">
+                        		<a href="{{ route('product.show',$next_product->id) }}">@lang('home.next_product')<i class="icofont-arrow-left"></i>
+    	                    		<span class="product-nav-popup">
+    	                    			<img src="{{ $next_image_product->image_path }}" alt="product">
+    	                    			<small>{{ $next_product->name }}</small>
+    	                    		</span>
+                        		</a>
+                        	</li>
+
+                        @endif
                     </ul>
+                    
                     <div class="details-content">
                         <h3 class="details-name"><a href="#">فلفل طازج</a></h3>
                         <div class="details-meta mb-1">

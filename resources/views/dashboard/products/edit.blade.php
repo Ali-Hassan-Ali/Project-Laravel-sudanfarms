@@ -63,7 +63,9 @@
                             <select name="sub_category_id" class="form-control">
                                 <option value="">@lang('dashboard.all_categories')</option>
                                 @foreach ($sub_categoreys as $category)
-                                    <option value="{{ $category->id }}" {{ $product->sub_category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" {{ $categorey_id->id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -71,7 +73,7 @@
                         <div class="form-group">
                             <label>@lang('dashboard.categorey')</label>
                             <select name="sub_category_id" id="select-sub-category" class="form-control">                            
-                                    <option value=""></option>
+                                    <option value="{{ $product->category->id }}">{{ $product->category->name }}</option>
                             </select>
                         </div>
 

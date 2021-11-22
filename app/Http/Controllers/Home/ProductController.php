@@ -3,25 +3,28 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
+use App\Models\Categorey;
+use App\Models\ImageProduct;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::whenSearch(request()->search)->latest()->paginate(10);
+        $products = Product::whenSearch(request()->search)->where('user_id', auth()->user()->id)->latest()->paginate(10);
 
-        return view('home.products.index',compact('products'));
+        return view('home.my_acount.products.index',compact('products'));
 
     }//end of model
 
 
     public function create()
     {
-        $sub_categoreys = Categorey::where('sub_categoreys','1')->get();
-
-        return view('home.products.create',compact('sub_categoreys'));
+        $sub_categoreys = Categorey::where('sub_categoreys','0')->get();
+        
+        return view('home.my_acount.products.create',compact('sub_categoreys'));
 
     }//end of create
 
@@ -46,28 +49,36 @@ class ProductController extends Controller
             // 'image'             => 'required',
         ]);
 
-        $request_data = $request->except('image');
+        try {
 
-        $request_data['user_id'] = auth()->user()->id;
+            $request_data = $request->except('image');
 
-        $products = Product::create($request_data);
+            $request_data['user_id'] = auth()->user()->id;
 
-        foreach ($request->image as $key=>$imag) {
+            $products = Product::create($request_data);
 
-            $request_image['imag'][$key] = $imag->store('product_images','public');
+            foreach ($request->image as $key=>$imag) {
 
-        }//end of foreach
+                $request_image['imag'][$key] = $imag->store('product_images','public');
 
-        foreach ($request_image['imag'] as $image) {
-            
-            ImageProduct::create([
-                'product_id' => $products->id,
-                'image'      => $image,
-            ]);
-        }
+            }//end of foreach
+
+            foreach ($request_image['imag'] as $image) {
+                
+                ImageProduct::create([
+                    'product_id' => $products->id,
+                    'image'      => $image,
+                ]);
+            }
 
 
-        return redirect()->route('home.products.index');
+            return redirect()->route('products.index');
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of store
 
@@ -75,15 +86,17 @@ class ProductController extends Controller
    
     public function show(Product $product)
     {
-        return view('home.products.show',compact('product'));
+        return view('home.my_acount.products.show',compact('product'));
     }//en end of show
 
     
     public function edit(Product $product)
     {
-        $sub_categoreys = Categorey::where('sub_categoreys','1')->get();
+        $sub_categoreys     = Categorey::where('sub_categoreys','0')->get();
+        $categoreys_product = Categorey::where('id', $product->sub_category_id)->first();
+        $categorey_id       = Categorey::where('id', $categoreys_product->sub_categoreys)->first();
 
-        return view('home.products.edit',compact('sub_categoreys','product'));
+        return view('home.my_acount.products.edit',compact('sub_categoreys','product','categorey_id'));
 
     }//end of edit
 
@@ -109,43 +122,50 @@ class ProductController extends Controller
             // 'image'           => 'image',
         ]);
 
+      try {
 
-        $request_data = $request->except('image');
+            $request_data = $request->except('image');
 
-        $request_data['user_id'] = auth()->user()->id;
+            $request_data['user_id'] = auth()->user()->id;
 
-        $product->update($request_data);
+            $product->update($request_data);
 
-        if ($request->image) {
+            if ($request->image) {
 
-            $product_image = ImageProduct::where('product_id', $product->id)->get();
+                $product_image = ImageProduct::where('product_id', $product->id)->get();
 
 
-            foreach ($product_image as  $image) {
+                foreach ($product_image as  $image) {
+                    
+                    Storage::disk('public_uploads')->delete($image->image);
+
+                    $image->delete();
+                }
+
                 
-                Storage::disk('public_uploads')->delete($image->image);
+                foreach ($request->image as $key=>$imag) {
 
-                $image->delete();
-            }
+                    $request_image['imag'][$key] = $imag->store('product_images','public_uploads');
 
-            
-            foreach ($request->image as $key=>$imag) {
+                }//end of foreach
 
-                $request_image['imag'][$key] = $imag->store('product_images','public_uploads');
+                foreach ($request_image['imag'] as $image) {
 
-            }//end of foreach
+                    ImageProduct::create([
+                        'product_id' => $product->id,
+                        'image'      => $image,
+                    ]);
+                }
 
-            foreach ($request_image['imag'] as $image) {
+            }//end fo if image
 
-                ImageProduct::create([
-                    'product_id' => $product->id,
-                    'image'      => $image,
-                ]);
-            }
+            return redirect()->route('products.index');
 
-        }//end fo if image
+        } catch (\Exception $e) {
 
-        return redirect()->route('home.products.index');
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of update
 
@@ -168,7 +188,7 @@ class ProductController extends Controller
 
             $product->delete();
             session()->flash('success', __('dashboard.deleted_successfully'));
-            return redirect()->route('home.products.index');
+            return redirect()->route('products.index');
 
         } catch (\Exception $e) {
 
@@ -177,5 +197,14 @@ class ProductController extends Controller
         }//end try
 
     }//end of destroy
+
+
+    public function sub_categoreys($id)
+    {
+        $categoreys = Categorey::where('sub_categoreys',$id)->get();
+
+        return response()->json($categoreys);
+
+    }//end of  sub_categoreys 
 
 }//end of controller

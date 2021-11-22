@@ -27,7 +27,7 @@
 
                 <div class="box-body">
 
-                    {{-- @include('partials._errors') --}}
+                    @include('partials._errors')
 
                     <form action="{{ route('dashboard.products.store') }}" method="post" enctype="multipart/form-data">
 

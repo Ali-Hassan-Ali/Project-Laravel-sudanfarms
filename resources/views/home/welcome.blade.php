@@ -109,7 +109,7 @@
                                     <span>{{ $promoted_dealer->name }}</span>
                                 </h6>
                                 <h6 class="product-price">
-                                    <span>{{ $product->quantity }}<small>/{{ $product->quantity_guard }}</small></span>
+                                    <span>{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
                                 </h6>
                                 <button class="product-add" title="@lang('home.add_cart')">
                                     <i class="fas fa-shopping-basket"></i><span>@lang('home.add_cart')</span>
@@ -198,8 +198,8 @@
                                     <a href="{{ route('product.show',$product->id) }}">{{ $promoted_dealer->name }}</a>
                                 </div>
                                 <h6 class="feature-price">
-                                    <del>SDG{{ $product->price }}</del>
-                                    <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
+                                    <del>SDG {{ $product->price }} </del>
+                                    <span>SDG {{ $product->price }} <small>/{{ $product->quantity_guard }}</small></span>
                                 </h6>
                                 <p class="feature-desc">{{ $product->description }}</p>
                                 <button class="product-add" title="@lang('home.add_cart')">

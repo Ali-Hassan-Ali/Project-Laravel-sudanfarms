@@ -60,27 +60,35 @@ class ProductController extends Controller
             // 'image'             => 'required',
         ]);
 
-        $request_data = $request->except('image');
+        try {
 
-        $request_data['user_id'] = auth()->user()->id;
+            $request_data = $request->except('image');
 
-        $products = Product::create($request_data);
+            $request_data['user_id'] = auth()->user()->id;
 
-        foreach ($request->image as $key=>$imag) {
+            $products = Product::create($request_data);
 
-            $request_image['imag'][$key] = $imag->store('product_images','public');
+            foreach ($request->image as $key=>$imag) {
 
-        }//end of foreach
+                $request_image['imag'][$key] = $imag->store('product_images','public');
 
-        foreach ($request_image['imag'] as $image) {
-            
-            ImageProduct::create([
-                'product_id' => $products->id,
-                'image'      => $image,
-            ]);
-        }
+            }//end of foreach
 
-        return redirect()->route('dashboard.products.index');
+            foreach ($request_image['imag'] as $image) {
+                
+                ImageProduct::create([
+                    'product_id' => $products->id,
+                    'image'      => $image,
+                ]);
+            }
+
+            return redirect()->route('dashboard.products.index');
+
+        catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of store
 
@@ -95,11 +103,11 @@ class ProductController extends Controller
     
     public function edit(Product $product)
     {
-        $sub_categoreys = Categorey::where('sub_categoreys','0')->get();
+        $sub_categoreys     = Categorey::where('sub_categoreys','0')->get();
+        $categoreys_product = Categorey::where('id', $product->sub_category_id)->first();
+        $categorey_id       = Categorey::where('id', $categoreys_product->sub_categoreys)->first();
 
-        $categoreys     = Categorey::where('sub_categoreys',$product->sub_category_id)->get();
-        return $categoreys;
-        return view('dashboard.products.edit',compact('sub_categoreys','product','categoreys'));
+        return view('dashboard.products.edit',compact('sub_categoreys','product','categorey_id'));
 
     }//end of edit
 
@@ -125,43 +133,50 @@ class ProductController extends Controller
             // 'image'           => 'image',
         ]);
 
+        try {
 
-        $request_data = $request->except('image');
+            $request_data = $request->except('image');
 
-        $request_data['user_id'] = auth()->user()->id;
+            $request_data['user_id'] = auth()->user()->id;
 
-        $product->update($request_data);
+            $product->update($request_data);
 
-        if ($request->image) {
+            if ($request->image) {
 
-            $product_image = ImageProduct::where('product_id', $product->id)->get();
+                $product_image = ImageProduct::where('product_id', $product->id)->get();
 
 
-            foreach ($product_image as  $image) {
+                foreach ($product_image as  $image) {
 
-                Storage::disk('local')->delete('public/' . $image->image);
+                    Storage::disk('local')->delete('public/' . $image->image);
 
-                $image->delete();
-            }
+                    $image->delete();
+                }
 
-            
-            foreach ($request->image as $key=>$imag) {
+                
+                foreach ($request->image as $key=>$imag) {
 
-                $request_image['imag'][$key] = $imag->store('product_images','public');
+                    $request_image['imag'][$key] = $imag->store('product_images','public');
 
-            }//end of foreach
+                }//end of foreach
 
-            foreach ($request_image['imag'] as $image) {
+                foreach ($request_image['imag'] as $image) {
 
-                ImageProduct::create([
-                    'product_id' => $product->id,
-                    'image'      => $image,
-                ]);
-            }
+                    ImageProduct::create([
+                        'product_id' => $product->id,
+                        'image'      => $image,
+                    ]);
+                }
 
-        }//end fo if image
+            }//end fo if image
 
-        return redirect()->route('dashboard.products.index');
+            return redirect()->route('dashboard.products.index');
+
+        catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of update
 

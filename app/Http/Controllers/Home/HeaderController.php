@@ -49,12 +49,34 @@ class HeaderController extends Controller
         $image_product = ImageProduct::where('product_id',$product->id)->get();
         
         $promoted_dealer    = PromotedDealer::where('user_id',$product->user->id)->first();
+        
+        if (Product::find($product->id + 1)) {
+            
+            $next_product = Product::find($product->id + 1);
 
-        $next_product       = Product::find($product->id + 1);
-        $next_image_product = ImageProduct::where('product_id',$next_product->id)->first();
+            $next_image_product = ImageProduct::where('product_id',$next_product->id)->first();
+            
+        } else {
 
-        $prev_product       = Product::find($product->id - 1);
-        $prev_image_product = ImageProduct::where('product_id',$prev_product->id)->first();
+            $next_product = Product::find($product->id + 1);
+
+            $next_image_product = 0;
+
+        }
+
+        if (Product::find($product->id - 1)) {
+            
+            $prev_product = Product::find($product->id - 1);
+
+            $prev_image_product = ImageProduct::where('product_id',$prev_product->id)->first();
+            
+        } else {
+
+            $prev_product = Product::find($product->id + 1);
+            
+            $prev_image_product = 0;
+
+        }
 
         return view('home.products.show',compact('product','image_product','next_product','next_image_product','prev_product','prev_image_product','promoted_dealer','min_product'));
 

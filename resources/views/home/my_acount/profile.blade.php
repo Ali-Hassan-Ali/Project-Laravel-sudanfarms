@@ -168,6 +168,7 @@
                             </div>
                             @php
                                 $user = App\Models\PromotedDealer::where('user_id',auth()->user()->id)->first();
+                                $products = App\Models\Product::where('user_id',auth()->user()->id)->count();
                             @endphp
                             @if ($user)
                             <div class="col-md-6 col-lg-4 alert fade show">
@@ -214,14 +215,14 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-4 alert fade show">
                                 <div class="profile-card contact">
-                                    <h6><i class="fas fa-list"></i> الطلبات ( 5)</h6>
-                                    <a href="orders-users.html">التفاصيل</a>
+                                    <h6><i class="fas fa-list"></i> @lang('dashboard.products')({{ $products }})</h6>
+                                    <a href="{{ route('products.index') }}">التفاصيل</a>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4 alert fade show">
                                 <div class="profile-card contact">
-                                    <h6><i class="fas fa-times"></i> طلبات غير متوفرة ( 3)</h6>
-                                    <a href="orders-users.html">التفاصيل</a>
+                                    <h6><i class="fas fa-times"></i> @lang('dashboard.add') @lang('dashboard.products')</h6>
+                                    <a href="{{ route('products.create') }}">@lang('dashboard.add')</a>
                                 </div>
                             </div>
                         </div>
