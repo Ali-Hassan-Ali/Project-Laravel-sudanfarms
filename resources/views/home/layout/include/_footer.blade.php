@@ -98,13 +98,21 @@
                         <h3 class="footer-title">تواصل معنا</h3>
                         <ul class="footer-contact">
                             <li><i class="icofont-ui-email"></i>
-                                <p><span>{{ setting('email') }}</span><span>{{ setting('email') }}</span></p>
+                                <p><span>{{ setting('email_one') }}</span><span>{{ setting('email') }}</span></p>
                             </li>
                             <li><i class="icofont-ui-touch-phone"></i>
-                                <p><span>{{ setting('phone') }}</span><span>{{ setting('phone') }}</span></p>
+                                <p><span>{{ setting('phone_one') }}</span><span>{{ setting('phone') }}</span></p>
                             </li>
                             <li><i class="icofont-location-pin"></i>
-                                <p>السودان - الخرطوم - شارع عبدالله الطيب</p>
+                                @if (app()->getLocale() == 'ar')
+                                    
+                                    <p>{{ setting('map_ar') }}</p>
+
+                                @else
+
+                                    <p>{{ setting('map_en') }}</p>
+
+                                @endif
                             </li>
                         </ul>
                     </div>
