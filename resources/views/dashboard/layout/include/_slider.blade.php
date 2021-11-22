@@ -102,12 +102,19 @@
                     </span>
                   </a>
                       
-                  <ul class="treeview-menu {{  Route::Is(['dashboard.settings.index','dashboard.contact_us.index','dashboard.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.service.index','dashboard.contact_us.index','dashboard.social_links.index']) ? 'block' : 'none' }};">
+                  <ul class="treeview-menu {{  Route::Is(['dashboard.settings.index','dashboard.contact_us.index','dashboard.settings.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.service.index','dashboard.contact_us.index','dashboard.settings.social_links.index']) ? 'block' : 'none' }};">
 
                     <li class="{{ Route::Is('dashboard.settings.index') ? 'active' : '' }}">
                         <a href="{{ route('dashboard.settings.setting_banners.index') }}">
                             <i class="fa fa-concierge-bell"></i> 
                             @lang('dashboard.setting_banners')
+                        </a>
+                    </li>
+
+                    <li class="{{ Route::Is('dashboard.settings.social_links.index') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.social_links.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('dashboard.social_links')
                         </a>
                     </li>
                     {{-- <li class="{{ Route::Is('dashboard.contact_us.index') ? 'active' : '' }}">

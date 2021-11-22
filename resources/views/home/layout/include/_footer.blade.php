@@ -65,10 +65,10 @@
                     <div class="footer-widget"><a class="footer-logo" href="#"><img src="{{ asset('home_files/image/logo.svg') }}" alt="logo"></a>
                         <p class="footer-desc"> أول موقع للتسويق الزراعي و الحيواني في السودان هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي.</p>
                         <ul class="footer-social">
-                            <li><a class="icofont-facebook" href="#"></a></li>
-                            <li><a class="icofont-twitter" href="#"></a></li>
-                            <li><a class="icofont-instagram" href="#"></a></li>
-                            <li><a class="icofont-pinterest" href="#"></a></li>
+                            <li><a class="icofont-facebook" href="{{ setting('facebook') }}"></a></li>
+                            <li><a class="icofont-twitter" href="{{ setting('twitter') }}"></a></li>
+                            <li><a class="icofont-instagram" href="{{ setting('instagram') }}"></a></li>
+                            <li><a class="icofont-pinterest" href="{{ setting('pinterest') }}"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -98,10 +98,10 @@
                         <h3 class="footer-title">تواصل معنا</h3>
                         <ul class="footer-contact">
                             <li><i class="icofont-ui-email"></i>
-                                <p><span>info@sudanfarms.com</span><span>slaes@sudanfarms.com</span></p>
+                                <p><span>{{ setting('email') }}</span><span>{{ setting('email') }}</span></p>
                             </li>
                             <li><i class="icofont-ui-touch-phone"></i>
-                                <p><span>313 4444 12 (249+)</span><span>339 3343 96 (249+)</span></p>
+                                <p><span>{{ setting('phone') }}</span><span>{{ setting('phone') }}</span></p>
                             </li>
                             <li><i class="icofont-location-pin"></i>
                                 <p>السودان - الخرطوم - شارع عبدالله الطيب</p>

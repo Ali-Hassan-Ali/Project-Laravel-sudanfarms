@@ -74,13 +74,13 @@
 
                 <div class="header-widget-group">
 
-                    <a href="#" class="header-widget"><i class="icofont-facebook"></i></a>
+                    <a href="{{ setting('facebook') }}" class="header-widget"><i class="icofont-facebook"></i></a>
 
-                    <a href="#" class="header-widget"><i class="icofont-twitter"></i></a>
+                    <a href="{{ setting('twitter') }}" class="header-widget"><i class="icofont-twitter"></i></a>
 
-                    <a href="#" class="header-widget"><i class="icofont-instagram"></i></a>
+                    <a href="{{ setting('instagram') }}" class="header-widget"><i class="icofont-instagram"></i></a>
 
-                    <a href="#" class="header-widget"><i class="icofont-pinterest"></i></a>
+                    <a href="{{ setting('pinterest') }}" class="header-widget"><i class="icofont-pinterest"></i></a>
 
                     <button class="header-widget header-cart" title="السلة"><i class="fas fa-shopping-basket"></i><sup>9+</sup></button>
                 </div>
@@ -138,10 +138,10 @@
                         </ul>
                         <div class="navbar-info-group">
                             <div class="navbar-info"><i class="icofont-ui-touch-phone"></i>
-                                <p><small>إتصل بنا</small><span>313 4444 12 (249+)</span></p>
+                                <p><small>إتصل بنا</small><span>{{ setting('phone') }}</span></p>
                             </div>
                             <div class="navbar-info"><i class="icofont-ui-email"></i>
-                                <p><small>البريد الإلكتروني</small><span>info@sudanfarms.com</span></p>
+                                <p><small>البريد الإلكتروني</small><span>{{ setting('email') }}</span></p>
                             </div>
                         </div>
                     </div>
@@ -286,10 +286,10 @@
             </ul>
             <div class="nav-info-group">
                 <div class="nav-info"><i class="icofont-ui-touch-phone"></i>
-                    <p><small>إتصل بنا</small><span>313 4444 12 (249+)</span></p>
+                    <p><small>إتصل بنا</small><span>{{ setting('phone') }}</span></p>
                 </div>
                 <div class="nav-info"><i class="icofont-ui-email"></i>
-                    <p><small>راسلنا</small><span>info@sudanfarms.com</span></p>
+                    <p><small>راسلنا</small><span>{{ setting('email') }}</span></p>
                 </div>
             </div>
             <div class="nav-footer">
@@ -360,10 +360,10 @@
                                 </div>
                                 <div class="view-list-group"><label class="view-list-title">مشاركة:</label>
                                     <ul class="view-share-list">
-                                        <li><a href="#" class="icofont-facebook" title="Facebook"></a></li>
-                                        <li><a href="#" class="icofont-twitter" title="Twitter"></a></li>
-                                        <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
-                                        <li><a href="#" class="icofont-pinterest" title="Pintrest"></a></li>
+                                        <li><a href="{{ setting('facebook') }}" class="icofont-facebook" title="Facebook"></a></li>
+                                        <li><a href="{{ setting('twitter') }}" class="icofont-twitter" title="Twitter"></a></li>
+                                        <li><a href="{{ setting('instagram') }}" class="icofont-instagram" title="Instagram"></a></li>
+                                        <li><a href="{{ setting('pinterest') }}" class="icofont-pinterest" title="Pintrest"></a></li>
                                     </ul>
                                 </div>
                                 <div class="view-add-group"><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>

@@ -15,6 +15,7 @@ use App\Http\Controllers\Dashboard\ContactController;
 
 //Setting Controller
 use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
+use App\Http\Controllers\Dashboard\Setting\SettingController;
 
 
 
@@ -63,6 +64,10 @@ function () {
 
             //setting_banners routes
             Route::resource('setting_banners', SettingBannerController::class)->except(['show']);
+
+            //settings route
+            Route::get('social_links', [SettingController::class,'social_links'])->name('social_links.index');
+            Route::post('/settings', [SettingController::class,'store'])->name('settings.store');
 
         }); //end of settings routes
 
