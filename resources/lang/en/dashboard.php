@@ -200,4 +200,8 @@ return [
     'gallery_categorys' => 'gallery categorys',
     'gallerys'          => 'gallerys',
 
+    'video_categorys'   => 'Film gallery sections',
+    'videos'            => 'Film gallery',
+    'video_url'         => 'video url',
+
 ];

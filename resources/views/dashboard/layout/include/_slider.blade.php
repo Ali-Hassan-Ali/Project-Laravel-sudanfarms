@@ -74,6 +74,18 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasPermission('video_categorys_read'))
+                <li class="{{ Route::Is(['dashboard.settings.video_categorys.index','dashboard.settings.video_categorys.create','dashboard.settings.video_categorys.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.settings.video_categorys.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.video_categorys')</span></a>
+                </li>
+            @endif
+
+            @if (auth()->user()->hasPermission('videos_read'))
+                <li class="{{ Route::Is(['dashboard.settings.videos.index','dashboard.settings.videos.create','dashboard.settings.videos.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.settings.videos.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.videos')</span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('contacts_read'))
                 <li class="{{ Route::Is(['dashboard.contacts.index','dashboard.contacts.create','dashboard.contacts.edit']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.contacts.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.contacts')</span></a>

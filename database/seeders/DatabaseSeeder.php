@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingBannersTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
         $this->call(GallerySeeder::class);
+        $this->call(VideoSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }

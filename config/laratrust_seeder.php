@@ -27,6 +27,8 @@ return [
             'settings'         => 'c,r,u,d,s',
             'gallery_categorys'=> 'c,r,u,d',
             'gallerys'         => 'c,r,u,d',
+            'video_categorys'  => 'c,r,u,d',
+            'videos'           => 'c,r,u,d',
         ],
         
         'admin' => [

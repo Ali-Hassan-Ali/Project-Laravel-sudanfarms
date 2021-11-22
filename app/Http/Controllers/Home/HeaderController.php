@@ -12,6 +12,8 @@ use App\Models\PromotedDealer;
 use App\Models\CategoryDealer;
 use App\Models\GalleryCategory;
 use App\Models\Gallery;
+use App\Models\VideoCategory;
+use App\Models\Video;
 
 class HeaderController extends Controller
 {
@@ -100,7 +102,15 @@ class HeaderController extends Controller
         $gallery_categorys = GalleryCategory::all();
         $gallerys          = Gallery::all();
 
-        return view('home.header.gallerys.index',compact('gallery_categorys','gallerys'));
+        return view('home.header.media_center.gallerys',compact('gallery_categorys','gallerys'));
+    }//end of gallerys
+
+    public function videos()
+    {
+        $video_categorys = VideoCategory::all();
+        $videos          = Video::all();
+
+        return view('home.header.media_center.videos',compact('video_categorys','videos'));
     }//end of gallerys
 
 }//end of controller

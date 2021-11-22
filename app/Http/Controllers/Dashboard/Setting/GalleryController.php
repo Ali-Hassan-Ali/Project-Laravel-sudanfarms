@@ -110,11 +110,12 @@ class GalleryController extends Controller
     
     public function destroy(Gallery $gallery)
     {
+
          try {
 
             Storage::disk('local')->delete('public/' . $gallery->image);
             
-            $galleryCategory->delete();
+            $gallery->delete();
 
             session()->flash('success', __('dashboard.deleted_successfully'));
             return redirect()->route('dashboard.settings.gallerys.index');

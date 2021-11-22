@@ -31,6 +31,7 @@ function () {
     Route::get('product/{product}', [HeaderController::class,'show_product'])->name('product.show');
     Route::get('category/{id}', [HeaderController::class,'show_category'])->name('category.show');
     Route::get('gallerys', [HeaderController::class,'gallerys'])->name('gallerys.index');
+    Route::get('videos', [HeaderController::class,'videos'])->name('videos.index');
 
 
     Route::middleware(['auth'])->group(function () {

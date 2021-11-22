@@ -196,8 +196,10 @@ return [
     'gallery_categorys' => 'اقسام الصور',
     'gallerys'          => 'معرض الصور',
 
+    'video_categorys'   => 'اقسام معرض الافلام',
+    'videos'            => 'معرض الافلام',
+    'video_url'         => 'رابط الفديوو',
     
-
 
 
 ];

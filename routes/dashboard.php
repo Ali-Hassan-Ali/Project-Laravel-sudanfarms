@@ -18,6 +18,8 @@ use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
 use App\Http\Controllers\Dashboard\Setting\SettingController;
 use App\Http\Controllers\Dashboard\Setting\GalleryCategoryController;
 use App\Http\Controllers\Dashboard\Setting\GalleryController;
+use App\Http\Controllers\Dashboard\Setting\VideoCategoryControlle;
+use App\Http\Controllers\Dashboard\Setting\VideoControlle;
 
 
 
@@ -70,6 +72,8 @@ function () {
             //setting routes gallery_categorys
             Route::resource('gallery_categorys', GalleryCategoryController::class)->except(['show']);
             Route::resource('gallerys', GalleryController::class)->except(['show']);
+            Route::resource('video_categorys', VideoCategoryControlle::class)->except(['show']);
+            Route::resource('videos', VideoControlle::class)->except(['show']);
 
             //settings route
             Route::get('social_links', [SettingController::class,'social_links'])->name('social_links.index');

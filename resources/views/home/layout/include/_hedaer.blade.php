@@ -128,7 +128,7 @@
                             <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="javascript:void(0);">المركز الإعلامي</a>
                                 <ul class="dropdown-position-list">
                                     <li><a href="{{ route('gallerys.index') }}">@lang('dashboard.gallerys')</a></li>
-                                    <li><a href="videos.html">معرض الأفلام</a></li>
+                                    <li><a href="{{ route('videos.index') }}">@lang('dashboard.videos')</a></li>
                                     <li><a href="blogs.html">المطبوعات</a></li>
                                     <li><a href="downloads.html">المزيد</a></li>
                                 </ul>
