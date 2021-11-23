@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\CategoryDealer;
 use Illuminate\Http\Request;
 
@@ -40,12 +41,17 @@ class CategoryDealerController extends Controller
     {
         $request->validate([
             'name_ar' => ['required','max:255'],
-            'name_en' => ['required','max:255']
+            'name_en' => ['required','max:255'],
+            'image'   => ['required']
         ]);
 
         try {
 
-            CategoryDealer::create($request->all());
+            $request_data = $request->except('image');
+
+            $request_data['image'] = $request->file('image')->store('category_dealers_image','public');
+
+            CategoryDealer::create($request_data);
 
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.category_dealers.index');
@@ -76,7 +82,16 @@ class CategoryDealerController extends Controller
 
         try {
 
-            $categoryDealer->update($request->all());
+            $request_data = $request->except('image');
+
+            if ($request->image) {    
+
+                Storage::disk('local')->delete('public/' . $categoryDealer->image);
+
+                $request_data['image'] = $request->file('image')->store('category_dealers_image','public');
+            }
+
+            $categoryDealer->update($request_data);
 
             session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.category_dealers.index');
@@ -93,6 +108,8 @@ class CategoryDealerController extends Controller
     public function destroy(CategoryDealer $categoryDealer)
     {
         try {
+
+            Storage::disk('local')->delete('public/' . $categoryDealer->image);
 
             $categoryDealer->delete();
             session()->flash('success', __('dashboard.deleted_successfully'));

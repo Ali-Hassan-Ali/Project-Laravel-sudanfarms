@@ -216,6 +216,7 @@ return [
     'question_en'      => 'question arbic',
     'answer'           => 'answer',
     'answer_ar'        => 'answer arbic',
-    'answer_en'        => 'answer englishي',
+    'answer_en'        => 'answer english',
+    'suppliers'        => 'suppliers',
 
 ];

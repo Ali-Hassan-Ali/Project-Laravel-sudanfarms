@@ -29,7 +29,7 @@
 
                     @include('partials._errors')
 
-                    <form action="{{ route('dashboard.category_dealers.update', $categoryDealer->id) }}" method="post">
+                    <form action="{{ route('dashboard.category_dealers.update', $categoryDealer->id) }}" method="post" enctype="multipart/form-data">>
 
                         {{ csrf_field() }}
                         {{ method_field('put') }}
@@ -46,6 +46,15 @@
                             </div>
                             
                         @endforeach
+
+                        <div class="form-group">
+                            <label>@lang('dashboard.image')</label>
+                            <input type="file" name="image" class="form-control image">
+                        </div>
+
+                        <div class="form-group">
+                            <img src="{{ $categoryDealer->image_path }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
+                        </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">

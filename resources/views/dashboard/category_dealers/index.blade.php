@@ -59,8 +59,6 @@
                                     <th>#</th>
                                     <th>@lang('dashboard.name')</th>
                                     <th>@lang('dashboard.image')</th>
-                                    {{-- <th>@lang('dashboard.count')</th> --}}
-                                    {{-- <th>@lang('dashboard.related_products')</th> --}}
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
@@ -74,8 +72,6 @@
                                         <td>
                                             <img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $categorey->image_path }}" style="width: 100px;" class="img-thumbnail" alt="">
                                         </td>
-                                        {{-- <td>{{ $categorey->proudut->count() }}</td> --}}
-                                        {{-- <td><a href="{{ route('dashboard.products.index',['category_id'=>$categorey->id]) }}" class="btn btn-info">@lang('dashboard.read')</a></td> --}}
                                         <td>{{ $categorey->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('category_dealers_update'))
