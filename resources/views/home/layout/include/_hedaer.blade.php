@@ -4,7 +4,16 @@
             <div class="row">
                 <div class="col-md-12 col-lg-5">
                     <div class="header-top-welcome">
-                        <p>مرحبا بك في موقع مزارع السودان !</p>
+                        @if (app()->getLocale() == 'ar')
+                            
+                            <p>{{ setting('welcome_ar') }}</p>
+
+                        @else
+
+                            <p>{{ setting('welcome_en') }}</p>
+
+                        @endif
+
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-3">
@@ -21,10 +30,10 @@
                             </form>
                         @else
                             <div class="header-select"><i class="icofont-login"></i>
-                                <a href="{{ route('home.login') }}">دخول</a>
+                                <a href="{{ route('home.login') }}">@lang('dashboard.login')</a>
                             </div>
                             <div class="header-select"><i class="icofont-plus" style="font-size: 14px;"></i>
-                                <a href="{{ route('home.register') }}">تسجيل</a>
+                                <a href="{{ route('home.register') }}">@lang('dashboard.register')</a>
                             </div>
                         @endauth
                     </div>
@@ -32,8 +41,8 @@
                 <div class="col-md-7 col-lg-4">
                     <ul class="header-top-list">
                         <li><a href="offer.html">العروض</a></li>
-                        <li><a href="faq.html">مساعدة</a></li>
-                        <li><a href="{{ route('home.contact') }}">تواصل معنا</a></li>
+                        <li><a href="{{ route('common_questions.index') }}">@lang('dashboard.common_questions')</a></li>
+                        <li><a href="{{ route('home.contact') }}">@lang('dashboard.contacts')</a></li>
                     </ul>
                 </div>
             </div>
@@ -47,9 +56,11 @@
                     <button class="header-user">
                         @auth
                             <img src="{{ auth()->user()->image_path }}" alt="user">
+                        @else
+                            <img src="{{ asset('home_files/image/logo.svg') }}" alt="user">
                         @endauth
                     </button>
-                    <a href="index.html">
+                    <a href="/">
                         <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
                     </a>
                     <button class="header-src">
@@ -94,9 +105,9 @@
                     <div class="navbar-content">
                         <ul class="navbar-list">
                             <li class="navbar-item">
-                                <a class="navbar-link" href="/">الرئيسية</a>
+                                <a class="navbar-link" href="/">@lang('dashboard.home')</a>
                             </li>
-                            <li class="navbar-item dropdown-megamenu"><a class="navbar-link dropdown-arrow" href="#">المنتجات</a>
+                            <li class="navbar-item dropdown-megamenu"><a class="navbar-link dropdown-arrow" href="#">@lang('dashboard.products')</a>
                                 <div class="megamenu">
                                     <div class="container">
                                         <div class="row row-cols-5">
@@ -122,26 +133,27 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="{{ route('home.supplier') }}">الموردون</a>
+                            <li class="navbar-item"><a class="navbar-link" href="{{ route('home.supplier') }}">@lang('dashboard.suppliers')</a>
                             </li>
                             <li class="navbar-item"><a class="navbar-link" href="orders.html">التجار والسمتهلكين</a></li>
                             <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="javascript:void(0);">المركز الإعلامي</a>
                                 <ul class="dropdown-position-list">
                                     <li><a href="{{ route('gallerys.index') }}">@lang('dashboard.gallerys')</a></li>
                                     <li><a href="{{ route('videos.index') }}">@lang('dashboard.videos')</a></li>
-                                    <li><a href="blogs.html">المطبوعات</a></li>
-                                    <li><a href="downloads.html">المزيد</a></li>
+                                    <li><a href="{{ route('blogs.index') }}">@lang('dashboard.blogs')</a></li>
+                                    <li><a href="{{ route('files.index') }}">@lang('dashboard.files')</a></li>
                                 </ul>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="{{ route('home.contact') }}">إتصل بنا</a>
+                            <li class="navbar-item">
+                                <a class="navbar-link" href="{{ route('home.contact') }}">@lang('dashboard.contacts')</a>
                             </li>
                         </ul>
                         <div class="navbar-info-group">
                             <div class="navbar-info"><i class="icofont-ui-touch-phone"></i>
-                                <p><small>إتصل بنا</small><span>{{ setting('phone') }}</span></p>
+                                <p><small>@lang('dashboard.phone')</small><span>{{ setting('phone') }}</span></p>
                             </div>
                             <div class="navbar-info"><i class="icofont-ui-email"></i>
-                                <p><small>البريد الإلكتروني</small><span>{{ setting('email') }}</span></p>
+                                <p><small>@lang('dashboard.email')</small><span>{{ setting('email') }}</span></p>
                             </div>
                         </div>
                     </div>
@@ -151,7 +163,7 @@
     </nav>
     <aside class="category-sidebar">
         <div class="category-header">
-            <h4 class="category-title"><i class="fas fa-align-right"></i><span>الأقسام</span></h4><button class="category-close"><i class="icofont-close"></i></button>
+            <h4 class="category-title"><i class="fas fa-align-right"></i><span>@lang('dashboard.categorys')</span></h4><button class="category-close"><i class="icofont-close"></i></button>
         </div>
         <ul class="category-list">
 
@@ -254,42 +266,88 @@
     </aside>
 
     <aside class="nav-sidebar">
-        <div class="nav-header"><a href="#"><img src="{{ asset('home_files/image/logo.svg') }}" alt="logo"></a><button class="nav-close"><i class="icofont-close"></i></button></div>
+        <div class="nav-header">
+            <a href="#"><img src="{{ asset('home_files/image/logo.svg') }}" alt="logo"></a>
+            <button class="nav-close"><i class="icofont-close"></i></button>
+        </div>
         <div class="nav-content">
-            <div class="nav-btn"><a href="{{ route('home.register') }}" class="btn btn-inline"><i class="fa fa-unlock-alt"></i><span>إنضم الآن</span></a></div>
+            @auth
+                
+            @else
+
+                <div class="nav-btn">
+                    <a href="{{ route('home.register') }}" class="btn btn-inline">
+                        <i class="fa fa-unlock-alt"></i><span>@lang('dashboard.register')</span>
+                    </a>
+                </div>
+
+            @endauth
             <div class="nav-select-group">
-                <div class="nav-select"><i class="icofont-login"></i>
-                    <a href="{{ route('home.login') }}">دخول</a>
+                @auth
+
+                <div class="nav-header">
+                    <a href="#"><img src="{{ auth()->user()->image_path }}" alt="logo"></a>
                 </div>
-                <div class="nav-select">
-                    <i class="icofont-plus" style="font-size: 12px;"></i><a href="{{ route('home.register') }}">تسجيل</a>
-                </div>
+                    
+                @else
+
+                    <div class="nav-select"><i class="icofont-login"></i>
+                        <a href="{{ route('home.login') }}">@lang('dashboard.login')</a>
+                    </div>
+                    <div class="nav-select">
+                        <i class="icofont-plus" style="font-size: 12px;"></i><a href="{{ route('home.register') }}">@lang('dashboard.register')</a>
+                    </div>
+
+                @endauth
             </div>
             <ul class="nav-list">
-                <li><a class="nav-link" href="/"><i class="icofont-home"></i><span>الرئيسية</span></a>
+                <li>
+                    <a class="nav-link" href="/">
+                        <i class="icofont-home"></i><span>الرئيسية</span>
+                    </a>
                 </li>
-                <li><a class="nav-link" href="categories.html"><i class="icofont-food-cart"></i><span>تسوق</span></a>
+                <li>
+                    <a class="nav-link" href="categories.html">
+                        <i class="icofont-food-cart"></i><span>تسوق</span>
+                    </a>
                 </li>
-                <li><a class="nav-link" href="categories.html"><i class="icofont-page"></i><span>المنتجات</span></a>
+                <li>
+                    <a class="nav-link" href="categories.html">
+                        <i class="icofont-page"></i><span>المنتجات</span>
+                    </a>
                 </li>
-                <li><a class="nav-link dropdown-link" href="#"><i class="icofont-lock"></i><span>الآمان</span></a>
+                <li>
+                    <a class="nav-link dropdown-link" href="#">
+                        <i class="icofont-lock"></i><span>الآمان</span>
+                    </a>
                     <ul class="dropdown-list">
                         <li><a href="reset-password.html">إستعاده كلمة المرور</a></li>
                         <li><a href="change-password.html">تغيير كلمة المرور</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></li>
-                <li><a class="nav-link" href="profile.html"><i class="icofont-user-alt-3"></i><span>الملف الشخصي</span></a></li>
-                <li><a class="nav-link" href="faq.html"><i class="icofont-question-circle"></i><span>مساعدة</span></a></li>
-                <li><a class="nav-link" href="{{ route('home.contact') }}"><i class="icofont-contacts"></i><span>تواصل معنا</span></a></li>
-                <li><a class="nav-link" href="#"><i class="icofont-logout"></i><span>تسجيل خروج</span></a></li>
+                <li>
+                    <a class="nav-link" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></li>
+                <li>
+                    <a class="nav-link" href="{{ route('profile.index') }}"><i class="icofont-user-alt-3"></i><span>الملف الشخصي</span></a></li>
+                <li>
+                    <a class="nav-link" href="{{ route('common_questions.index') }}"><i class="icofont-question-circle"></i><span>مساعدة</span></a></li>
+                <li><a class="nav-link" href="{{ route('home.contact') }}"><i class="icofont-contacts"></i><span>@lang('dashboard.contacts')</span></a></li>
+                
+                @auth
+
+                    <li>
+                        <a class="nav-link" onclick="event.preventDefault();document.getElementById('logout-user-form').submit();" href="#">
+                        <i class="icofont-logout"></i><span>@lang('dashboard.logout')</span></a>
+                    </li>
+                    
+                @endauth
             </ul>
             <div class="nav-info-group">
                 <div class="nav-info"><i class="icofont-ui-touch-phone"></i>
-                    <p><small>إتصل بنا</small><span>{{ setting('phone') }}</span></p>
+                    <p><small>@lang('dashboard.phone')</small><span>{{ setting('phone') }}</span></p>
                 </div>
                 <div class="nav-info"><i class="icofont-ui-email"></i>
-                    <p><small>راسلنا</small><span>{{ setting('email') }}</span></p>
+                    <p><small>@lang('dashboard.email')</small><span>{{ setting('email') }}</span></p>
                 </div>
             </div>
             <div class="nav-footer">
@@ -299,15 +357,15 @@
     </aside>
     <menu class="mobile-menu">
         <a href="/" title="Home Page">
-            <i class="fas fa-home"></i><span>الرئيسية</span>
+            <i class="fas fa-home"></i><span>@lang('dashboard.home')</span>
         </a>
         <button class="cate-btn" title="الأقسام"><i class="fas fa-list"></i><span>الأقسام</span></button>
-        <a href="{{ route('home.supplier') }}" title="لموردون"><i class="fas fa-users"></i><span>الموردون</span></a>
+        <a href="{{ route('home.supplier') }}" title="@lang('dashboard.suppliers')"><i class="fas fa-users"></i><span>@lang('dashboard.suppliers')</span></a>
         <a href="categories.html" title="تسوق"><i class="fas fa-shopping-basket"></i>
             <span>تسوق</span>
         </a>
-        <a href="{{ route('home.contact') }}" title="إتصل بنا">
-            <i class="fas fa-phone"></i><span>إتصل بنا</span>
+        <a href="{{ route('home.contact') }}" title="@lang('dashboard.contacts')">
+            <i class="fas fa-phone"></i><span> @lang('dashboard.contacts')</span>
         </a>
     </menu>
 

@@ -2,7 +2,9 @@
 
 return [
 
- 
+    'commints'       => 'commints',
+    'enter_commints' => 'enter commints',
+
     'error' 			  => 'Please check the entered data',
     'text'                => 'random text for testing purpose',
     'account_information' => 'Account Information',

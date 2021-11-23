@@ -1,0 +1,145 @@
+@extends('home.layout.app')
+
+@section('content')
+
+@section('contact', __('home.blogs'))
+
+    <section class="inner-section single-banner">
+        <div class="container">
+            <h2>الأخبار</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">@lang('dashboard.home')</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.blogs')</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="inner-section blog-grid">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="top-filter">
+                                <div class="filter-show"><label class="filter-label">عرض :</label><select class="form-select filter-select">
+                                        <option value="1">12</option>
+                                        <option value="2">24</option>
+                                        <option value="3">36</option>
+                                    </select></div>
+                                <div class="filter-short"><label class="filter-label">ترتيب بحسب :</label><select class="form-select filter-select">
+                                        <option selected="">الإفتراضي</option>
+                                        <option value="3">آخر الأخبار</option>
+                                        <option value="1">التاريخ</option>
+                                    </select></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    	@foreach ($blogs as $blog)
+                    		
+	                        <div class="col-md-6 col-lg-6">
+	                            <div class="blog-card">
+	                                <div class="blog-media"><a class="blog-img" href="{{ route('blogs.show',$blog->id) }}">
+	                                	<img src="{{ $blog->image_path }}" alt="blog"></a>
+	                                </div>
+	                                <div class="blog-content">
+	                                    <ul class="blog-meta">
+	                                        {{-- <li><i class="fas fa-user"></i><span>{{ $blog->user->name }}</span></li> --}}
+	                                        <li><i class="fas fa-calendar-alt"></i><span>{{ $blog->created_at }}</span></li>
+	                                    </ul>
+	                                    <h4 class="blog-title">
+                                            <a href="{{ route('blogs.show',$blog->id) }}">{{ $blog->title }}</a>
+                                        </h4>
+	                                    {{-- <p class="blog-desc">{{ $blog->description }}</p> --}}
+	                                    <a class="blog-btn" href="{{ route('blogs.show',$blog->id) }}"><span>إقرء المزيد</span>
+	                                        <i class="icofont-arrow-left"></i>
+	                                    </a>
+	                                </div>
+	                            </div>
+	                        </div>
+
+                    	@endforeach
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="bottom-paginate">
+                                <p class="page-info">عرض 12 من 60 نتائج لـ الأخبار</p>
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-long-arrow-alt-right"></i></a></li>
+                                    <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">...</li>
+                                    <li class="page-item"><a class="page-link" href="#">60</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-long-arrow-alt-left"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 col-lg-4">
+                    <div class="blog-widget">
+                        <h3 class="blog-widget-title">إبحث عن خبر</h3>
+                        <form class="blog-widget-form" action="{{ route('blogs.index') }}" method="get">
+                            <input type="text" name="search" placeholder="@lang('dashboard.search')" value="{{ request()->search }}">
+                            <button class="icofont-search-1"></button>
+                        </form>
+                    </div>
+                    <div class="blog-widget">
+                        <h3 class="blog-widget-title">الأخبار الشائعة</h3>
+                        <ul class="blog-widget-feed">
+                            @foreach ($random_blogs as $in_blog)
+
+                                <li>
+                                    <a class="blog-widget-media" href="{{ route('blogs.show',$in_blog->id) }}">
+                                        <img src="{{ $in_blog->image_path }}" alt="blog-widget">
+                                    </a>
+                                    <h6 class="blog-widget-text">
+                                        <a href="{{ route('blogs.show',$in_blog->id) }}">{{ $in_blog->title }}</a>
+                                        <span>{{ $in_blog->created_at }}</span>
+                                    </h6>
+                                </li>
+                                
+                            @endforeach
+                        </ul>
+                    </div>
+                   {{--  <div class="blog-widget">
+                        <h3 class="blog-widget-title">الأقسام</h3>
+                        <ul class="blog-widget-category">
+                            <li><a href="#">المزارع <span>22</span></a></li>
+                            <li><a href="#">الخضروات <span>14</span></a></li>
+                            <li><a href="#">الأسماك <span>35</span></a></li>
+                            <li><a href="#">الفواكة <span>67</span></a></li>
+                            <li><a href="#">المواشي والأغنام <span>89</span></a></li>
+                        </ul>
+                    </div> --}}
+{{--                     <div class="blog-widget">
+                        <h3 class="blog-widget-title">أخبار مماثلة</h3>
+                        <ul class="blog-widget-tag">
+                            <li><a href="#">مزارع</a></li>
+                            <li><a href="#">فواكة</a></li>
+                            <li><a href="#">خضروات</a></li>
+                            <li><a href="#">تجار</a></li>
+                            <li><a href="#">أراضي زراعية</a></li>
+                            <li><a href="#">نباتات عطرية</a></li>
+                            <li><a href="#">الحبوب</a></li>
+                            <li><a href="#">بذور زيتية</a></li>
+                            <li><a href="#">المواشي</a></li>
+                            <li><a href="#">النحل</a></li>
+                        </ul>
+                    </div> --}}
+                    <div class="blog-widget">
+                        <h3 class="blog-widget-title">@lang('dashboard.social_links')</h3>
+                        <ul class="blog-widget-social">
+                            <li><a href="" class="icofont-facebook"></a></li>
+                            <li><a href="#" class="icofont-twitter"></a></li>
+                            <li><a href="#" class="icofont-instagram"></a></li>
+                            <li><a href="#" class="icofont-pinterest"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+@endsection

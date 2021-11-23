@@ -18,8 +18,11 @@ use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
 use App\Http\Controllers\Dashboard\Setting\SettingController;
 use App\Http\Controllers\Dashboard\Setting\GalleryCategoryController;
 use App\Http\Controllers\Dashboard\Setting\GalleryController;
-use App\Http\Controllers\Dashboard\Setting\VideoCategoryControlle;
+use App\Http\Controllers\Dashboard\Setting\VideoCategoryController;
 use App\Http\Controllers\Dashboard\Setting\VideoControlle;
+use App\Http\Controllers\Dashboard\Setting\BlogController;
+use App\Http\Controllers\Dashboard\Setting\FileController;
+use App\Http\Controllers\Dashboard\Setting\CommonQuestionController;
 
 
 
@@ -72,8 +75,11 @@ function () {
             //setting routes gallery_categorys
             Route::resource('gallery_categorys', GalleryCategoryController::class)->except(['show']);
             Route::resource('gallerys', GalleryController::class)->except(['show']);
-            Route::resource('video_categorys', VideoCategoryControlle::class)->except(['show']);
+            Route::resource('video_categorys', VideoCategoryController::class)->except(['show']);
             Route::resource('videos', VideoControlle::class)->except(['show']);
+            Route::resource('blogs', BlogController::class)->except(['show']);
+            Route::resource('files', FileController::class)->except(['show']);
+            Route::resource('common_questions', CommonQuestionController::class)->except(['show']);
 
             //settings route
             Route::get('social_links', [SettingController::class,'social_links'])->name('social_links.index');

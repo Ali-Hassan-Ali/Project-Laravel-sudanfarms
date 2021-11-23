@@ -80,11 +80,11 @@
                                 <li><a href="about.html">من نحن</a></li>
                                 <li><a href="manager-word.html">كلمة المدير</a></li>
                                 <li><a href="{{ route('gallerys.index') }}">@lang('dashboard.gallerys')</a></li>
-                                <li><a href="videos.html">معرض الأفلام</a></li>
-                                <li><a href="blogs.html">المطبوعات</a></li>
+                                <li><a href="{{ route('videos.index') }}">@lang('dashboard.videos')</a></li>
+                                <li><a href="{{ route('blogs.index') }}">@lang('dashboard.blogs')</a></li>
                             </ul>
                             <ul>
-                                <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                                <li><a href="{{ route('common_questions.index') }}">@lang('dashboard.common_questions')</a></li>
                                 <li><a href="evacuation-responsibilaty.html">إخلاء المسؤولية</a></li>
                                 <li><a href="terms-conditions.html">شروط و احكام</a></li>
                                 <li><a href="privacy.html">الخصوصية</a></li>

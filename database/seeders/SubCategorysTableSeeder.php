@@ -122,5 +122,6 @@ class SubCategorysTableSeeder extends Seeder
             'sub_categoreys' => '5',
         ]);
 
-    }
-}
+    }//end of run
+    
+}//end of class

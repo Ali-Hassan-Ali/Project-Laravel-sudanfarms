@@ -29,6 +29,9 @@ return [
             'gallerys'         => 'c,r,u,d',
             'video_categorys'  => 'c,r,u,d',
             'videos'           => 'c,r,u,d',
+            'blogs'            => 'c,r,u,d',
+            'files'            => 'c,r,u,d',
+            'common_questions' => 'c,r,u,d',
         ],
         
         'admin' => [

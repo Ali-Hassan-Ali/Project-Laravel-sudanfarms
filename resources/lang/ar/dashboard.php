@@ -167,6 +167,10 @@ return [
 
     'generate_carts' => 'توليد كروت',
     'file-excel'     => 'تصدير اكسل',
+    'files'          => 'ملفات',
+    'file'           => 'ملف',
+    'download'       => 'تحميل الملف',
+    'download_file'  => 'تنزيل الملفات',
 
     'how_to_use'     => 'كيفية استخدام الكروت',
     'usage_policy'   => 'سياسة الإستخدام',
@@ -199,6 +203,16 @@ return [
     'video_categorys'   => 'اقسام معرض الافلام',
     'videos'            => 'معرض الافلام',
     'video_url'         => 'رابط الفديوو',
+    'blogs'             => 'مقلات',
+    'blog_details'      => 'تفاصيل الخبر',
+    
+    'common_questions' => 'الاسئلة الشائعة',
+    'question'         => 'الأسئلة',
+    'question_ar'      => 'السؤال بلعربي',
+    'question_en'      => 'السؤال بالانجليزي',
+    'answer'           => 'الجواب',
+    'answer_ar'        => 'الجواب بلعربي',
+    'answer_en'        => 'الجواب بالانجليزي',
     
 
 

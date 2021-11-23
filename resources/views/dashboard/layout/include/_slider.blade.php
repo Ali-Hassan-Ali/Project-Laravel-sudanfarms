@@ -86,9 +86,28 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasPermission('blogs_read'))
+                <li class="{{ Route::Is(['dashboard.settings.blogs.index','dashboard.settings.blogs.create','dashboard.settings.blogs.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.settings.blogs.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.blogs')</span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('contacts_read'))
                 <li class="{{ Route::Is(['dashboard.contacts.index','dashboard.contacts.create','dashboard.contacts.edit']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.contacts.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.contacts')</span></a>
+                </li>
+            @endif
+
+
+            @if (auth()->user()->hasPermission('files_read'))
+                <li class="{{ Route::Is(['dashboard.settings.files.index','dashboard.settings.files.create','dashboard.settings.files.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.settings.files.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.files')</span></a>
+                </li>
+            @endif
+
+            @if (auth()->user()->hasPermission('common_questions_read'))
+                <li class="{{ Route::Is(['dashboard.settings.common_questions.index','dashboard.settings.common_questions.create','dashboard.settings.common_questions.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.settings.common_questions.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.common_questions')</span></a>
                 </li>
             @endif
 
@@ -121,9 +140,10 @@
                     </span>
                   </a>
                       
-                  <ul class="treeview-menu {{  Route::Is(['dashboard.settings.index','dashboard.contact_us.index','dashboard.settings.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.service.index','dashboard.contact_us.index','dashboard.settings.social_links.index']) ? 'block' : 'none' }};">
+                  <ul class="treeview-menu 
+                  {{  Route::Is(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.contact_us.index','dashboard.settings.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.settings.setting_banners.edit','dashboard.settings.social_links.index']) ? 'block' : 'none' }};">
 
-                    <li class="{{ Route::Is('dashboard.settings.index') ? 'active' : '' }}">
+                    <li class="{{ Route::Is('dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.settings.setting_banners.edit') ? 'active' : '' }}">
                         <a href="{{ route('dashboard.settings.setting_banners.index') }}">
                             <i class="fa fa-concierge-bell"></i> 
                             @lang('dashboard.setting_banners')

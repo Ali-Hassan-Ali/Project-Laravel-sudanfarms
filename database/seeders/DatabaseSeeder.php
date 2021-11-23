@@ -22,8 +22,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PromotedDealerTableSeeder::class);
         $this->call(SettingBannersTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
-        $this->call(GallerySeeder::class);
-        $this->call(VideoSeeder::class);
+        $this->call(GallerySeederTableSeeder::class);
+        $this->call(VideoSeederTableSeeder::class);
+        $this->call(BolgSeederTableSeeder::class);
+        $this->call(FileTableSeeder::class);
+        $this->call(CommonQuestionTableSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }

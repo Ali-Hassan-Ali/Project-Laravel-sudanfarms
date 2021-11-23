@@ -13,15 +13,18 @@
     <link rel="stylesheet" href="{{ asset('home_files/fonts/icofont/icofont.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/fonts/fontawesome/fontawesome.min.css') }}">
 
-    {{-- css venobox --}}
-    <link rel="stylesheet" href="{{ asset('home_files/css/nice-select.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/slick.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/contact.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/product-details.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/venobox.min.css') }}">
+    {{-- vendor style --}}
+    <link rel="stylesheet" href="{{ asset('home_files/css/vendor/nice-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/vendor/venobox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/vendor/slick.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/vendor/viewbox.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/vendor/bootstrap.min.css') }}">
+
+    {{-- custom style --}}
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }} ">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/contact.css') }} ">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/faq.css') }} ">
+
 </head>
 
 <body>
@@ -32,27 +35,28 @@
 
     @include('home.layout.include._footer')
 
+    {{-- js vendor --}}
+    <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/popper.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/nice-select.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/venobox.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/countdown.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/slick.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/jquery.viewbox.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/jquery.mixitup.js') }}"></script>
 
-    <script src="{{ asset('home_files/js/jquery-1.12.4.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/popper.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/nice-select.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/viewbox.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/countdown.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/slick.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/jquery.viewbox.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/jquery.mixitup.js') }}"></script>
-    <script src="{{ asset('home_files/js/waypoints.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('home_files/js/nice-select.js') }}"></script>
-    <script src="{{ asset('home_files/js/countdown.js') }}"></script>
-    <script src="{{ asset('home_files/js/accordion.js') }}"></script>
-    <script src="{{ asset('home_files/js/slick.js') }}"></script>
-    <script src="{{ asset('home_files/js/main.js') }}"></script>
+    {{-- js custom --}}
+    <script src="{{ asset('home_files/js/custom/nice-select.js') }}"></script>
+    <script src="{{ asset('home_files/js/custom/countdown.js') }} "></script>
+    <script src="{{ asset('home_files/js/custom/accordion.js') }} "></script>
+    <script src="{{ asset('home_files/js/custom/venobox.js') }} "></script>
+    <script src="{{ asset('home_files/js/custom/slick.js') }} "></script>
+    <script src="{{ asset('home_files/js/custom/main.js') }} "></script>
 
-    {{--custom js--}}
-    <script src="{{ asset('home_files/js/custom/image_preview.js') }}"></script>
-    
+    {{-- cart and shoping js --}}
+    <script src="{{ asset('home_files/js/cart.js') }} "></script>
+
     <script>
         $('.counter').counterUp({
             delay: 10,

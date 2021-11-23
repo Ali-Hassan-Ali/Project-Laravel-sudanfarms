@@ -76,6 +76,11 @@ class User extends Authenticatable
     public function promoted()
     {
         return $this->hasMany(PromotedDealer::class,'user_id');
-    }
+    }//end of promoted hasMany
+
+    public function blog()
+    {
+        return $this->hasMany(User::class,'users_id');
+    }//end of belongsTo blog
 
 }//end of model

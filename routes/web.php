@@ -8,6 +8,7 @@ use App\Http\Controllers\Home\ProfileController;
 use App\Http\Controllers\Home\PromotedDealerController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\Home\HeaderController;
+use App\Http\Controllers\Home\CartController;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
@@ -26,12 +27,23 @@ function () {
     Route::get('contact', [HeaderController::class,'contact'])->name('home.contact');
     Route::post('contact', [HeaderController::class,'contactStore'])->name('home.contact.store');
 
-    //header suppliers
+    //header suppliers route
     Route::get('suppliers', [HeaderController::class,'supplier'])->name('home.supplier');
     Route::get('product/{product}', [HeaderController::class,'show_product'])->name('product.show');
     Route::get('category/{id}', [HeaderController::class,'show_category'])->name('category.show');
     Route::get('gallerys', [HeaderController::class,'gallerys'])->name('gallerys.index');
     Route::get('videos', [HeaderController::class,'videos'])->name('videos.index');
+    Route::get('blogs', [HeaderController::class,'blogs'])->name('blogs.index');
+    Route::get('blogs_details/{blog}', [HeaderController::class,'blogsShow'])->name('blogs.show');
+    Route::post('commints', [HeaderController::class,'CommintStore'])->name('commints.store');
+    Route::get('files', [HeaderController::class,'files'])->name('files.index');
+    Route::get('common_questions', [HeaderController::class,'common_questions'])->name('common_questions.index');
+
+    //cart route
+    // Route::get('add_cart', [CartController::class,'add_cart'])->name('add.cart');
+    Route::post('/cart.store/{id}', [CartController::class, 'add_cart'])->name('cart.store');
+    Route::post('/cart_update/{id}', [CartController::class, 'update_cart'])->name('cart.update');
+    Route::delete('/destroy_cart/{id}', [CartController::class, 'destroy_cart'])->name('cart.destroy');
 
 
     Route::middleware(['auth'])->group(function () {

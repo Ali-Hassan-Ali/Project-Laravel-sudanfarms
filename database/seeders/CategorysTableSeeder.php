@@ -58,5 +58,7 @@ class CategorysTableSeeder extends Seeder
             'name_ar' => 'البهارات',
             'name_en' => 'Spices',
         ]);
-    }
-}
+
+    }//end of run
+    
+}//end of class

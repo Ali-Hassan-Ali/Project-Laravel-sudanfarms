@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\VideoCategory;
 use Illuminate\Http\Request;
 
-class VideoCategoryControlle extends Controller
+class VideoCategoryController extends Controller
 {
 
     public function __construct()

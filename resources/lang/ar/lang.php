@@ -8,7 +8,6 @@ return [
     'edit' => '',
     'edit' => '',
     'edit' => '',
-    'edit' => '',
 
   
 ];

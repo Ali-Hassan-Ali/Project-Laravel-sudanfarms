@@ -12,8 +12,12 @@ use App\Models\PromotedDealer;
 use App\Models\CategoryDealer;
 use App\Models\GalleryCategory;
 use App\Models\Gallery;
+use App\Models\Commint;
 use App\Models\VideoCategory;
+use App\Models\CommonQuestion;
 use App\Models\Video;
+use App\Models\Blog;
+use App\Models\File;
 
 class HeaderController extends Controller
 {
@@ -95,7 +99,7 @@ class HeaderController extends Controller
         
         return view('home.header.categories',compact('categorey','min_product'));
 
-    }//end of categorey
+    }//end of show_category
 
     public function gallerys()
     {
@@ -111,6 +115,74 @@ class HeaderController extends Controller
         $videos          = Video::all();
 
         return view('home.header.media_center.videos',compact('video_categorys','videos'));
-    }//end of gallerys
+    }//end of videos
+
+    public function blogs()
+    {
+        $blogs        = Blog::whenSearch(request()->search)->latest()->paginate(8);
+        $random_blogs = Blog::inRandomOrder()->latest()->paginate(6);
+
+        return view('home.header.media_center.blogs.index',compact('blogs','random_blogs'));
+    }//end of blogs
+
+    public function blogsShow(Blog $blog)
+    {
+
+        if (Blog::find($blog->id + 1)) {
+            
+            $next_blog = Blog::find($blog->id + 1);
+            
+        } else {
+
+            $next_blog = 0;
+
+        }
+
+        if (Blog::find($blog->id - 1)) {
+            
+            $prev_blog = Blog::find($blog->id - 1);
+            
+        } else {
+            
+            $prev_blog = 0;
+
+        }
+
+        $commints = Commint::where('blog_id',$blog->id)->with('user')->get();
+        
+        return view('home.header.media_center.blogs.show',compact('blog','prev_blog','next_blog','commints'));
+
+    }//end of blogs Show
+
+    public function CommintStore(Request $request)
+    {
+        
+        $request->validate([
+            'message'    => 'required',
+        ]);
+        
+        $request['users_id'] = auth()->user()->id;
+
+        Commint::create($request->all());
+
+        return redirect()->back();
+
+    }//end of store blog
+
+    public function files()
+    {
+        $files = File::all();
+
+        return view('home.header.media_center.files',compact('files'));
+        
+    }//end of files
+
+    public function common_questions()
+    {
+        $common_questions = CommonQuestion::all();
+
+        return view('home.header.common_questions',compact('common_questions'));
+        
+    }//end of common_questions
 
 }//end of controller

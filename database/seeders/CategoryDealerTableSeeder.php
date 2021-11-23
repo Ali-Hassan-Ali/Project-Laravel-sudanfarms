@@ -22,6 +22,8 @@ class CategoryDealerTableSeeder extends Seeder
                 'name_en' => $data,
             ]);
             
-        }
-    }
-}
+        }//end of foreach
+
+    }//end of run
+    
+}//end of class

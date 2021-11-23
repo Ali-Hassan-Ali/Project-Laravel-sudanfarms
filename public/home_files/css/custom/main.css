@@ -1839,7 +1839,7 @@ tbody tr td:last-child {
 
 .product-disable::before {
     position: absolute;
-    content: "Ù„Ø§ ÙŠÙˆØ¬Ø¯ ÙÙŠ Ø§Ù„Ù…Ø®Ø²Ù†";
+    content: "لا يوجد في المخزن";
     top: 40%;
     left: 50%;
     z-index: 2;

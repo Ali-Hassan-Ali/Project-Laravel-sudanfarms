@@ -171,6 +171,10 @@ return [
 
     'generate_carts' => 'Generate Carts',
     'file-excel'     => 'Export Excel',
+    'files'          => 'files',
+    'file'           => 'file',
+    'download'       => 'download',
+    'download_file'  => 'download file',
 
     'how_to_use'     => 'How To Use cart',
     'usage_policy'   => 'Usage Policy',
@@ -203,5 +207,15 @@ return [
     'video_categorys'   => 'Film gallery sections',
     'videos'            => 'Film gallery',
     'video_url'         => 'video url',
+    'blogs'             => 'blogs',
+    'blog_details'      => 'blog details',
+
+    'common_questions' => 'common questions',
+    'question'         => 'question',
+    'question_ar'      => 'question english',
+    'question_en'      => 'question arbic',
+    'answer'           => 'answer',
+    'answer_ar'        => 'answer arbic',
+    'answer_en'        => 'answer englishي',
 
 ];

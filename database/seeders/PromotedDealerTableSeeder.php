@@ -32,6 +32,7 @@ class PromotedDealerTableSeeder extends Seeder
                 'title'              => 'title',
                 'description'        => 'description',
             ]);
+            
         }//end of foreach
 
     }//end of run 
