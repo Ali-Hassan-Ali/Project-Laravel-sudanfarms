@@ -23,6 +23,7 @@ use App\Http\Controllers\Dashboard\Setting\VideoControlle;
 use App\Http\Controllers\Dashboard\Setting\BlogController;
 use App\Http\Controllers\Dashboard\Setting\FileController;
 use App\Http\Controllers\Dashboard\Setting\CommonQuestionController;
+use App\Http\Controllers\Dashboard\OffersController;
 
 
 
@@ -56,6 +57,9 @@ function () {
 
         //products routes
         Route::resource('products', ProductController::class);
+
+        //category_dealers routes
+        Route::resource('offers', OffersController::class)->except(['show']);
 
         //category_dealers routes
         Route::resource('category_dealers', CategoryDealerController::class)->except(['show']);

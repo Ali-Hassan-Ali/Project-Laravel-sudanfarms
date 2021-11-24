@@ -4,6 +4,8 @@ return [
 
     'available'        => 'مفعل',
     'not_available'    => 'غير مفعل',
+    'login'            => 'دخول',
+    'register'         => 'تسجيل',
 
     'logout'           => 'تسجيل الخروج',
     'created_at'       => 'تاريخ الانشاء',
@@ -214,6 +216,8 @@ return [
     'answer_ar'        => 'الجواب بلعربي',
     'answer_en'        => 'الجواب بالانجليزي',
     'suppliers'        => 'الموردين',
+    'request_custmers' => 'طلبات المستهلكين',
+    'offers'           => 'العروض',
     
 
 

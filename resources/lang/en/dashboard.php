@@ -6,6 +6,8 @@ return [
 
     'available'          => 'available',
     'not_available'      => 'not available',
+    'login'              => 'login',
+    'register'           => 'register',
     
     'logout'             => 'logout',
     'created_at'         => 'created at',
@@ -218,5 +220,7 @@ return [
     'answer_ar'        => 'answer arbic',
     'answer_en'        => 'answer english',
     'suppliers'        => 'suppliers',
+    'request_custmers' => 'request custmers',
+    'offers'           => 'offers',
 
 ];

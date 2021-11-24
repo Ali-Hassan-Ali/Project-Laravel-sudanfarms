@@ -84,7 +84,7 @@ class ProductController extends Controller
 
             return redirect()->route('dashboard.products.index');
 
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
@@ -172,7 +172,7 @@ class ProductController extends Controller
 
             return redirect()->route('dashboard.products.index');
 
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 

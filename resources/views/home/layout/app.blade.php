@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
@@ -6,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>مزارع السودان - الرئيسية</title>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <link rel="icon" href="{{ asset('home_files/image/logo.svg') }}">
     
     {{-- font awesome --}}
@@ -24,6 +27,12 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }} ">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/contact.css') }} ">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/faq.css') }} ">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/product-details.css') }} ">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/index.css') }} ">
+
+    {{-- plugin  sweetalert2--}}
+    <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }} ">
+
 
 </head>
 
@@ -34,6 +43,7 @@
     @yield('content')
 
     @include('home.layout.include._footer')
+
 
     {{-- js vendor --}}
     <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
@@ -54,14 +64,19 @@
     <script src="{{ asset('home_files/js/custom/slick.js') }} "></script>
     <script src="{{ asset('home_files/js/custom/main.js') }} "></script>
 
+    {{-- plugins jquery.number --}}
+    <script src="{{ asset('home_files/plugns/jquery.number.min.js') }} "></script>
+    {{-- plugins sweetalert2.all.min.js --}}
+    <script src="{{ asset('home_files/plugns/sweetalert/sweetalert2.all.min.js') }} "></script>
+
     {{-- cart and shoping js --}}
     <script src="{{ asset('home_files/js/cart.js') }} "></script>
-
-    <script>
-        $('.counter').counterUp({
-            delay: 10,
-            time: 4000
-        });
+    
+    <script type="text/javascript">
+        // $('.counter').counterUp({
+        //     delay: 10,
+        //     time: 4000
+        // });
     </script>
     @stack('products')
     @stack('gallery')

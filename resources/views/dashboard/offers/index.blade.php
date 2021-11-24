@@ -2,17 +2,17 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.videos'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.offers'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.videos')</h1>
+            <h1>@lang('dashboard.offers')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li class="active">@lang('dashboard.videos')</li>
+                <li class="active">@lang('dashboard.offers')</li>
             </ol>
         </section>
 
@@ -22,9 +22,9 @@
 
                 <div class="box-header with-border">
 
-                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.videos') <small>{{ $videos->total() }}</small></h3>
+                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.offers') <small>{{ $offers->total() }}</small></h3>
 
-                    <form action="{{ route('dashboard.settings.videos.index') }}" method="get">
+                    <form action="{{ route('dashboard.categoreys.index') }}" method="get">
 
                         <div class="row">
 
@@ -34,8 +34,8 @@
 
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> @lang('dashboard.search')</button>
-                                @if (auth()->user()->hasPermission('videos_create'))
-                                    <a href="{{ route('dashboard.settings.videos.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
+                                @if (auth()->user()->hasPermission('offers_create'))
+                                    <a href="{{ route('dashboard.offers.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @else
                                     <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @endif
@@ -48,7 +48,7 @@
 
                 <div class="box-body">
 
-                    @if ($videos->count() > 0)
+                    @if ($offers->count() > 0)
                     
                         <div class="table-responsive">
                             
@@ -57,34 +57,30 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('dashboard.name')</th>
-                                    <th>@lang('dashboard.video')</th>
+                                    <th>@lang('dashboard.price')</th>
                                     <th>@lang('dashboard.image')</th>
+                                    <th>@lang('dashboard.categorey')</th>
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
                                 </thead>
                                 
                                 <tbody>
-                                @foreach ($videos as $index=>$video)
+                                @foreach ($offers as $index=>$offer)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $video->name }}</td>
+                                        <td>{{ $offer->price }}</td>
+                                        <td><img src="{{ $offer->image_path }}" width="100"></td>
+                                        <td>{{ $offer->category->name }}</td>
+                                        <td>{{ $offer->created_at->toFormattedDateString() }}</td>
                                         <td>
-                                            <iframe width="100" height="100" src="{{ $video->video_url }}" title="{{ $video->name }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        </td>
-                                        <td>
-                                            <img src="{{ $video->image_path }}" width="50">
-                                        </td>
-                                        <td>{{ $video->created_at->toFormattedDateString() }}</td>
-                                        <td>
-                                            @if (auth()->user()->hasPermission('videos_update'))
-                                                <a href="{{ route('dashboard.settings.videos.edit', $video->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @if (auth()->user()->hasPermission('offers_update'))
+                                                <a href="{{ route('dashboard.offers.edit', $offer->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                             @else
                                                 <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                             @endif
-                                            @if (auth()->user()->hasPermission('videos_delete'))
-                                                <form action="{{ route('dashboard.settings.videos.destroy', $video->id) }}" method="post" style="display: inline-block">
+                                            @if (auth()->user()->hasPermission('offers_delete'))
+                                                <form action="{{ route('dashboard.offers.destroy', $offer->id) }}" method="post" style="display: inline-block">
                                                     {{ csrf_field() }}
                                                     {{ method_field('delete') }}
                                                     <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
@@ -100,7 +96,7 @@
 
                             </table><!-- end of table -->
                             
-                            {{ $videos->appends(request()->query())->links() }}
+                            {{ $offers->appends(request()->query())->links() }}
 
                         </div><!-- end of table  responsive-->
                         

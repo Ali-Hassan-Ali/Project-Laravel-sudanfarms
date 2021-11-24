@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Setting;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\VideoCategory;
 use App\Models\Video;
 use Illuminate\Http\Request;
@@ -49,7 +50,11 @@ class VideoControlle extends Controller
         
         try {
 
-            Video::create($request->all());
+            $request_data = $request->except('video_image');
+
+            $request_data['video_image'] = $request->file('video_image')->store('video_image','public');
+
+            Video::create($request_data);
 
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.settings.videos.index');
@@ -81,7 +86,16 @@ class VideoControlle extends Controller
 
         try {
 
-            $video->update($request->all());
+            $request_data = $request->except('video_image');
+
+            if ($request->image) {    
+
+                Storage::disk('local')->delete('public/' . $gallery->image);
+
+                $request_data['video_image'] = $request->file('video_image')->store('video_image','public');
+            }
+
+            $video->update($request_data);
 
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.settings.videos.index');
@@ -98,6 +112,8 @@ class VideoControlle extends Controller
     public function destroy(Video $video)
     {
         try {
+
+            Storage::disk('local')->delete('public/' . $video->video_image);
             
             $video->delete();
 

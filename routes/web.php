@@ -28,6 +28,7 @@ function () {
     Route::post('contact', [HeaderController::class,'contactStore'])->name('home.contact.store');
 
     //header suppliers route
+    Route::get('searchs', [HeaderController::class,'searchs'])->name('searchs');
     Route::get('suppliers', [HeaderController::class,'supplier'])->name('home.supplier');
     Route::get('product/{product}', [HeaderController::class,'show_product'])->name('product.show');
     Route::get('category/{id}', [HeaderController::class,'show_category'])->name('category.show');
@@ -38,10 +39,12 @@ function () {
     Route::post('commints', [HeaderController::class,'CommintStore'])->name('commints.store');
     Route::get('files', [HeaderController::class,'files'])->name('files.index');
     Route::get('common_questions', [HeaderController::class,'common_questions'])->name('common_questions.index');
+    Route::get('shops', [HeaderController::class,'shops'])->name('shops.index');
+    Route::get('request_custmers', [HeaderController::class,'request_custmers'])->name('request_custmers.index');
 
     //cart route
     // Route::get('add_cart', [CartController::class,'add_cart'])->name('add.cart');
-    Route::post('/cart.store/{id}', [CartController::class, 'add_cart'])->name('cart.store');
+    Route::post('cart_store', [CartController::class, 'add_cart'])->name('cart.store');
     Route::post('/cart_update/{id}', [CartController::class, 'update_cart'])->name('cart.update');
     Route::delete('/destroy_cart/{id}', [CartController::class, 'destroy_cart'])->name('cart.destroy');
 

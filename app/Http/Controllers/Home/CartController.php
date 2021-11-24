@@ -3,69 +3,89 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use App\Models\ImageProduct;
+use App\Models\Product;
 
 class CartController extends Controller
 {
-    public function add_cart(Request $request,$product)
+    public function add_cart(Request $request)
     {
-        // dd($request->all());
-        // try {
+            // return Cart::destroy();
+
+                    $product_model = Product::FindOrFail($request->id);
+
+                    $image_product = ImageProduct::where('product_id',$product_model->id)->first();
+                    
+                    $product = Cart::add($product_model->id, $product_model->name, 1 , $product_model->price)
+                        ->associate('App\Models\Product');
+    // 
+                    $total   = Cart::subtotal();
+                    $count   = Cart::count();
+                    $local   = app()->getLocale();
+
+                    return response()->json(['product' => $product, 'product_model' => $product_model, 'total' => $total, 'local' => $local, 'count' => $count,'image_product' => $image_product]);
+                    return Cart::update($request->id, $request->quantity);
+        try {
 
             if (request()->ajax()) {
 
-                $product_model = Product::FindOrFail($product);
+                if ($request->quantity != '1') {
 
-                $product = Cart::add($product_model->id, $product_model->product->name, 1 , $product_model->price)
-                    ->associate('App\Models\Product');
-// 
-                $total   = Cart::subtotal();
-                $count   = Cart::count();
-                $local   = app()->getLocale();
+                    $quantity = $request->quantity;
+                    $quantity = $request->quantity;
 
-                return response()->json(['product' => $product, 'product_model' => $product_model, 'total' => $total, 'local' => $local, 'count' => $count]);
+                    return $this->update_cart($quantity,);
+                    
+                } else {
+
+                    return 'ok';
+
+
+                }//end of if
 
             }//end of if ajax
 
-        // } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-            // return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        // }//end try
+        }//end try
 
-    }//end of function
+    }//end of function add_cart
 
-    // public function update_cart(Request $request, $id)
-    // {   
-    //     try {
+    public function update_cart(Request $request, $id)
+    {   
+        try {
 
-    //         if (request()->ajax()) {
+            if (request()->ajax()) {
 
-    //             $cart  = Cart::update($request->row_id, $request->quantity);
-    //             $count = Cart::count();
-    //             $app   = app()->getLocale();
+                $cart  = Cart::update($request->row_id, $request->quantity);
+                $count = Cart::count();
+                $app   = app()->getLocale();
 
-    //             if ($coupon = session()->has('coupon_value') == '') {
+                if ($coupon = session()->has('coupon_value') == '') {
 
-    //                 $coupon = '0';
+                    $coupon = '0';
                     
-    //             } else {
+                } else {
 
-    //                 $coupon = session()->get('coupon_value'); 
+                    $coupon = session()->get('coupon_value'); 
 
-    //             }//end of if
+                }//end of if
 
-    //             return response()->json(['cart' => $cart, 'count' => $count, 'app' => $app, 'coupon' => $coupon]);
+                return response()->json(['cart' => $cart, 'count' => $count, 'app' => $app, 'coupon' => $coupon]);
 
-    //         }//end of ajax
+            }//end of ajax
 
-    //     } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-    //         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-    //     }//end try
+        }//end try
 
-    // }//end of function
+    }//end of function update_cart
 
     // public function destroy_cart($id)
     // {

@@ -111,6 +111,12 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasPermission('offers_read'))
+                <li class="{{ Route::Is(['dashboard.offers.index','dashboard.offers.create','dashboard.offers.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.offers.index') }}"><i class="fa fa-gift"></i><span>@lang('dashboard.offers')</span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('orders_read'))
                 <li class="{{ Route::Is(['dashboard.orders.index','dashboard.orders.show']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.orders.index') }}"><i class="fa fa-shopping-cart"></i><span>@lang('dashboard.orders')</span></a>

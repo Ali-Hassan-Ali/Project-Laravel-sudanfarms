@@ -21,6 +21,24 @@ use App\Models\File;
 
 class HeaderController extends Controller
 {
+
+    public function searchs()
+    {
+        $products = Product::whenSearch(request()->search)->latest()->paginate(10);
+
+        return view('home.header.searchs',compact('products'));
+
+    }//end of searchs products
+
+    public function shops()
+    {
+        $products = Product::inRandomOrder()->latest()->paginate(20);
+
+        return view('home.shop',compact('products'));    
+
+    }//end of shop
+
+
     public function contact()
     {
         return view('home.header.contact');
@@ -100,6 +118,12 @@ class HeaderController extends Controller
         return view('home.header.categories',compact('categorey','min_product'));
 
     }//end of show_category
+
+    public function request_custmers()
+    {
+        return view('home.header.request_custmers');
+
+    }//end of request_custmers
 
     public function gallerys()
     {

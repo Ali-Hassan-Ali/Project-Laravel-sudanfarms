@@ -35,7 +35,7 @@ class Gallery extends Model
             ->orWhere('name_en', 'like', "%$search%");
         });
         
-    }//end ofscopeWhenSearch`
+    }//end of scope WhenSearch`
 
     public function getImagePathAttribute()
     {

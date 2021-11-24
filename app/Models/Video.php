@@ -11,7 +11,7 @@ class Video extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['name'];
+    protected $appends = ['name','image_path'];
 
     public function getNameAttribute()
     {
@@ -35,6 +35,12 @@ class Video extends Model
             ->orWhere('name_en', 'like', "%$search%");
         });
         
-    }//end ofscopeWhenSearch`
+    }//end of scopeWhenSearch`
+
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->video_image);
+
+    }//end of get image path
 
 }//end of models

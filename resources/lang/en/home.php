@@ -4,6 +4,9 @@ return [
 
     'commints'       => 'commints',
     'enter_commints' => 'enter commints',
+    'shops'          => 'shops',
+    'all_product'    => 'all product',
+    'social_center'  => 'social center',
 
     'error' 			  => 'Please check the entered data',
     'text'                => 'random text for testing purpose',

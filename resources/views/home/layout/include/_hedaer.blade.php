@@ -79,8 +79,9 @@
                     </a>
                 @endauth
 
-                <form class="header-form">
-                    <input type="text" placeholder="إبحث هنا ..."><button><i class="fas fa-search"></i></button>
+                <form class="header-form" action="{{ route('searchs') }}" method="get">
+                    <input type="text" name="search" value="{{ request()->search }}" placeholder="@lang('dashboard.search')">
+                    <button><i class="fas fa-search"></i></button>
                 </form>
 
                 <div class="header-widget-group">
@@ -93,7 +94,7 @@
 
                     <a href="{{ setting('pinterest') }}" class="header-widget"><i class="icofont-pinterest"></i></a>
 
-                    <button class="header-widget header-cart" title="السلة"><i class="fas fa-shopping-basket"></i><sup>9+</sup></button>
+                    <button class="header-widget header-cart" title="السلة"><i class="fas fa-shopping-basket"></i><sup>{{ Cart::count() }}</sup></button>
                 </div>
             </div>
         </div>
@@ -135,8 +136,8 @@
                             </li>
                             <li class="navbar-item"><a class="navbar-link" href="{{ route('home.supplier') }}">@lang('dashboard.suppliers')</a>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="orders.html">التجار والسمتهلكين</a></li>
-                            <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="javascript:void(0);">المركز الإعلامي</a>
+                            <li class="navbar-item"><a class="navbar-link" href="{{ route('request_custmers.index') }}">@lang('dashboard.request_custmers')</a></li>
+                            <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="javascript:void(0);">@lang('home.social_center')</a>
                                 <ul class="dropdown-position-list">
                                     <li><a href="{{ route('gallerys.index') }}">@lang('dashboard.gallerys')</a></li>
                                     <li><a href="{{ route('videos.index') }}">@lang('dashboard.videos')</a></li>
@@ -147,6 +148,26 @@
                             <li class="navbar-item">
                                 <a class="navbar-link" href="{{ route('home.contact') }}">@lang('dashboard.contacts')</a>
                             </li>
+
+                            <li class="navbar-item dropdown">
+                                <a class="navbar-link dropdown-arrow" href="javascript:void(0);">
+                                    @lang('home.language')
+                                </a>
+                                <ul class="dropdown-position-list">
+                                    
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    
+                                    <li>
+                                        <a hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                            {{ $properties['native'] }}
+                                        </a>
+                                    </li>
+
+                                    @endforeach
+
+                                </ul>
+                            </li>
+
                         </ul>
                         <div class="navbar-info-group">
                             <div class="navbar-info"><i class="icofont-ui-touch-phone"></i>
@@ -163,7 +184,11 @@
     </nav>
     <aside class="category-sidebar">
         <div class="category-header">
-            <h4 class="category-title"><i class="fas fa-align-right"></i><span>@lang('dashboard.categorys')</span></h4><button class="category-close"><i class="icofont-close"></i></button>
+            <h4 class="category-title">
+                <i class="fas fa-align-right"></i>
+                <span>@lang('dashboard.categorey')</span>
+            </h4>
+            <button class="category-close"><i class="icofont-close"></i></button>
         </div>
         <ul class="category-list">
 
@@ -191,77 +216,69 @@
     </aside>
     <aside class="cart-sidebar">
         <div class="cart-header">
-            <div class="cart-total"><i class="fas fa-shopping-basket"></i><span>جميع العناصر (5)</span></div><button class="cart-close"><i class="icofont-close"></i></button>
+            <div class="cart-total"><i class="fas fa-shopping-basket"></i>
+                <span class="all-product"> @lang('home.all_product') ({{ Cart::count() }})</span>
+            </div>
+            <button class="cart-close"><i class="icofont-close"></i></button>
         </div>
-        <ul class="cart-list">
-            <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/01.jpg" alt="product"></a><button class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
-                <div class="cart-info-group">
-                    <div class="cart-info">
-                        <h6><a href="#">فلفل طازج</a></h6>
-                        <p>سعر الوحدة - SDG 87.75</p>
-                    </div>
-                    <div class="cart-action-group">
-                        <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                        <h6>SDG 87.75</h6>
-                    </div>
-                </div>
-            </li>
-            <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/02.jpg" alt="product"></a><button class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
-                <div class="cart-info-group">
-                    <div class="cart-info">
-                        <h6><a href="#">جزر</a></h6>
-                        <p>سعر الوحدة - SDG 87.75</p>
-                    </div>
-                    <div class="cart-action-group">
-                        <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                        <h6>SDG 87.75</h6>
-                    </div>
-                </div>
-            </li>
-            <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/03.jpg" alt="product"></a><button class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
-                <div class="cart-info-group">
-                    <div class="cart-info">
-                        <h6><a href="#">كوسة طازجة</a></h6>
-                        <p>سعر الوحدة - SDG 87.75</p>
-                    </div>
-                    <div class="cart-action-group">
-                        <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                        <h6>SDG 87.75</h6>
-                    </div>
-                </div>
-            </li>
-            <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/04.jpg" alt="product"></a><button class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
-                <div class="cart-info-group">
-                    <div class="cart-info">
-                        <h6><a href="#">باذنجان</a></h6>
-                        <p>سعر الوحدة - SDG 87.75</p>
-                    </div>
-                    <div class="cart-action-group">
-                        <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                        <h6>SDG 87.75</h6>
-                    </div>
-                </div>
-            </li>
-            <li class="cart-item">
-                <div class="cart-media"><a href="#"><img src="images/product/05.jpg" alt="product"></a><button class="cart-delete"><i class="far fa-trash-alt"></i></button></div>
-                <div class="cart-info-group">
-                    <div class="cart-info">
-                        <h6><a href="#">بامية</a></h6>
-                        <p>سعر الوحدة - SDG 87.75</p>
-                    </div>
-                    <div class="cart-action-group">
-                        <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                        <h6>SDG 87.75</h6>
-                    </div>
-                </div>
-            </li>
+        <ul class="cart-list" id="add-cart-product">
+            @if (Cart::count() > '1')
+                
+                @foreach (Cart::content() as $product)
+
+                    <li class="cart-item">
+                        <div class="cart-media">
+                            @php
+                                        
+                                $image_product = App\Models\ImageProduct::where('product_id',$product->id)->first();
+
+                            @endphp
+                            <a href="{{ route('product.show',$product->id) }}">
+                                <img src="{{ $image_product->image_path }}" alt="product">
+                            </a>
+                            <button class="cart-delete">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </div>
+                        <div class="cart-info-group">
+                            <div class="cart-info">
+                                <h6><a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a></h6>
+                                <p>{{ $product->quantity_guard }} - {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }} {{ $product->price_decount - $product->price }}</p>
+                            </div>
+                            <div class="cart-action-group">
+                                <div class="product-action">
+                                    <button class="action-minus add-cart" data-id="{{ $product->id }}" title="نقصان الكيمة">
+                                        <i class="icofont-minus"></i>
+                                    </button>
+                                    <input class="action-input product-qty-{{ $product->id }}" id="add-cart-product-{{ $product->id }}" title="Quantity Number" type="text" name="quantity" value="{{ $product->qty }}">
+                                    <button class="action-plus add-cart" data-id="{{ $product->id }}" title="زيادة الكمية">
+                                        <i class="icofont-plus"></i>
+                                    </button>
+                                </div>
+                                <h6>{{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} 
+                                    <p class="new-price">{{ $product->price_decount - $product->price }}</p>
+                                </h6>
+                            </div>
+                        </div>
+                    </li>
+                    
+                @endforeach
+
+            @else
+
+                <h2 class="no-data">@lang('dashboard.no_data_found')</h2>
+
+            @endif
         </ul>
         <div class="cart-footer">
-            <form class="coupon-form"><input type="text" placeholder="Enter your coupon code"><button type="submit"><span>apply</span></button></form><a class="cart-checkout-btn" href="#"><span class="checkout-label">المبلغ الكلي</span><span class="checkout-price"> 36.78</span></a>
+            <form class="coupon-form">
+                <input type="text" placeholder="Enter your coupon code">
+                <button type="submit"><span>apply</span></button>
+            </form>
+            <a class="cart-checkout-btn" href="#">
+                <span class="checkout-label">@lang('home.totle_price')</span>
+                <span class="checkout-price cart-totle">{{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} {{ Cart::subtotal() }}</span>
+            </a>
         </div>
     </aside>
 
@@ -302,18 +319,36 @@
             </div>
             <ul class="nav-list">
                 <li>
+                    <a class="nav-link dropdown-link" href="#">
+                        <i class="icofont-lock"></i><span>@lang('home.language')</span>
+                    </a>
+                    <ul class="dropdown-list">
+                        
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        
+                        <li>
+                            <a hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+
+                        @endforeach
+
+                    </ul>
+                </li>
+                <li>
                     <a class="nav-link" href="/">
-                        <i class="icofont-home"></i><span>الرئيسية</span>
+                        <i class="icofont-home"></i><span>@lang('dashboard.home')</span>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="categories.html">
-                        <i class="icofont-food-cart"></i><span>تسوق</span>
+                    <a class="nav-link" href="{{ route('shops.index') }}">
+                        <i class="icofont-food-cart"></i><span>@lang('home.shops')</span>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="categories.html">
-                        <i class="icofont-page"></i><span>المنتجات</span>
+                    <a class="nav-link" onclick="event.preventDefault();document.getElementById('category-model').click();">
+                        <i class="icofont-page"></i><span>@lang('dashboard.products')</span>
                     </a>
                 </li>
                 <li>
@@ -359,11 +394,19 @@
         <a href="/" title="Home Page">
             <i class="fas fa-home"></i><span>@lang('dashboard.home')</span>
         </a>
-        <button class="cate-btn" title="الأقسام"><i class="fas fa-list"></i><span>الأقسام</span></button>
-        <a href="{{ route('home.supplier') }}" title="@lang('dashboard.suppliers')"><i class="fas fa-users"></i><span>@lang('dashboard.suppliers')</span></a>
-        <a href="categories.html" title="تسوق"><i class="fas fa-shopping-basket"></i>
-            <span>تسوق</span>
+        <button class="cate-btn" id="category-model" title="@lang('dashboard.categorey')">
+            <i class="fas fa-list"></i>
+            <span>@lang('dashboard.categorey')</span>
+        </button>
+        <a href="{{ route('home.supplier') }}" title="@lang('dashboard.suppliers')">
+            <i class="fas fa-users"></i>
+            <span>@lang('dashboard.suppliers')</span>
         </a>
+        <button class="header-widget header-cart" title="@lang('home.shops')">
+            <i class="fas fa-shopping-basket"></i>
+            {{-- <span> @lang('home.shops')</span> --}}
+            <sup>{{ Cart::count() }}</sup>
+        </button>
         <a href="{{ route('home.contact') }}" title="@lang('dashboard.contacts')">
             <i class="fas fa-phone"></i><span> @lang('dashboard.contacts')</span>
         </a>

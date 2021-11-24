@@ -32,6 +32,7 @@ return [
             'blogs'            => 'c,r,u,d',
             'files'            => 'c,r,u,d',
             'common_questions' => 'c,r,u,d',
+            'offers'           => 'c,r,u,d',
         ],
         
         'admin' => [

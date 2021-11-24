@@ -1,26 +1,36 @@
 $(document).ready(function() {
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $(document).on('click','.add-cart', function(e){
         e.preventDefault();
-        
-        var url     = $(this).data('url');
-        var method  = $(this).data('method');
+
         var id      = $(this).data('id');
-        
+        var quantity= $('#add-cart-product-'+id).val();
+        var url     = 'cart_store/';
+        var method  = 'post';
         
         $.ajax({
             url: url,
             method: method,
-            success: function(data) {
+            data:{
+                quantity: quantity,
+                id: id,
+            },
+            function(data) {
 
             	if (data.local == 'ar') {
 
-            		var currency = 'ج م';
+            		var currency = 'ج س';
             		var title    = 'تمت الاضافه بنجاح';
 
             	} else {
 
-            		var currency = 'LE';
+            		var currency = 'SDG';
             		var title    = 'add success'
 
             	}
@@ -33,51 +43,53 @@ $(document).ready(function() {
 		            timer: 15000
 				});
 
-                $('#size-product-id').val('');
-                $('#size-product').val('');
-
-                $('#color-product-id').val('');
-                $('#color-product').val('');
-
-                $('#size-product-item').empty('');
-
-            	$('#cart-totle').html(data.total + ' ' + currency);
-            	$('#cart-count').html(data.count);
-
-                $('.add-cart-color').each(function(index) {
-            
-                    $(this).parent().removeClass('active');
-
-                });//end of each
-
                 if (data.product.qty == 1) {
 
                 	var html =
-			            `<li>
-			            	<div class="shopping-cart-img">
+                        `<li class="cart-item">
+			            	<div class="cart-media">
 			            		<a href="#">
-                                    <img src="${data.product_model.defult_image}" alt="Product">
+                                    <img src="${data.image_product.image_path}" alt="Product">
 			            		</a>
+                                <button class="cart-delete">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
                             </div>
-                            <div class="shopping-cart-title">
-                                <h4><a href="${data.product.id}">${data.product_model.title}</a></h4>
-                                <h4><span class="product-qty-${data.product.id}"> 1 X ${data.product.price}  ${currency}</span></h4>
+                            <div class="cart-info-group">
+                            <div class="cart-info">
+                                <h6><a href="${data.product.id}">${data.product_model.name}</a></h6>
+                                <p class="product-qty-${data.product.id}"> ${data.product_model.name} - ${currency} ${data.product.price}</p>
                             </div>
-                            <div class="shopping-cart-delete">
-                                <a href="#"><i class="fi-rs-cross-small"></i></a>
+                            <div class="cart-action-group">
+                                    <div class="product-action">
+                                        <button class="action-minus" title="نقصان الكيمة">
+                                            <i class="icofont-minus"></i>
+                                        </button>
+                                        <input class="action-input product-qty-${data.product_model.id}" title="Quantity Number" type="text" name="quantity" value="${data.product.qty}">
+                                        <button class="action-plus">
+                                            <i class="icofont-plus"></i>
+                                        </button>
+                                    </div>
+                                    <h6>${currency} ${data.product_model.price}</h6>
+                                </div>
                             </div>
                         </li>`;
 
                     $('#add-cart-product').append(html);
+                    // $('.all-product').html('1');
 
                 } else {
 
                 	var id         = data.product.id;
-                    var totalPrice = $.number(data.product.price * data.product.qty ,2);
+                    // var totalPrice = $.number(data.product.price * data.product.qty ,2);
 
-                	$('.product-qty-'+id).html(data.product.qty + ' ' + 'X' + ' ' + totalPrice + ' ' + currency);
+                	// $('.product-qty-'+id).html(data.product.qty + ' ' + 'X' + ' ' + totalPrice + ' ' + currency);
+                    $('.product-qty-'+id).val(data.product.qty);
+                    // $('.all-product').html(data.count);
 
                 }//end of if
+
+                // calculateTotal(currency);
 
             }, error: function(data) {
                 console.log(data);
@@ -262,87 +274,5 @@ $(document).ready(function() {
 
     }//end of calculate total
 
-    $('.coupon-product').click( function(e) {
-        e.preventDefault();
-
-        var coupon  = $('#product-coupon').val();
-        var method  = 'post';
-
-        $.ajax({
-            url: 'coupon_cart',
-            method: method,
-            data: { coupon:coupon },
-            success: function(data) {
-
-                if (data.success == true) {
-
-                    swal('success coupon', {
-                        type: "success",
-                        icon: "success",
-                        buttons: false,
-                        timer: 3000,
-                    });
-
-                    location.reload();
-
-                } else {
-
-                    swal('error coupon', {
-                        type: "error",
-                        icon: "error",
-                        buttons: false,
-                        timer: 3000,
-                    });
-
-                }//endof if
-
-            },//end of success
-
-        });//this ajax 
-
-    });//end of coupon product button
-
-    $('.delete-coupon').click( function(e) {
-        e.preventDefault();
-
-        var method  = 'get';
-        var url     = 'destroy_cart';
-
-        swal({
-            title: "confirm delete",
-            type: "warning",
-            icon: "warning",
-            buttons: {cancel: "no",defeat:"yes"},
-            dangerMode: true
-        })
-
-        .then((willDelete) => {
-        if (willDelete) {
-            $.ajax({
-                url: url,
-                method: method,
-                success: function(data) {
-
-                    if (data.success == true) {
-
-                        location.reload();
-
-                        swal('deleted successfully', {
-                            type: "success",
-                            icon: "success",
-                            buttons: false,
-                            timer: 3000,
-                        });
-                        
-                    }//end of if
-
-                },//end of success
-
-            });//this ajax 
-
-            }; //end of if
-        });//then
-
-    });//end of product-removal button
 
 });//end of document redy qtyval

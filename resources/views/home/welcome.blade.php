@@ -5,30 +5,36 @@
 @section('title', __('home.welcome'))   
 
     <section class="home-index-slider slider-arrow slider-dots">
-        
-        @foreach (App\Models\SettingBanner::all() as $index=>$data)
-            
-        <div class="banner-part banner-{{ $index++ }}" style="background: url({{ $data->image_path }}); width: 651px; position: relative; right: -651px; top: 0px; z-index: 998; opacity: 0; transition: opacity 600ms ease 0s;">
+
+        <div class="banner-part banner-1">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-lg-6">
                         <div class="banner-content">
-                            <h1>{{ $data->title }}</h1>
-                            <p>{{ $data->description }}</p>
-                            <div class="banner-btn">
-                                <a class="btn btn-inline" href="categories.html">
-                                    <i class="fas fa-shopping-basket"></i>
-                                    <span>تسوق الآن</span>
-                                </a>
-                                <a class="btn btn-outline" href="offer.html">
-                                    <i class="icofont-sale-discount"></i>
-                                    <span>العروض</span>
-                                </a>
-                            </div>
+                            <h1>الخضروات</h1>
+                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع.</p>
+                            <div class="banner-btn"><a class="btn btn-inline" href="categories.html"><i class="fas fa-shopping-basket"></i><span>تسوق الآن</span></a><a class="btn btn-outline" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
-                        {{-- <div class="banner-img"><img src="{{ $data->image_path }}" alt="index"></div> --}}
+                        <div class="banner-img"><img src="images/home/index/01.png" alt="index"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        @foreach (App\Models\SettingBanner::all() as $index=>$data)
+
+        <div class="banner-part banner-4" style="background: url({{ $data->image_path }});">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-md-6 col-lg-6">
+                        <div class="banner-content">
+                            <h1 class="text-white">{{ $data->title }}</h1>
+                            <p class="text-white">{{ $data->description }}</p>
+                            <div class="banner-btn"><a class="btn btn-inline" href="categories.html"><i class="fas fa-shopping-basket"></i><span>تسوق الآن</span></a><a class="btn btn-outline" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,7 +115,8 @@
                                     <span>{{ $promoted_dealer->name }}</span>
                                 </h6>
                                 <h6 class="product-price">
-                                    <span>{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
+                                    <del>SDG{{ $product->price_decount }}</del>
+                                    <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
                                 </h6>
                                 <button class="product-add" title="@lang('home.add_cart')">
                                     <i class="fas fa-shopping-basket"></i><span>@lang('home.add_cart')</span>
@@ -198,7 +205,7 @@
                                     <a href="{{ route('product.show',$product->id) }}">{{ $promoted_dealer->name }}</a>
                                 </div>
                                 <h6 class="feature-price">
-                                    <del>SDG {{ $product->price }} </del>
+                                    <del>SDG {{ $product->price_decount }} </del>
                                     <span>SDG {{ $product->price }} <small>/{{ $product->quantity_guard }}</small></span>
                                 </h6>
                                 <p class="feature-desc">{{ $product->description }}</p>
@@ -264,7 +271,7 @@
                         <li>
                             <div class="product-card">
                                 <div class="product-media">
-                                    <div class="product-label"><label class="label-text new">جديد</label></div>
+                                    {{-- <div class="product-label"><label class="label-text new">جديد</label></div> --}}
                                     <button class="product-wish wish">
                                         <i class="fas fa-heart"></i>
                                     </button>
@@ -298,7 +305,7 @@
                                         <a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a>
                                     </h6>
                                     <h6 class="product-price mb-0">
-                                        <del>SDG{{ $product->price }}</del>
+                                        <del>SDG{{ $product->price_decount }}</del>
                                         <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
                                     </h6>
                                     <h6 class="product-price"><span>{{ $promoted_dealer->name }}</span></h6>

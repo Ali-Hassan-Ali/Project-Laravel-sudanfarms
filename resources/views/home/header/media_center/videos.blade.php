@@ -44,7 +44,7 @@
 	                                <i class="fas fa-play"></i>
 	                            </div>
 	                        </a>
-	                        <img src="images/blog/01.jpg" alt="">
+	                        <img src="{{ $video->image_path }}" alt="">
 	                    </div>
 	                </div>
 
