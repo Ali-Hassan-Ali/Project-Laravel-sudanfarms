@@ -24,11 +24,12 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/bootstrap.min.css') }}">
 
     {{-- custom style --}}
-    <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }} ">
-    <link rel="stylesheet" href="{{ asset('home_files/css/custom/contact.css') }} ">
-    <link rel="stylesheet" href="{{ asset('home_files/css/custom/faq.css') }} ">
-    <link rel="stylesheet" href="{{ asset('home_files/css/custom/product-details.css') }} ">
-    <link rel="stylesheet" href="{{ asset('home_files/css/custom/index.css') }} ">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/contact.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/faq.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/product-details.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/blog-details.css') }}">
 
     {{-- plugin  sweetalert2--}}
     <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }} ">
@@ -58,16 +59,16 @@
 
     {{-- js custom --}}
     <script src="{{ asset('home_files/js/custom/nice-select.js') }}"></script>
-    <script src="{{ asset('home_files/js/custom/countdown.js') }} "></script>
-    <script src="{{ asset('home_files/js/custom/accordion.js') }} "></script>
-    <script src="{{ asset('home_files/js/custom/venobox.js') }} "></script>
-    <script src="{{ asset('home_files/js/custom/slick.js') }} "></script>
-    <script src="{{ asset('home_files/js/custom/main.js') }} "></script>
+    <script src="{{ asset('home_files/js/custom/countdown.js') }}"></script>
+    <script src="{{ asset('home_files/js/custom/accordion.js') }}"></script>
+    <script src="{{ asset('home_files/js/custom/venobox.js') }}"></script>
+    <script src="{{ asset('home_files/js/custom/slick.js') }}"></script>
+    <script src="{{ asset('home_files/js/custom/main.js') }}"></script>
 
     {{-- plugins jquery.number --}}
-    <script src="{{ asset('home_files/plugns/jquery.number.min.js') }} "></script>
+    <script src="{{ asset('home_files/plugns/jquery.number.min.js') }}"></script>
     {{-- plugins sweetalert2.all.min.js --}}
-    <script src="{{ asset('home_files/plugns/sweetalert/sweetalert2.all.min.js') }} "></script>
+    <script src="{{ asset('home_files/plugns/sweetalert/sweetalert2.all.min.js') }}"></script>
 
     {{-- cart and shoping js --}}
     <script src="{{ asset('home_files/js/cart.js') }} "></script>

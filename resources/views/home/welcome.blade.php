@@ -352,7 +352,7 @@
         </div>
     </section>
 
-    <div class="section promo-part">
+{{--     <div class="section promo-part">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
@@ -825,7 +825,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="or-funfact-section position-relative">
         <div class="container">
