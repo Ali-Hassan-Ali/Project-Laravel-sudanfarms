@@ -11,7 +11,7 @@ class Product extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['name','description','quantity_guard'];
+    protected $appends = ['name','description','quantity_guard','condition'];
 
     public function getNameAttribute()
     {
@@ -54,6 +54,20 @@ class Product extends Model
         }//end of if
 
     }//end of get description
+
+    public function getConditionAttribute()
+    {
+        if (app()->getLocale() == 'ar') {
+            
+            return $this->conditions_ar;
+
+        } else {
+
+            return $this->conditions_en;
+            
+        }//end of if
+
+    }//end of get condition
 
     public function scopeWhenSearch($query , $search) 
     {

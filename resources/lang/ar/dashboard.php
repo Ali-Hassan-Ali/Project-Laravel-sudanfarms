@@ -8,6 +8,15 @@ return [
     'register'         => 'تسجيل',
     'shop'             => 'تسوق الان',
     'newsletters'      => 'النشره الاخبارية',
+    'period'           => 'الفترة',
+    'product_available'=> 'المنتج متوفر من',
+    'similar_products' => 'منتجات مماثلة',
+    'call_me'          => 'التواصل مع التاجر',
+    'map'              => 'الموقع',
+    
+    'conditions'       => 'شروط الدفع',
+    'conditions_ar'    => 'شروط الدفع بلانجلزي',
+    'conditions_en'    => 'شروط الدفع بلعربي',
 
     'logout'           => 'تسجيل الخروج',
     'created_at'       => 'تاريخ الانشاء',
@@ -51,6 +60,7 @@ return [
     'number'           => 'العدد',
 
     'products'         => 'المنتجات',
+    'product_details'  => 'تفصايل المنتج',
     'description_ar'   => 'الوصف باللغة العربية',
     'description_en'   => 'الوصف باللغة الانجليزية',
     'categorey'        => 'القسم',
@@ -58,6 +68,7 @@ return [
     'price_decount'    => 'سعر التخفيض',
     'quantity_guard_ar'=> 'اسم الكمية بلعربي',
     'quantity_guard_en'=> 'اسم الكمية بلانجلزي',
+    'quantity_Availabl'=> 'الكمية المتوفرة',
     'start_time'       => 'المنتج متوفر من الفتره',
     'end_time'         => 'الي نهاية الفتره',
     'product'          => 'المنتج',

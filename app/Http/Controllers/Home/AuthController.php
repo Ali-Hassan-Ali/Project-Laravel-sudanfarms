@@ -100,14 +100,10 @@ class AuthController extends Controller
                 $user = User::create($request->all());
 
                 $user->attachRole('clients');
+                
+                auth()->login($user);
 
-                if (\Auth::guard('web')->attempt([
-                    'email'    => $user->email, 
-                    'password' => $user->password])) {
-
-                    return redirect()->route('welcome.index');
-
-                }
+                return redirect()->route('welcome.index');
                 
             }//end of if auth
             

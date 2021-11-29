@@ -14,51 +14,17 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'username',
-    ];
+    protected $fillable = ['name','email','password','username'];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
-    ];
+    protected $hidden = ['password','remember_token','two_factor_recovery_codes','two_factor_secret'];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $casts = ['email_verified_at' => 'datetime'];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-
-    // protected $appends = ['image_path','profile_photo_url'];
     protected $appends = ['image_path'];
 
     public function getImagePathAttribute()
     {
-        return asset('uploads/user_images/' . $this->image);
+        return asset('storage/' . $this->image);
 
     }//end of get image path
 

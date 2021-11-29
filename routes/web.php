@@ -44,6 +44,8 @@ function () {
     Route::get('common_questions', [HeaderController::class,'common_questions'])->name('common_questions.index');
     Route::get('shops', [HeaderController::class,'shops'])->name('shops.index');
     Route::get('request_custmers', [HeaderController::class,'request_custmers'])->name('request_custmers.index');
+    Route::get('request_custmers/create', [HeaderController::class,'RequestCustmersCreate'])->name('request_custmers.create')->middleware('auth');
+    Route::post('request_custmers/store', [HeaderController::class,'RequestCustmersStore'])->name('request_custmers.store')->middleware('auth');
     Route::get('offers_client', [HeaderController::class,'offers'])->name('offers.clients.index');
     Route::get('offers_client/show/{id}', [HeaderController::class,'offersShow'])->name('offers.clients.show');
 
@@ -58,6 +60,7 @@ function () {
     Route::middleware(['auth'])->group(function () {
         //profile routes
         Route::get('/my_acount', [ProfileController::class,'index'])->name('profile.index');
+        Route::post('/my_acount/store', [ProfileController::class,'update'])->name('profile.update');
         Route::get('/change_password', [ProfileController::class,'passwprd_index'])->name('change_password.index');
         Route::post('/change_password', [ProfileController::class,'passwprd_store'])->name('change_password.store');
 

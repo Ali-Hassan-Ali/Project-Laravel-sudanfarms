@@ -15,6 +15,7 @@
 	                    <h4>إعداد باقة</h4>
 	                </div>
 	                <div class="account-content">
+	                	@include('partials._errors')
 	                	<form action="{{ route('promoted_dealers.store') }}" method="post" enctype="multipart/form-data">
 	                		@csrf
 		                    <div class="row">
@@ -95,7 +96,7 @@
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">الولاية</label>
-		                            	<input class="form-control" type="text" name="state" placeholder="الولاية">
+		                            	<input class="form-control" type="text" name="x" placeholder="الولاية">
 		                            </div>
 		                        </div>
 

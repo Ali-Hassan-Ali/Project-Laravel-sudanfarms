@@ -32,6 +32,7 @@ class CreatePromotedDealersTable extends Migration
             $table->string('web_site')->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();
+            $table->string('state')->nullable();
             $table->string('title')->nullable();
             $table->string('description')->nullable();
 

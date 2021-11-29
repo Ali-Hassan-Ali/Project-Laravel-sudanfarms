@@ -36,7 +36,7 @@
 
                         @php
                             $names  = ['name_ar','name_en'];
-                            $descr  = ['description_ar','description_en'];
+                            $descr  = ['description_ar','description_en','conditions_ar','conditions_en'];
                             $qguard = ['quantity_guard_ar','quantity_guard_en'];
                         @endphp
 
@@ -53,7 +53,7 @@
 
                             <div class="form-group">
                                 <label>@lang('dashboard.' . $desc)</label>
-                                <textarea type="text" name="{{ $desc }}" class="ckeditor form-control">{{ $product[$desc] }}</textarea>
+                                <textarea type="text" name="{{ $desc }}" class="ckeditor form-control">{!! $product[$desc] !!}</textarea>
                             </div>
                             
                         @endforeach

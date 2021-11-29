@@ -9,7 +9,16 @@ return [
     'register'           => 'register',
     'shop'               => 'shop now',
     'newsletters'        => 'newsletters',
+    'period'             => 'period',
+    'product_available'  => 'The product is available from',
+    'similar_products'   => 'similar products',
+    'call_me'            => 'Communicate with the merchant',
+    'map'                => 'map',
     
+    'conditions'       => 'conditions',
+    'conditions_ar'    => 'arbic payment terms',
+    'conditions_en'    => 'English payment terms',
+
     'logout'             => 'logout',
     'created_at'         => 'created at',
     'payment'            => 'payment image', 
@@ -53,6 +62,7 @@ return [
     'number'           => 'The Number',
 
     'products'         => 'products',
+    'product_details'  => 'product details',
     'product'          => 'The Product',
     'description_ar'   => 'description arbic',
     'description_en'   => 'description english',
@@ -61,6 +71,7 @@ return [
     'price_decount'    => 'price decount',
     'quantity_guard_ar'=> 'quantity guard arbic',
     'quantity_guard_en'=> 'quantity guard english',
+    'quantity_Availabl'=> 'quantity Available',
     'start_time'       => 'start time',
     'end_time'         => 'end time',
     'order_number'     => 'Order Number',

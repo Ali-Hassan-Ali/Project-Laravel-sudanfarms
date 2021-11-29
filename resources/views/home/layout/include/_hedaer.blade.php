@@ -356,8 +356,7 @@
                         <i class="icofont-lock"></i><span>الآمان</span>
                     </a>
                     <ul class="dropdown-list">
-                        <li><a href="reset-password.html">إستعاده كلمة المرور</a></li>
-                        <li><a href="change-password.html">تغيير كلمة المرور</a></li>
+                        <li><a href="change-password.html">@lang('dashboard.change_password')</a></li>
                     </ul>
                 </li>
                 <li>
@@ -368,12 +367,12 @@
                 </li>
                 <li>
                     <a class="nav-link" href="{{ route('profile.index') }}">
-                        <i class="icofont-user-alt-3"></i><span>الملف الشخصي</span>
+                        <i class="icofont-user-alt-3"></i><span>@lang('dashboard.profile')</span>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" href="{{ route('common_questions.index') }}">
-                        <i class="icofont-question-circle"></i><span>مساعدة</span>
+                        <i class="icofont-question-circle"></i><span>@lang('dashboard.common_questions')</span>
                     </a>
                 </li>
                 <li>

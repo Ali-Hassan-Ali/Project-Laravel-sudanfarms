@@ -24,6 +24,8 @@ class CreateProductsTable extends Migration
             $table->string('end_time');
             $table->longText('description_ar');
             $table->longText('description_en');
+            $table->longText('conditions_ar');
+            $table->longText('conditions_en');
             $table->double('stars')->default('0');
             $table->double('price', 8, 2)->nullable();
             $table->double('price_decount', 8, 2)->default('0');

@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FileTableSeeder::class);
         $this->call(CommonQuestionTableSeeder::class);
         $this->call(OfferSeederTableSeeder::class);
+        $this->call(RequestCustmersTableSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }

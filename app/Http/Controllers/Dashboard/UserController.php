@@ -54,13 +54,7 @@ class UserController extends Controller
 
             if ($request->image) {
 
-                Image::make($request->image)
-                    ->resize(300, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })
-                    ->save('uploads/user_images/' . $request->image->hashName());
-
-                $request_data['image'] = $request->image->hashName();
+                $request_data['image'] = $request->file('image')->store('user_images','public');
 
             } //end of if
 
@@ -108,13 +102,7 @@ class UserController extends Controller
 
                 } //end of inner if
 
-                Image::make($request->image)
-                    ->resize(300, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })
-                    ->save('uploads/user_images/' . $request->image->hashName());
-
-                $request_data['image'] = $request->image->hashName();
+                $request_data['image'] = $request->file('image')->store('user_images','public');
 
             } //end of external if
 

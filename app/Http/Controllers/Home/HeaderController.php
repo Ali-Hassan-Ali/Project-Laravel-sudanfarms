@@ -15,6 +15,7 @@ use App\Models\Gallery;
 use App\Models\Commint;
 use App\Models\VideoCategory;
 use App\Models\CommonQuestion;
+use App\Models\RequestCustmer;
 use App\Models\Video;
 use App\Models\Blog;
 use App\Models\File;
@@ -31,6 +32,8 @@ class HeaderController extends Controller
 
     }//end of searchs products
 
+
+
     public function shops()
     {
         $products = Product::inRandomOrder()->latest()->paginate(20);
@@ -38,6 +41,7 @@ class HeaderController extends Controller
         return view('home.shop',compact('products'));    
 
     }//end of shop
+
 
 
     public function offers()
@@ -48,6 +52,8 @@ class HeaderController extends Controller
 
     }//end of offers
 
+
+
     public function offersShow($id)
     {
         $products = Product::where('sub_category_id',$id)->latest()->paginate(10);
@@ -57,10 +63,14 @@ class HeaderController extends Controller
     }//end of offers show
 
 
+
     public function contact()
     {
         return view('home.header.contact');
+
     }//end of contact
+
+
 
     public function contactStore(Request $request)
     {
@@ -78,6 +88,8 @@ class HeaderController extends Controller
 
     }//end of contact
 
+
+
     public function supplier()
     {       
         $category_dealers = CategoryDealer::all();
@@ -86,11 +98,16 @@ class HeaderController extends Controller
 
     }//end of supplier
 
+
     
     public function show_product(Product $product)
     {
-        $min_product = $product;
-        $image_product = ImageProduct::where('product_id',$product->id)->get();
+
+        $min_product        = $product;
+        
+        $category_product   = Categorey::where('sub_categoreys',$min_product->sub_category_id)->latest()->limit(4)->get();
+        
+        $image_product      = ImageProduct::where('product_id',$product->id)->get();
         
         $promoted_dealer    = PromotedDealer::where('user_id',$product->user->id)->first();
         
@@ -122,9 +139,10 @@ class HeaderController extends Controller
 
         }
 
-        return view('home.products.show',compact('product','image_product','next_product','next_image_product','prev_product','prev_image_product','promoted_dealer','min_product'));
+        return view('home.products.show',compact('product','image_product','next_product','next_image_product','prev_product','prev_image_product','promoted_dealer','min_product','category_product'));
 
     }//end of show product
+
 
 
     public function show_category($id)
@@ -137,11 +155,47 @@ class HeaderController extends Controller
 
     }//end of show_category
 
+
     public function request_custmers()
     {
-        return view('home.header.request_custmers');
+        $request_custmers = RequestCustmer::where('promoted_dealer_id',null)->get();
+
+        return view('home.header.request_custmers.index',compact('request_custmers'));
 
     }//end of request_custmers
+
+
+    public function RequestCustmersCreate()
+    {
+        $promoted_dealers = PromotedDealer::all();
+
+        return view('home.header.request_custmers.create',compact('promoted_dealers'));
+
+    }//end if request_custmers create
+
+    public function RequestCustmersStore(Request $request)
+    {
+        $request->validate([
+            'name'            => 'required',
+            'phone'           => 'required',
+            'email'           => 'required',
+            'title'           => 'required',
+            'product_name'    => 'required',
+            'quantity_guard'  => 'required',
+            // 'promoted_dealer_id'=> 'required',
+            'quantity'        => 'required',
+            'date_shipment'   => 'required',
+            'end_time'        => 'required',
+        ]);
+
+        $request['user_id'] = auth()->user()->id;
+
+        RequestCustmer::create($request->all());
+
+        return redirect()->route('request_custmers.index');
+
+    }//end if request_custmers create
+
 
     public function gallerys()
     {
@@ -149,7 +203,9 @@ class HeaderController extends Controller
         $gallerys          = Gallery::all();
 
         return view('home.header.media_center.gallerys',compact('gallery_categorys','gallerys'));
+
     }//end of gallerys
+
 
     public function videos()
     {
@@ -157,7 +213,9 @@ class HeaderController extends Controller
         $videos          = Video::all();
 
         return view('home.header.media_center.videos',compact('video_categorys','videos'));
+
     }//end of videos
+
 
     public function blogs()
     {
@@ -165,7 +223,9 @@ class HeaderController extends Controller
         $random_blogs = Blog::inRandomOrder()->latest()->paginate(6);
 
         return view('home.header.media_center.blogs.index',compact('blogs','random_blogs'));
+
     }//end of blogs
+
 
     public function blogsShow(Blog $blog)
     {
@@ -196,6 +256,7 @@ class HeaderController extends Controller
 
     }//end of blogs Show
 
+
     public function CommintStore(Request $request)
     {
         
@@ -211,6 +272,7 @@ class HeaderController extends Controller
 
     }//end of store blog
 
+
     public function files()
     {
         $files = File::all();
@@ -219,6 +281,7 @@ class HeaderController extends Controller
         
     }//end of files
 
+
     public function common_questions()
     {
         $common_questions = CommonQuestion::all();
@@ -226,5 +289,6 @@ class HeaderController extends Controller
         return view('home.header.common_questions',compact('common_questions'));
         
     }//end of common_questions
+
 
 }//end of controller

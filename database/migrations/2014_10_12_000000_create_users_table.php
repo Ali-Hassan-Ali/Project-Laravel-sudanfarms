@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->string('title')->nullable();
-            $table->string('image')->default('default.png');
+            $table->string('image')->default('user_images/default.png');
 
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

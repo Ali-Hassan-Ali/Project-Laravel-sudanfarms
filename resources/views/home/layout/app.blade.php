@@ -79,6 +79,7 @@
         //     time: 4000
         // });
     </script>
+    @stack('profile')
     @stack('products')
     @stack('gallery')
 </body>

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RequestCustmer extends Model
 {
     use HasFactory;
-}
+
+    protected $guarded = [];
+    
+}//end of model

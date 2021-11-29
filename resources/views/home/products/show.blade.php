@@ -2,15 +2,15 @@
 
 @section('content')
 
-@section('title', __('dashboard.products') .' | '. __('dashboard.show'))
+@section('title', __('dashboard.products') .' | '. __('dashboard.product_details'))
 
     <section class="single-banner inner-section">
         <div class="container">
-            <h2>تفصايل المنتج</h2>
+            <h2>@lang('dashboard.product_details')</h2>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
-                <li class="breadcrumb-item"><a href="categories.html">المنتجات</a></li>
-                <li class="breadcrumb-item active" aria-current="page">تفصايل المنتج</li>
+                <li class="breadcrumb-item"><a href="/">@lang('dashboard.home')</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('category.show',$min_product->sub_category_id) }}">@lang('dashboard.products')</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.product_details')</li>
             </ol>
         </div>
     </section>
@@ -20,7 +20,8 @@
                 <div class="col-lg-6">
                     <div class="details-gallery">
                         <div class="details-label-group">
-                        	<label class="details-label new">جديد</label><label class="details-label off">-10%</label>
+                        	<label class="details-label new">جديد</label>
+                            {{-- <label class="details-label off">-10%</label> --}}
                         </div>
                         <ul class="details-preview">
                         	@foreach ($image_product as $product)
@@ -72,7 +73,7 @@
                     </ul>
                     
                     <div class="details-content">
-                        <h3 class="details-name"><a href="#">فلفل طازج</a></h3>
+                        <h3 class="details-name">{{ $min_product->name }}</h3>
                         <div class="details-meta mb-1">
                             <p>@lang('dashboard.company')</p>
                             <p>{{ $promoted_dealer->name }}</p>
@@ -86,32 +87,43 @@
                             <p class="mt-0">{{ $min_product->id }}</p>
                         </div>
                         <div class="details-meta mb-1">
-                            <p class="mt-0">الكمية المتوفرة:</p>
+                            <p class="mt-0">ا@lang('dashboard.quantity_Availabl'):</p>
                             <p class="mt-0">{{ $min_product->quantity }} | {{ $min_product->quantity_guard }}</p>
                         </div>
                         <div class="details-meta">
-                            <p class="mt-0">الفترة:</p>
-                            <p class="mt-0">المنتج متوفر من  {{ $min_product->start_time }} to {{ $min_product->end_time }}</p>
+                            <p class="mt-0">@lang('dashboard.period'):</p>
+                            <p class="mt-0">@lang('dashboard.product_available')  {{ $min_product->start_time }} - {{ $min_product->end_time }}</p>
                         </div>
 
-                        <h3 class="details-price"><del>SDG38.00</del> <span> SDG24.00<small>/الكيلو</small></span></h3>
+                        <h3 class="details-price">
+                            <del>{{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}{{ $min_product->price_decount }}</del> 
+                            <span> {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}{{ $min_product->price }}<small>/{{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}</small></span>
+                        </h3>
                         <p class="details-desc">{{ $min_product->description }}</p>
-                        <div class="details-list-group"><label class="details-list-title">منتجات مماثلة:</label>
+                        <div class="details-list-group"><label class="details-list-title">@lang('dashboard.similar_products'):</label>
                             <ul class="details-tag-list">
-                                <li><a href="#">فلفل أخضر</a></li>
-                                <li><a href="#">خضروات</a></li>
-                                <li><a href="#">فلفل حار</a></li>
+                                @foreach ($category_product as $category)
+                                
+                                    <li>
+                                        <a href="{{ route('category.show',$category->id) }}">{{ $category->name }}</a>
+                                    </li>
+                                    
+                                @endforeach
                             </ul>
                         </div>
-                        <div class="details-list-group"><label class="details-list-title">مشاركة:</label>
+                        {{-- <div class="details-list-group"><label class="details-list-title">مشاركة:</label>
                             <ul class="details-share-list">
                                 <li><a href="#" class="icofont-facebook" title="Facebook"></a></li>
                                 <li><a href="#" class="icofont-twitter" title="Twitter"></a></li>
                                 <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
                                 <li><a href="#" class="icofont-pinterest" title="Pinterest"></a></li>
                             </ul>
+                        </div> --}}
+                        <div class="details-action-group">
+                            <a class="details-wish wish" href="tel:{{ $promoted_dealer->phone }}" title="@lang('dashboard.call_me')">
+                                <i class="fas fa-phone-alt"></i><span>@lang('dashboard.call_me')</span>
+                            </a>
                         </div>
-                        <div class="details-action-group"><a class="details-wish wish" href="#" title="التواصل مع التاجر"><i class="fas fa-phone-alt"></i><span>التواصل مع التاجر</span></a></div>
                     </div>
                 </div>
             </div>
@@ -122,8 +134,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="nav nav-tabs">
-                        <li><a href="#tab-desc" class="tab-link active" data-bs-toggle="tab">الوصف</a></li>
-                        <li><a href="#tab-spec" class="tab-link" data-bs-toggle="tab">معلومات</a></li>
+                        <li><a href="#tab-desc" class="tab-link active" data-bs-toggle="tab">@lang('dashboard.description')</a></li>
+                        <li><a href="#tab-spec" class="tab-link" data-bs-toggle="tab">@lang('home.informations')</a></li>
                     </ul>
                 </div>
             </div>
@@ -145,32 +157,24 @@
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
-                                        <th scope="row">رقم المنتج</th>
-                                        <td>101783</td>
+                                        <th scope="row">@lang('dashboard.quantity_Availabl')</th>
+                                        <td>{{ $min_product->quantity }} {{ $min_product->quantity_guard }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">الكمية المتوفرة</th>
-                                        <td>100 طن</td>
+                                        <th scope="row">@lang('dashboard.start_time')</th>
+                                        <td>{{ $min_product->start_time }} - {{ $min_product->end_time }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">تاريخ توفر المنتج</th>
-                                        <td>متوفر من 3 أكتوبر 2021 الي 3 أبريل 2022</td>
+                                        <th scope="row">@lang('dashboard.price')</th>
+                                        <td>{{ $min_product->price }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">السعر</th>
-                                        <td>350 SDG</td>
+                                        <th scope="row">@lang('dashboard.map')</th>
+                                        <td>{{ $promoted_dealer->city }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">الموقع</th>
-                                        <td>ولاية الخرطوم</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">الشحن والتسليم</th>
-                                        <td>بحري</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">الشروط</th>
-                                        <td>دفع 30 في المية من قيمة البضاعة والباقي مع البوليصة والسعر بالدولار</td>
+                                        <th scope="row">@lang('dashboard.conditions')</th>
+                                        <td{{ $min_product->condition }}></td>
                                     </tr>
                                 </tbody>
                             </table>
