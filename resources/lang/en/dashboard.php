@@ -1,4 +1,3 @@
-
 <?php
 
 return [
@@ -8,6 +7,8 @@ return [
     'not_available'      => 'not available',
     'login'              => 'login',
     'register'           => 'register',
+    'shop'               => 'shop now',
+    'newsletters'        => 'newsletters',
     
     'logout'             => 'logout',
     'created_at'         => 'created at',
@@ -222,5 +223,9 @@ return [
     'suppliers'        => 'suppliers',
     'request_custmers' => 'request custmers',
     'offers'           => 'offers',
+    'sale_offer'       => 'Sale offers',
+    'manager_word'     => 'manager word',
+    'manager_word_ar'  => 'manager word arbic',
+    'manager_word_en'  => 'manager word english',
 
 ];

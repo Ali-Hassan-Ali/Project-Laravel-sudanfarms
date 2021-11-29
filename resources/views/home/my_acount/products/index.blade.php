@@ -13,7 +13,7 @@
                             <h4>@lang('dashboard.products') <small>{{ $products->count() }}</small></h4>
                         </div>
 
-                        <div class="row col-1 mb-3">
+                        <div class="row col-2 col-sm-12 mb-3">
                         	<a href="{{ route('products.create') }}" class="form-btn col-4">
                             	<i class="fa fa-plus"></i> @lang('dashboard.add')
                             </a>
@@ -23,7 +23,7 @@
 
 		                    <form action="{{ route('products.index') }}" method="get">
 
-		                        <div class="row col-12">
+		                        <div class="row">
 
 		                            <div class="col-md-4">
 		                                <input type="text" name="search" class="form-control" placeholder="@lang('dashboard.search')" value="{{ request()->search }}">

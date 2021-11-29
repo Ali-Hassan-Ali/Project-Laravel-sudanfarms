@@ -135,6 +135,12 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasPermission('newsletters_read'))
+                <li class="{{ Route::Is(['dashboard.newsletters.index','dashboard.newsletters.create','dashboard.newsletters.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.newsletters.index') }}"><i class="fa fa-credit-card"></i><span>@lang('dashboard.newsletters')</span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('settings_read'))
                 <li class="{{ Route::Is(['dashboard.settings.index','dashboard.contact_us.index','dashboard.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="height: auto;">
                   
@@ -147,7 +153,7 @@
                   </a>
                       
                   <ul class="treeview-menu 
-                  {{  Route::Is(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.contact_us.index','dashboard.settings.social_links.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.settings.setting_banners.edit','dashboard.settings.social_links.index']) ? 'block' : 'none' }};">
+                  {{  Route::Is(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.contact_us.index','dashboard.settings.social_links.index','dashboard.settings.manager_word.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.settings.setting_banners.edit','dashboard.settings.social_links.index']) ? 'block' : 'none' }};">
 
                     <li class="{{ Route::Is('dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.settings.setting_banners.edit') ? 'active' : '' }}">
                         <a href="{{ route('dashboard.settings.setting_banners.index') }}">
@@ -160,6 +166,12 @@
                         <a href="{{ route('dashboard.settings.social_links.index') }}">
                             <i class="fa fa-concierge-bell"></i> 
                             @lang('dashboard.social_links')
+                        </a>
+                    </li>
+                    <li class="{{ Route::Is('dashboard.settings.manager_word.index') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.manager_word.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('dashboard.manager_word')
                         </a>
                     </li>
                     {{-- <li class="{{ Route::Is('dashboard.contact_us.index') ? 'active' : '' }}">

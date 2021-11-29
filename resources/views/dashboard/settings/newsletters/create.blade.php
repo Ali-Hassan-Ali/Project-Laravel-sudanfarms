@@ -2,16 +2,17 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.setting_banners')  .' - '. __('dashboard.add'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.newsletters')  .' - '. __('dashboard.add'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.setting_banners')</h1>
+            <h1>@lang('dashboard.newsletters')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
+                <li><a href="{{ route('dashboard.newsletters.index') }}"> @lang('dashboard.newsletters')</a></li>
                 <li class="active">@lang('dashboard.add')</li>
             </ol>
 
@@ -29,26 +30,20 @@
 
                     @include('partials._errors')
 
-                    <form action="{{ route('dashboard.settings.settings.store') }}" method="post">
+                    <form action="{{ route('dashboard.newsletters.store') }}" method="post">
 
                         {{ csrf_field() }}
                         {{ method_field('post') }}
 
-                        @php
-                            $names = ['facebook','twitter','instagram','pinterest','email','email_one','phone','phone_one','map_ar','map_en','welcome_ar','welcom_en'];
-                        @endphp
-
-                        @foreach ($names as $name)
-
-                            <div class="form-group">
-                                <label>@lang('dashboard.' . $name)</label>
-                                <input type="text" name="{{ $name }}" class="form-control" value="{!! setting($name) !!}">
-                            </div>
-                            
-                        @endforeach
+                        <div class="form-group">
+                            <label>@lang('dashboard.email')</label>
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                        </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> @lang('dashboard.add')
+                            </button>
                         </div>
 
                     </form><!-- end of form -->

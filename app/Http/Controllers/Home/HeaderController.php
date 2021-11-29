@@ -18,6 +18,7 @@ use App\Models\CommonQuestion;
 use App\Models\Video;
 use App\Models\Blog;
 use App\Models\File;
+use App\Models\Offer;
 
 class HeaderController extends Controller
 {
@@ -37,6 +38,23 @@ class HeaderController extends Controller
         return view('home.shop',compact('products'));    
 
     }//end of shop
+
+
+    public function offers()
+    {
+        $offers = Offer::latest()->paginate(10);
+
+        return view('home.header.offers.index', compact('offers'));
+
+    }//end of offers
+
+    public function offersShow($id)
+    {
+        $products = Product::where('sub_category_id',$id)->latest()->paginate(10);
+
+        return view('home.header.offers.show', compact('products'));
+
+    }//end of offers show
 
 
     public function contact()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Categorey;
+use App\Models\Product;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,18 @@ class OffersController extends Controller
             'image'       => ['required'],
         ]);
 
+
         try {   
+
+            $products = Product::where('sub_category_id', $request->category_id)->get();
+
+            foreach ($products as $product) {
+
+                 $product->update([
+                    'price_decount'=> $product->price_decount + $request->price
+                 ]);
+                
+            }//end of foreach
 
             $request_data = $request->except('image');
 
@@ -85,6 +97,25 @@ class OffersController extends Controller
 
         try {
 
+            $products = Product::where('sub_category_id', $request->category_id)->get();
+            $old_products = Product::where('sub_category_id', $offer->category_id)->get();
+
+            foreach ($old_products as $product) {
+
+                 $product->update([
+                    'price_decount'=> $product->price_decount - $offer->price
+                 ]);
+                
+            }//end of foreach
+
+            foreach ($products as $product) {
+
+                 $product->update([
+                    'price_decount'=> $product->price_decount +  $offer->price
+                 ]);
+                
+            }//end of foreach
+
             $request_data = $request->except('image');
 
             if ($request->image) {    
@@ -110,7 +141,18 @@ class OffersController extends Controller
 
     public function destroy(Offer $offer)
     {
+
         try {
+
+            $products = Product::where('sub_category_id', $offer->category_id)->get();
+
+            foreach ($products as $product) {
+
+                 $product->update([
+                    'price_decount'=> $product->price_decount - $offer->price
+                 ]);
+                
+            }//end of foreach
 
             Storage::disk('local')->delete('public/' . $offer->image);
             

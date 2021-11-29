@@ -23,6 +23,7 @@ use App\Http\Controllers\Dashboard\Setting\VideoControlle;
 use App\Http\Controllers\Dashboard\Setting\BlogController;
 use App\Http\Controllers\Dashboard\Setting\FileController;
 use App\Http\Controllers\Dashboard\Setting\CommonQuestionController;
+use App\Http\Controllers\Dashboard\Setting\NewsletterController;
 use App\Http\Controllers\Dashboard\OffersController;
 
 
@@ -67,6 +68,9 @@ function () {
         //promoted_dealers routes
         Route::resource('promoted_dealers', PromotedDealerController::class);
 
+        //newsletters routes
+        Route::resource('newsletters', NewsletterController::class)->except(['show']);
+
         //contacts routes
         Route::resource('contacts', ContactController::class)->except(['show','store','create','edit','update']);
 
@@ -87,6 +91,7 @@ function () {
 
             //settings route
             Route::get('social_links', [SettingController::class,'social_links'])->name('social_links.index');
+            Route::get('manager_word', [SettingController::class,'manager_word'])->name('manager_word.index');
             Route::post('/settings', [SettingController::class,'store'])->name('settings.store');
 
         }); //end of settings routes

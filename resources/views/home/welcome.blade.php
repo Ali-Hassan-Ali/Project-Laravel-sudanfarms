@@ -5,23 +5,6 @@
 @section('title', __('home.welcome'))   
 
     <section class="home-index-slider slider-arrow slider-dots">
-
-        <div class="banner-part banner-1">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 col-lg-6">
-                        <div class="banner-content">
-                            <h1>الخضروات</h1>
-                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع.</p>
-                            <div class="banner-btn"><a class="btn btn-inline" href="categories.html"><i class="fas fa-shopping-basket"></i><span>تسوق الآن</span></a><a class="btn btn-outline" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="banner-img"><img src="images/home/index/01.png" alt="index"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
         
         @foreach (App\Models\SettingBanner::all() as $index=>$data)
 
@@ -33,7 +16,14 @@
                         <div class="banner-content">
                             <h1 class="text-white">{{ $data->title }}</h1>
                             <p class="text-white">{{ $data->description }}</p>
-                            <div class="banner-btn"><a class="btn btn-inline" href="categories.html"><i class="fas fa-shopping-basket"></i><span>تسوق الآن</span></a><a class="btn btn-outline" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></div>
+                            <div class="banner-btn">
+                                <a class="btn btn-inline" href="{{ route('shops.index') }}">
+                                    <i class="fas fa-shopping-basket"></i><span>@lang('dashboard.shop')</span>
+                                </a>
+                                <a class="btn btn-outline" href="{{ route('offers.clients.index') }}">
+                                    <i class="icofont-sale-discount"></i><span>@lang('dashboard.offers')</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,7 +56,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>المنتجات المضافة حديثا</h2>
+                        <h2>@lang('home.newly_added_products')</h2>
                     </div>
                 </div>
             </div>
@@ -137,7 +127,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section-btn-25"><a href="#" class="btn btn-outline"><i class="fas fa-eye"></i><span>عرض المزيد</span></a></div>
+                    <div class="section-btn-25"><a href="{{ route('shops.index') }}" class="btn btn-outline"><i class="fas fa-eye"></i><span>@lang('dashboard.view_more')</span></a></div>
                 </div>
             </div>
         </div>
@@ -147,7 +137,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="promo-img"><a href=""><img src="images/newsletter.jpg" alt="promo"></a>
+                    <div class="promo-img">
+                        <a href=""><img src="{{ asset('home_files/image/newsletter.jpg') }}" alt="promo"></a>
                         <h3>مساحة إعلانية</h3>
                     </div>
                 </div>
@@ -160,7 +151,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>المنتجات المميزة</h2>
+                        <h2>@lang('home.featured_products')</h2>
                     </div>
                 </div>
             </div>
@@ -172,7 +163,7 @@
                         <div class="feature-card">
                             <div class="feature-media">
                                 <div class="feature-label">
-                                    <label class="label-text feat">مميز</label>
+                                    <label class="label-text feat">@lang('home.special')</label>
                                 </div>
                                 <button class="feature-wish wish">
                                     <i class="fas fa-heart"></i>
@@ -196,7 +187,8 @@
                                 </div>
                             </div>
                             <div class="feature-content">
-                                <h6 class="feature-name"><a href="#">كوسة هجين روزينا</a></h6>
+                                <h6 class="feature-name">
+                                    <a href="#">كوسة هجين روزينا</a></h6>
                                 <div class="feature-rating">
                                     @for ($i = 0; $i < $product->stars; $i++)
                                         <i class="active icofont-star"></i>
@@ -229,7 +221,11 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section-btn-25"><a href="#" class="btn btn-outline"><i class="fas fa-eye"></i><span>عرض المزيد</span></a></div>
+                    <div class="section-btn-25">
+                        <a href="{{ route('shops.index') }}" class="btn btn-outline">
+                            <i class="fas fa-eye"></i><span>@lang('dashboard.view_more')</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -241,13 +237,27 @@
                     <div class="countdown-content">
                         <h3>عرض تخفيض خاص للخضروات من مزارع السودان</h3>
                         <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي بديل.</p>
-                        <div class="countdown countdown-clock" data-countdown="2021/12/09"><span class="countdown-time"><span>00</span><small>أيام</small></span><span class="countdown-time"><span>00</span><small>ساعات</small></span><span class="countdown-time"><span>00</span><small>دقائق</small></span><span class="countdown-time"><span>00</span><small>ثواني</small></span></div><a href="categories.html" class="btn btn-inline"><i class="fas fa-shopping-basket"></i><span>تسوق الآن</span></a>
+                        <div class="countdown countdown-clock" data-countdown="2021/12/09">
+                            <span class="countdown-time">
+                                <span>00</span><small>أيام</small>
+                            </span>
+                            <span class="countdown-time">
+                                <span>00</span><small>ساعات</small></span>
+                                <span class="countdown-time"><span>00</span><small>دقائق</small></span>
+                                <span class="countdown-time"><span>00</span><small>ثواني</small></span>
+                            </div>
+                            <a href="categories.html" class="btn btn-inline">
+                                <i class="fas fa-shopping-basket"></i><span>تسوق الآن</span>
+                            </a>
+                        {{-- </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5">
                     <div class="countdown-img"><img src="images/countdown.png" alt="countdown">
-                        <div class="countdown-off"><span>20%</span><span style="font-size: 18px;">تخفيض</span></div>
+                        <div class="countdown-off"><span>20%</span>
+                            <span style="font-size: 18px;">تخفيض</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -258,7 +268,7 @@
             <div class="row">
                 <div class="col">
                     <div class="section-heading">
-                        <h2>المنتجات الجديده</h2>
+                        <h2>@lang('home.new_products')</h2>
                     </div>
                 </div>
             </div>
@@ -332,7 +342,11 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="section-btn-25"><a href="#" class="btn btn-outline"><i class="fas fa-eye"></i><span>عرض المزيد</span></a></div>
+                    <div class="section-btn-25">
+                        <a href="{{ route('shops.index') }}" class="btn btn-outline">
+                            <i class="fas fa-eye"></i><span>@lang('dashboard.shop')</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -874,7 +888,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading">
-                        <h2>أحدث الموردين</h2>
+                        <h2>@lang('home.latest_suppliers')</h2>
                     </div>
                 </div>
             </div>

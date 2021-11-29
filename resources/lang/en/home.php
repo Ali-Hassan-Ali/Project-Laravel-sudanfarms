@@ -7,6 +7,7 @@ return [
     'shops'          => 'shops',
     'all_product'    => 'all product',
     'social_center'  => 'social center',
+    'special'        => 'Special',
 
     'error' 			  => 'Please check the entered data',
     'text'                => 'random text for testing purpose',
@@ -60,6 +61,10 @@ return [
     'verifed_phone'       => 'your number phone is not verifed',
     'verifed'             => 'verifed',
     'shipping_method'     => 'Shipping Method',
+    'newly_added_products'=> 'Newly Added Products',
+    'featured_products'   => 'Featured Products',
+    'new_products'        => 'new products',
+    'latest_suppliers'    => 'Latest Suppliers',
 
 
     'currency'     => 'The Currency',
@@ -214,7 +219,7 @@ return [
     'order_no'  => 'order number',
 
 
-'Currency'   => 'Currency',
+    'Currency'   => 'Currency',
     'SAR'   => 'SAR',
     'EGP'   => 'EGP',
     'AED'   => 'AED',
@@ -223,5 +228,11 @@ return [
     'TRY'   => 'TRY',
     'LYD'   => 'LYD',
     'NIS'   => 'NIS',
+
+    'newsletter'    => 'Subscribe to the newsletter via your inbox',
+    'enter_emai'    => 'Enter your email and subscribe you will receive all news and offers',
+    'participation' => 'Participation',
+
+    'quick_links'   => 'Quick links',
 
 ];

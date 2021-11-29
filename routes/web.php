@@ -8,7 +8,10 @@ use App\Http\Controllers\Home\ProfileController;
 use App\Http\Controllers\Home\PromotedDealerController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\Home\HeaderController;
+use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\CartController;
+use App\Http\Controllers\Home\OfferController;
+
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
@@ -41,7 +44,10 @@ function () {
     Route::get('common_questions', [HeaderController::class,'common_questions'])->name('common_questions.index');
     Route::get('shops', [HeaderController::class,'shops'])->name('shops.index');
     Route::get('request_custmers', [HeaderController::class,'request_custmers'])->name('request_custmers.index');
+    Route::get('offers_client', [HeaderController::class,'offers'])->name('offers.clients.index');
+    Route::get('offers_client/show/{id}', [HeaderController::class,'offersShow'])->name('offers.clients.show');
 
+    Route::get('manager_word', [FooterController::class,'ManagerWord'])->name('manager_word.index');
     //cart route
     // Route::get('add_cart', [CartController::class,'add_cart'])->name('add.cart');
     Route::post('cart_store', [CartController::class, 'add_cart'])->name('cart.store');
@@ -65,6 +71,9 @@ function () {
         //products routes
         Route::resource('products', ProductController::class);
         Route::get('sub_category/{id}', [ProductController::class, 'sub_categoreys'])->name('home.sub_categorys');
+
+        // offers route
+        Route::resource('offers', OfferController::class);
 
         // Route::resource('users', UserController::class)->except(['show']);
 

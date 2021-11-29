@@ -13,6 +13,12 @@ class SettingController extends Controller
 
     }// end of social_links
 
+    public function manager_word()
+    {
+        return view('dashboard.settings.manager_word');
+
+    }// end of manager_word
+
     public function store(Request $request)
     {
         setting($request->all())->save();

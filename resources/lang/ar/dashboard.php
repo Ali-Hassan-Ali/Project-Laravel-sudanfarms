@@ -6,6 +6,8 @@ return [
     'not_available'    => 'غير مفعل',
     'login'            => 'دخول',
     'register'         => 'تسجيل',
+    'shop'             => 'تسوق الان',
+    'newsletters'      => 'النشره الاخبارية',
 
     'logout'           => 'تسجيل الخروج',
     'created_at'       => 'تاريخ الانشاء',
@@ -57,7 +59,7 @@ return [
     'quantity_guard_ar'=> 'اسم الكمية بلعربي',
     'quantity_guard_en'=> 'اسم الكمية بلانجلزي',
     'start_time'       => 'المنتج متوفر من الفتره',
-    'end_time'         => 'المنتج متوفر الي نهاية الفتره',
+    'end_time'         => 'الي نهاية الفتره',
     'product'          => 'المنتج',
     'order_number'     => 'رقم الطلب',
     'value_added_tax'  => 'ضريبة القيمة المضافة',
@@ -218,6 +220,10 @@ return [
     'suppliers'        => 'الموردين',
     'request_custmers' => 'طلبات المستهلكين',
     'offers'           => 'العروض',
+    'sale_offer'       => 'عرض تخفيض',
+    'manager_word'     => 'كلمة المدير',
+    'manager_word_ar'  => 'كلمة المدير بلعربي',
+    'manager_word_en'  => 'كلمة المدير بلانجلزي',
     
 
 

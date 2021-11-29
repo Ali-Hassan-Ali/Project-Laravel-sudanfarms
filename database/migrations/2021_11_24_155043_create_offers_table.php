@@ -18,8 +18,10 @@ class CreateOffersTable extends Migration
             $table->string('image')->default('offer_images/default.png');
             $table->double('price')->default('0');
             $table->bigInteger('category_id')->unsigned()->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
 
             $table->foreign('category_id')->references('id')->on('categoreys')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

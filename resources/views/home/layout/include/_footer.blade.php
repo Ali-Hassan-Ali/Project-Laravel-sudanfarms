@@ -3,14 +3,14 @@
             <div class="row align-items-center">
                 <div class="col-md-5 col-lg-6 col-xl-7">
                     <div class="news-text">
-                        <h2>إشترك في النشرة الإخبارية عبر بريدك </h2>
-                        <p>أدخل بريدك الإلكتروني وأشترك سوف تتلقى جميع الأخبار والعروض</p>
+                        <h2>@lang('home.newsletter')</h2>
+                        <p>@lang('home.enter_emai')</p>
                     </div>
                 </div>
                 <div class="col-md-7 col-lg-6 col-xl-5">
                     <form class="news-form">
-                        <input type="text" placeholder="أدخل بريدك الإلكتروني">
-                        <button><span><i class="icofont-ui-email"></i> إشتراك</span></button>
+                        <input type="text" placeholder=" @lang('dashboard.email')">
+                        <button><span><i class="icofont-ui-email"></i> @lang('home.participation')</span></button>
                     </form>
                 </div>
             </div>
@@ -74,11 +74,11 @@
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <div class="footer-widget">
-                        <h3 class="footer-title">روابط سريعة</h3>
+                        <h3 class="footer-title">@lang('home.quick_links')</h3>
                         <div class="footer-links">
                             <ul>
                                 <li><a href="about.html">من نحن</a></li>
-                                <li><a href="manager-word.html">كلمة المدير</a></li>
+                                <li><a href="{{ route('manager_word.index') }}">@lang('dashboard.manager_word')</a></li>
                                 <li><a href="{{ route('gallerys.index') }}">@lang('dashboard.gallerys')</a></li>
                                 <li><a href="{{ route('videos.index') }}">@lang('dashboard.videos')</a></li>
                                 <li><a href="{{ route('blogs.index') }}">@lang('dashboard.blogs')</a></li>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <div class="footer-widget contact">
-                        <h3 class="footer-title">تواصل معنا</h3>
+                        <h3 class="footer-title">@lang('dashboard.contacts')</h3>
                         <ul class="footer-contact">
                             <li><i class="icofont-ui-email"></i>
                                 <p><span>{{ setting('email_one') }}</span><span>{{ setting('email') }}</span></p>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <div class="footer-widget">
-                        <h3 class="footer-title">المنتجات</h3>
+                        <h3 class="footer-title">@lang('dashboard.products')</h3>
                         <div class="footer-links">
                             @php
                                 $subcategory  = App\Models\Categorey::where('sub_categoreys','>','0')->latest()->paginate(5);

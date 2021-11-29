@@ -19,6 +19,7 @@ class OfferSeederTableSeeder extends Seeder
             
             \App\Models\Offer::create([
                 'category_id' => $id,
+                'user_id'     => '1',
             ]);
             
         }//end of foreach 

@@ -2,13 +2,13 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.setting_banners')  .' - '. __('dashboard.add'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.manager_word')  .' - '. __('dashboard.add'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.setting_banners')</h1>
+            <h1>@lang('dashboard.manager_word')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
@@ -35,14 +35,14 @@
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['facebook','twitter','instagram','pinterest','email','email_one','phone','phone_one','map_ar','map_en','welcome_ar','welcom_en'];
+                            $names = ['manager_word_ar','manager_word_en'];
                         @endphp
 
-                        @foreach ($names as $name)
+                        @foreach ($names as $desc)
 
                             <div class="form-group">
-                                <label>@lang('dashboard.' . $name)</label>
-                                <input type="text" name="{{ $name }}" class="form-control" value="{!! setting($name) !!}">
+                                <label>@lang('dashboard.' . $desc)</label>
+                                <textarea type="text" name="{{ $desc }}" class="ckeditor form-control">{!! setting($desc) !!}</textarea>
                             </div>
                             
                         @endforeach

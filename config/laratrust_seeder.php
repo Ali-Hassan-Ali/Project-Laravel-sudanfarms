@@ -33,6 +33,7 @@ return [
             'files'            => 'c,r,u,d',
             'common_questions' => 'c,r,u,d',
             'offers'           => 'c,r,u,d',
+            'newsletters'      => 'c,r,u,d',
         ],
         
         'admin' => [

@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-7 col-lg-4">
                     <ul class="header-top-list">
-                        <li><a href="offer.html">العروض</a></li>
+                        <li><a href="{{ route('offers.clients.index') }}">@lang('dashboard.offers')</a></li>
                         <li><a href="{{ route('common_questions.index') }}">@lang('dashboard.common_questions')</a></li>
                         <li><a href="{{ route('home.contact') }}">@lang('dashboard.contacts')</a></li>
                     </ul>
@@ -361,12 +361,26 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-link" href="offer.html"><i class="icofont-sale-discount"></i><span>العروض</span></a></li>
+                    <a class="nav-link" href="{{ route('offers.clients.index') }}">
+                        <i class="icofont-sale-discount"></i>
+                        <span>@lang('dashboard.offers')</span>
+                    </a>
+                </li>
                 <li>
-                    <a class="nav-link" href="{{ route('profile.index') }}"><i class="icofont-user-alt-3"></i><span>الملف الشخصي</span></a></li>
+                    <a class="nav-link" href="{{ route('profile.index') }}">
+                        <i class="icofont-user-alt-3"></i><span>الملف الشخصي</span>
+                    </a>
+                </li>
                 <li>
-                    <a class="nav-link" href="{{ route('common_questions.index') }}"><i class="icofont-question-circle"></i><span>مساعدة</span></a></li>
-                <li><a class="nav-link" href="{{ route('home.contact') }}"><i class="icofont-contacts"></i><span>@lang('dashboard.contacts')</span></a></li>
+                    <a class="nav-link" href="{{ route('common_questions.index') }}">
+                        <i class="icofont-question-circle"></i><span>مساعدة</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ route('home.contact') }}">
+                        <i class="icofont-contacts"></i><span>@lang('dashboard.contacts')</span>
+                    </a>
+                </li>
                 
                 @auth
 
