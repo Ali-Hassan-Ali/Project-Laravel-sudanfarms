@@ -124,6 +124,11 @@
                                 <i class="fas fa-phone-alt"></i><span>@lang('dashboard.call_me')</span>
                             </a>
                         </div>
+                        <div class="details-action-group my-3">
+                            <a class="details-wish wish" href="tel:{{ $promoted_dealer->email }}" title="@lang('dashboard.call_me') @lang('dashboard.email')">
+                                <i class="fas fa-phone-alt"></i><span>@lang('dashboard.call_me') @lang('dashboard.email')</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

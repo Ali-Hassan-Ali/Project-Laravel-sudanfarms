@@ -62,7 +62,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-xl-3">
-                    <div class="footer-widget"><a class="footer-logo" href="#"><img src="{{ asset('home_files/image/logo.svg') }}" alt="logo"></a>
+                    <div class="footer-widget">
+                        <a class="footer-logo" href="#">
+                            <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
+                        </a>
                         <p class="footer-desc"> أول موقع للتسويق الزراعي و الحيواني في السودان هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي.</p>
                         <ul class="footer-social">
                             <li><a class="icofont-facebook" href="{{ setting('facebook') }}"></a></li>
@@ -85,10 +88,10 @@
                             </ul>
                             <ul>
                                 <li><a href="{{ route('common_questions.index') }}">@lang('dashboard.common_questions')</a></li>
-                                <li><a href="evacuation-responsibilaty.html">إخلاء المسؤولية</a></li>
-                                <li><a href="terms-conditions.html">شروط و احكام</a></li>
-                                <li><a href="privacy.html">الخصوصية</a></li>
-                                <li><a href="Copyrights.html">حقوق الطبع</a></li>
+                                <li><a href="{{ route('evacuation_responsibilatys.index') }}">@lang('dashboard.evacuation_responsibilatys')</a></li>
+                                <li><a href="{{ route('terms_conditions.index') }}">@lang('dashboard.terms_conditions')</a></li>
+                                <li><a href="{{ route('privacys.index') }}">@lang('dashboard.privacys')</a></li>
+                                <li><a href="{{ route('copyrights.index') }}">@lang('dashboard.copyrights')</a></li>
                             </ul>
                         </div>
                     </div>

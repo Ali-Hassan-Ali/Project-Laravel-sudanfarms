@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'welcome'        => 'Sudan farms',
     'commints'       => 'commints',
     'enter_commints' => 'enter commints',
     'shops'          => 'shops',

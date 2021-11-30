@@ -34,6 +34,7 @@ return [
             'common_questions' => 'c,r,u,d',
             'offers'           => 'c,r,u,d',
             'newsletters'      => 'c,r,u,d',
+            'policys'          => 'c,r,u,d',
         ],
         
         'admin' => [

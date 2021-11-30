@@ -2,6 +2,7 @@
 
 return [
 
+    'welcome'        => 'مزارع السودان',
     'commints'       => 'التعليق',
     'enter_commints' => 'اكتب تعليق',
     'shops'          => 'تسوق',

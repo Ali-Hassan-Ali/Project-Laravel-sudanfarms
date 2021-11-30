@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\CategoryDealerController;
 use App\Http\Controllers\Dashboard\PromotedDealerController;
 use App\Http\Controllers\Dashboard\ClientsController;
 use App\Http\Controllers\Dashboard\ContactController;
+use App\Http\Controllers\Dashboard\OffersController;
 
 //Setting Controller
 use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
@@ -24,7 +25,7 @@ use App\Http\Controllers\Dashboard\Setting\BlogController;
 use App\Http\Controllers\Dashboard\Setting\FileController;
 use App\Http\Controllers\Dashboard\Setting\CommonQuestionController;
 use App\Http\Controllers\Dashboard\Setting\NewsletterController;
-use App\Http\Controllers\Dashboard\OffersController;
+use App\Http\Controllers\Dashboard\Setting\PolicyController;
 
 
 
@@ -76,6 +77,14 @@ function () {
 
 
         Route::prefix('settings')->name('settings.')->group(function () {
+
+            //policys routes
+            Route::resource('policys', PolicyController::class)->except(['show','index']);
+
+            Route::get('copyrights', [PolicyController::class,'copyrights'])->name('copyrights.index');
+            Route::get('privacys', [PolicyController::class,'privacys'])->name('privacys.index');
+            Route::get('terms_conditions', [PolicyController::class,'terms_conditions'])->name('terms_conditions.index');
+            Route::get('evacuation_responsibilatys', [PolicyController::class,'evacuation_responsibilatys'])->name('evacuation_responsibilatys.index');
 
             //setting_banners routes
             Route::resource('setting_banners', SettingBannerController::class)->except(['show']);

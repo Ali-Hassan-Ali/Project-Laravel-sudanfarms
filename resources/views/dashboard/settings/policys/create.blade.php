@@ -2,17 +2,17 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.gallery_categorys')  .' - '. __('dashboard.add'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.policys')  .' - '. __('dashboard.add'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.gallery_categorys')</h1>
+            <h1>@lang('dashboard.policys')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                {{-- <li><a href="{{ route('dashboard.settings.gallery_categorys.index') }}"> @lang('dashboard.gallery_categorys')</a></li> --}}
+                <li><a href="{{ route('dashboard.settings.policys.index') }}"> @lang('dashboard.policys')</a></li>
                 <li class="active">@lang('dashboard.add')</li>
             </ol>
 
@@ -30,13 +30,15 @@
 
                     @include('partials._errors')
 
-                    <form action="{{ route('dashboard.settings.gallery_categorys.store') }}" method="post">
+                    <form action="{{ route('dashboard.settings.policys.store') }}" method="post">
 
                         {{ csrf_field() }}
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['name_ar','name_en'];
+                            $names  = ['title_ar','title_en'];
+                            $descr  = ['body_ar','body_en'];
+                            $guard  = ['copyrights','privacys','terms_conditions','evacuation_responsibilatys'];
                         @endphp
 
                         @foreach ($names as $name)
@@ -47,6 +49,30 @@
                             </div>
 
                         @endforeach
+
+                        @foreach ($descr as $desc)
+
+                            <div class="form-group">
+                                <label>@lang('dashboard.' . $desc)</label>
+                                <textarea type="text" name="{{ $desc }}" class="ckeditor form-control">{{ old($desc) }}</textarea>
+                            </div>
+                            
+                        @endforeach
+
+                        <div class="form-group d-none">
+                            <label>@lang('dashboard.policys')</label>
+                            <select  name="guard" class="form-control">
+
+                                @foreach ($guard as $data)
+
+                                    <option value="{{ $data }}" {{ old('guard') == $data ? 'selected' : '' }}>
+                                        @lang('dashboard.' . $data)
+                                    </option>
+                                    
+                                @endforeach
+                                
+                            </select>
+                        </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">

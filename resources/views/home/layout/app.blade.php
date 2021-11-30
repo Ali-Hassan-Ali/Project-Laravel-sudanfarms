@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>مزارع السودان - الرئيسية</title>
+    <title>@yield('title')</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -30,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/product-details.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/index.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/blog-details.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/privacy.css') }}">
 
     {{-- plugin  sweetalert2--}}
     <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }} ">
@@ -37,7 +37,7 @@
 
 </head>
 
-<body>
+<body class="scrollspy" data-bs-spy="scroll" data-bs-target="#scrollspy">
 
     @include('home.layout.include._hedaer')
 

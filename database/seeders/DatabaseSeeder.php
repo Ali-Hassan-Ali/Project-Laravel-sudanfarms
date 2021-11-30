@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CommonQuestionTableSeeder::class);
         $this->call(OfferSeederTableSeeder::class);
         $this->call(RequestCustmersTableSeeder::class);
+        $this->call(PolicyTableSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }

@@ -50,6 +50,10 @@ function () {
     Route::get('offers_client/show/{id}', [HeaderController::class,'offersShow'])->name('offers.clients.show');
 
     Route::get('manager_word', [FooterController::class,'ManagerWord'])->name('manager_word.index');
+    Route::get('copyrights', [FooterController::class,'copyrights'])->name('copyrights.index');
+    Route::get('privacys', [FooterController::class,'privacys'])->name('privacys.index');
+    Route::get('terms_conditions', [FooterController::class,'terms_conditions'])->name('terms_conditions.index');
+    Route::get('evacuation_responsibilatys', [FooterController::class,'evacuation_responsibilatys'])->name('evacuation_responsibilatys.index');
     //cart route
     // Route::get('add_cart', [CartController::class,'add_cart'])->name('add.cart');
     Route::post('cart_store', [CartController::class, 'add_cart'])->name('cart.store');

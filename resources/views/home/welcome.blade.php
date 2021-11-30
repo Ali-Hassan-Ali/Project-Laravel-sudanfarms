@@ -254,7 +254,7 @@
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5">
-                    <div class="countdown-img"><img src="images/countdown.png" alt="countdown">
+                    <div class="countdown-img"><img src="{{ asset('home_files/image/countdown.png') }}" alt="countdown">
                         <div class="countdown-off"><span>20%</span>
                             <span style="font-size: 18px;">تخفيض</span>
                         </div>

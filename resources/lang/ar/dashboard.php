@@ -14,6 +14,12 @@ return [
     'call_me'          => 'التواصل مع التاجر',
     'map'              => 'الموقع',
     
+    'policys'                      => 'السياسات',
+    'copyrights'                   => 'حقوق الطبع',
+    'privacys'                     => 'الخصوصية',
+    'terms_conditions'             => 'شروط و احكام',
+    'evacuation_responsibilatys'   => 'إخلاء المسؤولية',
+
     'conditions'       => 'شروط الدفع',
     'conditions_ar'    => 'شروط الدفع بلانجلزي',
     'conditions_en'    => 'شروط الدفع بلعربي',
@@ -96,6 +102,8 @@ return [
     'category_dealers'      => 'اقسام المورودون',
     'contacts'              => 'تواصل معنا',
     'body'                  => 'الموضوع',
+    'body_ar'               => 'الموضع يللغه العربية',
+    'body_en'               => 'الموضع يللغه العربية',
     // 'category_dealers'      => 'العملاء',
 
     'cliants'               => 'العملاء',

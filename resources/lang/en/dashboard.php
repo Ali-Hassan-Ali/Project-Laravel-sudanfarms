@@ -19,6 +19,12 @@ return [
     'conditions_ar'    => 'arbic payment terms',
     'conditions_en'    => 'English payment terms',
 
+    'policys'                      => 'policys',
+    'copyrights'                   => 'copyrights',
+    'privacys'                     => 'privacys',
+    'terms_conditions'             => 'terms conditions',
+    'evacuation_responsibilatys'   => 'evacuation responsibilatys',
+
     'logout'             => 'logout',
     'created_at'         => 'created at',
     'payment'            => 'payment image', 
@@ -97,6 +103,8 @@ return [
     'category_dealers'      => 'category dealers',
     'contacts'              => 'contacts',
     'body'                  => 'body',
+    'body_ar'               => 'body arbic',
+    'body_en'               => 'body english',
 
 	'cliants'               => 'cliants',
     'users'                 => 'Users',

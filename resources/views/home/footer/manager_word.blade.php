@@ -2,9 +2,9 @@
 
 @section('content')
 
-@section('contact', __('home.manager_word'))
+@section('title', __('home.manager_word'))
 
-    <section class="single-banner inner-section">
+    <section class="single-banner inner-section mt-5 pt-5">
         <div class="container">
             <h2>@lang('dashboard.manager_word')</h2>
             <ol class="breadcrumb">

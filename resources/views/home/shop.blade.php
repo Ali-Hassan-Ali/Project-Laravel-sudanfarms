@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', __('home.welcome'))
+@section('title', __('dashboard.shops'))
 
     <section class="inner-section single-banner">
         <div class="container">

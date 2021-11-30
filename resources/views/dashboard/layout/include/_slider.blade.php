@@ -185,6 +185,55 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasPermission('policys_read'))
+                <li class="{{ Route::Is(['dashboard.settings.policys.edit','dashboard.settings.policys.create']) ? 'treeview menu-open' : 'treeview' }}" style="height: auto;">
+                  
+                  <a href="#">
+                    <i class="fa fa-gear"></i> 
+                    <span>@lang('dashboard.policys')</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                      
+                  <ul class="treeview-menu 
+                  {{  Route::Is(['dashboard.settings.policys.copyrights.index',
+                                 'dashboard.settings.policys.privacys.index',
+                                 'dashboard.settings.policys.terms_conditions.index',
+                                 'dashboard.settings.policys.evacuation_responsibilatys.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.settings.copyrights.index','dashboard.settings.privacys.index','dashboard.settings.terms_conditions.index','dashboard.settings.evacuation_responsibilatys.index','dashboard.settings.policys.edit','dashboard.settings.policys.create']) ? 'block' : 'none' }};">
+
+                    <li class="{{ Route::Is('dashboard.settings.copyrights.index') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.copyrights.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('dashboard.copyrights')
+                        </a>
+                    </li>
+
+                    <li class="{{ Route::Is('dashboard.settings.privacys.index') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.privacys.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('dashboard.privacys')
+                        </a>
+                    </li>
+                    <li class="{{ Route::Is('dashboard.settings.terms_conditions.index') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.terms_conditions.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('dashboard.terms_conditions')
+                        </a>
+                    </li>
+
+                    <li class="{{ Route::Is('dashboard.settings.evacuation_responsibilatys.index') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.evacuation_responsibilatys.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('dashboard.evacuation_responsibilatys')
+                        </a>
+                    </li>
+
+                  </ul>
+
+                </li>
+            @endif
+
         </ul>
 
     </section>

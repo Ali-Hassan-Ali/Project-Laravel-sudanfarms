@@ -1,4 +1,5 @@
-  <div class="backdrop"></div>
+{{-- <div class="backdrop"></div> --}}
+
     <section class="header-top">
         <div class="container">
             <div class="row">
@@ -10,7 +11,7 @@
 
                         @else
 
-                            <p>{{ setting('welcome_en') }}</p>
+                            <p>{{ setting('welcom_en') }}</p>
 
                         @endif
 
@@ -94,7 +95,7 @@
 
                     <a href="{{ setting('pinterest') }}" class="header-widget"><i class="icofont-pinterest"></i></a>
 
-                    <button class="header-widget header-cart" title="السلة"><i class="fas fa-shopping-basket"></i><sup>{{ Cart::count() }}</sup></button>
+                    <button class="header-widget header-cart" title="@lang('home.cart')"><i class="fas fa-shopping-basket"></i><sup>{{ Cart::count() }}</sup></button>
                 </div>
             </div>
         </div>
