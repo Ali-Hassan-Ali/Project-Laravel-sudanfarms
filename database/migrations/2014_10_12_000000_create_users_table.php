@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->default('username');
             
             $table->string('phone')->nullable();
-            $table->string('country')->nullable();
+            $table->string('country')->default('country');
             $table->string('city')->nullable();
             $table->string('title')->nullable();
             $table->string('image')->default('user_images/default.png');

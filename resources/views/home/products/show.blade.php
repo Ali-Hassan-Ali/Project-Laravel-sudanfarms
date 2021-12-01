@@ -83,7 +83,7 @@
                             <p class="mt-0">{{ $promoted_dealer->country }}</p>
                         </div>
                         <div class="details-meta mb-1">
-                            <p class="mt-0">#</p>
+                            <p class="mt-0">ID</p>
                             <p class="mt-0">{{ $min_product->id }}</p>
                         </div>
                         <div class="details-meta mb-1">
@@ -111,22 +111,14 @@
                                 @endforeach
                             </ul>
                         </div>
-                        {{-- <div class="details-list-group"><label class="details-list-title">مشاركة:</label>
-                            <ul class="details-share-list">
-                                <li><a href="#" class="icofont-facebook" title="Facebook"></a></li>
-                                <li><a href="#" class="icofont-twitter" title="Twitter"></a></li>
-                                <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
-                                <li><a href="#" class="icofont-pinterest" title="Pinterest"></a></li>
-                            </ul>
-                        </div> --}}
                         <div class="details-action-group">
                             <a class="details-wish wish" href="tel:{{ $promoted_dealer->phone }}" title="@lang('dashboard.call_me')">
                                 <i class="fas fa-phone-alt"></i><span>@lang('dashboard.call_me')</span>
                             </a>
                         </div>
                         <div class="details-action-group my-3">
-                            <a class="details-wish wish" href="tel:{{ $promoted_dealer->email }}" title="@lang('dashboard.call_me') @lang('dashboard.email')">
-                                <i class="fas fa-phone-alt"></i><span>@lang('dashboard.call_me') @lang('dashboard.email')</span>
+                            <a class="details-wish wish" href="mailto:{{ $promoted_dealer->email }}" title="@lang('dashboard.call_me') @lang('dashboard.email')">
+                                <i class="icofont-ui-email"></i><span> @lang('dashboard.email')</span>
                             </a>
                         </div>
                     </div>
@@ -179,7 +171,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">@lang('dashboard.conditions')</th>
-                                        <td{{ $min_product->condition }}></td>
+                                        <td>{{ $min_product->condition }}</td>
                                     </tr>
                                 </tbody>
                             </table>

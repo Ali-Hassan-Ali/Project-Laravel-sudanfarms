@@ -13,6 +13,28 @@ return [
     'similar_products' => 'منتجات مماثلة',
     'call_me'          => 'التواصل مع التاجر',
     'map'              => 'الموقع',
+    'welcome_ar'       => 'رساله الترحيب بلعربي',
+    'welcom_en'        => 'رساله الترحيب بلانجلزي',
+
+    'services'              => 'الخدمات',
+    'about_ar'              => 'حول مزارع السودان بلعربي',
+    'about_en'              => 'حول مزارع السودان بلانجلزي',
+
+    'delivery_service'      => 'خدمة التوصيل السريع',
+    'delivery_service_ar'   => 'خدمه التوصيل بلعربي',
+    'delivery_service_en'   => 'خدمه التوصيل بلانجلزي',
+
+    'return_policy'         => 'سياسة إرجاع معينة',
+    'return_policy_ar'      => 'سياسه الاسترجاع بلعربي',
+    'return_policy_en'      => 'سياسة الاسترجاع بالانجليزي',
+
+    'support_system'        => 'نظام دعم سريع',
+    'support_system_ar'     => 'نظام دعم سريع بلعربي',
+    'support_system_en'     => 'نظام دعم سريع بلانجلزي',
+
+    'payment_methods'       => 'طرق دفع آمنه',
+    'payment_methods_ar'    => 'وسائل الدفع بلعربي',
+    'payment_methods_en'    => 'وسائل الدفع بلنجلزي',
     
     'policys'                      => 'السياسات',
     'copyrights'                   => 'حقوق الطبع',

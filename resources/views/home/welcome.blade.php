@@ -230,13 +230,13 @@
             </div>
         </div>
     </section>
+
     <section class="section countdown-part">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mx-auto">
                     <div class="countdown-content">
-                        <h3>عرض تخفيض خاص للخضروات من مزارع السودان</h3>
-                        <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي بديل.</p>
+                        <h3>@lang('home.an_offer') {{ $offer->category->name }} @lang('home.farms_of_sudan')</h3>
                         <div class="countdown countdown-clock" data-countdown="2021/12/09">
                             <span class="countdown-time">
                                 <span>00</span><small>أيام</small>
@@ -246,17 +246,16 @@
                                 <span class="countdown-time"><span>00</span><small>دقائق</small></span>
                                 <span class="countdown-time"><span>00</span><small>ثواني</small></span>
                             </div>
-                            <a href="categories.html" class="btn btn-inline">
-                                <i class="fas fa-shopping-basket"></i><span>تسوق الآن</span>
+                            <a href="{{ route('offers.clients.show',$offer->category_id) }}" class="btn btn-inline">
+                                <i class="fas fa-shopping-basket"></i><span>@lang('dashboard.shop')</span>
                             </a>
-                        {{-- </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5">
                     <div class="countdown-img"><img src="{{ asset('home_files/image/countdown.png') }}" alt="countdown">
-                        <div class="countdown-off"><span>20%</span>
-                            <span style="font-size: 18px;">تخفيض</span>
+                        <div class="countdown-off"><span>{{ $offer->price }}</span>
+                            <span style="font-size: 18px;">@lang('home.discount')</span>
                         </div>
                     </div>
                 </div>
@@ -281,7 +280,6 @@
                         <li>
                             <div class="product-card">
                                 <div class="product-media">
-                                    {{-- <div class="product-label"><label class="label-text new">جديد</label></div> --}}
                                     <button class="product-wish wish">
                                         <i class="fas fa-heart"></i>
                                     </button>
@@ -352,16 +350,16 @@
         </div>
     </section>
 
-{{--     <div class="section promo-part">
+    <div class="section promo-part">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                    <div class="promo-img"><a href=""><img src="images/blog/01.jpg" alt="promo"></a>
+                    <div class="promo-img"><a href=""><img src="{{ asset('home_files/image/blog/01.jpg') }}" alt="promo"></a>
                         <h3>مساحة إعلانية</h3>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                    <div class="promo-img"><a href=""><img src="images/blog/02.jpg" alt="promo"></a>
+                    <div class="promo-img"><a href=""><img src="{{ asset('home_files/image/blog/02.jpg') }}" alt="promo"></a>
                         <h3>مساحة إعلانية</h3>
                     </div>
                 </div>
@@ -369,7 +367,7 @@
         </div>
     </div>
 
-    <section class="section niche-part">
+{{--     <section class="section niche-part">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -874,8 +872,8 @@
                             <i class="flaticon-beverage"></i>
                         </div>
                         <div class="or-funfact-text headline pera-content">
-                            <h3> <span class="counter">27</span> <sup>+</sup></h3>
-                            <p>الجوائز</p>
+                            <h3> <span class="counter">{{ $offers }}</span> <sup>+</sup></h3>
+                            <p>@lang('dashboard.offers')</p>
                         </div>
                     </div>
                 </div>

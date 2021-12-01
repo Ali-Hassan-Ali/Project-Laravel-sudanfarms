@@ -16,6 +16,16 @@ return [
     'date_shipment'  => 'date shipment',
     'all'            => 'all',
     'informations'   => 'informations',
+    'new'            => 'new',
+    'safety'         => 'safety',
+    'an_offer'       => 'Special discount offer',
+    'farms_of_sudan' => 'From the farms of Sudan',
+    'discount'       => 'discount',
+
+    'delivery_service'      => 'Express delivery service',
+    'return_policy'         => 'Specific return policy',
+    'support_system'        => 'fast support system',
+    'payment_methods'       => 'Safe payment methods',
 
     'error' 			  => 'Please check the entered data',
     'text'                => 'random text for testing purpose',

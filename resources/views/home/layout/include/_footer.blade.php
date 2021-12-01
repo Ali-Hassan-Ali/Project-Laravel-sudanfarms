@@ -23,8 +23,16 @@
                     <div class="intro-wrap">
                         <div class="intro-icon"><i class="fas fa-truck"></i></div>
                         <div class="intro-content">
-                            <h5>خدمة التوصيل السريع</h5>
-                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله.</p>
+                            <h5>@lang('home.delivery_service')</h5>
+                            @if (app()->getLocale() == 'ar')
+                                    
+                                <p>{{ setting('delivery_service_ar') }}</p>
+
+                            @else
+
+                                <p>{{ setting('delivery_service_en') }}</p>
+
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -32,8 +40,16 @@
                     <div class="intro-wrap">
                         <div class="intro-icon"><i class="fas fa-sync-alt"></i></div>
                         <div class="intro-content">
-                            <h5>سياسة إرجاع معينة</h5>
-                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله.</p>
+                            <h5>@lang('home.return_policy')</h5>
+                            @if (app()->getLocale() == 'ar')
+                                    
+                                <p>{{ setting('return_policy_ar') }}</p>
+
+                            @else
+
+                                <p>{{ setting('return_policy_en') }}</p>
+
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -41,8 +57,16 @@
                     <div class="intro-wrap">
                         <div class="intro-icon"><i class="fas fa-headset"></i></div>
                         <div class="intro-content">
-                            <h5>نظام دعم سريع</h5>
-                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله.</p>
+                            <h5>@lang('home.support_system')</h5>
+                            @if (app()->getLocale() == 'ar')
+                                    
+                                <p>{{ setting('support_system_ar') }}</p>
+
+                            @else
+
+                                <p>{{ setting('support_system_ar') }}</p>
+
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -50,8 +74,16 @@
                     <div class="intro-wrap">
                         <div class="intro-icon"><i class="fas fa-lock"></i></div>
                         <div class="intro-content">
-                            <h5>طرق دفع آمنه</h5>
-                            <p>هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله.</p>
+                            <h5>@lang('home.payment_methods')</h5>
+                            @if (app()->getLocale() == 'ar')
+                                    
+                                <p>{{ setting('payment_methods_ar') }}</p>
+
+                            @else
+
+                                <p>{{ setting('payment_methods_en') }}</p>
+
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -66,12 +98,22 @@
                         <a class="footer-logo" href="#">
                             <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
                         </a>
-                        <p class="footer-desc"> أول موقع للتسويق الزراعي و الحيواني في السودان هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي.</p>
+                        <p class="footer-desc">
+                            @if (app()->getLocale() == 'ar')
+                                    
+                                {{ setting('about_ar') }}
+
+                            @else
+
+                                {{ setting('about_en') }}
+
+                            @endif
+                        </p>
                         <ul class="footer-social">
-                            <li><a class="icofont-facebook" href="{{ setting('facebook') }}"></a></li>
-                            <li><a class="icofont-twitter" href="{{ setting('twitter') }}"></a></li>
-                            <li><a class="icofont-instagram" href="{{ setting('instagram') }}"></a></li>
-                            <li><a class="icofont-pinterest" href="{{ setting('pinterest') }}"></a></li>
+                            <li><a class="icofont-facebook" target="_blank" href="{{ setting('facebook') }}"></a></li>
+                            <li><a class="icofont-twitter" target="_blank" href="{{ setting('twitter') }}"></a></li>
+                            <li><a class="icofont-instagram" target="_blank" href="{{ setting('instagram') }}"></a></li>
+                            <li><a class="icofont-pinterest" target="_blank" href="{{ setting('pinterest') }}"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -101,10 +143,16 @@
                         <h3 class="footer-title">@lang('dashboard.contacts')</h3>
                         <ul class="footer-contact">
                             <li><i class="icofont-ui-email"></i>
-                                <p><span>{{ setting('email_one') }}</span><span>{{ setting('email') }}</span></p>
+                                <p>
+                                    <span><a href="mailto:{{ setting('email_one') }}" class="text-dark">{{ setting('email_one') }}</a></span>
+                                    <span><a href="mailto:{{ setting('email') }}" class="text-dark">{{ setting('email') }}</a></span>
+                                </p>
                             </li>
                             <li><i class="icofont-ui-touch-phone"></i>
-                                <p><span>{{ setting('phone_one') }}</span><span>{{ setting('phone') }}</span></p>
+                                <p>
+                                    <span><a href="tel:{{ setting('phone_one') }}" class="text-dark">{{ setting('phone_one') }}</a></span>
+                                    <span><a href="tel:{{ setting('phone') }}" class="text-dark">{{ setting('phone') }}</a></span>
+                                </p>
                             </li>
                             <li><i class="icofont-location-pin"></i>
                                 @if (app()->getLocale() == 'ar')
@@ -152,8 +200,11 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="content">
-                    <p class="footer-copytext"><span>&copy;</span> جميع حقوق الموقع محفوظة لـ<a target="_blank" href="#">مزارع السودان </a></p>
+                    <p class="footer-copytext">
+                        <span>&copy;</span> جميع حقوق الموقع محفوظة لـ<a target="_blank" href="#">مزارع السودان </a>
+                    </p>
                 </div>
             </div>
         </div>
+        
     </footer>

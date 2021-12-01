@@ -5263,7 +5263,7 @@ tbody tr td:last-child {
 
 .news-part {
     padding: 70px 0px;
-    background: url(../../images/newsletter.jpg);
+    background: url(../../image/newsletter.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -5556,7 +5556,7 @@ tbody tr td:last-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-image: url(../../images/bg-footer-bottom3.png);
+    background-image: url(../../image/bg-footer-bottom3.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
@@ -6177,7 +6177,7 @@ tbody tr td:last-child {
 }
 
 .single-banner {
-    background: url(../../images/single-banner.jpg);
+    background: url(../../image/single-banner.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

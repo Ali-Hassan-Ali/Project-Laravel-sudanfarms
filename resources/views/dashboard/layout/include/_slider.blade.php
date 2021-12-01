@@ -153,7 +153,12 @@
                   </a>
                       
                   <ul class="treeview-menu 
-                  {{  Route::Is(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.contact_us.index','dashboard.settings.social_links.index','dashboard.settings.manager_word.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.settings.setting_banners.edit','dashboard.settings.social_links.index']) ? 'block' : 'none' }};">
+                  {{  Route::Is(['dashboard.settings.setting_banners.index',
+                                 'dashboard.settings.setting_banners.create',
+                                 'dashboard.contact_us.index',
+                                 'dashboard.settings.social_links.index',
+                                 'dashboard.settings.manager_word.index'
+                                 ,'dashboard.settings.services.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.settings.setting_banners.edit','dashboard.settings.social_links.index','dashboard.settings.services.index']) ? 'block' : 'none' }};">
 
                     <li class="{{ Route::Is('dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.settings.setting_banners.edit') ? 'active' : '' }}">
                         <a href="{{ route('dashboard.settings.setting_banners.index') }}">
@@ -168,18 +173,21 @@
                             @lang('dashboard.social_links')
                         </a>
                     </li>
+
                     <li class="{{ Route::Is('dashboard.settings.manager_word.index') ? 'active' : '' }}">
                         <a href="{{ route('dashboard.settings.manager_word.index') }}">
                             <i class="fa fa-concierge-bell"></i> 
                             @lang('dashboard.manager_word')
                         </a>
                     </li>
-                    {{-- <li class="{{ Route::Is('dashboard.contact_us.index') ? 'active' : '' }}">
-                        <a href="{{ route('dashboard.contact_us.index') }}"><i class="fa fa-address-book"></i> @lang('dashboard.contact_us')</a>
+
+                    <li class="{{ Route::Is('dashboard.settings.services.index') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.services.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('dashboard.services')
+                        </a>
                     </li>
-                    <li class="{{ Route::Is('dashboard.social_links.index') ? 'active' : '' }}">
-                        <a href="{{ route('dashboard.social_links.index') }}"><i class="fa fa-link"></i> @lang('dashboard.social_links')</a>
-                    </li> --}}
+
                   </ul>
 
                 </li>

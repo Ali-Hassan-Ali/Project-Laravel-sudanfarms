@@ -14,6 +14,28 @@ return [
     'similar_products'   => 'similar products',
     'call_me'            => 'Communicate with the merchant',
     'map'                => 'map',
+    'welcome_ar'         => 'English welcome message',
+    'welcom_en'          => 'Arbic welcome message',
+
+    'services'           => 'Services',
+    'about_ar'           => 'About the farms of Sudan in Arabic',
+    'about_en'           => 'About the farms of Sudan in ُEnglish',
+
+    'delivery_service'      => 'Express delivery service',
+    'delivery_service_ar'   => 'Express delivery service Arbic',
+    'delivery_service_en'   => 'Express delivery service english',
+
+    'return_policy'         => 'Specific return policy',
+    'return_policy_ar'      => 'Specific return policy arbic',
+    'return_policy_en'      => 'Specific return policy english',
+
+    'support_system'        => 'fast support system',
+    'support_system_ar'     => 'fast support system Arbic',
+    'support_system_en'     => 'fast support system english',
+
+    'payment_methods'       => 'Safe payment methods',
+    'payment_methods_ar'    => 'Safe payment methods arbic',
+    'payment_methods_en'    => 'Safe payment methods english',
     
     'conditions'       => 'conditions',
     'conditions_ar'    => 'arbic payment terms',

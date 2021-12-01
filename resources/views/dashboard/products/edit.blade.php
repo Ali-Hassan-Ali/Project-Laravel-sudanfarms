@@ -62,11 +62,11 @@
                             <label>@lang('dashboard.categorey')</label>
                             <select name="sub_category_id" class="form-control">
                                 <option value="">@lang('dashboard.all_categories')</option>
-                                @foreach ($sub_categoreys as $category)
+                                {{-- @foreach ($sub_categoreys as $category)
                                     <option value="{{ $category->id }}" {{ $categorey_id->id == $category->id ? 'selected' : '' }}>
                                         {{ $category->name }}
                                     </option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                         </div>
 

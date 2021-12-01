@@ -99,6 +99,7 @@ function () {
             Route::resource('common_questions', CommonQuestionController::class)->except(['show']);
 
             //settings route
+            Route::get('services', [SettingController::class,'services'])->name('services.index');
             Route::get('social_links', [SettingController::class,'social_links'])->name('social_links.index');
             Route::get('manager_word', [SettingController::class,'manager_word'])->name('manager_word.index');
             Route::post('/settings', [SettingController::class,'store'])->name('settings.store');

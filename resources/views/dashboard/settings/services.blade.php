@@ -2,13 +2,13 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.setting_banners')  .' - '. __('dashboard.add'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.services')  .' - '. __('dashboard.add'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.setting_banners')</h1>
+            <h1>@lang('dashboard.services')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
@@ -35,7 +35,7 @@
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['facebook','twitter','instagram','pinterest','email','email_one','phone','phone_one','map_ar','map_en','welcome_ar','welcom_en','about_ar','about_en'];
+                            $names = ['delivery_service_ar','delivery_service_en','return_policy_ar','return_policy_en','support_system_ar','support_system_en','payment_methods_ar','payment_methods_en'];
                         @endphp
 
                         @foreach ($names as $name)

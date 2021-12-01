@@ -19,6 +19,12 @@ class SettingController extends Controller
 
     }// end of manager_word
 
+    public function services()
+    {
+        return view('dashboard.settings.services');
+
+    }// end of services
+
     public function store(Request $request)
     {
         setting($request->all())->save();

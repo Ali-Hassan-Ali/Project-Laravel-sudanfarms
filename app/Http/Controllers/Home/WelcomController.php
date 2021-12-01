@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categorey;
+use App\Models\Offer;
 
 class WelcomController extends Controller
 {
@@ -12,7 +13,11 @@ class WelcomController extends Controller
     {   
         $sub_categoreys = Categorey::where('sub_categoreys','>','0')->get();
 
-        return view('home.welcome',compact('sub_categoreys'));
+        $offer          = Offer::latest()->first();
+
+        $offers         = Offer::count();
+
+        return view('home.welcome',compact('sub_categoreys','offer','offers'));
 
     }//end of index
     

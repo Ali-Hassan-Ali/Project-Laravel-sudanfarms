@@ -17,6 +17,16 @@ return [
     'date_shipment'  => 'تاريخ الشحن',
     'all'            => 'الكل',
     'informations'   => 'معلومات',
+    'new'            => 'جديد',
+    'safety'         => 'الآمان',
+    'an_offer'       => 'عرض تخفيض خاص',
+    'farms_of_sudan' => 'من مزارع السودان',
+    'discount'       => 'تخفيض',
+
+    'delivery_service'      => 'خدمة التوصيل السريع',
+    'return_policy'         => 'سياسة إرجاع معينة',
+    'support_system'        => 'نظام دعم سريع',
+    'payment_methods'       => 'طرق دفع آمنه',
  
     'error' 			  => 'الرجاء التأكد من البيانات المدخلة',
     'text'                => 'مجرد نص عشوائي  لغرض الإختبار ',

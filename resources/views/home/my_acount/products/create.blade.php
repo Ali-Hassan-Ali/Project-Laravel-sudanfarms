@@ -16,9 +16,15 @@
                     </div>
                     <div class="account-content">
                         <div class="row">
-                            <div class="col-lg-2">
+                            {{-- <div class="col-lg-12 mx-auto">
                                 <div class="profile-image">
                             	   <img src="{{ auth()->user()->image_path }}" class="rounded-circle" alt="user" width="150">
+                                </div>
+                            </div> --}}
+                            <div class="col-10 mx-auto my-5">
+                                <div class="profile-image">
+                            	  
+                        	<p class="text-success" style="border: solid 4px green;">اذ ارت ان تعرض المنتج بلغتين العربيه والانجلزيه يجب عليك ملئ كل الخنات او اتصال مع اذاره الموقع</p>
                                 </div>
                             </div>
 

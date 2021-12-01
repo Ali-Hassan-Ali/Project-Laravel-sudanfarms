@@ -35,7 +35,8 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group"><label class="form-label">الفئة</label>
-		                                <select name="category_dealer_id" class="form-control">
+		                                <select name="category_dealer_id" required class="form-control">
+		                                    	<option value="">اختر نوع النشاط التجاري</option>
 		                                	@foreach (App\Models\CategoryDealer::all() as $data)
 		                                    	<option value="{{ $data->id }}">{{ $data->name }}</option>
 		                                	@endforeach
@@ -67,15 +68,15 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الهاتف</label>
-		                            	<input class="form-control" type="text" name="other_phone" placeholder="الهاتف">
+		                            	<label class="form-label">الهاتف الثابت</label>
+		                            	<input class="form-control" type="text" name="other_phone" placeholder="الهاتف الثابت">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">الهاتف</label>
-		                            	<input class="form-control" type="text" placeholder="الفاكس">
+		                            	<input class="form-control" type="text" placeholder="الهاتف">
 		                            </div>
 		                        </div>
 
@@ -116,8 +117,8 @@
 
 		                        <div class="col-sm-12">
 		                            <div class="form-group">
-		                            	<label class="form-label">الوصف</label>
-		                                <textarea name="description" class="form-control" cols="30" rows="10" placeholder="الوصف"></textarea>
+		                            	<label class="form-label">نبذة عن الشركة</label>
+		                                <textarea name="description" class="form-control" cols="30" rows="10" placeholder="نبذة عن الشركة"></textarea>
 		                            </div>
 		                        </div>
 
@@ -136,7 +137,7 @@
 
 	                            <div class="col-sm-12">
 	                                <div class="form-group">
-	                                	<label class="form-label">شهاده الشركه</label>
+	                                	<label class="form-label">الرخصة التجارية</label>
 	                                    <input class="form-control" type="file" id="company-certificate" name="company_certificate">
 	                                </div>
 	                            </div>

@@ -63,7 +63,6 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {   
-        dd($request->all());
         
         $user = User::find(auth()->user()->id);
 
@@ -86,8 +85,10 @@ class ProfileController extends Controller
             $request_data['image'] = $request->file('image')->store('user_images','public');
 
         } //end of external if
+            $request_data['country'] = 'sfgsfg';
 
         $user->update($request_data);
+        dd($user);
         
         return redirect()->back();
 

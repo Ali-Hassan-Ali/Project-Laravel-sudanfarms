@@ -58,7 +58,7 @@
                         @auth
                             <img src="{{ auth()->user()->image_path }}" alt="user">
                         @else
-                            <img src="{{ asset('home_files/image/logo.svg') }}" alt="user">
+                            <img src="{{ asset('home_files/image/menn.png') }}" alt="user">
                         @endauth
                     </button>
                     <a href="/">
@@ -87,13 +87,13 @@
 
                 <div class="header-widget-group">
 
-                    <a href="{{ setting('facebook') }}" class="header-widget"><i class="icofont-facebook"></i></a>
+                    <a href="{{ setting('facebook') }}" target="_blank" class="header-widget"><i class="icofont-facebook"></i></a>
 
-                    <a href="{{ setting('twitter') }}" class="header-widget"><i class="icofont-twitter"></i></a>
+                    <a href="{{ setting('twitter') }}" target="_blank" class="header-widget"><i class="icofont-twitter"></i></a>
 
-                    <a href="{{ setting('instagram') }}" class="header-widget"><i class="icofont-instagram"></i></a>
+                    <a href="{{ setting('instagram') }}" target="_blank" class="header-widget"><i class="icofont-instagram"></i></a>
 
-                    <a href="{{ setting('pinterest') }}" class="header-widget"><i class="icofont-pinterest"></i></a>
+                    <a href="{{ setting('pinterest') }}" target="_blank" class="header-widget"><i class="icofont-pinterest"></i></a>
 
                     <button class="header-widget header-cart" title="@lang('home.cart')"><i class="fas fa-shopping-basket"></i><sup>{{ Cart::count() }}</sup></button>
                 </div>
@@ -135,9 +135,13 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="{{ route('home.supplier') }}">@lang('dashboard.suppliers')</a>
+                            <li class="navbar-item">
+                                <a class="navbar-link" href="{{ route('home.supplier') }}">@lang('dashboard.suppliers')</a>
                             </li>
-                            <li class="navbar-item"><a class="navbar-link" href="{{ route('request_custmers.index') }}">@lang('dashboard.request_custmers')</a></li>
+                            <li class="navbar-item">
+                                <a class="navbar-link" href="{{ route('request_custmers.index') }}">
+                                @lang('dashboard.request_custmers')</a>
+                            </li>
                             <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="javascript:void(0);">@lang('home.social_center')</a>
                                 <ul class="dropdown-position-list">
                                     <li><a href="{{ route('gallerys.index') }}">@lang('dashboard.gallerys')</a></li>
@@ -172,10 +176,14 @@
                         </ul>
                         <div class="navbar-info-group">
                             <div class="navbar-info"><i class="icofont-ui-touch-phone"></i>
-                                <p><small>@lang('dashboard.phone')</small><span>{{ setting('phone') }}</span></p>
+                                <p><small>@lang('dashboard.phone')</small>
+                                    <span><a href="tel:{{ setting('phone') }}" class="text-dark">{{ setting('phone') }}</a></span>
+                                </p>
                             </div>
                             <div class="navbar-info"><i class="icofont-ui-email"></i>
-                                <p><small>@lang('dashboard.email')</small><span>{{ setting('email') }}</span></p>
+                                <p><small>@lang('dashboard.email')</small>
+                                    <span><a href="mailto:{{ setting('email') }}" class="text-dark">{{ setting('email') }}</a></span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -211,9 +219,9 @@
             @endforeach
 
         </ul>
-        <div class="category-footer">
+        {{-- <div class="category-footer">
             <p>الحقوق محفوظة لـ <a href="#">مزارع السودان</a></p>
-        </div>
+        </div> --}}
     </aside>
     <aside class="cart-sidebar">
         <div class="cart-header">
@@ -320,6 +328,11 @@
             </div>
             <ul class="nav-list">
                 <li>
+                    <a class="nav-link" href="/">
+                        <i class="icofont-home"></i><span>@lang('dashboard.home')</span>
+                    </a>
+                </li>
+                <li>
                     <a class="nav-link dropdown-link" href="#">
                         <i class="icofont-lock"></i><span>@lang('home.language')</span>
                     </a>
@@ -338,28 +351,27 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="nav-link" href="/">
-                        <i class="icofont-home"></i><span>@lang('dashboard.home')</span>
-                    </a>
-                </li>
-                <li>
                     <a class="nav-link" href="{{ route('shops.index') }}">
                         <i class="icofont-food-cart"></i><span>@lang('home.shops')</span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a class="nav-link" onclick="event.preventDefault();document.getElementById('category-model').click();">
                         <i class="icofont-page"></i><span>@lang('dashboard.products')</span>
                     </a>
-                </li>
-                <li>
-                    <a class="nav-link dropdown-link" href="#">
-                        <i class="icofont-lock"></i><span>الآمان</span>
-                    </a>
-                    <ul class="dropdown-list">
-                        <li><a href="change-password.html">@lang('dashboard.change_password')</a></li>
-                    </ul>
-                </li>
+                </li> --}}
+
+                @auth
+                    <li>
+                        <a class="nav-link dropdown-link" href="#">
+                            <i class="icofont-lock"></i><span>@lang('home.safety')</span>
+                        </a>
+                        <ul class="dropdown-list">
+                            <li><a href="{{ route('change_password.index') }}">@lang('home.change_password')</a></li>
+                        </ul>
+                    </li>
+                @endauth
+
                 <li>
                     <a class="nav-link" href="{{ route('offers.clients.index') }}">
                         <i class="icofont-sale-discount"></i>
@@ -399,9 +411,9 @@
                     <p><small>@lang('dashboard.email')</small><span>{{ setting('email') }}</span></p>
                 </div>
             </div>
-            <div class="nav-footer">
+            {{-- <div class="nav-footer">
                 <p>الحقوق محفوظة لـ <a href="#">مزارع السودان</a></p>
-            </div>
+            </div> --}}
         </div>
     </aside>
     <menu class="mobile-menu">
@@ -418,7 +430,6 @@
         </a>
         <button class="header-widget header-cart" title="@lang('home.shops')">
             <i class="fas fa-shopping-basket"></i>
-            {{-- <span> @lang('home.shops')</span> --}}
             <sup>{{ Cart::count() }}</sup>
         </button>
         <a href="{{ route('home.contact') }}" title="@lang('dashboard.contacts')">
@@ -434,7 +445,10 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
                             <div class="view-gallery">
-                                <div class="view-label-group"><label class="view-label new">جديد</label><label class="view-label off">-10%</label></div>
+                                <div class="view-label-group">
+                                    <label class="view-label new">@lang('home.new')</label>
+                                    {{-- <label class="view-label off">-10%</label> --}}
+                                </div>
                                 <ul class="preview-slider slider-arrow">
                                     <li><img src="images/product/01.jpg" alt="product"></li>
                                     <li><img src="images/product/01.jpg" alt="product"></li>
