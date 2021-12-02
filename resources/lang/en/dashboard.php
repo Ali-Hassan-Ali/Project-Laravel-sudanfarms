@@ -133,6 +133,7 @@ return [
     'name'                  => 'Full Name',
     'email'                 => 'Email',
     'image'                 => 'Image',
+    'mult_image'            => 'You can add more than one picture',
     'phone'                 => 'phone',
     'phone_one'             => 'phone one',
     'password'              => 'Password',

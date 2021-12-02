@@ -177,6 +177,8 @@ return [
 
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
+        Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
+
 
     ],
 

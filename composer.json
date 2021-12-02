@@ -14,6 +14,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "mcamara/laravel-localization": "^1.6",
+        "mckenziearts/laravel-notify": "^2.2",
         "santigarcor/laratrust": "^6.3"
     },
     "require-dev": {

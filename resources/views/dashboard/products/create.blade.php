@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>@lang('dashboard.image')</label>
+                            <label>@lang('dashboard.image') | @lang('dashboard.mult_image')</label>
                             <input type="file" multiple name="image[]" class="form-control image">
                         </div>
 
@@ -119,14 +119,14 @@
                             <input type="date" name="end_time" class="form-control" value="{{ old('end_time') }}">
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>@lang('dashboard.stars')</label>
                             <select name="stars" class="form-control">
                                 @for ($i = 1; $i < 7; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</button>

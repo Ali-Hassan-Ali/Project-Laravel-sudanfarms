@@ -92,7 +92,7 @@
 	                                                <a href="{{ route('products.edit', $product->id) }}" class="btn-info btn-sm">
 	                                                	<i class="fa fa-edit"></i>
 	                                                </a>
-	                                                <a href="{{ route('products.show', $product->id) }}" class="btn-info btn-sm">
+	                                                <a href="{{ route('product.show', $product->id) }}" class="btn-info btn-sm">
 	                                                	<i class="fa fa-eye"></i>
 	                                                </a>
 	                                                <form action="{{ route('products.destroy', $product->id) }}" method="post" style="display: inline-block">

@@ -45,12 +45,11 @@ class ProductController extends Controller
             'price'             => 'required',
             'price_decount'     => 'required',
             'sub_category_id'   => 'required',
-            // 'user_id'           => 'required',
-            // 'image'             => 'required',
+            'image'             => 'required',
         ]);
 
         try {
-
+            // return 'fda';
             $request_data = $request->except('image');
 
             $request_data['user_id'] = auth()->user()->id;
@@ -71,6 +70,7 @@ class ProductController extends Controller
                 ]);
             }
 
+            notify()->success( __('dashboard.added_successfully'));
 
             return redirect()->route('products.index');
 
@@ -118,8 +118,6 @@ class ProductController extends Controller
             'price'             => 'required',
             'price_decount'     => 'required',
             'sub_category_id'   => 'required',
-            // 'user_id'         => 'required',
-            // 'image'           => 'image',
         ]);
 
       try {
@@ -159,6 +157,8 @@ class ProductController extends Controller
 
             }//end fo if image
 
+            notify()->success( __('dashboard.updated_successfully'));
+
             return redirect()->route('products.index');
 
         } catch (\Exception $e) {
@@ -187,7 +187,8 @@ class ProductController extends Controller
             } //end of if
 
             $product->delete();
-            session()->flash('success', __('dashboard.deleted_successfully'));
+            
+            notify()->success( __('dashboard.deleted_successfully'));
             return redirect()->route('products.index');
 
         } catch (\Exception $e) {

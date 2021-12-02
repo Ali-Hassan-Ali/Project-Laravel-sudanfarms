@@ -39,7 +39,6 @@ class ClientsController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'name'        => ['required','max:255'],
             'email'       => 'required|unique:users',
@@ -59,13 +58,7 @@ class ClientsController extends Controller
 
             if ($request->image) {
 
-                Image::make($request->image)
-                    ->resize(300, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })
-                    ->save('uploads/user_images/' . $request->image->hashName());
-
-                $request_data['image'] = $request->image->hashName();
+                $request_data['image'] = $request->file('image')->store('user_images','public');
 
             } //end of if
 
@@ -112,7 +105,13 @@ class ClientsController extends Controller
 
         try {
 
-            $request_data = $request->except(['image']);
+            $request_data             = $request->except(['password', 'password_confirmation', 'image']);
+
+            if ($request->image) {
+                
+                $request_data['password'] = bcrypt($request->password);
+                
+            }
 
             if ($request->image) {
 
@@ -122,13 +121,7 @@ class ClientsController extends Controller
 
                 } //end of inner if
 
-                Image::make($request->image)
-                    ->resize(300, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })
-                    ->save('uploads/user_images/' . $request->image->hashName());
-
-                $request_data['image'] = $request->image->hashName();
+                $request_data['image'] = $request->file('image')->store('user_images','public');
 
             } //end of external if
 

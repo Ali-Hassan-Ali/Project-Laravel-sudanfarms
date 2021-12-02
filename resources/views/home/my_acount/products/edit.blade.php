@@ -4,24 +4,25 @@
 
 @section('title', __('dashboard.products'))
 
-
+<section class="inner-section single-banner">
+    <div class="container">
+        <h2>@lang('dashboard.dashboard')</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">@lang('dashboard.home')</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('profile.index') }}">@lang('home.profile')</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.products')</li>
+        </ol>
+    </div>
+</section>
 
 <section class="inner-section profile-part">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="account-card">
-                    <div class="account-title">
-                        <a href="{{ route('profile.index') }}"><h4>الملف الشخصي</h4></a>
-                    </div>
                     <div class="account-content">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="profile-image">
-                            	   <img src="{{ auth()->user()->image_path }}" class="rounded-circle" alt="user" width="150">
-                                </div>
-                            </div>
-
+                        <div class="row pt-5 mt-5">
+                           
                             @include('partials._errors')
 
 		                    <form action="{{ route('products.update', $product->id) }}" method="post" enctype="multipart/form-data">
@@ -31,7 +32,7 @@
 
 		                        @php
 		                            $names  = ['name_ar','name_en'];
-		                            $descr  = ['description_ar','description_en'];
+		                            $descr  = ['description_ar','description_en','conditions_ar','conditions_en'];
 		                            $qguard = ['quantity_guard_ar','quantity_guard_en'];
 		                        @endphp
 
@@ -73,7 +74,7 @@
 		                        </div>
 
 		                        <div class="form-group">
-		                            <label>@lang('dashboard.image')</label>
+		                            <label>@lang('dashboard.image') | @lang('dashboard.mult_image')</label>
 		                            <input type="file" multiple name="image[]" class="form-control image">
 		                        </div>
 
@@ -81,7 +82,7 @@
 		                            $images = App\Models\ImageProduct::where('product_id',$product->id)->get();
 		                        @endphp
 
-		                        <div class="form-group">
+		                        <div class="form-group d-block">
 		                            @foreach ($images as $image)
 
 		                                <img src="{{ $image->image_path }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
@@ -115,21 +116,12 @@
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.start_time')</label>
-		                            <input type="data" name="start_time" class="form-control" value="{{ $product->start_time }}">
+		                            <input type="date" name="start_time" class="form-control" value="{{ $product->start_time }}">
 		                        </div>
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.end_time')</label>
-		                            <input type="data" name="end_time" class="form-control" value="{{ $product->end_time }}">
-		                        </div>
-
-		                        <div class="form-group">
-		                            <label>@lang('dashboard.stars')</label>
-		                            <select name="stars" class="form-control">
-		                                @for ($i = 1; $i < 7; $i++)
-		                                    <option value="{{ $i }}" {{ $i == $product->stars ? 'selected' : '' }}>{{ $i }}</option>
-		                                @endfor
-		                            </select>
+		                            <input type="date" name="end_time" class="form-control" value="{{ $product->end_time }}">
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4 mx-auto">

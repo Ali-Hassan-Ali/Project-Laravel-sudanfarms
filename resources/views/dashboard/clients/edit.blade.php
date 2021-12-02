@@ -25,16 +25,7 @@
 
             <div class="box-body">
 
-                {{-- @include('partials._errors') --}}
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                @include('partials._errors')
 
                 <form action="{{ route('dashboard.clients.update', $client->id) }}" method="post" enctype="multipart/form-data">
 
@@ -124,6 +115,16 @@
 
                     <div class="form-group">
                         <img src="{{ $client->image_path }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.password')</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>@lang('dashboard.password_confirmation')</label>
+                        <input type="password" name="password_confirmation" class="form-control">
                     </div>
 
                     <div class="form-group">

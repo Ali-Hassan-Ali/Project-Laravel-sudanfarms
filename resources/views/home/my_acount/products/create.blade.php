@@ -4,23 +4,24 @@
 
 @section('title', __('dashboard.products'))
 
-
+<section class="inner-section single-banner">
+    <div class="container">
+        <h2>@lang('dashboard.dashboard')</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">@lang('dashboard.home')</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('profile.index') }}">@lang('home.profile')</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.products')</li>
+        </ol>
+    </div>
+</section>
 
 <section class="inner-section profile-part">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="account-card">
-                    <div class="account-title">
-                        <a href="{{ route('profile.index') }}"><h4>الملف الشخصي</h4></a>
-                    </div>
                     <div class="account-content">
                         <div class="row">
-                            {{-- <div class="col-lg-12 mx-auto">
-                                <div class="profile-image">
-                            	   <img src="{{ auth()->user()->image_path }}" class="rounded-circle" alt="user" width="150">
-                                </div>
-                            </div> --}}
                             <div class="col-10 mx-auto my-5">
                                 <div class="profile-image">
                             	  
@@ -28,7 +29,7 @@
                                 </div>
                             </div>
 
-                            @include('partials._errors')
+                            {{-- @include('partials._errors') --}}
 
 		                    <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
 
@@ -37,7 +38,7 @@
 
 		                        @php
 		                            $names  = ['name_ar','name_en'];
-		                            $descr  = ['description_ar','description_en'];
+		                            $descr  = ['description_ar','description_en','conditions_ar','conditions_en'];
 		                            $qguard = ['quantity_guard_ar','quantity_guard_en'];
 		                        @endphp
 
@@ -45,7 +46,12 @@
 
 		                            <div class="form-group">
 		                                <label>@lang('dashboard.' . $name)</label>
-		                                <input type="text" name="{{ $name }}" class="form-control" value="{{ old($name) }}">
+		                                <input type="text" name="{{ $name }}" class="form-control @error($name) is-invalid @enderror" value="{{ old($name) }}">
+		                                @error($name)
+		                                    <span class="invalid-feedback" role="alert">
+		                                        <strong>{{ $message }}</strong>
+		                                    </span>
+		                                @enderror
 		                            </div>
 		                            
 		                        @endforeach
@@ -54,14 +60,19 @@
 
 		                            <div class="form-group">
 		                                <label>@lang('dashboard.' . $desc)</label>
-		                                <textarea type="text" name="{{ $desc }}" class="ckeditor form-control">{{ old($desc) }}</textarea>
+		                                <textarea type="text" name="{{ $desc }}" class="ckeditor form-control @error($desc) is-invalid @enderror">{{ old($desc) }}</textarea>
+		                                @error($desc)
+		                                    <span class="invalid-feedback" role="alert">
+		                                        <strong>{{ $message }}</strong>
+		                                    </span>
+		                                @enderror
 		                            </div>
 		                            
 		                        @endforeach
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.categorey')</label>
-		                            <select id="select-category" class="form-control">
+		                            <select id="select-category" required class="form-control @error('email') is-invalid @enderror">
 		                                <option value="">@lang('dashboard.all_categories')</option>
 		                                @foreach ($sub_categoreys as $category)
 		                                    <option value="{{ $category->id }}" data-id="{{ $category->id }}" data-url="{{ route('home.sub_categorys',$category->id) }}"
@@ -72,14 +83,19 @@
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.categorey')</label>
-		                            <select name="sub_category_id" id="select-sub-category" class="form-control">                            
+		                            <select name="sub_category_id" id="select-sub-category" class="form-control @error('sub_category_id') is-invalid @enderror">                            
 		                                    <option value=""></option>
 		                            </select>
 		                        </div>
 
 		                        <div class="form-group">
-		                            <label>@lang('dashboard.image')</label>
-		                            <input type="file" multiple name="image[]" class="form-control image">
+		                            <label>@lang('dashboard.image') | @lang('dashboard.mult_image')</label>
+		                            <input type="file" multiple name="image[]" class="form-control @error('image') is-invalid @enderror image">
+		                            @error('image')
+	                                    <span class="invalid-feedback" role="alert">
+	                                        <strong>{{ $message }}</strong>
+	                                    </span>
+	                                @enderror
 		                        </div>
 
 		                        <div class="form-group">
@@ -88,46 +104,76 @@
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.price')</label>
-		                            <input type="number" step="0.01" step="any" name="price" class="form-control" value="{{ old('price') }}">
+		                            <input type="number" step="0.01" step="any" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
+		                            @error('price')
+	                                    <span class="invalid-feedback" role="alert">
+	                                        <strong>{{ $message }}</strong>
+	                                    </span>
+	                                @enderror
 		                        </div>
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.price_decount')</label>
-		                            <input type="number" step="0.01" step="any" name="price_decount" class="form-control" value="{{ old('price_decount') }}">
+		                            <input type="number" step="0.01" step="any" name="price_decount" class="form-control @error('price_decount') is-invalid @enderror" value="{{ old('price_decount') }}">
+		                            @error('price_decount')
+	                                    <span class="invalid-feedback" role="alert">
+	                                        <strong>{{ $message }}</strong>
+	                                    </span>
+	                                @enderror
 		                        </div>
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.quantity')</label>
-		                            <input type="number" name="quantity" class="form-control" value="{{ old('quantity') }}">
+		                            <input type="number" name="quantity" class="form-control @error('quantity') is-invalid @enderror" value="{{ old('quantity') }}">
+		                            @error('quantity')
+	                                    <span class="invalid-feedback" role="alert">
+	                                        <strong>{{ $message }}</strong>
+	                                    </span>
+	                                @enderror
 		                        </div>
 
 		                        @foreach ($qguard as $name)
 
 		                            <div class="form-group">
 		                                <label>@lang('dashboard.' . $name)</label>
-		                                <input type="text" name="{{ $name }}" class="form-control" value="{{ old($name) }}">
+		                                <input type="text" name="{{ $name }}" class="form-control @error($name) is-invalid @enderror" value="{{ old($name) }}">
+		                                @error($name)
+		                                    <span class="invalid-feedback" role="alert">
+		                                        <strong>{{ $message }}</strong>
+		                                    </span>
+		                                @enderror
 		                            </div>
 		                            
 		                        @endforeach
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.start_time')</label>
-		                            <input type="date" name="start_time" class="form-control" value="{{ old('start_time') }}">
+		                            <input type="date" name="start_time" class="form-control @error('start_time') is-invalid @enderror" value="{{ old('start_time') }}">
+		                            @error('start_time')
+	                                    <span class="invalid-feedback" role="alert">
+	                                        <strong>{{ $message }}</strong>
+	                                    </span>
+	                                @enderror
 		                        </div>
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.end_time')</label>
-		                            <input type="date" name="end_time" class="form-control" value="{{ old('end_time') }}">
+		                            <input type="date" name="end_time" class="form-control @error('end_time') is-invalid @enderror" value="{{ old('end_time') }}">
+		                            @error('end_time')
+	                                    <span class="invalid-feedback" role="alert">
+	                                        <strong>{{ $message }}</strong>
+	                                    </span>
+	                                @enderror
 		                        </div>
 
-		                        <div class="form-group">
+{{-- 		                        <div class="form-group">
 		                            <label>@lang('dashboard.stars')</label>
 		                            <select name="stars" class="form-control">
 		                                @for ($i = 1; $i < 7; $i++)
 		                                    <option value="{{ $i }}">{{ $i }}</option>
 		                                @endfor
 		                            </select>
-		                        </div>
+		                        </div> --}}
 
 		                        <div class="col-md-6 col-lg-4 mx-auto">
 		                            <div class="form-group">

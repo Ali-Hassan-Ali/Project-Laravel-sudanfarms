@@ -88,7 +88,8 @@ class ProfileController extends Controller
             $request_data['country'] = 'sfgsfg';
 
         $user->update($request_data);
-        dd($user);
+
+        notify()->success('Welcome to Laravel Notify ⚡️');
         
         return redirect()->back();
 

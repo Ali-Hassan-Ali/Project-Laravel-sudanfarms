@@ -34,6 +34,11 @@
     {{-- plugin  sweetalert2--}}
     <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }} ">
 
+    {{-- include packages notify css --}}
+    @notifyCss
+
+    {{--noty--}}
+    <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/noty/noty.css') }}">
 
 </head>
 
@@ -44,7 +49,8 @@
     @yield('content')
 
     @include('home.layout.include._footer')
-
+        
+    <x:notify-messages />
 
     {{-- js vendor --}}
     <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
@@ -72,12 +78,45 @@
 
     {{-- cart and shoping js --}}
     <script src="{{ asset('home_files/js/cart.js') }} "></script>
+
+    {{-- image preview.js --}}
+    <script src="{{ asset('home_files/js/image_preview.js') }} "></script>
+
+    {{--noty js--}}
+    <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
+
+    {{-- include packages notify js --}}
+    @notifyJs
     
     <script type="text/javascript">
-        // $('.counter').counterUp({
-        //     delay: 10,
-        //     time: 4000
-        // });
+        $(document).ready(function() {
+
+            $('.delete').click(function (e) {
+
+                var that = $(this)
+
+                e.preventDefault();
+
+                var n = new Noty({
+                    text: "@lang('dashboard.confirm_delete')",
+                    type: "warning",
+                    killer: true,
+                    buttons: [
+                        Noty.button("@lang('dashboard.yes')", 'btn btn-success mr-2', function () {
+                            that.closest('form').submit();
+                        }),
+
+                        Noty.button("@lang('dashboard.no')", 'btn btn-primary mr-2', function () {
+                            n.close();
+                        })
+                    ]
+                });
+
+                n.show();
+
+            });//end of confirm_delete
+
+        });//end of document redy
     </script>
     @stack('profile')
     @stack('products')

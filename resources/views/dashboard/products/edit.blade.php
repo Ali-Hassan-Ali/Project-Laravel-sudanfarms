@@ -62,11 +62,11 @@
                             <label>@lang('dashboard.categorey')</label>
                             <select name="sub_category_id" class="form-control">
                                 <option value="">@lang('dashboard.all_categories')</option>
-                                {{-- @foreach ($sub_categoreys as $category)
+                                @foreach ($sub_categoreys as $category)
                                     <option value="{{ $category->id }}" {{ $categorey_id->id == $category->id ? 'selected' : '' }}>
                                         {{ $category->name }}
                                     </option>
-                                @endforeach --}}
+                                @endforeach
                             </select>
                         </div>
 
@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>@lang('dashboard.image')</label>
+                            <label>@lang('dashboard.image') | @lang('dashboard.mult_image')</label>
                             <input type="file" multiple name="image[]" class="form-control image">
                         </div>
 
@@ -128,14 +128,14 @@
                             <input type="data" name="end_time" class="form-control" value="{{ $product->end_time }}">
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>@lang('dashboard.stars')</label>
                             <select name="stars" class="form-control">
                                 @for ($i = 1; $i < 7; $i++)
                                     <option value="{{ $i }}" {{ $i == $product->stars ? 'selected' : '' }}>{{ $i }}</option>
                                 @endfor
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> @lang('dashboard.edit')</button>

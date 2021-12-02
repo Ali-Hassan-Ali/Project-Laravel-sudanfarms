@@ -66,7 +66,7 @@
                                     <th>@lang('dashboard.users')</th>
                                     <th>@lang('dashboard.price')</th>
                                     <th>@lang('dashboard.price_decount')</th>
-                                    <th>@lang('dashboard.stars')</th>
+                                    {{-- <th>@lang('dashboard.stars')</th> --}}
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
@@ -95,11 +95,11 @@
                                         <td>{{ $product->user->name }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->price_decount }}</td>
-                                        <td>
+                                        {{-- <td>
                                             @for ($i = 0; $i < $product->stars; $i++)
                                                 <i class="fa fa-star" style="color: #ffe066;"></i>
                                             @endfor
-                                        </td>
+                                        </td> --}}
                                         <td>{{ $product->created_at }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('products_update'))
