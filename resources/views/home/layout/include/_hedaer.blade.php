@@ -93,7 +93,9 @@
 
                     <a href="{{ setting('instagram') }}" target="_blank" class="header-widget"><i class="icofont-instagram"></i></a>
 
-                    <a href="{{ setting('pinterest') }}" target="_blank" class="header-widget"><i class="icofont-pinterest"></i></a>
+                    <a href="{{ setting('whatsapp') }}" target="_blank" class="header-widget">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
 
                     <button class="header-widget header-cart" title="@lang('home.cart')"><i class="fas fa-shopping-basket"></i><sup>{{ Cart::count() }}</sup></button>
                 </div>
@@ -495,7 +497,7 @@
                                         <li><a href="{{ setting('facebook') }}" class="icofont-facebook" title="Facebook"></a></li>
                                         <li><a href="{{ setting('twitter') }}" class="icofont-twitter" title="Twitter"></a></li>
                                         <li><a href="{{ setting('instagram') }}" class="icofont-instagram" title="Instagram"></a></li>
-                                        <li><a href="{{ setting('pinterest') }}" class="icofont-pinterest" title="Pintrest"></a></li>
+                                        <li><a href="{{ setting('whatsapp') }}" class="fab fa-whatsapp" title="whatsapp"></a></li>
                                     </ul>
                                 </div>
                                 <div class="view-add-group"><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>

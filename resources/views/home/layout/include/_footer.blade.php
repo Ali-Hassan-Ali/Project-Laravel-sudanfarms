@@ -113,7 +113,7 @@
                             <li><a class="icofont-facebook" target="_blank" href="{{ setting('facebook') }}"></a></li>
                             <li><a class="icofont-twitter" target="_blank" href="{{ setting('twitter') }}"></a></li>
                             <li><a class="icofont-instagram" target="_blank" href="{{ setting('instagram') }}"></a></li>
-                            <li><a class="icofont-pinterest" target="_blank" href="{{ setting('pinterest') }}"></a></li>
+                            <li><a class="fab fa-whatsapp" target="_blank" href="{{ setting('whatsapp') }}"></a></li>
                         </ul>
                     </div>
                 </div>
