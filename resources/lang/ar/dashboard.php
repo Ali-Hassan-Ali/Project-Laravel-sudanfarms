@@ -2,6 +2,9 @@
 
 return [
 
+    'englsih'        => 'الانجليزية',
+    'arbic'          => 'العربية',
+
     'available'        => 'مفعل',
     'not_available'    => 'غير مفعل',
     'login'            => 'دخول',

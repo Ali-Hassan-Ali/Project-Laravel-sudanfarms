@@ -154,23 +154,25 @@
                                 <a class="navbar-link" href="{{ route('home.contact') }}">@lang('dashboard.contacts')</a>
                             </li>
 
-                            <li class="navbar-item dropdown">
-                                <a class="navbar-link dropdown-arrow" href="javascript:void(0);">
-                                    @lang('home.language')
+                            <li class="navbar-item">
+                                <a class="navbar-link" hreflang="{{ app()->getLocale() == 'ar' ? 'en' : 'ar' }}" 
+                                    href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale() == 'ar' ? 'en' : 'ar', null, [], true) }}">
+                                    @if (app()->getLocale() == 'ar')
+
+                                        <span class="d-flex align-items-start">
+                                            @lang('dashboard.englsih') 
+                                            <img width="50" class="mx-1" src="{{ asset('home_files/image/lang/en.png') }}">
+                                        </span>
+                                        
+                                    @else
+
+                                        <span class="d-flex align-items-start">
+                                            @lang('dashboard.arbic') 
+                                            <img width="50" class="mx-1" src="{{ asset('home_files/image/lang/ar.png') }}">
+                                        </span>
+
+                                    @endif
                                 </a>
-                                <ul class="dropdown-position-list">
-                                    
-                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                    
-                                    <li>
-                                        <a hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                            {{ $properties['native'] }}
-                                        </a>
-                                    </li>
-
-                                    @endforeach
-
-                                </ul>
                             </li>
 
                         </ul>
@@ -327,39 +329,40 @@
                 @endauth
             </div>
             <ul class="nav-list">
+
                 <li>
                     <a class="nav-link" href="/">
                         <i class="icofont-home"></i><span>@lang('dashboard.home')</span>
                     </a>
                 </li>
+
                 <li>
-                    <a class="nav-link dropdown-link" href="#">
-                        <i class="icofont-lock"></i><span>@lang('home.language')</span>
+                    <a class="nav-link" hreflang="{{ app()->getLocale() == 'ar' ? 'en' : 'ar' }}" 
+                        href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale() == 'ar' ? 'en' : 'ar', null, [], true) }}">
+                        @if (app()->getLocale() == 'ar')
+
+                            <i class="icofont-food-cart"></i>
+                            <span class="d-flex align-items-start">
+                                @lang('dashboard.englsih') 
+                                <img width="50" class="mx-1" src="{{ asset('home_files/image/lang/en.png') }}">
+                            </span>
+                            
+                        @else
+                            <i class="icofont-food-cart"></i>
+                            <span class="d-flex align-items-start">
+                                @lang('dashboard.arbic') 
+                                <img width="50" class="mx-1" src="{{ asset('home_files/image/lang/ar.png') }}">
+                            </span>
+
+                        @endif
                     </a>
-                    <ul class="dropdown-list">
-                        
-                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        
-                        <li>
-                            <a hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
-                            </a>
-                        </li>
-
-                        @endforeach
-
-                    </ul>
                 </li>
+
                 <li>
                     <a class="nav-link" href="{{ route('shops.index') }}">
                         <i class="icofont-food-cart"></i><span>@lang('home.shops')</span>
                     </a>
                 </li>
-                {{-- <li>
-                    <a class="nav-link" onclick="event.preventDefault();document.getElementById('category-model').click();">
-                        <i class="icofont-page"></i><span>@lang('dashboard.products')</span>
-                    </a>
-                </li> --}}
 
                 @auth
                     <li>
@@ -380,7 +383,7 @@
                 </li>
                 <li>
                     <a class="nav-link" href="{{ route('profile.index') }}">
-                        <i class="icofont-user-alt-3"></i><span>@lang('dashboard.profile')</span>
+                        <i class="icofont-user-alt-3"></i><span>@lang('home.profile')</span>
                     </a>
                 </li>
                 <li>

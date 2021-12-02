@@ -2,6 +2,8 @@
 
 return [
 
+    'englsih'        => 'Englsih',
+    'arbic'          => 'Arbic',
 
     'available'          => 'available',
     'not_available'      => 'not available',
