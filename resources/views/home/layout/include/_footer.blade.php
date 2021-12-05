@@ -8,10 +8,14 @@
                     </div>
                 </div>
                 <div class="col-md-7 col-lg-6 col-xl-5">
-                    <form class="news-form">
-                        <input type="text" placeholder=" @lang('dashboard.email')">
-                        <button><span><i class="icofont-ui-email"></i> @lang('home.participation')</span></button>
+                    <form class="news-form" action="" method="post">
+                        <input type="email" required class="newsletter-val" placeholder=" @lang('dashboard.email')">
+                        <button type="email" required class="newsletter-email" data-url="{{ route('newsletter') }}">
+                            <span><i class="icofont-ui-email"></i> 
+                            @lang('home.participation')</span>
+                        </button>
                     </form>
+                    <span class="text-light newsletter-val-error"></span>
                 </div>
             </div>
         </div>

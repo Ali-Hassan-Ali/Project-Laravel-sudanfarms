@@ -40,6 +40,12 @@
     {{--noty--}}
     <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/noty/noty.css') }}">
 
+    <style type="text/css">
+        .dd {
+                border: solid 3px red!important;
+        }
+    </style>
+
 </head>
 
 <body class="scrollspy" data-bs-spy="scroll" data-bs-target="#scrollspy">
