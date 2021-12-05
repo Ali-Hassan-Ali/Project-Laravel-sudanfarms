@@ -26,6 +26,7 @@ use App\Http\Controllers\Dashboard\Setting\FileController;
 use App\Http\Controllers\Dashboard\Setting\CommonQuestionController;
 use App\Http\Controllers\Dashboard\Setting\NewsletterController;
 use App\Http\Controllers\Dashboard\Setting\PolicyController;
+use App\Http\Controllers\Dashboard\Setting\AdvertisementController;
 
 
 
@@ -101,6 +102,7 @@ function () {
             Route::resource('blogs', BlogController::class)->except(['show']);
             Route::resource('files', FileController::class)->except(['show']);
             Route::resource('common_questions', CommonQuestionController::class)->except(['show']);
+            Route::resource('advertisements', AdvertisementController::class)->except(['create','store','show','destroy']);
 
             //settings route
             Route::get('services', [SettingController::class,'services'])->name('services.index');

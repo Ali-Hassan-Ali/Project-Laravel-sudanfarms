@@ -76,7 +76,7 @@ class LoginController extends Controller
 
         Auth::guard('web')->logout();
 
-        return $this->index();
+        return redirect()->route('home.login');
 
     }//end of logout seller
 

@@ -272,6 +272,8 @@ return [
     'manager_word_ar'  => 'كلمة المدير بلعربي',
     'manager_word_en'  => 'كلمة المدير بلانجلزي',
     
+    'advertisements'  => 'الاعلانات',
+    
 
 
 ];

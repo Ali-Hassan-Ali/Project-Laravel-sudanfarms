@@ -133,18 +133,28 @@
         </div>
     </section>
 
-    <div class="section promo-part">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="promo-img">
-                        <a href=""><img src="{{ asset('home_files/image/newsletter.jpg') }}" alt="promo"></a>
-                        <h3>مساحة إعلانية</h3>
+    @php
+         $advertone = App\Models\Advertisement::where('id', '1')->first();
+         $adverttow = App\Models\Advertisement::where('id', '2')->first();
+         $adverthre = App\Models\Advertisement::where('id', '3')->first();
+    @endphp
+
+    @if ($advertone->status == '1')
+
+        <div class="section promo-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="promo-img">
+                            <a href="{{ $advertone->link }}"><img src="{{ $advertone->image_path }}" alt="promo"></a>
+                            <h3>{{ $advertone->title }}</h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    @endif
 
     <section class="section feature-part">
         <div class="container">
@@ -262,6 +272,7 @@
             </div>
         </div>
     </section>
+
     <section class="section newitem-part">
         <div class="container">
             <div class="row">
@@ -353,477 +364,30 @@
     <div class="section promo-part">
         <div class="container">
             <div class="row">
+
+                @if ($adverttow->status == '1')
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
+                        <div class="promo-img">
+                            <a href="{{ $adverttow->link }}"><img src="{{ $adverttow->image_path }}" alt="promo"></a>
+                            <h3>{{ $adverttow->title }}</h3>
+                        </div>
+                    </div>
+                    
+                @endif
+
+                @if ($adverthre->status == '1')
                 <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                    <div class="promo-img"><a href=""><img src="{{ asset('home_files/image/blog/01.jpg') }}" alt="promo"></a>
-                        <h3>مساحة إعلانية</h3>
+                    <div class="promo-img">
+                        <a href="{{ $adverthre->link }}"><img src="{{ $adverthre->image_path }}" alt="promo"></a>
+                        <h3>{{ $adverthre->title }}</h3>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                    <div class="promo-img"><a href=""><img src="{{ asset('home_files/image/blog/02.jpg') }}" alt="promo"></a>
-                        <h3>مساحة إعلانية</h3>
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>
 
-{{--     <section class="section niche-part">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>تصفح حسب التخصص</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="nav nav-tabs">
-                        <li><a href="#top-order" class="tab-link active" data-bs-toggle="tab"><i class="icofont-price"></i><span>الأعلى طلبا</span></a></li>
-                        <li><a href="#top-rate" class="tab-link" data-bs-toggle="tab"><i class="icofont-star"></i><span>الأعلى تقييما</span></a></li>
-                        <li><a href="#top-disc" class="tab-link" data-bs-toggle="tab"><i class="icofont-sale-discount"></i><span>الأعلى تخفيضا</span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tab-pane active" id="top-order">
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">314</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/01.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">فلفل أخضر طازج</a></h6>
-                                <h6 class="product-price"><del>SDG34</del><span>SDG28<small>/قطعة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">940</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/02.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><a href="#">(6)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">جزر طازج</a></h6>
-                                <h6 class="product-price"><del>SDG50</del><span>SDG23<small>/كيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">425</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/03.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(5)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">كوسة هجين روزين</a></h6>
-                                <h6 class="product-price"><del>SDG34</del><span>SDG28<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">200</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/04.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">باذنجان</a></h6>
-                                <h6 class="product-price"><del>SDG300</del><span>SDG108<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">150</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/05.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">بامية</a></h6>
-                                <h6 class="product-price"><del>SDG34</del><span>SDG28<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">416</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/06.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(7)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">طماطم فريش</a></h6>
-                                <h6 class="product-price"><del>SDG77</del><span>SDG43<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card product-disable">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">314</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/07.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">بصل أحمر</a></h6>
-                                <h6 class="product-price"><del>SDG100</del><span>SDG77<small>/كرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">800</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/08.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><i class=" icofont-star"></i><i class="icofont-star"></i><a href="#">(8)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">ملفوف</a></h6>
-                                <h6 class="product-price"><del>SDG66</del><span>SDG60<small>/القطعة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">350</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/09.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">بصل أبيض</a></h6>
-                                <h6 class="product-price"><del>SDG34</del><span>SDG28<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text order">600</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/10.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">فلفل أحمر طازج</a></h6>
-                                <h6 class="product-price"><del>SDG30</del><span>SDG19<small>/القطعة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="top-rate">
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">5.5</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/11.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">بامية</a></h6>
-                                <h6 class="product-price"><del>SDG50</del><span>SDG52<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">4.9</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/12.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(4)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">يقطين</a></h6>
-                                <h6 class="product-price"><del>SDG44</del><span>SDG20<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">4.8</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/13.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(7)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">فراولة</a></h6>
-                                <h6 class="product-price"><del>SDG34</del><span>SDG14<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">4.7</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/14.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(5)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">تفاح أحمر</a></h6>
-                                <h6 class="product-price"><del>SDG28</del><span>SDG18<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">4.8</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/15.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">لوز جديد</a></h6>
-                                <h6 class="product-price"><del>SDG35</del><span>SDG12<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">4.1</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/16.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(8)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">برتقال</a></h6>
-                                <h6 class="product-price"><del>SDG34</del><span>SDG28<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card product-disable">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">5.5</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/17.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">عنب اخضر</a></h6>
-                                <h6 class="product-price"><del>SDG100</del><span>SDG88<small>/كيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">5.5</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/18.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(6)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">الموز</a></h6>
-                                <h6 class="product-price"><del>SDG33</del><span>SDG21<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">5.5</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/19.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(9)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">أناناس</a></h6>
-                                <h6 class="product-price"><del>SDG30</del><span>SDG29<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text rate">5.5</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/20.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">الكرز</a></h6>
-                                <h6 class="product-price"><del>SDG14</del><span>SDG11<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="top-disc">
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-10%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/06.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(7)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">طماطم</a></h6>
-                                <h6 class="product-price"><del>SDG33</del><span>SDG22<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-20%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/07.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">بصل أحمر</a></h6>
-                                <h6 class="product-price"><del>SDG34</del><span>SDG28<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-30%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/08.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(8)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">ملفوف</a></h6>
-                                <h6 class="product-price"><del>SDG34</del><span>SDG10<small>/القطعة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-15%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/09.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><a href="#">(6)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">كوسة هجين</a></h6>
-                                <h6 class="product-price"><del>SDG77</del><span>SDG70<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-12%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/10.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">فلفل أحمر حار</a></h6>
-                                <h6 class="product-price"><del>SDG34</del><span>SDG28<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-10%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/11.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(5)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">بامية</a></h6>
-                                <h6 class="product-price"><del>SDG14</del><span>SDG11<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-20%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/12.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><i class=" icofont-star"></i><i class="icofont-star"></i><a href="#">(9)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">يقطين</a></h6>
-                                <h6 class="product-price"><del>SDG44</del><span>SDG39<small>/القطعة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-10%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/13.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(5)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">فراولة</a></h6>
-                                <h6 class="product-price"><del>SDG77</del><span>SDG54<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-15%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/14.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">تفاح أحمر</a></h6>
-                                <h6 class="product-price"><del>SDG84</del><span>SDG22<small>/الكرتونة</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text off">-10%</label></div><button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="single-product.html"><img src="images/product/15.jpg" alt="product"></a>
-                                <div class="product-widget"><a title="مقارنة المنتج" href="#" class="fas fa-random"></a><a title="فيديو المنتج" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a><a title="مشاهدة المنتج" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a></div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><a href="#">(6)</a></div>
-                                <h6 class="product-name"><a href="single-product.html">لوز</a></h6>
-                                <h6 class="product-price"><del>SDG85</del><span>SDG68<small>/الكيلو</small></span></h6><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-btn-25"><a href="#" class="btn btn-outline"><i class="fas fa-eye"></i><span>عرض المزيد</span></a></div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
     <section class="or-funfact-section position-relative">
         <div class="container">

@@ -35,6 +35,7 @@ return [
             'offers'           => 'c,r,u,d',
             'newsletters'      => 'c,r,u,d',
             'policys'          => 'c,r,u,d',
+            'advertisements'   => 'c,r,u',
         ],
         
         'admin' => [

@@ -51,7 +51,7 @@ class AuthController extends Controller
                     if (\Auth::guard('web')->attempt([
                         'email'    => $request->email, 
                         'password' => $request->password])) {
-                        return redirect()->route('welcome.index');
+                        return redirect()->route('profile.index');
 
                     } else {
                         
@@ -103,7 +103,7 @@ class AuthController extends Controller
                 
                 auth()->login($user);
 
-                return redirect()->route('welcome.index');
+                return redirect()->route('profile.index');
                 
             }//end of if auth
             
@@ -119,7 +119,7 @@ class AuthController extends Controller
     {
         Auth::guard('web')->logout();
 
-        return $this->login();
+        return redirect()->route('home.login');
 
     }//end of logout user
 

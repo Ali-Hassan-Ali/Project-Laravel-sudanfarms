@@ -135,6 +135,12 @@
                 </li>
             @endif
 
+           @if (auth()->user()->hasPermission('advertisements_read'))
+                <li class="{{ Route::Is(['dashboard.settings.advertisements.index','dashboard.settings.advertisements.create','dashboard.settings.advertisements.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.settings.advertisements.index') }}"><i class="fa fa-credit-card"></i><span>@lang('dashboard.advertisements')</span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('newsletters_read'))
                 <li class="{{ Route::Is(['dashboard.newsletters.index','dashboard.newsletters.create','dashboard.newsletters.edit']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.newsletters.index') }}"><i class="fa fa-credit-card"></i><span>@lang('dashboard.newsletters')</span></a>

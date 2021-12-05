@@ -274,4 +274,6 @@ return [
     'manager_word_ar'  => 'manager word arbic',
     'manager_word_en'  => 'manager word english',
 
+    'advertisements'  => 'advertisements',
+
 ];
