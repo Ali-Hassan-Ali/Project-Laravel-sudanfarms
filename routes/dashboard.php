@@ -45,6 +45,8 @@ function () {
 
         Route::get('/', [WelcomController::class,'index'])->name('welcome');
 
+        Route::get('promoted_dealer_count', [WelcomController::class,'promoted_dealer_count'])->name('promoted_dealer_count');
+
         // profile route
         Route::get('profile/edit', [LoginController::class,'edit'])->name('profile.edit');
         Route::put('profile/update/{user}', [LoginController::class,'update'])->name('profile.update');

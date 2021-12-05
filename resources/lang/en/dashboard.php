@@ -19,6 +19,10 @@ return [
     'welcome_ar'         => 'English welcome message',
     'welcom_en'          => 'Arbic welcome message',
 
+    'promoted_dealer_count' => 'Supplier Statistics',
+    'count_phone'           => 'Number of times contacted by phone',
+    'count_email'           => 'Number of times contacted by email',
+
     'services'           => 'Services',
     'about_ar'           => 'About the farms of Sudan in Arabic',
     'about_en'           => 'About the farms of Sudan in ُEnglish',

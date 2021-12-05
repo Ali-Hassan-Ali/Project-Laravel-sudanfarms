@@ -112,12 +112,14 @@
                             </ul>
                         </div>
                         <div class="details-action-group">
-                            <a class="details-wish wish" href="tel:{{ $promoted_dealer->phone }}" title="@lang('dashboard.call_me')">
+                            <a class="details-wish wish count-call-phone" 
+                                data-url="{{ route('count_call_phone',$promoted_dealer->id) }}" href="tel:{{ $promoted_dealer->phone }}" title="@lang('dashboard.call_me')">
                                 <i class="fas fa-phone-alt"></i><span>@lang('dashboard.call_me')</span>
                             </a>
                         </div>
                         <div class="details-action-group my-3">
-                            <a class="details-wish wish" href="mailto:{{ $promoted_dealer->email }}" title="@lang('dashboard.call_me') @lang('dashboard.email')">
+                            <a class="details-wish wish count-call-email" 
+                                data-url="{{ route('count_call_email',$promoted_dealer->id) }}" href="mailto:{{ $promoted_dealer->email }}" title="@lang('dashboard.call_me') @lang('dashboard.email')">
                                 <i class="icofont-ui-email"></i><span> @lang('dashboard.email')</span>
                             </a>
                         </div>

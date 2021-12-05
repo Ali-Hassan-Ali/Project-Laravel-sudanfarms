@@ -26,6 +26,9 @@ function () {
 
     Route::get('/', [WelcomController::class,'index'])->name('welcome.index');
 
+    Route::get('count_call_phone/{promoted_dealer}', [WelcomController::class,'count_call_phone'])->name('count_call_phone');
+    Route::get('count_call_email/{promoted_dealer}', [WelcomController::class,'count_call_email'])->name('count_call_email');
+
     //header contact
     Route::get('contact', [HeaderController::class,'contact'])->name('home.contact');
     Route::post('contact', [HeaderController::class,'contactStore'])->name('home.contact.store');

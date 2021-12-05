@@ -19,6 +19,8 @@ class CreatePromotedDealersTable extends Migration
             $table->bigInteger('category_dealer_id')->unsigned();
             
             $table->string('status')->default('0');
+            $table->string('count_call_phone')->default('0');
+            $table->string('count_call_email')->default('0');
             $table->string('company_name_ar')->nullable();
             $table->string('company_name_en')->nullable();
 

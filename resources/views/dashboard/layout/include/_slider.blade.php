@@ -19,6 +19,12 @@
                 </li>
             @endif
 
+            <li class="{{ Route::Is('dashboard.promoted_dealer_count') ? 'active' : '' }}">
+                <a href="{{ route('dashboard.promoted_dealer_count') }}">
+                    <i class="fa fa-dashboard"></i><span>@lang('dashboard.promoted_dealer_count')</span>
+                </a>
+            </li>
+
             @if (auth()->user()->hasPermission('users_read'))
                 <li class="{{ Route::Is(['dashboard.users.index','dashboard.users.create','dashboard.users.edit']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.users.index') }}"><i class="fas fa-users-cog"></i><span> @lang('dashboard.users') </span></a>

@@ -82,6 +82,9 @@
     {{-- image preview.js --}}
     <script src="{{ asset('home_files/js/image_preview.js') }} "></script>
 
+    {{-- products js.js --}}
+    <script src="{{ asset('home_files/js/products.js') }} "></script>
+
     {{--noty js--}}
     <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
 

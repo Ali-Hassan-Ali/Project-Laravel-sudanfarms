@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\PromotedDealer;
 use App\Models\Product;
+use App\Models\User;
 
 class WelcomController extends Controller
 {
@@ -25,5 +26,13 @@ class WelcomController extends Controller
         return view('dashboard.welcome',compact('admins_count','clients_count','products_count'));
 
     }//end of index function
+
+    public function promoted_dealer_count()
+    {
+        $promoted_dealers = PromotedDealer::whenSearch(request()->search)->latest()->paginate(10);
+
+        return view('dashboard.promoted_dealer_count',compact('promoted_dealers'));
+
+    }//end of promoted_dealer_count
     
 }//end of controller
