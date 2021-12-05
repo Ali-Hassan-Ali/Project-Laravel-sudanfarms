@@ -98,7 +98,7 @@ class UserController extends Controller
 
                 if ($user->image != 'default.png') {
 
-                    Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+                    Storage::disk('local')->delete('/user_images/' . $user->image);
 
                 } //end of inner if
 
@@ -127,7 +127,7 @@ class UserController extends Controller
 
             if ($user->image != 'default.png') {
 
-                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+                Storage::disk('local')->delete('/user_images/' . $user->image);
 
             } //end of if
 

@@ -21,12 +21,23 @@
             		
 	                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
 	                    <div class="attachment-box">
-	                        <img src="{{ asset('home_files/image/attach-pdf.png') }}" alt="">
+                            <div class="d-flex justify-content-center">
+	                           <img src="{{ asset('home_files/image/attach-pdf.png') }}" alt="">
+                            </div>
 	                        <h4>{{ $file->title }}</h4>
-	                        {{-- <h4>ملف PDF</h4> --}}
-	                        <a href="{{ $file->file_path }}" download="{{ $file->file_path }}">
-	                        	@lang('dashboard.download') <i class="fas fa-arrow-circle-down"></i>
-	                        </a>
+	                        @auth
+
+                                <a href="{{ $file->file_path }}" download="{{ $file->file_path }}">
+                                    @lang('dashboard.download') <i class="fas fa-arrow-circle-down"></i>
+                                </a>
+
+                            @else
+
+                                <a href="{{ route('home.login') }}">
+                                    @lang('dashboard.login') <i class="icofont-login"></i>
+                                </a>
+
+                            @endauth
 	                    </div>
 	                </div>
 

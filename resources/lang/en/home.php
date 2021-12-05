@@ -41,6 +41,7 @@ return [
     'Copy_link'	  		  => 'Copy the referral link',
     'login'               => 'Login',
     'register'            => 'Create Acount',
+    'remember'            => 'Remember',
     'don_account'         => 'Don t have an account?',
     'already_account'     => 'Already have an account?',
     'create_account'      => 'Create your account now!',

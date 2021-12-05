@@ -197,7 +197,7 @@
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ auth()->user()->image_path }}" class="user-image" alt="User Image">
-                            <span class="hidden-xs">{{ auth()->user()->name }} {{ auth()->user()->last_name }}</span>
+                            <span class="hidden-xs">{{ auth()->user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu" style="margin-top: 13px;">
 
@@ -230,7 +230,8 @@
                                     @csrf
                                 </form>
 
-                                <a href="/" class="btn btn-default btn-flat">@lang('home.home')</a>
+                                <a href="/" class="btn btn-default btn-flat">@lang('dashboard.home')</a>
+                                <a href="{{ route('dashboard.profile.edit') }}" class="btn btn-default btn-flat">@lang('home.profile')</a>
 
                             </li>
                         </ul>

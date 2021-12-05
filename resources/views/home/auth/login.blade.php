@@ -1,24 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>مزارع السودان - تسجيل جديد</title>
-    <link rel="icon" href="http://clickgrafix.cloud/sd-farm/images/logo.svg">
-    <link rel="stylesheet" href="http://clickgrafix.cloud/sd-farm/fonts/icofont/icofont.min.css">
-    <link rel="stylesheet" href="http://clickgrafix.cloud/sd-farm/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="http://clickgrafix.cloud/sd-farm/css/custom/main.css">
-    <link rel="stylesheet" href="http://clickgrafix.cloud/sd-farm/css/custom/user-form.css">
+    <title>@lang('home.welcome') | @lang('dashboard.login')</title>
+    <link rel="icon" href="{{ asset('home_files/image/logo.svg') }}">
+
+    {{-- vendor style --}}
+    <link rel="stylesheet" href="{{ asset('home_files/fonts/icofont/icofont.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/vendor/bootstrap.min.css') }}">
+
+    {{-- custom style --}}
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/user-form.css') }}">
 </head>
 
 <body>
+    
     <section class="user-form-part">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
-                    <div class="user-form-logo"><a href="index.html"><img src="http://clickgrafix.cloud/sd-farm/images/logo.svg" alt="logo"></a></div>
+                    <div class="user-form-logo"><a href="/"><img src="http://clickgrafix.cloud/sd-farm/images/logo.svg" alt="logo"></a></div>
                     <div class="user-form-card">
                         <div class="user-form-title">
                             <h2>إنضم الآن!</h2>
@@ -56,9 +60,10 @@
             </div>
         </div>
     </section>
-    <script src="http://clickgrafix.cloud/sd-farm/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="http://clickgrafix.cloud/sd-farm/js/vendor/popper.min.js"></script>
-    <script src="http://clickgrafix.cloud/sd-farm/js/vendor/bootstrap.min.js"></script>
+
+    <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/popper.min.js') }}"></script>
+    <script src="{{ asset('home_files/js/vendor/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

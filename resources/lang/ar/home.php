@@ -42,6 +42,7 @@ return [
     'Copy_link'  		  => 'نسخ رابط الإحالة',
     'login'               => 'تسجيل دخول',
     'register'            => 'إنشاء حساب',
+    'remember'            => 'تزكرتي',
     'don_account'         => 'لا تملك حساب؟',
     'already_account'     => 'هل لديك حساب بالفعل؟',
     'create_account'      => ' أنشئ حسابك الآن!',

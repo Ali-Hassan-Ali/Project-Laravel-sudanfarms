@@ -154,6 +154,28 @@
                 </div>
             </div>
 
+            @if (auth()->user()->hasPermission('dashboard_read'))
+
+                <div class="col-lg-12">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>@lang('dashboard.orders')</h4>
+                        </div>
+                        <div class="account-content">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4 alert fade show">
+                                    <div class="profile-card contact">
+                                        <h6><i class="fas fa-list"></i> @lang('dashboard.dashboard')</h6>
+                                        <a href="{{ route('dashboard.welcome') }}">@lang('dashboard.dashboard')</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            @endif
+
             @php
                 $user     = App\Models\PromotedDealer::where('user_id',auth()->user()->id)->first();
                 $products = App\Models\Product::where('user_id',auth()->user()->id)->count();

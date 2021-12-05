@@ -44,6 +44,10 @@ function () {
 
         Route::get('/', [WelcomController::class,'index'])->name('welcome');
 
+        // profile route
+        Route::get('profile/edit', [LoginController::class,'edit'])->name('profile.edit');
+        Route::put('profile/update/{user}', [LoginController::class,'update'])->name('profile.update');
+
         //user routes
         Route::resource('users', UserController::class)->except(['show']);
 
