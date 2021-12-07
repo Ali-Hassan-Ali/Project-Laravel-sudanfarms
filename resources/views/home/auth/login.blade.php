@@ -49,6 +49,12 @@
                                     </span>
                                 @enderror
                             </div>
+                                                        <div class="form-group">
+                                <div class="custom-control custom-checkbox ">
+                                    <input type="checkbox" name="remember" class="custom-control-input" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label for="remember" class="custom-control-label" >@lang('home.remember')</label>
+                                </div>
+                            </div>
                             <div class="form-button"><button type="submit">@lang('dashboard.login')</button></div>
                         </form>
                     </div>

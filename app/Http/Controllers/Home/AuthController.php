@@ -47,10 +47,10 @@ class AuthController extends Controller
             } else {
 
                 if (User::where('email',$request->email)->first()) {
-                    
+                    $remember_me = $request->has('remember') ? true : false;
                     if (\Auth::guard('web')->attempt([
                         'email'    => $request->email, 
-                        'password' => $request->password])) {
+                        'password' => $request->password],$remember_me)) {
                         return redirect()->route('profile.index');
 
                     } else {
@@ -81,7 +81,7 @@ class AuthController extends Controller
 
     public function store_register(Request $request)
     {
-
+        
         $request->validate([
             'name'      => ['required', 'max:15'],
             'username'  => ['required', 'unique:users','max:20'],
@@ -91,17 +91,19 @@ class AuthController extends Controller
 
         try {
 
+            $request_data = $request->except('password_confirmation','remember');
+
             if (Auth::guard('web')->check()) {
 
                 return redirect()->route('welcome.index');
                 
             } else {
 
-                $user = User::create($request->all());
+                $user = User::create($request_data);
 
                 $user->attachRole('clients');
-                
-                auth()->login($user);
+                $remember_me = $request->has('remember') ? true : false;
+                auth()->login($user,$remember_me);
 
                 return redirect()->route('profile.index');
                 

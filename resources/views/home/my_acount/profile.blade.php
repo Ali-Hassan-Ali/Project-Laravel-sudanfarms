@@ -18,6 +18,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <div class="alert alert-danger py-3 my-5 text-center" role="alert">
+                  @lang('lang.account_activation')
+                </div>
                 <div class="account-card">
                     <div class="account-title">
                         <a href="{{ route('profile.index') }}"><h4>ا@lang('home.profile')</h4></a>

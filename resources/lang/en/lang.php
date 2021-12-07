@@ -10,5 +10,6 @@ return [
     'create_new'   => 'Create a new account in a minute',
     'have_account' => 'you have an account ?',
 
-  
+    //profile
+    'account_activation' => 'Waiting for account activation...',
 ];

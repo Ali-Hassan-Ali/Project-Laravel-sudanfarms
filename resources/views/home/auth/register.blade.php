@@ -35,7 +35,7 @@
                             @method('post')
 
                             <div class="form-group">
-                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="@lang('dashboard.email')">
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="@lang('dashboard.name')">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -73,7 +73,7 @@
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox ">
                                     <input type="checkbox" name="remember" class="custom-control-input" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    <label for="remember" class="custom-control-label ">@lang('home.remember')</label>
+                                    <label for="remember" class="custom-control-label" >@lang('home.remember')</label>
                                 </div>
                             </div>
                             <div class="form-button">
