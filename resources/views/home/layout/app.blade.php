@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/faq.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/product-details.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/style.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/blog-details.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/privacy.css') }}">
 
@@ -39,12 +40,6 @@
 
     {{--noty--}}
     <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/noty/noty.css') }}">
-
-    <style type="text/css">
-        .dd {
-                border: solid 3px red!important;
-        }
-    </style>
 
 </head>
 

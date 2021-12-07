@@ -22,17 +22,19 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
-                    <div class="user-form-logo"><a href="/"><img src="http://clickgrafix.cloud/sd-farm/images/logo.svg" alt="logo"></a></div>
+                    <div class="user-form-logo">
+                        <a href="/"><img src="{{ asset('home_files/image/logo.svg') }}" alt="logo"></a>
+                    </div>
                     <div class="user-form-card">
                         <div class="user-form-title">
-                            <h2>إنضم الآن!</h2>
-                            <p>انشئ حساب جديد في دقيقة</p>
+                            <h2>@lang('lang.Join')</h2>
+                            <p>@lang('lang.create_new')</p>
                         </div>
                         <form class="user-form" action="{{ route('home.login.store') }}" method="post">
                             @csrf
                             @method('post')
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="البريد الإلكتروني">
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="@lang('dashboard.email')">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -40,21 +42,21 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="كلمة المرور">
+                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="@lang('dashboard.password')">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-button"><button type="submit">تسجيل</button></div>
+                            <div class="form-button"><button type="submit">@lang('dashboard.login')</button></div>
                         </form>
                     </div>
                     <div class="user-form-remind">
-                        <p>لديك حساب ?<a href="{{ route('home.register') }}">تسجيل دخول</a></p>
+                        <p>@lang('lang.have_account') <a href="{{ route('home.register') }}">@lang('dashboard.register')</a></p>
                     </div>
                     <div class="user-form-footer">
-                        <p>مزارع السودان | &COPY; جميع الحقوق محفوظة لـ <a href="{{ route('home.register') }}">مزارع السودان</a></p>
+                        <p>@lang('lang.&COPY')</p>
                     </div>
                 </div>
             </div>

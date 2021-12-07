@@ -23,12 +23,12 @@
                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                     <div class="user-form-logo">
                         <a href="/">
-                            <img src="http://clickgrafix.cloud/sd-farm/images/logo.svg" alt="logo">
+                            <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
                         </a>
                     </div>
                     <div class="user-form-card">
                         <div class="user-form-title">
-                            <h2>إنضم الآن!</h2>
+                            <h2>@lang('lang.Join')</h2>
                         </div>
                         <form class="user-form" action="{{ route('home.register.store') }}" method="post">
                             @csrf
@@ -77,15 +77,15 @@
                                 </div>
                             </div>
                             <div class="form-button">
-                                <button type="submit">تسجيل</button>
+                                <button type="submit">@lang('dashboard.register')</button>
                             </div>
                         </form>
                     </div>
                     <div class="user-form-remind">
-                        <p>لديك حساب ?<a href="{{ route('home.login') }}">تسجيل دخول</a></p>
+                        <p>@lang('lang.have_account') <a href="{{ route('home.login') }}">@lang('dashboard.login')</a></p>
                     </div>
                     <div class="user-form-footer">
-                        <p>مزارع السودان | &COPY; جميع الحقوق محفوظة لـ <a href="{{ route('home.login') }}">مزارع السودان</a></p>
+                        <p>@lang('lang.&COPY')</p>
                     </div>
                 </div>
             </div>

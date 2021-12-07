@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-	$(document).on('click', '.count-call-phone', function (e) {
-		e.preventDefault();
+	$(document).on('click', '.count-call-phone', function () {
 
 		var id     = $(this).data('id');
 		var url    = $(this).data('url');
@@ -14,8 +13,7 @@ $(document).ready(function() {
 
 	});//end of click phone
 
-	$(document).on('click', '.count-call-email', function (e) {
-		e.preventDefault();
+	$(document).on('click', '.count-call-email', function () {
 
 		var id     = $(this).data('id');
 		var url    = $(this).data('url');
@@ -35,7 +33,7 @@ $(document).ready(function() {
 		var url    = $(this).data('url');
 		var method  = 'post';
 
-		$('.news-form').removeClass('dd');
+		$('.news-form').removeClass('is-invalid');
         $('.newsletter-val-error').text('');
 
 		$.ajax({
@@ -92,7 +90,7 @@ $(document).ready(function() {
 			error: function(data) {
 
             	message = data.responseJSON.errors.email;
-                $('.news-form').addClass('dd');
+                $('.news-form').addClass('is-invalid');
                 $('.newsletter-val-error').text(message);
 
             },//end of error//end of success
