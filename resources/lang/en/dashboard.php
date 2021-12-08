@@ -4,6 +4,9 @@ return [
 
     'englsih'        => 'Englsih',
     'arbic'          => 'Arbic',
+    'status_offer'   => 'Offers on the home page',
+    'active'         => 'active',
+    'inactive'       => 'Inactive',
 
     'available'          => 'available',
     'not_available'      => 'not available',

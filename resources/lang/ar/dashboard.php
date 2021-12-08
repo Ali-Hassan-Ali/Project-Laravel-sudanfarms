@@ -4,6 +4,9 @@ return [
 
     'englsih'        => 'الانجليزية',
     'arbic'          => 'العربية',
+    'status_offer'   => 'العروض في الصفحه الرئسية',
+    'active'         => 'مفعل',
+    'inactive'       => 'غير مفعل',
 
     'available'        => 'مفعل',
     'not_available'    => 'غير مفعل',

@@ -241,37 +241,42 @@
         </div>
     </section>
 
-    <section class="section countdown-part">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mx-auto">
-                    <div class="countdown-content">
-                        <h3>@lang('home.an_offer') {{ $offer->category->name }} @lang('home.farms_of_sudan')</h3>
-                        <div class="countdown countdown-clock" data-countdown="2021/12/09">
-                            <span class="countdown-time">
-                                <span>00</span><small>أيام</small>
-                            </span>
-                            <span class="countdown-time">
-                                <span>00</span><small>ساعات</small></span>
-                                <span class="countdown-time"><span>00</span><small>دقائق</small></span>
-                                <span class="countdown-time"><span>00</span><small>ثواني</small></span>
-                            </div>
-                            <a href="{{ route('offers.clients.show',$offer->category_id) }}" class="btn btn-inline">
-                                <i class="fas fa-shopping-basket"></i><span>@lang('dashboard.shop')</span>
-                            </a>
+    @if (setting('status_offer') == 1)
+    
+        <section class="section countdown-part">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="countdown-content">
+                            <h3>@lang('home.an_offer') {{ $offer->category->name }} @lang('home.farms_of_sudan')</h3>
+                            <div class="countdown countdown-clock" data-countdown="2021/12/09">
+                                <span class="countdown-time">
+                                    <span>00</span><small>أيام</small>
+                                </span>
+                                <span class="countdown-time">
+                                    <span>00</span><small>ساعات</small></span>
+                                    <span class="countdown-time"><span>00</span><small>دقائق</small></span>
+                                    <span class="countdown-time"><span>00</span><small>ثواني</small></span>
+                                </div>
+                                <a href="{{ route('offers.clients.show',$offer->category_id) }}" class="btn btn-inline">
+                                    <i class="fas fa-shopping-basket"></i><span>@lang('dashboard.shop')</span>
+                                </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-1"></div>
-                <div class="col-lg-5">
-                    <div class="countdown-img"><img src="{{ asset('home_files/image/countdown.png') }}" alt="countdown">
-                        <div class="countdown-off"><span>{{ $offer->price }}</span>
-                            <span style="font-size: 18px;">@lang('home.discount')</span>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-5">
+                        <div class="countdown-img"><img src="{{ asset('home_files/image/countdown.png') }}" alt="countdown">
+                            <div class="countdown-off"><span>{{ $offer->price }}</span>
+                                <span style="font-size: 18px;">@lang('home.discount')</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+    @endif
+
 
     <section class="section newitem-part">
         <div class="container">

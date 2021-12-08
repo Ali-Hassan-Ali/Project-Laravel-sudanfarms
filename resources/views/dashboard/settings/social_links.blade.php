@@ -38,6 +38,14 @@
                             $names = ['facebook','twitter','instagram','whatsapp','email','email_one','phone','phone_one','map_ar','map_en','welcome_ar','welcom_en','about_ar','about_en'];
                         @endphp
 
+                        <div class="form-group">
+                            <label>@lang('dashboard.status_offer')</label>
+                            <select name="status_offer" class="form-control">
+                                    <option value="1" {{ setting('status_offer') == 1 ? 'selected' : '' }}>@lang('dashboard.active')</option>
+                                    <option value="0" {{ setting('status_offer') == 0 ? 'selected' : '' }}>@lang('dashboard.inactive')</option>
+                            </select>
+                        </div>
+
                         @foreach ($names as $name)
 
                             <div class="form-group">
