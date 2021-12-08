@@ -17,6 +17,9 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->default('username');
+
+            $table->string('provider')->default('web');
+            $table->string('provider_id')->nullable();
             
             $table->string('phone')->nullable();
             $table->string('country')->default('country');

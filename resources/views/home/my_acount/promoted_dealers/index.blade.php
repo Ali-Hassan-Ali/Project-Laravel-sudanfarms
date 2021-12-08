@@ -4,6 +4,16 @@
 
 @section('title', __('home.promoted_dealers'))
 
+<section class="inner-section single-banner">
+    <div class="container">
+        <h2>@lang('dashboard.dashboard')</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">@lang('dashboard.home')</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.dashboard')</li>
+        </ol>
+    </div>
+</section>
+
 <div style="margin-bottom: 100px;"></div>
 
 <section class="inner-section inner-section2 profile-part">
@@ -12,7 +22,7 @@
 	        <div class="col-lg-12">
 	            <div class="account-card">
 	                <div class="account-title">
-	                    <h4>إعداد باقة</h4>
+	                    <h4>@lang('lang.bouquet_setup')</h4>
 	                </div>
 	                <div class="account-content">
 	                	@include('partials._errors')
@@ -21,22 +31,22 @@
 		                    <div class="row">
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">إسم الشركة</label>
-		                            	<input class="form-control" type="text" name="company_name_ar" placeholder="إسم الشركة">
+		                            	<label class="form-label">@lang('dashboard.company_name_ar')</label>
+		                            	<input class="form-control" type="text" name="company_name_ar" placeholder="@lang('dashboard.company_name_ar')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">إسم الشركة</label>
-		                            	<input class="form-control" type="text" name="company_name_en" placeholder="إسم الشركة">
+		                            	<label class="form-label">@lang('dashboard.company_name_en')</label>
+		                            	<input class="form-control" type="text" name="company_name_en" placeholder="@lang('dashboard.company_name_en')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
-		                            <div class="form-group"><label class="form-label">الفئة</label>
+		                            <div class="form-group"><label class="form-label">@lang('lang.promotion')</label>
 		                                <select name="category_dealer_id" required class="form-control">
-		                                    	<option value="">اختر نوع النشاط التجاري</option>
+		                                    	<option value="">@lang('lang.promotion_categorey')</option>
 		                                	@foreach (App\Models\CategoryDealer::all() as $data)
 		                                    	<option value="{{ $data->id }}">{{ $data->name }}</option>
 		                                	@endforeach
@@ -46,85 +56,78 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">البريد الإلكتروني</label>
+		                            	<label class="form-label">@lang('lang.email')</label>
 		                            	<input class="form-control" type="email" name="email" value="{{ auth()->user()->email }}" 
-		                            	placeholder="البريد الإلكتروني">
+		                            	placeholder="@lang('lang.email')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الشخص المسؤول عن الإتصال</label>
-		                            	<input class="form-control" type="text" name="phone_master" placeholder="ادخل إسم">
+		                            	<label class="form-label">@lang('lang.phone_master')</label>
+		                            	<input class="form-control" type="text" name="phone_master" placeholder="@lang('lang.phone_master')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الموبايل</label>
-		                            	<input class="form-control" type="text" name="phone" placeholder="الموبايل">
+		                            	<label class="form-label">@lang('dashboard.phone')</label>
+		                            	<input class="form-control" type="text" name="phone" placeholder="@lang('dashboard.phone')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الهاتف الثابت</label>
-		                            	<input class="form-control" type="text" name="other_phone" placeholder="الهاتف الثابت">
+		                            	<label class="form-label">@lang('lang.other_phone')</label>
+		                            	<input class="form-control" type="text" name="other_phone" placeholder="@lang('lang.other_phone')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الهاتف</label>
-		                            	<input class="form-control" type="text" placeholder="الهاتف">
+		                            	<label class="form-label">@lang('dashboard.web_site')</label>
+		                            	<input class="form-control" type="text" name="web_site" placeholder="@lang('dashboard.web_site')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الموقع الإلكتروني</label>
-		                            	<input class="form-control" type="text" name="web_site" placeholder="الموقع الإلكتروني">
+		                            	<label class="form-label">@lang('dashboard.country')</label>
+		                            	<input class="form-control" type="text" name="country" placeholder="@lang('dashboard.country')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الدولة</label>
-		                            	<input class="form-control" type="text" name="country" placeholder="الدولة">
+		                            	<label class="form-label">@lang('lang.state')</label>
+		                            	<input class="form-control" type="text" name="nullable" placeholder="@lang('lang.state')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الولاية</label>
-		                            	<input class="form-control" type="text" name="x" placeholder="الولاية">
+		                            	<label class="form-label">@lang('dashboard.city')</label>
+		                            	<input class="form-control" type="text" name="city" placeholder="@lang('dashboard.city')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">المدينة</label>
-		                            	<input class="form-control" type="text" name="city" placeholder="المدينة">
-		                            </div>
-		                        </div>
-
-		                        <div class="col-md-6 col-lg-4">
-		                            <div class="form-group">
-		                            	<label class="form-label">العنوان</label>
-		                            	<input class="form-control" type="text" name="title" placeholder="العنوان">
+		                            	<label class="form-label">@lang('dashboard.title')</label>
+		                            	<input class="form-control" type="text" name="title" placeholder="@lang('dashboard.title')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-sm-12">
 		                            <div class="form-group">
-		                            	<label class="form-label">نبذة عن الشركة</label>
-		                                <textarea name="description" class="form-control" cols="30" rows="10" placeholder="نبذة عن الشركة"></textarea>
+		                            	<label class="form-label">@lang('lang.company_profile')</label>
+		                                <textarea name="description" class="form-control" cols="30" rows="10" placeholder="@lang('lang.company_profile')"></textarea>
 		                            </div>
 		                        </div>
 
 	                            <div class="col-sm-12">
 	                                <div class="form-group">
-	                                	<label class="form-label">رفع شعار الشركة</label>
+	                                	<label class="form-label">@lang('lang.company_logo')</label>
 	                                    <input class="form-control" type="file" id="company-logo" name="company_logo">
 	                                </div>
 	                            </div>
@@ -137,7 +140,7 @@
 
 	                            <div class="col-sm-12">
 	                                <div class="form-group">
-	                                	<label class="form-label">الرخصة التجارية</label>
+	                                	<label class="form-label">@lang('lang.commercial_license')</label>
 	                                    <input class="form-control" type="file" id="company-certificate" name="company_certificate">
 	                                </div>
 	                            </div>
@@ -150,7 +153,7 @@
 
 	                            <div class="col-md-6 col-lg-4 mx-auto">
 	                                <div class="form-group">
-	                                    <button class="form-btn" type="submit">حفظ المعلومات و المتابعة</button>
+	                                    <button class="form-btn" type="submit">@lang('lang.save')</button>
 	                                </div>
 	                            </div>
 

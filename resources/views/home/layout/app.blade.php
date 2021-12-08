@@ -41,6 +41,9 @@
     {{--noty--}}
     <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/noty/noty.css') }}">
 
+    {{-- niceCountryInput --}}
+    <link rel="stylesheet" href="{{ asset('home_files/plugns/countryInput/niceCountryInput.css') }}">
+
 </head>
 
 <body class="scrollspy" data-bs-spy="scroll" data-bs-target="#scrollspy">
@@ -89,11 +92,18 @@
     {{--noty js--}}
     <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
 
+    {{-- niceCountryInput --}}
+    {{-- <script src="{{ asset('home_files/plugns/countryInput/niceCountryInput.js') }}"></script> --}}
+
     {{-- include packages notify js --}}
     @notifyJs
     
     <script type="text/javascript">
         $(document).ready(function() {
+
+            // $(".niceCountryInputSelector").each(function(i,e){
+            //     new NiceCountryInput(e).init();
+            // });
 
             $('.delete').click(function (e) {
 

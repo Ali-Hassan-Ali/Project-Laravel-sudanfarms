@@ -18,9 +18,17 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="alert alert-danger py-3 my-5 text-center" role="alert">
-                  @lang('lang.account_activation')
-                </div>
+                @php
+                    $uuser_state = app\Models\PromotedDealer::where('user_id',auth()->user()->id)->where('state','0')->first()
+                @endphp
+
+                @if ($uuser_state)
+                
+                    <div class="alert alert-danger py-3 my-5 text-center" role="alert">
+                      @lang('lang.account_activation')
+                    </div>
+
+                @endif
                 <div class="account-card">
                     <div class="account-title">
                         <a href="{{ route('profile.index') }}"><h4>ا@lang('home.profile')</h4></a>
@@ -264,14 +272,14 @@
                 <div class="col-lg-12">
                     <div class="account-card">
                         <div class="account-title">
-                            <h4>المراسلات و الترقية</h4>
+                            <h4>@lang('lang.correspondence')</h4>
                         </div>
                         <div class="account-content">
                             <div class="row">
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
-                                        <h6><i class="fas fa-envelope"></i> المراسلات ( 0)</h6>
-                                        <a href="messages.html">المراسلات</a>
+                                        <h6><i class="fas fa-envelope"></i> @lang('lang.mailing') ( 0)</h6>
+                                        <a href="messages.html">@lang('lang.mailing')</a>
                                         <ul>
                                             <li>
                                                 <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button>
@@ -301,8 +309,8 @@
                                 @else
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact active">
-                                        <h6><i class="fas fa-user" style="margin-left: 9px"></i>إشترك لتصبح تاجر</h6>
-                                        <a href="{{ route('promoted_dealers.index') }}">ترقية</a>
+                                        <h6><i class="fas fa-user" style="margin-left: 9px"></i>@lang('lang.subscribe_promotion')</h6>
+                                        <a href="{{ route('promoted_dealers.index') }}">@lang('lang.promotion')</a>
                                         <ul>
                                             <li>
                                                 <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button>

@@ -178,6 +178,7 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
 
     ],
@@ -235,6 +236,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

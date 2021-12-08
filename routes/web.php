@@ -11,6 +11,7 @@ use App\Http\Controllers\Home\HeaderController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\OfferController;
+use App\Http\Controllers\Home\SocialController;
 
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
@@ -21,6 +22,10 @@ function () {
 
     Route::get('register', [AuthController::class,'register'])->name('home.register');
     Route::post('register', [AuthController::class,'store_register'])->name('home.register.store');
+
+    // login Social
+    Route::get('login/{provider}', [SocialController::class,'redirectToProvider'])->where('provider', 'facebook|google');
+    Route::get('login/{provider}/callback', [SocialController::class,'handleProviderCallback'])->where('provider', 'facebook|google');
 
     Route::post('logout', [AuthController::class,'user_logout'])->name('home.logout');
 

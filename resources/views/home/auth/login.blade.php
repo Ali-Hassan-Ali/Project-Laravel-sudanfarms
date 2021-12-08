@@ -56,6 +56,18 @@
                                 </div>
                             </div>
                             <div class="form-button"><button type="submit">@lang('dashboard.login')</button></div>
+                            <hr>
+                            <div class="form-button">
+                                <a href="{{ url('login/facebook') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#3b5998;">
+                                    Login by Facebook
+                                </a>
+                            </div>
+                            <div class="form-button">
+                                <a href="{{ url('login/google') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#ea4335;">
+                                    Login by Gmail
+                                </a>
+                            </div>
+
                         </form>
                     </div>
                     <div class="user-form-remind">

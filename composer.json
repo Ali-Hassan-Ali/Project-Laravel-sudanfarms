@@ -12,6 +12,7 @@
         "hardevine/shoppingcart": "^3.0",
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
+        "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
         "mcamara/laravel-localization": "^1.6",
         "mckenziearts/laravel-notify": "^2.2",
