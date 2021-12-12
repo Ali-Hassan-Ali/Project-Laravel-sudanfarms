@@ -27,6 +27,7 @@ class VideoControlle extends Controller
         $videos = Video::whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.settings.videos.index', compact('videos'));
+
     }//end of index
 
 
@@ -73,7 +74,8 @@ class VideoControlle extends Controller
         $video_categorys = VideoCategory::all();
 
         return view('dashboard.settings.videos.edit',compact('video','video_categorys'));
-    }
+
+    }//end of edit
 
     
     public function update(Request $request, Video $video)
@@ -97,14 +99,14 @@ class VideoControlle extends Controller
 
             $video->update($request_data);
 
-            session()->flash('success', __('dashboard.added_successfully'));
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.settings.videos.index');
 
         } catch (\Exception $e) {
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        }//end try
+        }//end try 
 
     }//end of update
 

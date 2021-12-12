@@ -127,7 +127,7 @@ class OffersController extends Controller
 
             Offer::create($request_data);
 
-            session()->flash('success', __('dashboard.added_successfully'));
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.offers.index');
 
         } catch (\Exception $e) {

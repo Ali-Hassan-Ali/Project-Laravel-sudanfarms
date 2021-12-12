@@ -63,6 +63,7 @@ function () {
     Route::get('privacys', [FooterController::class,'privacys'])->name('privacys.index');
     Route::get('terms_conditions', [FooterController::class,'terms_conditions'])->name('terms_conditions.index');
     Route::get('evacuation_responsibilatys', [FooterController::class,'evacuation_responsibilatys'])->name('evacuation_responsibilatys.index');
+    Route::get('about', [FooterController::class,'about'])->name('about.index');
     //cart route
     // Route::get('add_cart', [CartController::class,'add_cart'])->name('add.cart');
     Route::post('cart_store', [CartController::class, 'add_cart'])->name('cart.store');

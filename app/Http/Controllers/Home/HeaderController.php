@@ -82,6 +82,7 @@ class HeaderController extends Controller
             'message' => 'required',
         ]);
 
+
         Contact::create($request->all());
 
         return redirect()->back();
@@ -158,7 +159,7 @@ class HeaderController extends Controller
 
     public function request_custmers()
     {
-        $request_custmers = RequestCustmer::where('promoted_dealer_id',null)->get();
+        $request_custmers = RequestCustmer::where('promoted_dealer_id',null)->paginate(10);
 
         return view('home.header.request_custmers.index',compact('request_custmers'));
 
@@ -192,6 +193,7 @@ class HeaderController extends Controller
 
         RequestCustmer::create($request->all());
 
+        notify()->success( __('dashboard.added_successfully'));
         return redirect()->route('request_custmers.index');
 
     }//end if request_custmers create

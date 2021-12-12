@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RequestCustmersTableSeeder::class);
         $this->call(PolicyTableSeeder::class);
         $this->call(AdvertisementTableSeeder::class);
+        $this->call(AboutCustomerTableSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }

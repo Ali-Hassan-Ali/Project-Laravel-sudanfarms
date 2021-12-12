@@ -31,7 +31,9 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/style.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/blog-details.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/privacy.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/about.css') }}">
 
+    
     {{-- plugin  sweetalert2--}}
     <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }} ">
 

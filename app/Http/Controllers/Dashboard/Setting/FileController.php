@@ -25,12 +25,14 @@ class FileController extends Controller
         $files = File::whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.settings.files.index', compact('files'));
+
     }//end of index
 
 
     public function create()
     {
         return view('dashboard.settings.files.create');
+
     }//end of create
 
 
@@ -65,6 +67,7 @@ class FileController extends Controller
     public function edit(File $file)
     {
         return view('dashboard.settings.files.edit',compact('file'));
+        
     }//end of edit
 
 
@@ -89,7 +92,7 @@ class FileController extends Controller
 
             $file->update($request_data);
 
-            session()->flash('success', __('dashboard.added_successfully'));
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.settings.files.index');
 
         } catch (\Exception $e) {

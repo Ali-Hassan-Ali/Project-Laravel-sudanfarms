@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\AboutCustomer;
 use App\Models\Policy;
 
 class FooterController extends Controller
@@ -38,7 +39,7 @@ class FooterController extends Controller
 
         return view('home.footer.terms_conditions', compact('policys'));
 
-    }//end of terms conditions
+    }//end of terms terms_conditions
     
 
     public function evacuation_responsibilatys()
@@ -48,5 +49,13 @@ class FooterController extends Controller
         return view('home.footer.evacuation_responsibilatys', compact('policys'));
 
     }//end of evacuation responsibilatys
+
+    public function about()
+    {   
+        $about_customers = AboutCustomer::all();
+
+        return view('home.footer.about',compact('about_customers'));
+
+    }//end of about
 
 }//end of controller

@@ -26,6 +26,7 @@ class GalleryController extends Controller
         $gallerys = Gallery::whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.settings.gallerys.index', compact('gallerys'));
+
     }//end of index
 
     
@@ -34,6 +35,7 @@ class GalleryController extends Controller
         $gallery_categorys = GalleryCategory::all();
 
         return view('dashboard.settings.gallerys.create',compact('gallery_categorys'));
+        
     }//end of create
 
     
@@ -96,7 +98,7 @@ class GalleryController extends Controller
 
             $gallery->update($request_data);
 
-            session()->flash('success', __('dashboard.added_successfully'));
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.settings.gallerys.index');
 
         } catch (\Exception $e) {

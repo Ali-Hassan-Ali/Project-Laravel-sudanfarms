@@ -95,8 +95,8 @@
     <script src="{{ asset('dashboard_files/js/jquery.min.js') }}"></script>
 
     {{--noty--}}
-    <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/noty/noty.css') }}">
+    <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
 
     {{--morris--}}
     <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/morris/morris.css') }}">
@@ -246,7 +246,7 @@
     
     @yield('content')
 
-    {{-- @include('partials._session') --}}
+    @include('partials._session')
 
 </div><!-- end of wrapper -->
 

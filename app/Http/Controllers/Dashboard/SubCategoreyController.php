@@ -33,6 +33,7 @@ class SubCategoreyController extends Controller
         $categoreys = Categorey::where('sub_categoreys',0)->get();
 
         return view('dashboard.sub_categoreys.create',compact('categoreys'));
+        
     }//end of create
 
     

@@ -41,6 +41,7 @@ class PromotedDealerController extends Controller
         $category_dealers = CategoryDealer::all();
 
         return view('dashboard.promoted_dealers.create',compact('clients','category_dealers'));
+
     }//end of create
 
 
@@ -84,8 +85,9 @@ class PromotedDealerController extends Controller
                 session()->flash('success', __('dashboard.added_successfully'));
                 return redirect()->route('dashboard.promoted_dealers.index');
                 
-            }
+            }//end of if
 
+            session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.promoted_dealers.index');
             
 

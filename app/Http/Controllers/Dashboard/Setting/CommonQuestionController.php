@@ -65,6 +65,7 @@ class CommonQuestionController extends Controller
     public function edit(CommonQuestion $commonQuestion)
     {
         return view('dashboard.settings.common_questions.edit',compact('commonQuestion'));
+        
     }//end of edit
 
 
@@ -82,7 +83,7 @@ class CommonQuestionController extends Controller
 
             $commonQuestion->update($request->all());
 
-            session()->flash('success', __('dashboard.added_successfully'));
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.settings.common_questions.index');
 
         } catch (\Exception $e) {

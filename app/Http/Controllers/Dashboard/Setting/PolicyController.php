@@ -76,7 +76,7 @@ class PolicyController extends Controller
 
             $policy->update($request->all());
 
-            session()->flash('success', __('dashboard.added_successfully'));
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.settings.'.$request->guard.'.index');
 
         } catch (\Exception $e) {

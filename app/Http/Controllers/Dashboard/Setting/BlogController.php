@@ -33,6 +33,7 @@ class BlogController extends Controller
     public function create()
     {
         return view('dashboard.settings.blogs.create');
+        
     }//end of create
 
 
@@ -71,6 +72,7 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
         return view('dashboard.settings.blogs.edit',compact('blog'));
+        
     }//end of edit
 
 
@@ -99,7 +101,7 @@ class BlogController extends Controller
 
             $blog->update($request_data);
 
-            session()->flash('success', __('dashboard.added_successfully'));
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.settings.blogs.index');
 
         } catch (\Exception $e) {

@@ -89,17 +89,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12 mt-3">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#"><i class="icofont-arrow-right"></i></a></li>
-                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">...</li>
-                        <li class="page-item"><a class="page-link" href="#">65</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="icofont-arrow-left"></i></a></li>
-                    </ul>
-                </div>
+                @include('paginations.request_custmers',$request_custmers)
 
             </div>
         </div>

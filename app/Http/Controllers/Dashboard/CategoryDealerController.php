@@ -22,7 +22,6 @@ class CategoryDealerController extends Controller
 
     public function index()
     {
-
         $category_dealers = CategoryDealer::whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.category_dealers.index',compact('category_dealers'));

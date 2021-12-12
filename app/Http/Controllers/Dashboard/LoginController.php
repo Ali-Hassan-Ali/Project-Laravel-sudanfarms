@@ -42,7 +42,8 @@ class LoginController extends Controller
                     if (\Auth::guard('web')->attempt([
                         'email'    => $request->email, 
                         'password' => $request->password])) {
-
+                        
+                        session()->flash('success', __('dashboard.login_successfully'));
                         return redirect()->route('dashboard.welcome');
 
                     } else {
@@ -73,9 +74,9 @@ class LoginController extends Controller
 
     public function seller_logout()
     {
-
         Auth::guard('web')->logout();
 
+        session()->flash('success', __('dashboard.logoute_successfully'));
         return redirect()->route('home.login');
 
     }//end of logout seller

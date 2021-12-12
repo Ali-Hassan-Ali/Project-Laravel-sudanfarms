@@ -82,6 +82,7 @@ class ProductController extends Controller
                 ]);
             }
 
+            session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.products.index');
 
         } catch (\Exception $e) {
@@ -97,6 +98,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('dashboard.products.show',compact('product'));
+
     }//en end of show
 
 
@@ -170,6 +172,7 @@ class ProductController extends Controller
 
             }//end fo if image
 
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.products.index');
 
         } catch (\Exception $e) {

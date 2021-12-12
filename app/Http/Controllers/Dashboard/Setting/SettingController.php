@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+
     public function social_links()
     {
         return view('dashboard.settings.social_links');
@@ -25,12 +26,20 @@ class SettingController extends Controller
 
     }// end of services
 
+    public function about()
+    {
+        return view('dashboard.settings.about');
+
+    }//end of about
+
     public function store(Request $request)
     {
         setting($request->all())->save();
-        session()->flash('success', 'Data added successfully');
+        
+        session()->flash('success', __('dashboard.updated_successfully'));
         return redirect()->back();
 
     }// end of store
+    
 
 }//end of controller

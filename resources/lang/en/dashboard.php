@@ -2,11 +2,22 @@
 
 return [
 
+    'confirm_delete'       => 'Confirm Delete',
+    'added_successfully'   => 'Added Successfully',
+    'updated_successfully' => 'Updated Successfully',
+    'deleted_successfully' => 'Deleted Successfully',
+    'about_customers'      => 'about customers',
+    'logoute_successfully' => 'Signed out successfully',
+    'login_successfully'   => 'You are logged in successfully',
+    
     'englsih'        => 'Englsih',
     'arbic'          => 'Arbic',
     'status_offer'   => 'Offers on the home page',
     'active'         => 'active',
     'inactive'       => 'Inactive',
+    'about'          => 'about',
+    'about_me_ar'    => 'ABOUT THE FARMS OF SUDAN ARBIC',
+    'about_me_en'    => 'ABOUT THE FARMS OF SUDAN ENGLSIN',
 
     'available'          => 'available',
     'not_available'      => 'not available',

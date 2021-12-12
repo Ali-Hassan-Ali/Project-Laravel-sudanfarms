@@ -27,12 +27,14 @@ class CategoreyController extends Controller
         $categoreys = Categorey::where('sub_categoreys','0')->whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.categoreys.index', compact('categoreys'));
+
     }//end of index
 
     
     public function create()
     {
         return view('dashboard.categoreys.create');
+
     }//end of create
 
     
@@ -63,6 +65,7 @@ class CategoreyController extends Controller
     public function edit(Categorey $categorey)
     {
         return view('dashboard.categoreys.edit', compact('categorey'));
+        
     }//end of edit
 
     

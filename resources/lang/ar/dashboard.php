@@ -2,11 +2,23 @@
 
 return [
 
+    'confirm_delete'       => '!تأكيد الحذف',
+    'added_successfully'   => 'تم اضافه البيانات بنجاح',
+    'updated_successfully' => 'تم تعديل البيانات بنجاح',
+    'deleted_successfully' => 'تم حذف البيانات بنجاح',
+    'about_customers'      => 'عرض العملاء',
+    'logoute_successfully' => 'تم تسجيل الخروج بنجاح',
+    'login_successfully'   => 'تم تسجيل الدخول بنجاح',
+    
     'englsih'        => 'الانجليزية',
     'arbic'          => 'العربية',
     'status_offer'   => 'العروض في الصفحه الرئسية',
     'active'         => 'مفعل',
     'inactive'       => 'غير مفعل',
+    'about'          => 'من نحن',
+
+    'about_me_ar'    => 'عن مزارع السودان بلعربي',
+    'about_me_en'    => 'عن مزارع السودان بلانجلزي',
 
     'available'        => 'مفعل',
     'not_available'    => 'غير مفعل',

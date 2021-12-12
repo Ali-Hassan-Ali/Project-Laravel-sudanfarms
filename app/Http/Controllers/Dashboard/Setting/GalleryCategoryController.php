@@ -32,6 +32,7 @@ class GalleryCategoryController extends Controller
     public function create()
     {
         return view('dashboard.settings.gallery_categorys.create');
+
     }//end of create
 
 
@@ -48,6 +49,7 @@ class GalleryCategoryController extends Controller
             GalleryCategory::create($request->all());
 
             session()->flash('success', __('dashboard.added_successfully'));
+            
             return redirect()->route('dashboard.settings.gallery_categorys.index');
 
         } catch (\Exception $e) {
@@ -62,6 +64,7 @@ class GalleryCategoryController extends Controller
     public function edit(GalleryCategory $galleryCategory)
     {
         return view('dashboard.settings.gallery_categorys.edit',compact('galleryCategory'));
+        
     }//end of edit
 
 
@@ -77,7 +80,7 @@ class GalleryCategoryController extends Controller
 
             $galleryCategory->update($request->all());
 
-            session()->flash('success', __('dashboard.added_successfully'));
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.settings.gallery_categorys.index');
 
         } catch (\Exception $e) {

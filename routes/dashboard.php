@@ -27,6 +27,7 @@ use App\Http\Controllers\Dashboard\Setting\CommonQuestionController;
 use App\Http\Controllers\Dashboard\Setting\NewsletterController;
 use App\Http\Controllers\Dashboard\Setting\PolicyController;
 use App\Http\Controllers\Dashboard\Setting\AdvertisementController;
+use App\Http\Controllers\Dashboard\Setting\AboutCustomerController;
 
 
 
@@ -105,11 +106,12 @@ function () {
             Route::resource('files', FileController::class)->except(['show']);
             Route::resource('common_questions', CommonQuestionController::class)->except(['show']);
             Route::resource('advertisements', AdvertisementController::class)->except(['create','store','show','destroy']);
-
+            Route::resource('about_customers', AboutCustomerController::class)->except(['show']);
             //settings route
             Route::get('services', [SettingController::class,'services'])->name('services.index');
             Route::get('social_links', [SettingController::class,'social_links'])->name('social_links.index');
             Route::get('manager_word', [SettingController::class,'manager_word'])->name('manager_word.index');
+            Route::get('about', [SettingController::class,'about'])->name('about.index');
             Route::post('/settings', [SettingController::class,'store'])->name('settings.store');
 
         }); //end of settings routes

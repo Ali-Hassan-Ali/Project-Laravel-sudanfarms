@@ -31,8 +31,6 @@ class SettingBannerController extends Controller
 
     }//end of index
 
-
-
     
     public function create()
     {
@@ -40,8 +38,6 @@ class SettingBannerController extends Controller
 
     }//end of create
 
-    
-    
     
     public function store(Request $request)
     {
@@ -69,27 +65,16 @@ class SettingBannerController extends Controller
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        }//end try
+        }//end try catch
 
-    }//end of store
-
-    
-    
-
-    public function show(SettingBanner $settingBanner)
-    {
-        //
-    }//end of show
-
-    
+    }//end of store    
 
 
     public function edit(SettingBanner $settingBanner)
     {
         return view('dashboard.settings.setting_banners.edit', compact('settingBanner'));
-    }
 
-    
+    }//end of edit
 
 
     public function update(Request $request, SettingBanner $settingBanner)
@@ -122,11 +107,9 @@ class SettingBannerController extends Controller
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        }//end try
+        }//end try catch
 
     }//end of update
-
-    
 
 
     public function destroy(SettingBanner $settingBanner)

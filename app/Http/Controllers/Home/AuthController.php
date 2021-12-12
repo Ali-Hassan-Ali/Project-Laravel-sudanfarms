@@ -51,6 +51,8 @@ class AuthController extends Controller
                     if (\Auth::guard('web')->attempt([
                         'email'    => $request->email, 
                         'password' => $request->password],$remember_me)) {
+
+                        notify()->success( __('dashboard.login_successfully'));
                         return redirect()->route('profile.index');
 
                     } else {
@@ -100,11 +102,12 @@ class AuthController extends Controller
             } else {
 
                 $user = User::create($request_data);
-
                 $user->attachRole('clients');
+                
                 $remember_me = $request->has('remember') ? true : false;
                 auth()->login($user,$remember_me);
 
+                notify()->success( __('dashboard.added_successfully'));
                 return redirect()->route('profile.index');
                 
             }//end of if auth
@@ -121,6 +124,7 @@ class AuthController extends Controller
     {
         Auth::guard('web')->logout();
 
+        notify()->success( __('dashboard.logoute_successfully'));
         return redirect()->route('home.login');
 
     }//end of logout user

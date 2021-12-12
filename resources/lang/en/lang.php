@@ -26,4 +26,22 @@ return [
     'company_profile'    => 'Company Profile',
     'company_logo'       => 'Raise the company logo',
     'commercial_license' => 'Commercial license',
+
+    'about_me'           => 'About the farms of Sudan',
+    'about_me_web'       => 'who are we! Read about Sudans farms',
+    'why_hosen'          => 'Why are we chosen?',
+
+    'target'          => 'Target',
+    'target_ar'       => 'Target arbic',
+    'target_en'       => 'Target english',
+    'the_message'     => 'the message',
+    'the_message_ar'  => 'the message arbic',
+    'the_message_en'  => 'the message english',
+    'vision'          => 'Vision',
+    'vision_ar'       => 'Vision arbic',
+    'vision_en'       => 'Vision english',
+    'rate_us'         => 'rate us',
+    'rate_us_ar'      => 'rate us arbic',
+    'rate_us_en'      => 'rate us english',
+
 ];

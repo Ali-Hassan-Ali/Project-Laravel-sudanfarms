@@ -24,14 +24,13 @@ class VideoCategoryController extends Controller
         $video_categorys = VideoCategory::whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.settings.video_categorys.index', compact('video_categorys'));
+
     }//end of index
 
     
     public function create()
     {
-
         return view('dashboard.settings.video_categorys.create');
-
 
     }//end of create
 
@@ -63,6 +62,7 @@ class VideoCategoryController extends Controller
     public function edit(VideoCategory $videoCategory)
     {
         return view('dashboard.settings.video_categorys.edit',compact('videoCategory'));
+
     }//end of edit
 
     
@@ -78,7 +78,7 @@ class VideoCategoryController extends Controller
 
             $videoCategory->update($request->all());
 
-            session()->flash('success', __('dashboard.added_successfully'));
+            session()->flash('success', __('dashboard.updated_successfully'));
             return redirect()->route('dashboard.settings.video_categorys.index');
 
         } catch (\Exception $e) {

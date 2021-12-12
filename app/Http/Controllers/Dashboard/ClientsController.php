@@ -22,6 +22,7 @@ class ClientsController extends Controller
 
     } //end of constructor
 
+
     public function index(Request $request)
     {
 
@@ -31,11 +32,13 @@ class ClientsController extends Controller
 
     } //end of index
 
+
     public function create()
     {
         return view('dashboard.clients.create');
 
     } //end of create
+
 
     public function store(Request $request)
     {
@@ -77,6 +80,7 @@ class ClientsController extends Controller
 
     } //end of store
 
+
     public function edit($id)
     {   
         $client = User::find($id);
@@ -84,6 +88,7 @@ class ClientsController extends Controller
         return view('dashboard.clients.edit', compact('client'));
 
     } //end of edit
+    
 
     public function update(Request $request, $id)
     {   

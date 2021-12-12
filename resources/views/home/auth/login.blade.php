@@ -14,6 +14,9 @@
     {{-- custom style --}}
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/user-form.css') }}">
+
+    {{-- include packages notify css --}}
+    @notifyCss
 </head>
 
 <body>
@@ -80,10 +83,15 @@
             </div>
         </div>
     </section>
+    
+    <x:notify-messages />
 
     <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('home_files/js/vendor/popper.min.js') }}"></script>
     <script src="{{ asset('home_files/js/vendor/bootstrap.min.js') }}"></script>
+
+    {{-- include packages notify js --}}
+    @notifyJs
 </body>
 
 </html>

@@ -20,7 +20,8 @@ class ContactController extends Controller
     
     public function show(Contact $contact)
     {
-        return view('dashboard.contacts.show',compact('contact'));        
+        return view('dashboard.contacts.show',compact('contact'));     
+           
     }//end of show
 
     
