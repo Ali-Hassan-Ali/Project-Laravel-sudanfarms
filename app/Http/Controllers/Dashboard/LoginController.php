@@ -76,7 +76,7 @@ class LoginController extends Controller
     {
         Auth::guard('web')->logout();
 
-        session()->flash('success', __('dashboard.logoute_successfully'));
+        notify()->success( __('dashboard.login_successfully'));
         return redirect()->route('home.login');
 
     }//end of logout seller

@@ -66,8 +66,10 @@
                         <div class="nav-tabs-custom">
 
                             @php
-                                $models = ['users','categoreys','products','clients','orders','cupons','supports','gallerys','payments','settings'];
-                                $maps = ['create', 'read', 'update', 'delete'];
+                                $models = ['users','clients','admins','categoreys','sub_categoreys','products','category_dealers',
+                                            'promoted_dealers','contacts','settings','gallery_categorys','gallerys','video_categorys','videos',
+                                            'blogs','files','common_questions','offers','newsletters','policys','about_customers',
+                                            'advertisements'];
                             @endphp
 
                             <ul class="nav nav-tabs">
@@ -79,10 +81,30 @@
                             <div class="tab-content">
 
                                 @foreach ($models as $index=>$model)
-
-                                    @if ($model == 'settings')
+                                    @php
+                                        $maps = ['create', 'read', 'update', 'delete'];
+                                    @endphp
+                                    @if ($models == 'products')
                                         @php
-                                            $maps = ['read'];
+                                            $maps = ['create', 'read', 'update', 'delete','show'];
+                                        @endphp
+                                    @endif
+
+                                    @if ($models == 'promoted_dealers')
+                                        @php
+                                            $maps = ['create', 'read', 'update', 'delete','show'];
+                                        @endphp
+                                    @endif
+
+                                    @if ($models == 'settings')
+                                        @php
+                                            $maps = ['create', 'read', 'update', 'delete','show'];
+                                        @endphp
+                                    @endif
+                                    
+                                    @if ($models == 'advertisements')
+                                        @php
+                                            $maps = ['create', 'read', 'update', 'delete','show'];
                                         @endphp
                                     @endif
 

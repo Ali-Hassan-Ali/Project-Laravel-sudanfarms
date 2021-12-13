@@ -81,9 +81,37 @@
                         <div class="nav-tabs-custom">
 
                             @php
-                                $models = ['users', 'cupons','parent_categorys','sub_categories','markets','carts','carts_store','how_to_use','generate_carts','settings'];
+                                $models = ['users','clients','admins','categoreys','sub_categoreys','products','category_dealers',
+                                            'promoted_dealers','contacts','settings','gallery_categorys','gallerys','video_categorys','videos',
+                                            'blogs','files','common_questions','offers','newsletters','policys','about_customers',
+                                            'advertisements'];
                                 $maps = ['create', 'read', 'update', 'delete'];
                             @endphp
+
+                            @if ($models == 'products')
+                                @php
+                                    $maps = ['create', 'read', 'update', 'delete','show'];
+                                @endphp
+                            @endif
+
+                            @if ($models == 'promoted_dealers')
+                                @php
+                                    $maps = ['create', 'read', 'update', 'delete','show'];
+                                @endphp
+                            @endif
+
+                            @if ($models == 'settings')
+                                @php
+                                    $maps = ['create', 'read', 'update', 'delete','show'];
+                                @endphp
+                            @endif
+                            
+                            @if ($models == 'advertisements')
+                                @php
+                                    $maps = ['create', 'read', 'update', 'delete','show'];
+                                @endphp
+                            @endif
+
 
                             <ul class="nav nav-tabs">
                                 @foreach ($models as $index=>$model)

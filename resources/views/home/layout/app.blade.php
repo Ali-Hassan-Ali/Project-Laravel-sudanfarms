@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('home_files/fonts/icofont/icofont.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/fonts/fontawesome/fontawesome.min.css') }}">
 
+    {{-- include packages notify css --}}
+    @notifyCss
     {{-- vendor style --}}
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/nice-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/venobox.min.css') }}">
@@ -33,18 +35,8 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/privacy.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/about.css') }}">
 
-    
     {{-- plugin  sweetalert2--}}
     <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }} ">
-
-    {{-- include packages notify css --}}
-    @notifyCss
-
-    {{--noty--}}
-    <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/noty/noty.css') }}">
-
-    {{-- niceCountryInput --}}
-    <link rel="stylesheet" href="{{ asset('home_files/plugns/countryInput/niceCountryInput.css') }}">
 
 </head>
 
