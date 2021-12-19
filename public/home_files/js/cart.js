@@ -27,35 +27,52 @@ $(document).ready(function() {
                     timer: 15000
                 });
 
-                var item =  '<li class="cart-item">'+
-                                '<div class="cart-media">'+
-                                    '<a href="#">'+
-                                        '<img src="'+data.image_product.image_path+'" alt="Product">'+
-                                    '</a>'+
-                                    '<button class="cart-delete">'+
-                                        '<i class="far fa-trash-alt"></i>'+
-                                    '</button>'+
-                                '</div>'+
-                                '<div class="cart-info-group">'+
-                                '<div class="cart-info">'+
-                                    '<h6><a href="4">name ar</a></h6>'+
-                                    '<p class="product-qty-4"> '+data.product.name+' - '+data.product.price+' '+data.currency+'</p>'+
-                                '</div>'+
-                                '<div class="cart-action-group">'+
-                                    '<div class="product-action">'+
-                                        '<button class="action-minus" title="نقصان الكيمة">'+
-                                            '<i class="icofont-minus"></i>'+
-                                        '</button>'+
-                                        '<input class="action-input" title="Quantity Number" type="text" name="quantity" value="'+data.product.qty+'" spellcheck="false" data-ms-editor="true">'+
-                                        '<button class="action-plus" title="زيادة الكمية">'+
-                                            '<i class="icofont-plus"></i>'+
-                                        '</button>'+
-                                    '</div>'+
-                                    '<h6>'+data.currency+' '+ data.product.qty * data.product.price+'</h6>'+
-                                '</div>'+
-                            '</li>';
+                if (data.product.qty == 1) {
 
-                $('#add-cart-product').append(item);
+                    var subTotle = $.number(data.product.price * data.product.qty ,2);
+
+                    var item =  `<li class="cart-item cart-item-${data.product.id}">
+                                    <div class="cart-media">
+                                        <a href="#">
+                                            <img src="${data.image_product.image_path}" alt="Product">
+                                        </a>
+                                        <button class="cart-delete-${data.product.id} removal-product"
+                                                data-id="${data.product.id}" data-rowId="${data.product.rowId}">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                    <div class="cart-info-group">
+                                    <div class="cart-info">
+                                        <h6><a href="4">name ar</a></h6>
+                                        <p class="product-qty-4"> ${data.product_model.quantity_guard} - ${data.product.price} ${data.currency}</p>
+                                    </div>
+                                    <div class="cart-action-group">
+                                        <div class="product-action">
+                                            <button class="product-quntty-down"
+                                                data-id="${data.product.id}" data-rowId="${data.product.rowId}">
+                                                <i class="icofont-minus"></i>
+                                            </button>
+                                            <input class="action-input product-quntty-${data.product.id}" title="Quantity Number" type="text" name="quantity" value="${data.product.qty}" 
+                                                spellcheck="false" data-ms-editor="true">
+                                            <button class="product-quntty-up"
+                                                data-id="${data.product.id}" data-rowId="${data.product.rowId}">
+                                                <i class="icofont-plus"></i>
+                                            </button>
+                                        </div>
+                                        <h6 class="product-sub-totle-${data.product.id}">${data.currency} ${subTotle}</h6>
+                                    </div>
+                                </li>`;
+
+                    $('#add-cart-product').append(item);
+
+                } else {
+
+                    var subTotle = $.number(data.product.price * data.product.qty ,2);
+                    $('.product-sub-totle-'+ id).html(data.currency + ' ' + subTotle);
+                    $('.product-quntty-'+ id).val(data.product.qty);
+
+                }//end of if
+
                 $('.no-data').remove();
                 $('.cart-count').html(data.count);
                 $('.cart-totle').html(data.subtotal);
@@ -69,12 +86,12 @@ $(document).ready(function() {
 
     });//end of click
 
-    $('.product-quntty-up').on('click', function(e) {
+    $(document).on('click','.product-quntty-up', function(e) {
     	e.preventDefault();
-
+        
     	var id     = $(this).data('id');
         var rowId  = $(this).data('rowid');
-        var url    = $(this).data('url');
+        var url    = $('#cart-update').text();
     	var method = 'post';
     	var qtyval = parseInt($('.product-quntty-'+ id).val());
     	qtyvalup   = qtyval + 1;
@@ -91,8 +108,8 @@ $(document).ready(function() {
                 
                 $('.cart-count').html(data.count);
                 $('.cart-totle').html(data.subtotal);
-
-                $('.product-sub-totle-'+ id).html(data.product.qty * data.product.price);
+                var subTotle = $.number(data.product.price * data.product.qty ,2);
+                $('.product-sub-totle-'+ id).html(data.currency + ' ' + subTotle);
 
 	       	},//end of success
 
@@ -100,12 +117,12 @@ $(document).ready(function() {
 	
     });//end of product quntty
 
-    $('.product-quntty-down').on('click', function(e) {
+    $(document).on('click','.product-quntty-down', function(e) {
     	e.preventDefault();
 
         var id     = $(this).data('id');
         var rowId  = $(this).data('rowid');
-        var url    = $(this).data('url');
+        var url    = $('#cart-update').text();
         var method = 'post';
         var qtyval = parseInt($('.product-quntty-'+ id).val());
         qtyvalup   = qtyval - 1;
@@ -131,8 +148,8 @@ $(document).ready(function() {
                 
                 $('.cart-count').html(data.count);
                 $('.cart-totle').html(data.subtotal);
-
-                $('.product-sub-totle-'+ id).html(data.product.qty * data.product.price);
+                var subTotle = $.number(data.product.price * data.product.qty ,2);
+                $('.product-sub-totle-'+ id).html(data.currency + ' ' + subTotle);
 
             },//end of success
 
@@ -140,12 +157,14 @@ $(document).ready(function() {
     	
     });//end of product quntty
 
-    $('.removal-product').click( function(e) {
+
+    $(document).on('click','.removal-product', function(e) {
         e.preventDefault();
 
         var id      = $(this).data('id');
         var rowId   = $(this).data('rowid');
-        var method  = 'delete';
+        var url     = $('#cart-destroy').text();
+        var method  = 'post';
 
         swal({
             title: "confirm delete",
@@ -158,24 +177,14 @@ $(document).ready(function() {
         .then((willDelete) => {
         if (willDelete) {
             $.ajax({
-                url: 'destroy_cart/'+rowId,
+                url: url,
                 method: method,
+                data: {row_id:rowId},
                 success: function(data) {
 
-                    $('.delete-product-'+id).remove();
-
-                    $('#cart-count').html(data.count.count);
-
-                    if (data.app == 'ar') {
-                        
-                        currency = 'ح م';
-
-                    } else {
-
-                        currency = 'LE';
-                    }
-
-                    calculateTotal(currency);
+                    $('.cart-item-'+id).remove();
+                    $('.cart-count').html(data.count);
+                    $('.cart-totle').html(data.subtotal);
 
                     swal({
                         title: "deleted successfully",
@@ -193,21 +202,5 @@ $(document).ready(function() {
         });//then
 
     });//end of product-removal button
-
-    //calculate the total
-    function calculateTotal(currency) {
-
-        var price = 0;
-
-        $('.new-price').each(function(index) {
-            
-            price += parseFloat($(this).html().replace(/,/g, ''));
-
-        });//end of product price
-
-        $('#cart-subtotal').html($.number(price, 2) + ' ' + currency);
-        $('#cart-totle').html($.number(price, 2) + ' ' + currency);
-
-    }//end of calculate total
 
 });//end of document redy qtyval

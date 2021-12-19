@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', __('home.prfile'))    
+@section('title', __('home.profile'))    
 
 <section class="inner-section single-banner">
     <div class="container">
@@ -87,7 +87,7 @@
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
                                     	<label class="form-label">@lang('dashboard.phone')</label>
-                                    	<input class="form-control @error('phone') is-invalid @enderror" type="phone" name="phone" value="{{ auth()->user()->phone }}">
+                                    	<input class="form-control @error('phone') is-invalid @enderror" type="number" name="phone" value="{{ auth()->user()->phone }}">
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

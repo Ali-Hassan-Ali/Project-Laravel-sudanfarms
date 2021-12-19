@@ -19,13 +19,24 @@ class CartController extends Controller
             if (request()->ajax()) {
 
                 $product_model = Product::FindOrFail($request->id);
+
+                $image_product = ImageProduct::where('product_id', $request->id)->first();
                 
                 $product = Cart::add($product_model->id, $product_model->name, 1 , $product_model->price)
                     ->associate('App\Models\Product');
 
                 $count    = Cart::count();
+                $subtotal = Cart::subtotal();
+                $currency = app()->getLocale() == 'ar' ? 'جس' : 'SDG';
 
-                return response()->json(['product' => $product,'image_product' => $image_product, 'count' => $count, 'currency' => $currency,'subtotal'=>$subtotal]);
+                return response()->json([
+                            'product'       => $product,
+                            'product_model' => $product_model,
+                            'image_product' => $image_product, 
+                            'count'         => $count, 
+                            'currency'      => $currency,
+                            'subtotal'      => $subtotal
+                       ]);
 
             }//end of if ajax
 
@@ -63,77 +74,30 @@ class CartController extends Controller
 
     }//end of function update_cart
 
-    // public function destroy_cart($id)
-    // {
+    public function destroy_cart(Request $request)
+    {
 
-    //     try {
-
-    //         $cart       = Cart::content()->where('rowId', $id)->first();
-
-    //         if (request()->ajax()) {
-
-    //             $count = Cart::count();
-    //             Cart::remove($id);
-    //             return response()->json(['count' => $count]);
-
-    //         }//end of ajax
-
-    //     } catch (\Exception $e) {
-
-    //         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-
-    //     }//end try
-    
-    // }//end of function
-
-    // public function add_coupon_cart(Request $request)
-    // {
-        
-    //     try {
-
-    //         if (request()->ajax()) {    
-
-    //             $coupon = Coupon::where('name', $request->coupon)->first();
+        try {
 
 
-    //             if ($coupon == null || $coupon->end <= date('Y-m-d')) {
-              
-    //                 return response()->json('error');
-    //             }
+            if (request()->ajax()) {
 
-    //             session()->put(['coupon_value' => $coupon->value,'coupon_name' => $coupon->name,'end' => $coupon->end]);
-              
-    //             return response()->json(['success' => true]);
-
-    //         }//end of ajax
-
-
-    //     } catch (\Exception $e) {
-
-    //         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-
-    //     }//end try
-
-    // }//end of store
-
-    // public function destroy_coupon_cart()
-    // {
-    //     try {
-
-    //         if (request()->ajax()) {
-
-    //             $app   = app()->getLocale();
+                Cart::remove($request->row_id);
                 
-    //             return response()->json(['success' => true, 'app' => $app]);
+                $count    = Cart::count();
+                $subtotal = Cart::subtotal();
+                $currency = app()->getLocale() == 'ar' ? 'جس' : 'SDG';
 
-    //         }//end of ajax
+                return response()->json(['subtotal'=>$subtotal,'currency' => $currency,'count' => $count]);
 
-    //     } catch (\Exception $e) {
+            }//end of ajax
 
-    //         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        } catch (\Exception $e) {
 
-    //     }//end try
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-    // }//end of destroy
+        }//end try
+    
+    }//end of function
 
 }//end of controller

@@ -4399,7 +4399,7 @@ tbody tr td:last-child {
 }
 
 .cart-list {
-    height: 80%;
+    height: 76%;
     padding: 0px 15px;
     max-height: calc(100vh - 150px);
     overflow-y: scroll

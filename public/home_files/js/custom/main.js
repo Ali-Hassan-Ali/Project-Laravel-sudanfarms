@@ -29,8 +29,7 @@ $(window).on("scroll", (function () {
 })), $(".wish").on("click", (function () {
     $(this).toggleClass("active")
 })), $(".product-add").on("click", (function () {
-    var e = $(this).next(".product-action");
-    $(this).hide(), e.css("display", "flex")
+    
 })), $(".action-plus").on("click", (function () {
     var e = $(this).closest(".product-action").children(".action-input").get(0).value++,
         i = $(this).closest(".product-action").children(".action-minus");

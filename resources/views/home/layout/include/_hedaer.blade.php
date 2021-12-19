@@ -61,7 +61,7 @@
                             <img src="{{ asset('home_files/image/menn.png') }}" alt="user">
                         @endauth
                     </button>
-                    <a href="/">
+                    <a href="/" class="header-logo">
                         <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
                     </a>
                     <button class="header-src">
@@ -225,9 +225,6 @@
             @endforeach
 
         </ul>
-        {{-- <div class="category-footer">
-            <p>الحقوق محفوظة لـ <a href="#">مزارع السودان</a></p>
-        </div> --}}
     </aside>
 
     <aside class="cart-sidebar">
@@ -246,7 +243,7 @@
                 
                 @foreach (Cart::content() as $product)
 
-                    <li class="cart-item">
+                    <li class="cart-item cart-item-{{ $product->id }}">
                         <div class="cart-media">
                             @php
                                         
@@ -256,37 +253,36 @@
                             <a href="{{ route('product.show',$product->id) }}">
                                 <img src="{{ $image_product->image_path }}" alt="product">
                             </a>
-                            <button class="cart-delete">
+                            <button class="cart-delete-{{ $product->id }} removal-product" 
+                                    data-id="{{ $product->id }}" data-rowId="{{ $product->rowId }}">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>
                         <div class="cart-info-group">
                             <div class="cart-info">
                                 <h6><a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a></h6>
-                                <p>
-                                    {{ $product->quantity_guard }} - {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }} 
+                                <p class="product-price-{{ $product->id }}">
+                                    {{ $product->model->quantity_guard }} - {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }} 
 
-                                    <div class="product-price-{{ $product->id }}">
-                                        {{ $product->price_decount - $product->price }}    
-                                    </div>
-
+                                    {{ $product->price_decount - $product->price }}    
                                 </p>
                             </div>
                             <div class="cart-action-group">
                                 <div class="product-action">
-                                    <button class="product-quntty-down" 
-                                        data-id="{{ $product->id }}" data-url="{{ route('cart.update') }}" data-rowId="{{ $product->rowId }}">
+                                    <button class="product-quntty-down"
+                                        data-id="{{ $product->id }}" data-rowId="{{ $product->rowId }}">
                                         <i class="icofont-minus"></i>
                                     </button>
-                                    <input class="action-input product-quntty-{{ $product->id }}" id="add-cart-product-{{ $product->id }}" 
+                                    <input class="action-input product-quntty-{{ $product->id }}" 
                                             title="Quantity Number" type="text" name="quantity" value="{{ $product->qty }}">
                                     <button class="product-quntty-up" 
-                                        data-id="{{ $product->id }}" data-url="{{ route('cart.update') }}" data-rowId="{{ $product->rowId }}">
+                                        data-id="{{ $product->id }}" data-rowId="{{ $product->rowId }}">
                                         <i class="icofont-plus"></i>
                                     </button>
                                 </div>
-                                <h6>{{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} 
+                                <h6>
                                     <p class="new-price product-sub-totle-{{ $product->id }}">
+                                        {{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} 
                                         {{ number_format($product->qty * $product->price,2) }}
                                     </p>
                                 </h6>
@@ -302,13 +298,15 @@
 
             @endif
         </ul>
-        <div class="cart-footer pb-5">
-            <form class="coupon-form">
-                <input type="text" placeholder="Enter your coupon code">
-                <button type="submit"><span>apply</span></button>
-            </form>
+        <div id="cart-update" hidden>
+            {{ route('cart.update') }}
+        </div>
+        <div id="cart-destroy" hidden>
+            {{ route('cart.destroy') }}
+        </div>
+        <div class="cart-footer">
             <a class="cart-checkout-btn" href="#">
-                <span class="checkout-label">@lang('home.totle_price')</span>
+                <span class="checkout-label">@lang('home.send')</span>
                 <span class="checkout-price cart-totle">{{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} {{ Cart::subtotal() }}</span>
             </a>
         </div>
@@ -460,73 +458,3 @@
             <i class="fas fa-phone"></i><span> @lang('dashboard.contacts')</span>
         </a>
     </menu>
-
-
-    <div class="modal fade" id="product-view">
-        <div class="modal-dialog">
-            <div class="modal-content"><button class="modal-close icofont-close" data-bs-dismiss="modal"></button>
-                <div class="product-view">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-6">
-                            <div class="view-gallery">
-                                <div class="view-label-group">
-                                    <label class="view-label new">@lang('home.new')</label>
-                                    {{-- <label class="view-label off">-10%</label> --}}
-                                </div>
-                                <ul class="preview-slider slider-arrow">
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                </ul>
-                                <ul class="thumb-slider">
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                    <li><img src="images/product/01.jpg" alt="product"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6">
-                            <div class="view-details">
-                                <h3 class="view-name"><a href="#">فلفل طازج</a></h3>
-                                <div class="view-meta">
-                                    <p>الشركة :</p>
-                                    <p>شركة حلا الدولية</p>
-                                </div>
-                                <div class="view-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3 تقيمات)</a></div>
-                                <h3 class="view-price"><del>SDG38.00</del><span>SDG24.00<small> /الكيلو</small></span></h3>
-                                <p class="view-desc">هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع هذا النص غير حقيقي بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع.
-                                    بديل ل نص آخر سيتم إستبداله بنص حقيقي عند تغيير محتوى الموقع.</p>
-                                <div class="view-list-group"><label class="view-list-title">منتجات مماثلة:</label>
-                                    <ul class="view-tag-list">
-                                        <li><a href="#">فلفل أخضر</a></li>
-                                        <li><a href="#">خضروات</a></li>
-                                        <li><a href="#">فلفل حار</a></li>
-                                    </ul>
-                                </div>
-                                <div class="view-list-group"><label class="view-list-title">مشاركة:</label>
-                                    <ul class="view-share-list">
-                                        <li><a href="{{ setting('facebook') }}" class="icofont-facebook" title="Facebook"></a></li>
-                                        <li><a href="{{ setting('twitter') }}" class="icofont-twitter" title="Twitter"></a></li>
-                                        <li><a href="{{ setting('instagram') }}" class="icofont-instagram" title="Instagram"></a></li>
-                                        <li><a href="{{ setting('whatsapp') }}" class="fab fa-whatsapp" title="whatsapp"></a></li>
-                                    </ul>
-                                </div>
-                                <div class="view-add-group"><button class="product-add" title="إضافة الى السلة"><i class="fas fa-shopping-basket"></i><span>إضافة</span></button>
-                                    <div class="product-action"><button class="action-minus" title="نقصان الكيمة"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button></div>
-                                </div>
-                                <div class="view-action-group"><a class="view-wish wish" href="#" title="Add Your Wishlist"><i class="icofont-heart"></i><span>المزيد الى المفضلة</span></a><a class="view-compare" href="#" title="Compare This Item"><i class="fas fa-random"></i><span>قارن هذا</span></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
