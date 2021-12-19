@@ -15,7 +15,7 @@
                         @lang('home.participation')</span>
                     </button>
                 </form>
-                <span class="text-light newsletter-val-error"></span>
+                <span class="text-danger newsletter-val-error"></span>
             </div>
         </div>
     </div>

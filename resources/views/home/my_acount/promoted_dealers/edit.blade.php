@@ -34,20 +34,22 @@
 		                    	@include('partials._errors')
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">إسم الشركة</label>
-		                            	<input class="form-control" type="text" name="company_name_ar" value="{{ $user->company_name_ar }}" placeholder="إسم الشركة">
+		                            	<label class="form-label">@lang('dashboard.company_name_ar')</label>
+		                            	<input class="form-control" type="text" name="company_name_ar" 
+		                            	value="{{ $user->company_name_ar }}" placeholder="@lang('dashboard.company_name_ar')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">إسم الشركة</label>
-		                            	<input class="form-control" type="text" name="company_name_en" value="{{ $user->company_name_en }}" placeholder="إسم الشركة">
+		                            	<label class="form-label">@lang('dashboard.company_name_en')</label>
+		                            	<input class="form-control" type="text" name="company_name_en" value="{{ $user->company_name_en }}" placeholder="@lang('dashboard.company_name_en')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
-		                            <div class="form-group"><label class="form-label">الفئة</label>
+		                            <div class="form-group">
+		                            	<label class="form-label">@lang('lang.promotion')</label>
 		                                <select name="category_dealer_id" class="form-control">
 		                                	@foreach (App\Models\CategoryDealer::all() as $data)
 		                                    	<option value="{{ $data->id }}" {{ $data->id == $user->category_dealer_id ? 'selected' : '' }}>{{ $data->name }}</option>
@@ -58,85 +60,87 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">البريد الإلكتروني</label>
-		                            	<input class="form-control" type="email" name="email" value="{{ $user->email }}" 
+		                            	<label class="form-label">@lang('lang.email')</label>
+		                            	<input class="form-control" minlength="9" type="email" name="email" value="{{ $user->email }}" 
 		                            	placeholder="البريد الإلكتروني">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الشخص المسؤول عن الإتصال</label>
-		                            	<input class="form-control" type="text" name="phone_master" value="{{ $user->phone_master }}" placeholder="ادخل إسم">
+		                            	<label class="form-label">@lang('lang.phone_master')</label>
+		                            	<input class="form-control" minlength="9" type="tel" name="phone_master" value="{{ $user->phone_master }}" 
+		                            	placeholder="+240-114929635">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الموبايل</label>
-		                            	<input class="form-control" type="text" name="phone" value="{{ $user->phone }}" placeholder="الموبايل">
+		                            	<label class="form-label">@lang('lang.phone')</label>
+		                            	<input class="form-control" minlength="9" type="tel" name="phone" value="{{ $user->phone }}" 
+		                            	 placeholder="+240-114929635">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الهاتف</label>
-		                            	<input class="form-control" type="text" name="other_phone" value="{{ $user->other_phone }}" placeholder="الهاتف">
+		                            	<label class="form-label">@lang('lang.other_phone')</label>
+		                            	<input class="form-control" type="tel" name="other_phone" value="{{ $user->other_phone }}" 
+		                            	placeholder="+240-114929635">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الهاتف</label>
-		                            	<input class="form-control" type="text" placeholder="الفاكس">
+		                            	<label class="form-label">@lang('dashboard.web_site')</label>
+		                            	<input class="form-control" type="text" name="web_site" value="{{ $user->web_site }}" 
+		                            	placeholder="@lang('dashboard.web_site')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الموقع الإلكتروني</label>
-		                            	<input class="form-control" type="text" name="web_site" value="{{ $user->web_site }}" placeholder="الموقع الإلكتروني">
+		                            	<label class="form-label">@lang('dashboard.country')</label>
+		                            	<input class="form-control" type="text" name="country" value="{{ $user->country }}" 
+		                            	placeholder="@lang('dashboard.country')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الدولة</label>
-		                            	<input class="form-control" type="text" name="country" value="{{ $user->country }}" placeholder="الدولة">
+		                            	<label class="form-label">@lang('lang.state')</label>
+		                            	<input class="form-control" type="text" name="state" value="{{ $user->state }}" 
+		                            	placeholder="@lang('lang.state')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">الولاية</label>
-		                            	<input class="form-control" type="text" name="state" value="{{ $user->state }}" placeholder="الولاية">
+		                            	<label class="form-label">@lang('dashboard.city')</label>
+		                            	<input class="form-control" type="text" name="city" value="{{ $user->city }}" 
+		                            	placeholder="@lang('dashboard.city')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">المدينة</label>
-		                            	<input class="form-control" type="text" name="city" value="{{ $user->city }}" placeholder="المدينة">
-		                            </div>
-		                        </div>
-
-		                        <div class="col-md-6 col-lg-4">
-		                            <div class="form-group">
-		                            	<label class="form-label">العنوان</label>
-		                            	<input class="form-control" type="text" name="title" value="{{ $user->title }}" placeholder="العنوان">
+                            			<label class="form-label">@lang('dashboard.title')</label>
+		                            	<input class="form-control" type="text" name="title" value="{{ $user->title }}" 
+		                            	placeholder="@lang('dashboard.title')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-sm-12">
 		                            <div class="form-group">
-		                            	<label class="form-label">الوصف</label>
-		                                <textarea name="description" class="form-control" cols="30" rows="10" placeholder="الوصف">{{ $user->description }}</textarea>
+		                            	<label class="form-label">@lang('lang.company_profile')</label>
+		                                <textarea name="description" class="form-control" cols="30" rows="10" 
+		                                placeholder="@lang('lang.company_profile')">{{ $user->description }}</textarea>
 		                            </div>
 		                        </div>
 
 	                            <div class="col-sm-12">
 	                                <div class="form-group">
-	                                	<label class="form-label">رفع شعار الشركة</label>
+	                                	<label class="form-label">@lang('lang.company_logo')</label>
 	                                    <input class="form-control" type="file" id="company-logo" name="company_logo">
 	                                </div>
 	                            </div>
@@ -149,7 +153,7 @@
 
 	                            <div class="col-sm-12">
 	                                <div class="form-group">
-	                                	<label class="form-label">شهاده الشركه</label>
+	                                	<label class="form-label">@lang('lang.commercial_license')</label>
 	                                    <input class="form-control" type="file" id="company-certificate" name="company_certificate">
 	                                </div>
 	                            </div>
@@ -162,7 +166,7 @@
 
 	                            <div class="col-md-6 col-lg-4 mx-auto">
 	                                <div class="form-group">
-	                                    <button class="form-btn" type="submit">حفظ المعلومات و المتابعة</button>
+	                                    <button class="form-btn" type="submit">@lang('lang.save')</button>
 	                                </div>
 	                            </div>
 

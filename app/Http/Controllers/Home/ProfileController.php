@@ -89,7 +89,7 @@ class ProfileController extends Controller
 
         $user->update($request_data);
 
-        notify()->success('Welcome to Laravel Notify ⚡️');
+        notify()->success(__('dashboard.updated_successfully'));
         
         return redirect()->back();
 

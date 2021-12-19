@@ -4,92 +4,62 @@ $(document).ready(function() {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });
+    });//end if ajax sutup
 
     $(document).on('click','.add-cart', function(e){
         e.preventDefault();
-
+        
         var id      = $(this).data('id');
-        var quantity= $('#add-cart-product-'+id).val();
-        var url     = 'cart_store/';
+        var url     = $(this).data('url');
         var method  = 'post';
         
         $.ajax({
             url: url,
             method: method,
-            data:{
-                quantity: quantity,
-                id: id,
-            },
-            function(data) {
+            data:{id: id},
+            success: function(data) {
 
-            	if (data.local == 'ar') {
+                swal('add success', {
+                    type: "success",
+                    icon: "success",
+                    buttons: false,
+                    timer: 3000,
+                    timer: 15000
+                });
 
-            		var currency = 'ج س';
-            		var title    = 'تمت الاضافه بنجاح';
+                var item =  '<li class="cart-item">'+
+                                '<div class="cart-media">'+
+                                    '<a href="#">'+
+                                        '<img src="'+data.image_product.image_path+'" alt="Product">'+
+                                    '</a>'+
+                                    '<button class="cart-delete">'+
+                                        '<i class="far fa-trash-alt"></i>'+
+                                    '</button>'+
+                                '</div>'+
+                                '<div class="cart-info-group">'+
+                                '<div class="cart-info">'+
+                                    '<h6><a href="4">name ar</a></h6>'+
+                                    '<p class="product-qty-4"> '+data.product.name+' - '+data.product.price+' '+data.currency+'</p>'+
+                                '</div>'+
+                                '<div class="cart-action-group">'+
+                                    '<div class="product-action">'+
+                                        '<button class="action-minus" title="نقصان الكيمة">'+
+                                            '<i class="icofont-minus"></i>'+
+                                        '</button>'+
+                                        '<input class="action-input" title="Quantity Number" type="text" name="quantity" value="'+data.product.qty+'" spellcheck="false" data-ms-editor="true">'+
+                                        '<button class="action-plus" title="زيادة الكمية">'+
+                                            '<i class="icofont-plus"></i>'+
+                                        '</button>'+
+                                    '</div>'+
+                                    '<h6>'+data.currency+' '+ data.product.qty * data.product.price+'</h6>'+
+                                '</div>'+
+                            '</li>';
 
-            	} else {
+                $('#add-cart-product').append(item);
+                $('.no-data').remove();
+                $('.cart-count').html(data.count);
+                $('.cart-totle').html(data.subtotal);
 
-            		var currency = 'SDG';
-            		var title    = 'add success'
-
-            	}
-
-		        swal(title, {
-		            type: "success",
-		            icon: "success",
-				  	buttons: false,
-				  	timer: 3000,
-		            timer: 15000
-				});
-
-                if (data.product.qty == 1) {
-
-                	var html =
-                        `<li class="cart-item">
-			            	<div class="cart-media">
-			            		<a href="#">
-                                    <img src="${data.image_product.image_path}" alt="Product">
-			            		</a>
-                                <button class="cart-delete">
-                                    <i class="far fa-trash-alt"></i>
-                                </button>
-                            </div>
-                            <div class="cart-info-group">
-                            <div class="cart-info">
-                                <h6><a href="${data.product.id}">${data.product_model.name}</a></h6>
-                                <p class="product-qty-${data.product.id}"> ${data.product_model.name} - ${currency} ${data.product.price}</p>
-                            </div>
-                            <div class="cart-action-group">
-                                    <div class="product-action">
-                                        <button class="action-minus" title="نقصان الكيمة">
-                                            <i class="icofont-minus"></i>
-                                        </button>
-                                        <input class="action-input product-qty-${data.product_model.id}" title="Quantity Number" type="text" name="quantity" value="${data.product.qty}">
-                                        <button class="action-plus">
-                                            <i class="icofont-plus"></i>
-                                        </button>
-                                    </div>
-                                    <h6>${currency} ${data.product_model.price}</h6>
-                                </div>
-                            </div>
-                        </li>`;
-
-                    $('#add-cart-product').append(html);
-                    // $('.all-product').html('1');
-
-                } else {
-
-                	var id         = data.product.id;
-                    // var totalPrice = $.number(data.product.price * data.product.qty ,2);
-
-                	// $('.product-qty-'+id).html(data.product.qty + ' ' + 'X' + ' ' + totalPrice + ' ' + currency);
-                    $('.product-qty-'+id).val(data.product.qty);
-                    // $('.all-product').html(data.count);
-
-                }//end of if
-
-                // calculateTotal(currency);
 
             }, error: function(data) {
                 console.log(data);
@@ -103,43 +73,26 @@ $(document).ready(function() {
     	e.preventDefault();
 
     	var id     = $(this).data('id');
-    	var qtyval = parseInt($('#product-quntty-'+ id).text());
-    	var method = 'post';
         var rowId  = $(this).data('rowid');
-
+        var url    = $(this).data('url');
+    	var method = 'post';
+    	var qtyval = parseInt($('.product-quntty-'+ id).val());
     	qtyvalup   = qtyval + 1;
-        $('#product-quntty-'+ id).text(qtyvalup);
-
+        $('.product-quntty-'+ id).val(qtyvalup);
+        
         $.ajax({
-			url: 'cart_update/'+id,
+			url: url,
 	       	method: method,
 	       	data:{
 	          quantity:qtyvalup,
               row_id:rowId,
-	          id:id,
 	       	},
 	       	success: function (data) {
+                
+                $('.cart-count').html(data.count);
+                $('.cart-totle').html(data.subtotal);
 
-                calculateTotal();
-
-                if (data.app == 'ar') {
-                    
-                    currency = 'ح م';
-
-                } else {
-
-                    currency = 'LE';
-                }
-
-                calculateTotal(currency);
-
-                subTotleProduct = $.number(data.cart.qty * data.cart.price - data.coupon,2);
-
-                $('#cart-count').html(data.count.count);
-
-                $('.product-qty-'+id).text(data.cart.qty + ' ' + 'X' + ' ' + subTotleProduct + ' ' + currency);
-
-                $('#subtotal-' + id).text(subTotleProduct);
+                $('.product-sub-totle-'+ id).html(data.product.qty * data.product.price);
 
 	       	},//end of success
 
@@ -150,57 +103,40 @@ $(document).ready(function() {
     $('.product-quntty-down').on('click', function(e) {
     	e.preventDefault();
 
-    	var id     = $(this).data('id');
-    	var qtyval = parseInt($('#product-quntty-' + id).text());
-    	var method = 'post';
+        var id     = $(this).data('id');
         var rowId  = $(this).data('rowid');
-    	qtyvaldown = qtyval - 1;
+        var url    = $(this).data('url');
+        var method = 'post';
+        var qtyval = parseInt($('.product-quntty-'+ id).val());
+        qtyvalup   = qtyval - 1;
 
-        if (qtyval > 1) {
+        if (qtyvalup == '0') {
 
-            $('#product-quntty-'+ id).text(qtyvaldown);
-
-            $.ajax({
-    			url: 'cart_update/'+id,
-    	       	method: method,
-    	       	data:{
-    	          quantity:qtyvaldown,
-                  row_id:rowId,
-    	          id:id,
-    	       	},
-    	       	success: function (data) {
-
-
-                    if (data.app == 'ar') {
-                        
-                        currency = 'ح م';
-
-                    } else {
-
-                        currency = 'LE';
-                    }
-
-                    calculateTotal(currency);
-
-                    subTotleProduct = $.number(data.cart.qty * data.cart.price - data.coupon,2);
-
-                    $('#cart-count').html(data.count.count);
-
-                    $('.product-qty-'+id).text(data.cart.qty + ' ' + 'X' + ' ' + subTotleProduct + ' ' + currency);
-                    
-                    $('#subtotal-' + id).text(subTotleProduct);
-
-    	       	},//end of success
-
-    	   	});//this ajax
+            qtyvalup = 1;
+            $('.product-quntty-'+ id).val(1);
 
         } else {
 
-            qtyval = 1; 
+            var qtyval = parseInt($('.product-quntty-'+ id).val(qtyvalup));
+        }
 
-            $('#product-quntty').text(qtyval)
+        $.ajax({
+            url: url,
+            method: method,
+            data:{
+              quantity:qtyvalup,
+              row_id:rowId,
+            },
+            success: function (data) {
+                
+                $('.cart-count').html(data.count);
+                $('.cart-totle').html(data.subtotal);
 
-        }//end of ig
+                $('.product-sub-totle-'+ id).html(data.product.qty * data.product.price);
+
+            },//end of success
+
+        });//this ajax
     	
     });//end of product quntty
 
@@ -273,6 +209,5 @@ $(document).ready(function() {
         $('#cart-totle').html($.number(price, 2) + ' ' + currency);
 
     }//end of calculate total
-
 
 });//end of document redy qtyval

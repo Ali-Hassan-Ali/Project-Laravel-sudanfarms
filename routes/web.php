@@ -16,7 +16,12 @@ use App\Http\Controllers\Home\SocialController;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
+    Route::get('/dd', function() {
 
+        return Cart::content();
+        return Cart::destroy();
+
+    });
     Route::get('login', [AuthController::class,'login'])->name('home.login');
     Route::post('login', [AuthController::class,'store_login'])->name('home.login.store');
 
@@ -66,8 +71,8 @@ function () {
     Route::get('about', [FooterController::class,'about'])->name('about.index');
     //cart route
     // Route::get('add_cart', [CartController::class,'add_cart'])->name('add.cart');
-    Route::post('cart_store', [CartController::class, 'add_cart'])->name('cart.store');
-    Route::post('/cart_update/{id}', [CartController::class, 'update_cart'])->name('cart.update');
+    Route::post('add_cart', [CartController::class, 'add_cart'])->name('cart.add');
+    Route::post('update_cart', [CartController::class, 'update_cart'])->name('cart.update');
     Route::delete('/destroy_cart/{id}', [CartController::class, 'destroy_cart'])->name('cart.destroy');
 
 

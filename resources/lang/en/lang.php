@@ -44,4 +44,8 @@ return [
     'rate_us_ar'      => 'rate us arbic',
     'rate_us_en'      => 'rate us english',
 
+    'no_login'       => 'If you want to comment you have to log in',
+    'next_blog'      => 'next post',
+    'prev_blog'      => 'previous post',
+
 ];

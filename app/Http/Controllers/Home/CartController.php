@@ -10,40 +10,22 @@ use App\Models\Product;
 
 class CartController extends Controller
 {
+
     public function add_cart(Request $request)
     {
-            // return Cart::destroy();
 
-                    $product_model = Product::FindOrFail($request->id);
-
-                    $image_product = ImageProduct::where('product_id',$product_model->id)->first();
-                    
-                    $product = Cart::add($product_model->id, $product_model->name, 1 , $product_model->price)
-                        ->associate('App\Models\Product');
-    // 
-                    $total   = Cart::subtotal();
-                    $count   = Cart::count();
-                    $local   = app()->getLocale();
-
-                    return response()->json(['product' => $product, 'product_model' => $product_model, 'total' => $total, 'local' => $local, 'count' => $count,'image_product' => $image_product]);
-                    return Cart::update($request->id, $request->quantity);
         try {
 
             if (request()->ajax()) {
 
-                if ($request->quantity != '1') {
+                $product_model = Product::FindOrFail($request->id);
+                
+                $product = Cart::add($product_model->id, $product_model->name, 1 , $product_model->price)
+                    ->associate('App\Models\Product');
 
-                    $quantity = $request->quantity;
-                    $quantity = $request->quantity;
+                $count    = Cart::count();
 
-                    return $this->update_cart($quantity,);
-                    
-                } else {
-
-                    return 'ok';
-
-
-                }//end of if
+                return response()->json(['product' => $product,'image_product' => $image_product, 'count' => $count, 'currency' => $currency,'subtotal'=>$subtotal]);
 
             }//end of if ajax
 
@@ -55,27 +37,21 @@ class CartController extends Controller
 
     }//end of function add_cart
 
-    public function update_cart(Request $request, $id)
+    public function update_cart(Request $request)
     {   
+
         try {
 
             if (request()->ajax()) {
 
-                $cart  = Cart::update($request->row_id, $request->quantity);
-                $count = Cart::count();
-                $app   = app()->getLocale();
+                $product  = Cart::update($request->row_id, $request->quantity);
 
-                if ($coupon = session()->has('coupon_value') == '') {
+                $count    = Cart::count();
+                $subtotal = Cart::subtotal();
 
-                    $coupon = '0';
-                    
-                } else {
+                $currency = app()->getLocale() == 'ar' ? 'جس' : 'SDG';
 
-                    $coupon = session()->get('coupon_value'); 
-
-                }//end of if
-
-                return response()->json(['cart' => $cart, 'count' => $count, 'app' => $app, 'coupon' => $coupon]);
+                return response()->json(['product' => $product, 'count' => $count, 'currency' => $currency,'subtotal'=>$subtotal]);
 
             }//end of ajax
 

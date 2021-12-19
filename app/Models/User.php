@@ -50,8 +50,14 @@ class User extends Authenticatable
 
     public function blog()
     {
-        return $this->hasMany(User::class,'users_id');
+        return $this->hasMany(Blog::class,'users_id');
 
     }//end of belongsTo blog
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'users_id');
+
+    }//end of user
 
 }//end of model

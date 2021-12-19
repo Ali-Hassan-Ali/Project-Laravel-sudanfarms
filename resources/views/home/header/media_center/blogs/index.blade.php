@@ -6,7 +6,7 @@
 
     <section class="inner-section single-banner">
         <div class="container">
-            <h2>الأخبار</h2>
+            <h2>@lang('dashboard.blogs')</h2>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">@lang('dashboard.home')</a></li>
                 <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.blogs')</li>
@@ -103,38 +103,13 @@
                             @endforeach
                         </ul>
                     </div>
-                   {{--  <div class="blog-widget">
-                        <h3 class="blog-widget-title">الأقسام</h3>
-                        <ul class="blog-widget-category">
-                            <li><a href="#">المزارع <span>22</span></a></li>
-                            <li><a href="#">الخضروات <span>14</span></a></li>
-                            <li><a href="#">الأسماك <span>35</span></a></li>
-                            <li><a href="#">الفواكة <span>67</span></a></li>
-                            <li><a href="#">المواشي والأغنام <span>89</span></a></li>
-                        </ul>
-                    </div> --}}
-{{--                     <div class="blog-widget">
-                        <h3 class="blog-widget-title">أخبار مماثلة</h3>
-                        <ul class="blog-widget-tag">
-                            <li><a href="#">مزارع</a></li>
-                            <li><a href="#">فواكة</a></li>
-                            <li><a href="#">خضروات</a></li>
-                            <li><a href="#">تجار</a></li>
-                            <li><a href="#">أراضي زراعية</a></li>
-                            <li><a href="#">نباتات عطرية</a></li>
-                            <li><a href="#">الحبوب</a></li>
-                            <li><a href="#">بذور زيتية</a></li>
-                            <li><a href="#">المواشي</a></li>
-                            <li><a href="#">النحل</a></li>
-                        </ul>
-                    </div> --}}
                     <div class="blog-widget">
                         <h3 class="blog-widget-title">@lang('dashboard.social_links')</h3>
                         <ul class="blog-widget-social">
-                            <li><a href="" class="icofont-facebook"></a></li>
-                            <li><a href="#" class="icofont-twitter"></a></li>
-                            <li><a href="#" class="icofont-instagram"></a></li>
-                            <li><a href="#" class="icofont-pinterest"></a></li>
+                            <li><a target="_blank" href="{{ setting('facebook') }}" class="icofont-facebook"></a></li>
+                            <li><a target="_blank" href="{{ setting('twitter') }}" class="icofont-twitter"></a></li>
+                            <li><a target="_blank" href="{{ setting('instagram') }}" class="icofont-instagram"></a></li>
+                            <li><a target="_blank" href="{{ setting('whatsapp') }}" class="fab fa-whatsapp"></a></li>
                         </ul>
                     </div>
                 </div>

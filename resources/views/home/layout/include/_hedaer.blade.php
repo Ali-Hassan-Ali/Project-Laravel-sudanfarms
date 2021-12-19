@@ -97,7 +97,9 @@
                         <i class="fab fa-whatsapp"></i>
                     </a>
 
-                    <button class="header-widget header-cart" title="@lang('home.cart')"><i class="fas fa-shopping-basket"></i><sup>{{ Cart::count() }}</sup></button>
+                    <button class="header-widget header-cart" title="@lang('home.cart')">
+                        <i class="fas fa-shopping-basket"></i><sup class="cart-count">{{ Cart::count() }}</sup>
+                    </button>
                 </div>
             </div>
         </div>
@@ -227,15 +229,20 @@
             <p>الحقوق محفوظة لـ <a href="#">مزارع السودان</a></p>
         </div> --}}
     </aside>
+
     <aside class="cart-sidebar">
         <div class="cart-header">
             <div class="cart-total"><i class="fas fa-shopping-basket"></i>
-                <span class="all-product"> @lang('home.all_product') ({{ Cart::count() }})</span>
+                <span class="all-product"> @lang('home.all_product') 
+                    <div class="cart-count">{{ Cart::count() }}</div>
+                </span>
             </div>
             <button class="cart-close"><i class="icofont-close"></i></button>
         </div>
         <ul class="cart-list" id="add-cart-product">
-            @if (Cart::count() > '1')
+
+
+            @if (Cart::count() > 0)
                 
                 @foreach (Cart::content() as $product)
 
@@ -256,20 +263,32 @@
                         <div class="cart-info-group">
                             <div class="cart-info">
                                 <h6><a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a></h6>
-                                <p>{{ $product->quantity_guard }} - {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }} {{ $product->price_decount - $product->price }}</p>
+                                <p>
+                                    {{ $product->quantity_guard }} - {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }} 
+
+                                    <div class="product-price-{{ $product->id }}">
+                                        {{ $product->price_decount - $product->price }}    
+                                    </div>
+
+                                </p>
                             </div>
                             <div class="cart-action-group">
                                 <div class="product-action">
-                                    <button class="action-minus add-cart" data-id="{{ $product->id }}" title="نقصان الكيمة">
+                                    <button class="product-quntty-down" 
+                                        data-id="{{ $product->id }}" data-url="{{ route('cart.update') }}" data-rowId="{{ $product->rowId }}">
                                         <i class="icofont-minus"></i>
                                     </button>
-                                    <input class="action-input product-qty-{{ $product->id }}" id="add-cart-product-{{ $product->id }}" title="Quantity Number" type="text" name="quantity" value="{{ $product->qty }}">
-                                    <button class="action-plus add-cart" data-id="{{ $product->id }}" title="زيادة الكمية">
+                                    <input class="action-input product-quntty-{{ $product->id }}" id="add-cart-product-{{ $product->id }}" 
+                                            title="Quantity Number" type="text" name="quantity" value="{{ $product->qty }}">
+                                    <button class="product-quntty-up" 
+                                        data-id="{{ $product->id }}" data-url="{{ route('cart.update') }}" data-rowId="{{ $product->rowId }}">
                                         <i class="icofont-plus"></i>
                                     </button>
                                 </div>
                                 <h6>{{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} 
-                                    <p class="new-price">{{ $product->price_decount - $product->price }}</p>
+                                    <p class="new-price product-sub-totle-{{ $product->id }}">
+                                        {{ number_format($product->qty * $product->price,2) }}
+                                    </p>
                                 </h6>
                             </div>
                         </div>
@@ -283,7 +302,7 @@
 
             @endif
         </ul>
-        <div class="cart-footer">
+        <div class="cart-footer pb-5">
             <form class="coupon-form">
                 <input type="text" placeholder="Enter your coupon code">
                 <button type="submit"><span>apply</span></button>
@@ -435,7 +454,7 @@
         </a>
         <button class="header-widget header-cart" title="@lang('home.shops')">
             <i class="fas fa-shopping-basket"></i>
-            <sup>{{ Cart::count() }}</sup>
+            <sup class="cart-count">{{ Cart::count() }}</sup>
         </button>
         <a href="{{ route('home.contact') }}" title="@lang('dashboard.contacts')">
             <i class="fas fa-phone"></i><span> @lang('dashboard.contacts')</span>

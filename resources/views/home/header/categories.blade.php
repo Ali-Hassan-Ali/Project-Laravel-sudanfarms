@@ -192,7 +192,7 @@
                                         <h6 class="product-price">
                                             <del>SDG34</del><span>SDG28<small>/الكيلو</small></span>
                                         </h6>
-                                            <button class="product-add" title="إضافة الى السلة">
+                                            <button class="product-add add-cart" data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}">
                                                 <i class="fas fa-shopping-basket"></i><span>إضافة</span>
                                             </button>
                                         <div class="product-action">

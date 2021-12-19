@@ -22,18 +22,18 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/venobox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/slick.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/viewbox.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/vendor/bootstrap.min.css') }}">
 
     {{-- custom style --}}
-    <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/contact.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/faq.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/custom/product-details.css') }}">
-    <link rel="stylesheet" href="{{ asset('home_files/css/custom/index.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/product-details.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/blog-details.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/privacy.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/custom/index.css') }}">
 
     {{-- plugin  sweetalert2--}}
     <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }} ">
@@ -83,49 +83,15 @@
     {{-- products js.js --}}
     <script src="{{ asset('home_files/js/products.js') }} "></script>
 
+    {{-- products js.js --}}
+    <script src="{{ asset('home_files/js/confirm_delete.js') }} "></script>
+
     {{--noty js--}}
     <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
-
-    {{-- niceCountryInput --}}
-    {{-- <script src="{{ asset('home_files/plugns/countryInput/niceCountryInput.js') }}"></script> --}}
 
     {{-- include packages notify js --}}
     @notifyJs
     
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            // $(".niceCountryInputSelector").each(function(i,e){
-            //     new NiceCountryInput(e).init();
-            // });
-
-            $('.delete').click(function (e) {
-
-                var that = $(this)
-
-                e.preventDefault();
-
-                var n = new Noty({
-                    text: "@lang('dashboard.confirm_delete')",
-                    type: "warning",
-                    killer: true,
-                    buttons: [
-                        Noty.button("@lang('dashboard.yes')", 'btn btn-success mr-2', function () {
-                            that.closest('form').submit();
-                        }),
-
-                        Noty.button("@lang('dashboard.no')", 'btn btn-primary mr-2', function () {
-                            n.close();
-                        })
-                    ]
-                });
-
-                n.show();
-
-            });//end of confirm_delete
-
-        });//end of document redy
-    </script>
     @stack('profile')
     @stack('products')
     @stack('gallery')

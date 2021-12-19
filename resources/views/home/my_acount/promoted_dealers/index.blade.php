@@ -44,11 +44,12 @@
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
-		                            <div class="form-group"><label class="form-label">@lang('lang.promotion')</label>
-		                                <select name="category_dealer_id" required class="form-control">
+		                            <div class="form-group">
+		                            	<label class="form-label">@lang('lang.promotion')</label>
+		                                <select name="category_dealer_id" id="category-dealer-id" required class="form-control">
 		                                    	<option value="">@lang('lang.promotion_categorey')</option>
 		                                	@foreach (App\Models\CategoryDealer::all() as $data)
-		                                    	<option value="{{ $data->id }}">{{ $data->name }}</option>
+		                                    	<option value="{{ $data->id }}" data-id="{{ $data->id }}">{{ $data->name }}</option>
 		                                	@endforeach
 		                                </select>
 		                            </div>
@@ -65,21 +66,21 @@
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.phone_master')</label>
-		                            	<input class="form-control" type="text" name="phone_master" placeholder="@lang('lang.phone_master')">
+		                            	<input class="form-control" type="tel" name="phone_master" placeholder="@lang('lang.phone_master')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('dashboard.phone')</label>
-		                            	<input class="form-control" type="text" name="phone" placeholder="@lang('dashboard.phone')">
+		                            	<input class="form-control" type="tel" name="phone" placeholder="@lang('dashboard.phone')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.other_phone')</label>
-		                            	<input class="form-control" type="text" name="other_phone" placeholder="@lang('lang.other_phone')">
+		                            	<input class="form-control" type="tel" name="other_phone" placeholder="@lang('lang.other_phone')">
 		                            </div>
 		                        </div>
 

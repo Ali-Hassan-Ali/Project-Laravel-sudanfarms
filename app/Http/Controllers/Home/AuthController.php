@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Notification;
 use App\Models\User;
+use App\Mail\MyTestMail;
+use Mail;
 use Auth;
 
 class AuthController extends Controller
@@ -90,7 +93,7 @@ class AuthController extends Controller
             'email'     => ['required', 'email','unique:users','max:25'],
             'password'  => ['required','confirmed','max:20'],
         ]);
-
+        
         try {
 
             $request_data = $request->except('password_confirmation','remember');
@@ -106,6 +109,14 @@ class AuthController extends Controller
                 
                 $remember_me = $request->has('remember') ? true : false;
                 auth()->login($user,$remember_me);
+                
+                $user = Notification::create([
+                    'title_ar' => 'تم انشاء حساب جديد',
+                    'title_en' => 'New account created',
+                    'user_id'  => $user->id,
+                ]);//end of create
+
+                \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
 
                 notify()->success( __('dashboard.added_successfully'));
                 return redirect()->route('profile.index');

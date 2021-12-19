@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\PromotedDealerController;
 use App\Http\Controllers\Dashboard\ClientsController;
 use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Dashboard\OffersController;
+use App\Http\Controllers\Dashboard\NotificationController;
 
 //Setting Controller
 use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
@@ -45,6 +46,8 @@ function () {
     Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
 
         Route::get('/', [WelcomController::class,'index'])->name('welcome');
+
+        Route::get('notification.show', [NotificationController::class,'show'])->name('notification.show');
 
         Route::get('promoted_dealer_count', [WelcomController::class,'promoted_dealer_count'])->name('promoted_dealer_count');
 
