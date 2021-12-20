@@ -80,7 +80,7 @@
                                             @for ($i = 0; $i < $product->stars; $i++)
                                                 <i class="active icofont-star"></i>
                                             @endfor
-                                            {{-- <i class="icofont-star"> --}}
+                                            <i class="icofont-star">
                                             </i><a href="{{ route('product.show',$product->id) }}">({{ $product->stars }})</a>
                                         </div>
                                         <h6 class="product-name">
@@ -91,7 +91,7 @@
                                             <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
                                         </h6>
                                         <h6 class="product-price"><span>{{ $promoted_dealer->name }}</span></h6>
-                                        <button class="product-add add-cart" data-id="{{ $product->id }}" title="@lang('home.add_cart')">
+                                        <button class="product-add add-cart" data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" title="@lang('home.add_cart')">
                                             <i class="fas fa-shopping-basket"></i><span>@lang('home.add_cart')</span>
                                         </button>
                                         <div class="product-action">

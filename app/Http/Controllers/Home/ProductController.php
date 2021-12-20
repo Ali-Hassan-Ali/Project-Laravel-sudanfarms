@@ -68,10 +68,18 @@ class ProductController extends Controller
                     'product_id' => $products->id,
                     'image'      => $image,
                 ]);
-            }
+
+            }//end of foreach
+
+            $user = Notification::create([
+                'title_ar' => 'تم اضافه منتج جديد',
+                'title_en' => 'created new product',
+                'user_id'  => auth()->user()->id,
+            ]);//end of create
+
+            \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
 
             notify()->success( __('dashboard.added_successfully'));
-
             return redirect()->route('products.index');
 
         } catch (\Exception $e) {

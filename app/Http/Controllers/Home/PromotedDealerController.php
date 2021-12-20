@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Notification;
 use App\Models\PromotedDealer;
 use Illuminate\Support\Facades\Storage;
 
@@ -48,8 +49,16 @@ class PromotedDealerController extends Controller
             $request_data['company_logo']        = $request->file('company_logo')->store('company_logo','public');
 
             $request_data['company_certificate'] = $request->file('company_certificate')->store('company_certificate','public');
-                
+            
             PromotedDealer::create($request_data);
+
+            $user = Notification::create([
+                'title_ar' => 'تم ترقيه حساب جديد',
+                'title_en' => 'New account upgraded',
+                'user_id'  => auth()->user()->id,
+            ]);//end of create
+
+            \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
 
             return redirect()->route('profile.index');
 
@@ -76,7 +85,7 @@ class PromotedDealerController extends Controller
 
     public function update(Request $request)
     {   
-        // return $request;
+   
         $request->validate([
             'company_name_ar'     => ['required','max:255'],
             'company_name_en'     => ['required','max:255'],

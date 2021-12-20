@@ -66,63 +66,63 @@
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.phone_master')</label>
-		                            	<input class="form-control" type="tel" name="phone_master" placeholder="@lang('lang.phone_master')">
+		                            	<input class="form-control" value="{{ old('phone_master') }}" type="number" name="phone_master" placeholder="@lang('lang.phone_master')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('dashboard.phone')</label>
-		                            	<input class="form-control" type="tel" name="phone" placeholder="@lang('dashboard.phone')">
+		                            	<input class="form-control" value="{{ old('phone') }}" type="number" name="phone" placeholder="@lang('dashboard.phone')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.other_phone')</label>
-		                            	<input class="form-control" type="tel" name="other_phone" placeholder="@lang('lang.other_phone')">
+		                            	<input class="form-control" value="{{ old('other_phone') }}" type="number" name="other_phone" placeholder="@lang('lang.other_phone')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('dashboard.web_site')</label>
-		                            	<input class="form-control" type="text" name="web_site" placeholder="@lang('dashboard.web_site')">
+		                            	<input class="form-control" type="text" value="{{ old('web_site') }}" name="web_site" placeholder="@lang('dashboard.web_site')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('dashboard.country')</label>
-		                            	<input class="form-control" type="text" name="country" placeholder="@lang('dashboard.country')">
+		                            	<input class="form-control" type="text" value="{{ old('country') }}" name="country" placeholder="@lang('dashboard.country')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.state')</label>
-		                            	<input class="form-control" type="text" name="nullable" placeholder="@lang('lang.state')">
+		                            	<input class="form-control" type="text" value="{{ old('state') }}" name="state" placeholder="@lang('lang.state')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('dashboard.city')</label>
-		                            	<input class="form-control" type="text" name="city" placeholder="@lang('dashboard.city')">
+		                            	<input class="form-control" type="text" value="{{ old('city') }}" name="city" placeholder="@lang('dashboard.city')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('dashboard.title')</label>
-		                            	<input class="form-control" type="text" name="title" placeholder="@lang('dashboard.title')">
+		                            	<input class="form-control" type="text" value="{{ old('title') }}" name="title" placeholder="@lang('dashboard.title')">
 		                            </div>
 		                        </div>
 
 		                        <div class="col-sm-12">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.company_profile')</label>
-		                                <textarea name="description" class="form-control" cols="30" rows="10" placeholder="@lang('lang.company_profile')"></textarea>
+		                                <textarea name="description" class="form-control" cols="30" rows="10" placeholder="@lang('lang.company_profile')">{{ old('description') }}</textarea>
 		                            </div>
 		                        </div>
 

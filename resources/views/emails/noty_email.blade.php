@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>kings</title>
+    <title>sudan farms | 
+        @if (app()->getLocale() == 'ar')
+
+            {{ $user['title_ar'] }}
+            
+        @else
+
+            {{ $user['title_en'] }}
+
+        @endif
+    </title>
 </head>
 <body>
-    <h1>{{ $user['user_id'] }}</h1>
-    <h2>wewe</h2>
+    @if (app()->getLocale() == 'ar')
 
-    <p>Thank you</p>
+        <h1>{{ $user['title_ar'] }}</h1>
+        
+    @else
+
+        <h1>{{ $user['title_en'] }}</h1>
+
+    @endif
+
+    <h2>
+        <a href="{{ route('dashboard.welcome') }}">
+            @lang('dashboard.show')
+        </a>
+    </h2>
+
 </body>
 </html>

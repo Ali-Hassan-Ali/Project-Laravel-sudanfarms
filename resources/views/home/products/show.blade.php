@@ -123,6 +123,12 @@
                                 <i class="icofont-ui-email"></i><span> @lang('dashboard.email')</span>
                             </a>
                         </div>
+                        <div class="details-action-group my-3">
+                            <a class="details-wish wish count-call-email add-cart" 
+                                    data-url="{{ route('cart.add') }}" data-id="{{ $min_product->id }}">
+                                <i class="fas fa-shopping-basket"></i><span> @lang('home.add_cart')</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

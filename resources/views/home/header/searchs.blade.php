@@ -64,16 +64,11 @@
 	                                <del>SDG{{ $product->price_decount }}</del>
 	                                <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
 	                            </h6>
-	                            <button class="product-add" title="@lang('home.add_cart')">
+	                            <button class="product-add add-cart" 
+                                    	data-url="{{ route('cart.add') }}" data-id="{{ $min_product->id }}" 
+                                    	title="@lang('home.add_cart')">
 	                                <i class="fas fa-shopping-basket"></i><span>@lang('home.add_cart')</span>
 	                            </button>
-	                            <div class="product-action">
-	                                <button class="action-minus" title="نقصان الكيمة">
-	                                    <i class="icofont-minus"></i>
-	                                </button>
-	                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-	                                <button class="action-plus" title="زيادة الكمية"><i class="icofont-plus"></i></button>
-	                            </div>
 	                        </div>
 	                    </div>
 	                </div>

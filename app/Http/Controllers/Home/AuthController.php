@@ -96,7 +96,8 @@ class AuthController extends Controller
         
         try {
 
-            $request_data = $request->except('password_confirmation','remember');
+            $request_data             = $request->except('password_confirmation','remember');
+            $request_data['password'] = bcrypt($request->password);
 
             if (Auth::guard('web')->check()) {
 
@@ -112,7 +113,7 @@ class AuthController extends Controller
                 
                 $user = Notification::create([
                     'title_ar' => 'تم انشاء حساب جديد',
-                    'title_en' => 'New account created',
+                    'title_en' => 'created New account',
                     'user_id'  => $user->id,
                 ]);//end of create
 
