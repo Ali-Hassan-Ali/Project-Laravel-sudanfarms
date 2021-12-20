@@ -305,10 +305,25 @@
             {{ route('cart.destroy') }}
         </div>
         <div class="cart-footer">
-            <a class="cart-checkout-btn" href="#">
-                <span class="checkout-label">@lang('home.send')</span>
-                <span class="checkout-price cart-totle">{{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} {{ Cart::subtotal() }}</span>
-            </a>
+            @auth
+                
+                <a class="cart-checkout-btn" href="{{ route('cart.send') }}">
+                    <span class="checkout-label">@lang('home.send')</span>
+                    <span class="checkout-price cart-totle">
+                        {{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} {{ Cart::subtotal() }}
+                    </span>
+                </a>
+
+            @else
+
+                <a class="cart-checkout-btn" href="{{ route('home.login') }}">
+                    <span class="checkout-label">@lang('home.login')</span>
+                    <span class="checkout-price cart-totle">
+                        {{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} {{ Cart::subtotal() }}
+                    </span>
+                </a>
+
+            @endauth
         </div>
     </aside>
 

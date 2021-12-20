@@ -84,7 +84,7 @@ class HeaderController extends Controller
 
 
         Contact::create($request->all());
-
+        notify()->success( __('dashboard.added_successfully'));
         return redirect()->back();
 
     }//end of contact

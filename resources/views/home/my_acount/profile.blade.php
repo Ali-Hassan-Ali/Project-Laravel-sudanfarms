@@ -170,7 +170,7 @@
                 <div class="col-lg-12">
                     <div class="account-card">
                         <div class="account-title">
-                            <h4>@lang('dashboard.orders')</h4>
+                            <h4>@lang('dashboard.dashboard')</h4>
                         </div>
                         <div class="account-content">
                             <div class="row">
@@ -204,8 +204,8 @@
                             <div class="row">
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
-                                        <h6><i class="fas fa-list"></i> الطلبات ( 5)</h6>
-                                        <a href="orders-users.html">التفاصيل</a>
+                                        <h6><i class="fas fa-list"></i> @lang('dashboard.orders') (5)</h6>
+                                        <a href="{{ route('orders.index') }}">@lang('dashboard.show')</a>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 alert fade show">
@@ -268,6 +268,32 @@
                 </div>
 
             @else
+
+                <div class="col-lg-12">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>@lang('dashboard.orders')</h4>
+                        </div>
+                        <div class="account-content">
+                            <div class="row">
+                                
+                                <div class="col-md-6 col-lg-4 alert fade show">
+                                    <div class="profile-card contact">
+                                        <h6><i class="fas fa-list"></i> @lang('dashboard.orders') (5)</h6>
+                                        <a href="{{ route('orders.index') }}">@lang('dashboard.show')</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 alert fade show">
+                                    <div class="profile-card contact">
+                                        <h6><i class="fas fa-times"></i> طلبات غير متوفرة ( 3)</h6>
+                                        <a href="orders-users.html">التفاصيل</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-lg-12">
                     <div class="account-card">

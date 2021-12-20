@@ -12,6 +12,7 @@ use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\OfferController;
 use App\Http\Controllers\Home\SocialController;
+use App\Http\Controllers\Home\OrderController;
 
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
@@ -76,6 +77,7 @@ function () {
     Route::post('add_cart', [CartController::class, 'add_cart'])->name('cart.add');
     Route::post('update_cart', [CartController::class, 'update_cart'])->name('cart.update');
     Route::post('destroy_cart', [CartController::class, 'destroy_cart'])->name('cart.destroy');
+    Route::get('send', [CartController::class, 'send'])->name('cart.send');
 
 
     Route::middleware(['auth'])->group(function () {
@@ -95,6 +97,9 @@ function () {
         //products routes
         Route::resource('products', ProductController::class);
         Route::get('sub_category/{id}', [ProductController::class, 'sub_categoreys'])->name('home.sub_categorys');
+
+        Route::get('my_order', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('my_order_details/{order}', [OrderController::class, 'show'])->name('orders.show');
 
         // offers route
         Route::resource('offers', OfferController::class);
