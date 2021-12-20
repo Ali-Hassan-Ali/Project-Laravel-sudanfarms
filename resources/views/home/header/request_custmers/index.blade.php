@@ -34,58 +34,65 @@
                 <div class="col-lg-12">
                     <div class="account-card">
                         <div class="account-title">
-                            <h4>@lang('dashboard.orders')</h4>
+                            <h4>@lang('dashboard.request_custmers')</h4>
                         </div>
-                        <div class="account-content">
-                            <div class="table-scroll">
-                                <table class="table-list">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">@lang('dashboard.name')</th>
-                                            <th scope="col">@lang('dashboard.phone')</th>
-                                            <th scope="col">@lang('home.product_name')</th>
-                                            <th scope="col">@lang('dashboard.quantity')</th>
-                                            <th scope="col">@lang('dashboard.end_time')</th>
-                                            <th scope="col">@lang('dashboard.action')</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($request_custmers as $request_custmer)
+                        @if ($request_custmers->count() > 0)
+
+                            <div class="account-content">
+
+                                <div class="table-scroll">
+                                    <table class="table-list">
+                                        <thead>
                                             <tr>
-                                                <td>
-                                                    <h6>{{ $request_custmer->name }}</h6>
-                                                </td>
-
-                                                <td>
-                                                    <h6>{{ $request_custmer->product_name }}</h6>
-                                                </td>
-
-                                                <td>
-                                                    <h6>{{ $request_custmer->phone }}</h6>
-                                                </td>
-
-                                                <td>
-                                                    <h6>{{ $request_custmer->quantity }} {{ $request_custmer->quantity_guard }}</h6>
-                                                </td>
-
-                                                <td>
-                                                    <h6>{{ $request_custmer->end_time }}</h6>
-                                                </td>
-                                                <td>
-                                                    <a href="tel:{{ $request_custmer->phone }}" class="btn btn-info btn-sm">
-                                                        <i class="fa fa-phone"></i>
-                                                    </a>
-                                                    <a href="mailto:{{ $request_custmer->enail }}" class="btn btn-info btn-sm">
-                                                        <i class="fa fa-envelope"></i>
-                                                    </a>
-                                                </td>
+                                                <th scope="col">@lang('dashboard.name')</th>
+                                                <th scope="col">@lang('dashboard.phone')</th>
+                                                <th scope="col">@lang('home.product_name')</th>
+                                                <th scope="col">@lang('dashboard.quantity')</th>
+                                                <th scope="col">@lang('dashboard.end_time')</th>
+                                                <th scope="col">@lang('dashboard.action')</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($request_custmers as $request_custmer)
+                                                <tr>
+                                                    <td>
+                                                        <h6>{{ $request_custmer->name }}</h6>
+                                                    </td>
+
+                                                    <td>
+                                                        <h6>{{ $request_custmer->product_name }}</h6>
+                                                    </td>
+
+                                                    <td>
+                                                        <h6>{{ $request_custmer->phone }}</h6>
+                                                    </td>
+
+                                                    <td>
+                                                        <h6>{{ $request_custmer->quantity }} {{ $request_custmer->quantity_guard }}</h6>
+                                                    </td>
+
+                                                    <td>
+                                                        <h6>{{ $request_custmer->end_time }}</h6>
+                                                    </td>
+                                                    <td>
+                                                        <a href="tel:{{ $request_custmer->phone }}" class="btn btn-info btn-sm">
+                                                            <i class="fa fa-phone"></i>
+                                                        </a>
+                                                        <a href="mailto:{{ $request_custmer->enail }}" class="btn btn-info btn-sm">
+                                                            <i class="fa fa-envelope"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
 
-                        </div>
+                        @else
+                            <h2>@lang('dashboard.no_data_found')</h2>
+                        @endif
                     </div>
                 </div>
 

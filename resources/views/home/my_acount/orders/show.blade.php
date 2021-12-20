@@ -24,58 +24,63 @@
                         <div class="account-title">
                             <h4>@lang('dashboard.products') <small>{{ $orderItems->count() }}</small></h4>
                         </div>
+                        @if ($orderItems->count() > 0)
 
-                        <div class="account-content">
-                            <div class="table-scroll">
-                                <table class="table-list">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">@lang('dashboard.image')</th>
-                                            <th scope="col">@lang('dashboard.name')</th>
-                                            <th scope="col">@lang('dashboard.price')</th>
-                                            <th scope="col">@lang('dashboard.quantity')</th>
-                                            <th scope="col">@lang('dashboard.totalprice')</th>
-                                            <th scope="col">@lang('dashboard.created_at')</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	@foreach ($orderItems as $index=>$order)
+                            <div class="account-content">
+                                <div class="table-scroll">
+                                    <table class="table-list">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">@lang('dashboard.image')</th>
+                                                <th scope="col">@lang('dashboard.name')</th>
+                                                <th scope="col">@lang('dashboard.price')</th>
+                                                <th scope="col">@lang('dashboard.quantity')</th>
+                                                <th scope="col">@lang('dashboard.totalprice')</th>
+                                                <th scope="col">@lang('dashboard.created_at')</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        	@foreach ($orderItems as $index=>$order)
 
-	                                        <tr>
-	                                            <td class="table-name">
-	                                                <h6>{{ $index + 1 }}</h6>
-	                                            </td>
-	                                            <td class="table-name">
-	                                                <h6>{{ $order->product->name }}</h6>
-	                                            </td>
-                                                @php
-                                                    $image = App\Models\ImageProduct::where('product_id', $order->product->id)->first();
-                                                @endphp
-                                                <td class="table-name">
-                                                    <img src="{{ $image->image_path }}" width="200">
-                                                </td>
-                                                <td class="table-name">
-                                                    <h6>{{ $order->price }}</h6>
-                                                </td>
-                                                <td class="table-name">
-                                                    <h6>{{ $order->quantity }}</h6>
-                                                </td>
-                                                <td class="table-name">
-                                                    <h6>{{ number_format($order->subtotal,2) }}</h6>
-                                                </td>
-	                                            <td class="table-price">
-	                                                <h6>{{ $order->created_at }}</h6>
-	                                            </td>
-	                                        </tr>
+    	                                        <tr>
+    	                                            <td class="table-name">
+    	                                                <h6>{{ $index + 1 }}</h6>
+    	                                            </td>
+    	                                            <td class="table-name">
+    	                                                <h6>{{ $order->product->name }}</h6>
+    	                                            </td>
+                                                    @php
+                                                        $image = App\Models\ImageProduct::where('product_id', $order->product->id)->first();
+                                                    @endphp
+                                                    <td class="table-name">
+                                                        <img src="{{ $image->image_path }}" width="200">
+                                                    </td>
+                                                    <td class="table-name">
+                                                        <h6>{{ $order->price }}</h6>
+                                                    </td>
+                                                    <td class="table-name">
+                                                        <h6>{{ $order->quantity }}</h6>
+                                                    </td>
+                                                    <td class="table-name">
+                                                        <h6>{{ number_format($order->subtotal,2) }}</h6>
+                                                    </td>
+    	                                            <td class="table-price">
+    	                                                <h6>{{ $order->created_at }}</h6>
+    	                                            </td>
+    	                                        </tr>
 
-                                        @endforeach
+                                            @endforeach
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
-                        </div>
+                        @else
+                            <h2>@lang('dashboard.no_data_found')</h2>
+                        @endif
+
                     </div>
                 </div>
 

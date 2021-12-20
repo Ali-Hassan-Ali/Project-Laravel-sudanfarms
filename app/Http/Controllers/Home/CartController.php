@@ -153,6 +153,8 @@ class CartController extends Controller
             
         } else {
 
+            notify()->success( __('dashboard.no_data_found'));
+            
             return redirect()->back();
 
         }//end of if

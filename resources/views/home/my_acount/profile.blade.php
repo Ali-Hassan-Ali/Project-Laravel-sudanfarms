@@ -210,8 +210,8 @@
                                 </div>
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
-                                        <h6><i class="fas fa-times"></i> طلبات غير متوفرة ( 3)</h6>
-                                        <a href="orders-users.html">التفاصيل</a>
+                                        <h6><i class="fas fa-times"></i> @lang('dashboard.request_custmers') ( 3)</h6>
+                                        <a href="{{ route('request_custmers.index') }}">@lang('dashboard.show')</a>
                                     </div>
                                 </div>
                             </div>
@@ -285,8 +285,8 @@
                                 </div>
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
-                                        <h6><i class="fas fa-times"></i> طلبات غير متوفرة ( 3)</h6>
-                                        <a href="orders-users.html">التفاصيل</a>
+                                        <h6><i class="fas fa-times"></i> @lang('dashboard.request_custmers') ( 3)</h6>
+                                        <a href="{{ route('request_custmers.index') }}">@lang('dashboard.show')</a>
                                     </div>
                                 </div>
 

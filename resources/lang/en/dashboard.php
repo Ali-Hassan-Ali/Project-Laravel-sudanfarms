@@ -30,6 +30,8 @@ return [
     'similar_products'   => 'similar products',
     'call_me'            => 'Communicate with the merchant',
     'map'                => 'map',
+    'email_one'          => 'email one',
+    'link_map'           => 'google map location link',
     'welcome_ar'         => 'English welcome message',
     'welcom_en'          => 'Arbic welcome message',
 
