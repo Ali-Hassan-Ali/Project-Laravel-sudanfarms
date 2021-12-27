@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Offer;
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\Product;
 use App\Models\PackagePromoted;
+use App\Models\Product;
 use App\Models\PromotedDealer;
 use App\Models\RequestCustmer;
 use App\Models\User;
@@ -21,29 +21,33 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        // return date('d') + 2;
-        // return date('d'.'-'.'m'.'-'.'Y');
 
         $userId = auth()->id();
 
         $promoted_dealer = PromotedDealer::where('user_id', $userId)->first();
-        $PackagePromoted = PackagePromoted::where('promoted_dealer_id', $promoted_dealer->id)->first();
+
         if ($promoted_dealer) {
 
-            if ($promoted_dealer->packages_id) {
+            $PackagePromoted = PackagePromoted::where('promoted_dealer_id', $promoted_dealer->id)->first();
 
-                if ($PackagePromoted->end_month > date('d-m-Y')) {
+            if ($promoted_dealer) {
 
-                    $promoted_dealer->update([
-                        'status' => 0
-                        // 'status' => 0
-                    ]);
+                if ($promoted_dealer->packages_id) {
+
+                    if ($PackagePromoted->end_month > date('d-m-Y')) {
+
+                        $promoted_dealer->update([
+                            'status' => 0,
+                            // 'status' => 0
+                        ]);
+
+                    } //end of if
 
                 } //end of if
 
-            } //end of if
+            } //emd pf
 
-        } //emd pf
+        } //end of if
 
         if ($promoted_dealer) {
 

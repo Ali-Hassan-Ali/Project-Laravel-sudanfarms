@@ -58,7 +58,7 @@ class PromotedDealerController extends Controller
                 $request_data['company_name_en'] = $request->company_name_ar;
             }
 
-            $request_data['user_id']      = auth()->user()->id;
+            $request_data['user_id']      = auth()->id();
             $request_data['company_logo'] = $request->file('company_logo')->store('company_logo', 'public');
 
             if ($request->company_certificate) {
