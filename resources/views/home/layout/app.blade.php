@@ -38,6 +38,9 @@
     {{-- plugin  sweetalert2--}}
     <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }} ">
 
+    {{-- plugin  addtohomescreen--}}
+    <link rel="stylesheet" href="{{ asset('home_files/plugns/addtohomescreen/addtohomescreen.css') }} ">
+
 </head>
 
 <body class="scrollspy" data-bs-spy="scroll" data-bs-target="#scrollspy">
@@ -88,6 +91,13 @@
 
     {{--noty js--}}
     <script src="{{ asset('dashboard_files/plugins/noty/noty.min.js') }}"></script>
+
+    {{--addtohomescreen js--}}
+    <script src="{{ asset('home_files/plugns/addToHomescreen/addToHomescreen.js') }}"></script>
+
+    <script type="text/javascript">
+        addToHomescreen();
+    </script>
 
     {{-- include packages notify js --}}
     @notifyJs
