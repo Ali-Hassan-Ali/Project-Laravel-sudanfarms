@@ -16,12 +16,26 @@ class PromotedDealer extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+
     }//end of user
 
     public function category_dealer()
     {
         return $this->belongsTo(CategoryDealer::class);
+
     }//end of category_dealer
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class,'packages_id')->withDefault();
+        
+    }//end of category_dealer
+
+    public function PromotedDealer()
+    {
+        return $this->hasMany(PackagePromoted::class,'promoted_dealer_id');
+        
+    }//end of package
 
     public function getLogoPathAttribute()
     {

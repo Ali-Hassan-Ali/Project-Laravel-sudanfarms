@@ -179,6 +179,7 @@ return [
 
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
 
 
     ],
@@ -237,6 +238,8 @@ return [
 
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
+        'Location' => Stevebauman\Location\Facades\Location::class,
 
     ],
 

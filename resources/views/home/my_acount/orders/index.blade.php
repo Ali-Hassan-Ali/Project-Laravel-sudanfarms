@@ -30,7 +30,7 @@
                                     <table class="table-list">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
+                                                <th scope="col">order number</th>
                                                 <th scope="col">@lang('dashboard.totalprice')</th>
                                                 <th scope="col">@lang('dashboard.created_at')</th>
                                                 <th scope="col">@lang('dashboard.action')</th>
@@ -51,7 +51,7 @@
     	                                            </td>
     	                                            <td class="table-price">
     	                                                <a href="{{ route('orders.show', $order->id) }}" class="btn-info btn-sm">
-    	                                                	<i class="fa fa-eye"></i>
+    	                                                	<i class="fa fa-eye"></i> ordera detilse
     	                                                </a>
     	                                            </td>
     	                                        </tr>

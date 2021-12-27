@@ -9,6 +9,8 @@ return [
     'about_customers'      => 'عرض العملاء',
     'logoute_successfully' => 'تم تسجيل الخروج بنجاح',
     'login_successfully'   => 'تم تسجيل الدخول بنجاح',
+    'special_requests'     => 'الطلبات الخاصة',
+    'no_packages'          => 'يجب عليك الاشترك في الباقه',
     
     'englsih'        => 'الانجليزية',
     'arbic'          => 'العربية',
@@ -87,7 +89,7 @@ return [
     'yes'              => 'نعم',
     'no'               => 'لا',
     'confirm_delete'   => 'الاستمرار بالحذف',
-    'no_data_found'    => 'لايوجد اي سجلات',
+    'no_data_found'    => 'لايوجد اي ببينات',
     'cart_sales'       =>'المبيعات',
     'admin'            => 'الأدمن',
     'name.user'        => 'العميل',
@@ -294,7 +296,18 @@ return [
     'manager_word_en'  => 'كلمة المدير بلانجلزي',
     
     'advertisements'  => 'الاعلانات',
-    
 
+    'packages'         => 'الباقات',
+    'package'          => 'الباقة',
+    'guard'            => 'النوع',
+    'free'             => 'مفتوحة',
+    'infree'           => 'مدفوعة',
+    'data'             => 'المدة الزمنية',
+    'qty_product'      => 'عدد المنتجات',
+    'month'            => 'الشهر',
+    'months'           => 'الاشهر',
+    'select_moth'      => 'اختر الشهر',
+    'select_package'   => 'اختر الباقة',
+    'bill'             => 'صوره من الفاتوره',
 
 ];

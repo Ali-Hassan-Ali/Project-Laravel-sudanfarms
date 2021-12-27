@@ -24,7 +24,7 @@ class CreateRequestCustmersTable extends Migration
             $table->dateTime('date_shipment');
             $table->dateTime('end_time');
             $table->double('quantity');
-            $table->double('status')->default('0');
+            $table->boolean('status')->default('0');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('promoted_dealer_id')->unsigned()->nullable();
 

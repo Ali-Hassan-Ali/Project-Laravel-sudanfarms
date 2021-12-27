@@ -20,6 +20,7 @@ use App\Models\Video;
 use App\Models\Blog;
 use App\Models\File;
 use App\Models\Offer;
+use App\Models\OrderItem;
 
 class HeaderController extends Controller
 {
@@ -291,6 +292,16 @@ class HeaderController extends Controller
         return view('home.header.common_questions',compact('common_questions'));
         
     }//end of common_questions
+
+    public function special_requests()
+    {
+        $id = auth()->id();
+
+        $orderItems = OrderItem::where('promoted_dealer_id',$id)->with('user')->latest()->paginate(10);
+        
+        return view('home.my_acount.orders.special_requests',compact('orderItems'));
+
+    }//end of special_requests
 
 
 }//end of controller

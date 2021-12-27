@@ -19,7 +19,9 @@
         <div class="row">
             <div class="col-lg-12">
                 @php
-                    $uuser_state = app\Models\PromotedDealer::where('user_id',auth()->user()->id)->where('state','0')->first()
+                    $uuser_state = app\Models\PromotedDealer::where('user_id',auth()->user()->id)->where('state','0')->first();
+                    $packages    = app\Models\PromotedDealer::where('user_id',auth()->user()->id)->where('packages_id','>','0')->where('status','1')->first();
+
                 @endphp
 
                 @if ($uuser_state)
@@ -185,14 +187,7 @@
                     </div>
                 </div>
                 
-            @endif
-
-            @php
-                $user     = App\Models\PromotedDealer::where('user_id',auth()->user()->id)->first();
-                $products = App\Models\Product::where('user_id',auth()->user()->id)->count();
-                $offers   = App\Models\Offer::where('user_id',auth()->user()->id)->count();
-            @endphp
-
+            @endif  
             @if ($promoted_dealer)
 
                 <div class="col-lg-12">
@@ -204,68 +199,103 @@
                             <div class="row">
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
-                                        <h6><i class="fas fa-list"></i> @lang('dashboard.orders') (5)</h6>
+                                        <h6><i class="fas fa-list"></i> @lang('dashboard.orders') ({{ $orders }})</h6>
                                         <a href="{{ route('orders.index') }}">@lang('dashboard.show')</a>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
-                                        <h6><i class="fas fa-times"></i> @lang('dashboard.request_custmers') ( 3)</h6>
+                                        <h6><i class="fas fa-times"></i> @lang('dashboard.request_custmers') ({{ $recustm }})</h6>
                                         <a href="{{ route('request_custmers.index') }}">@lang('dashboard.show')</a>
                                     </div>
                                 </div>
+                                <div class="col-md-6 col-lg-4 alert fade show">
+                                    <div class="profile-card contact">
+                                        <h6><i class="fas fa-times"></i> @lang('dashboard.special_requests') ({{ $orderItem }})</h6>
+                                        <a href="{{ route('special_requests.index') }}">@lang('dashboard.show')</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @if (!$packages)
 
-                <div class="col-lg-12">
-                    <div class="account-card">
-                        <div class="account-title">
-                            <h4>@lang('dashboard.products')</h4>
-                        </div>
-                        <div class="account-content">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-4 alert fade show">
-                                    <div class="profile-card contact">
-                                        <h6><i class="fas fa-list"></i> @lang('dashboard.products')({{ $products }})</h6>
-                                        <a href="{{ route('products.index') }}">@lang('dashboard.show') @lang('dashboard.products')</a>
+                    <div class="col-lg-12">
+                        <div class="account-card">
+                            <div class="account-title">
+                                <h4>@lang('dashboard.packages')</h4>
+                            </div>
+                            <div class="account-content">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 alert fade show">
+                                        <div class="profile-card contact">
+                                            <h6><i class="fas fa-list"></i> @lang('dashboard.package')</h6>
+                                            <a href="{{ route('promoted_dealers.packages') }}">@lang('dashboard.show') @lang('dashboard.package')</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 alert fade show">
-                                    <div class="profile-card contact">
-                                        <h6><i class="fas fa-times"></i> @lang('dashboard.add') @lang('dashboard.products')</h6>
-                                        <a href="{{ route('products.create') }}">@lang('dashboard.add')</a>
-                                    </div>
+                                    {{-- <div class="col-md-6 col-lg-4 alert fade show">
+                                        <div class="profile-card contact">
+                                            <h6><i class="fas fa-times"></i> @lang('dashboard.add') @lang('dashboard.products')</h6>
+                                            <a href="{{ route('products.create') }}">@lang('dashboard.add')</a>
+                                        </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    
+                @else
 
-                <div class="col-lg-12">
-                    <div class="account-card">
-                        <div class="account-title">
-                            <h4>@lang('dashboard.offers')</h4>
-                        </div>
-                        <div class="account-content">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-4 alert fade show">
-                                    <div class="profile-card contact">
-                                        <h6><i class="fas fa-list"></i> @lang('dashboard.offers')({{ $offers }})</h6>
-                                        <a href="{{ route('offers.index') }}">@lang('dashboard.offers')</a>
+                    <div class="col-lg-12">
+                        <div class="account-card">
+                            <div class="account-title">
+                                <h4>@lang('dashboard.products')</h4>
+                            </div>
+                            <div class="account-content">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 alert fade show">
+                                        <div class="profile-card contact">
+                                            <h6><i class="fas fa-list"></i> @lang('dashboard.products')({{ $products }})</h6>
+                                            <a href="{{ route('products.index') }}">@lang('dashboard.show') @lang('dashboard.products')</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 alert fade show">
-                                    <div class="profile-card contact">
-                                        <h6><i class="fas fa-times"></i> @lang('dashboard.add') @lang('dashboard.offers')</h6>
-                                        <a href="{{ route('offers.create') }}">@lang('dashboard.add')</a>
+                                    <div class="col-md-6 col-lg-4 alert fade show">
+                                        <div class="profile-card contact">
+                                            <h6><i class="fas fa-times"></i> @lang('dashboard.add') @lang('dashboard.products')</h6>
+                                            <a href="{{ route('products.create') }}">@lang('dashboard.add')</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    {{-- <div class="col-lg-12">
+                        <div class="account-card">
+                            <div class="account-title">
+                                <h4>@lang('dashboard.offers')</h4>
+                            </div>
+                            <div class="account-content">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 alert fade show">
+                                        <div class="profile-card contact">
+                                            <h6><i class="fas fa-list"></i> @lang('dashboard.offers')({{ $offers }})</h6>
+                                            <a href="{{ route('offers.index') }}">@lang('dashboard.offers')</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 alert fade show">
+                                        <div class="profile-card contact">
+                                            <h6><i class="fas fa-times"></i> @lang('dashboard.add') @lang('dashboard.offers')</h6>
+                                            <a href="{{ route('offers.create') }}">@lang('dashboard.add')</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+
+                @endif
 
             @else
 
@@ -279,17 +309,16 @@
                                 
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
-                                        <h6><i class="fas fa-list"></i> @lang('dashboard.orders') (5)</h6>
+                                        <h6><i class="fas fa-list"></i> @lang('dashboard.orders') ({{ $orders }})</h6>
                                         <a href="{{ route('orders.index') }}">@lang('dashboard.show')</a>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
-                                        <h6><i class="fas fa-times"></i> @lang('dashboard.request_custmers') ( 3)</h6>
+                                        <h6><i class="fas fa-times"></i> @lang('dashboard.request_custmers') ({{ $recustm }})</h6>
                                         <a href="{{ route('request_custmers.index') }}">@lang('dashboard.show')</a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -302,6 +331,7 @@
                         </div>
                         <div class="account-content">
                             <div class="row">
+                                @if ($user)
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
                                         <h6><i class="fas fa-envelope"></i> @lang('lang.mailing') ( 0)</h6>
@@ -314,7 +344,6 @@
                                         </ul>
                                     </div>
                                 </div>
-                                @if ($user)
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact active">
                                         <h6>

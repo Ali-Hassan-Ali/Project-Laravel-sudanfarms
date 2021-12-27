@@ -35,6 +35,7 @@ return [
             'offers'           => 'c,r,u,d',
             'newsletters'      => 'c,r,u,d',
             'policys'          => 'c,r,u,d',
+            'packages'         => 'c,r,u,d',
             'about_customers'  => 'c,r,u,d',
             'advertisements'   => 'c,r,u',
         ],
@@ -43,7 +44,8 @@ return [
             'dashboard'  => 'r',
         ],
         
-        'clients' => [],
+        'clients'  => [],
+        'promoted' => [],
     ],
 
     'permissions_map' => [

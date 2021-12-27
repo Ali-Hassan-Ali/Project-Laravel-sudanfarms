@@ -3,109 +3,123 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Notification;
+use App\Models\Package;
+use App\Models\PackagePromoted;
 use App\Models\PromotedDealer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class PromotedDealerController extends Controller
 {
+
     public function index()
     {
+        $statusPackages = PromotedDealer::where('user_id', auth()->user()->id)->where('packages_id', '>', '0')->where('status', '1')->first();
+
+        if ($statusPackages) {
+
+            notify()->success(__('dashboard.added_successfully'));
+
+            return redirect()->route('profile.index');
+
+        }
+
         return view('home.my_acount.promoted_dealers.index');
 
-    }//ene of index
-
-    
+    } //ene of index
 
     public function store(Request $request)
     {
-            $request->validate([
-                'company_name_ar'     => ['required','max:255'],
-                'company_name_en'     => ['required','max:255'],
-                'company_logo'        => ['required'],
-                'company_certificate' => ['required'],
-                'category_dealer_id'  => ['required'],
-                'email'               => ['required'],
-                'phone_master'        => ['required'],
-                'phone'               => ['required'],
-                'other_phone'         => ['required'],
-                'web_site'            => ['required'],
-                'country'             => ['required'],
-                'state'               => ['required'],
-                'city'                => ['required'],
-                'title'               => ['required'],
-                'description'         => ['required'],
-            ]);
+
+        $request->validate([
+            'company_name_ar'    => ['required', 'max:255'],
+            'company_logo'       => ['required'],
+            'category_dealer_id' => ['required'],
+            'email'              => ['required'],
+            'phone_master'       => ['required', 'min:9', 'max:15'],
+            'phone'              => ['required', 'min:9', 'max:15'],
+            'other_phone'        => ['required', 'min:9', 'max:15'],
+            'country'            => ['required'],
+            'state'              => ['required'],
+            'city'               => ['required'],
+            'title'              => ['required'],
+            'description'        => ['required'],
+        ]);
 
         try {
 
+            $this_user = PromotedDealer::where('id', auth()->id())->first();
 
-            $this_user    = PromotedDealer::where('id',auth()->user()->id)->first();
+            $request_data = $request->except('company_logo', 'company_certificate', 'user_id');
 
-            $request_data = $request->except('company_logo','company_certificate','user_id');
+            if ($request->company_name_en == null) {
 
-            $request_data['user_id']             = auth()->user()->id;
-            $request_data['company_logo']        = $request->file('company_logo')->store('company_logo','public');
+                $request_data['company_name_en'] = $request->company_name_ar;
+            }
 
-            $request_data['company_certificate'] = $request->file('company_certificate')->store('company_certificate','public');
-            
+            $request_data['user_id']      = auth()->user()->id;
+            $request_data['company_logo'] = $request->file('company_logo')->store('company_logo', 'public');
+
+            if ($request->company_certificate) {
+
+                $request_data['company_certificate'] = $request->file('company_certificate')->store('company_certificate', 'public');
+            }
+
             PromotedDealer::create($request_data);
+
+            auth()->user()->detachRole('clients');
+            auth()->user()->attachRole('promoted');
 
             $user = Notification::create([
                 'title_ar' => 'تم ترقيه حساب جديد',
                 'title_en' => 'New account upgraded',
-                'user_id'  => auth()->user()->id,
-            ]);//end of create
+                'user_id'  => auth()->id(),
+            ]); //end of create
 
             \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
 
-            return redirect()->route('profile.index');
+            return redirect()->route('promoted_dealers.packages');
+            // return redirect()->route('profile.index');
 
         } catch (\Exception $e) {
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        }//end try
+        } //end try
 
-    }//end of store
-
-
-
+    } //end of store
 
     public function edit()
     {
-        $user = PromotedDealer::where('user_id',auth()->user()->id)->first();
+        $user = PromotedDealer::where('user_id', auth()->user()->id)->first();
 
-        return view('home.my_acount.promoted_dealers.edit',compact('user'));
+        return view('home.my_acount.promoted_dealers.edit', compact('user'));
 
-    }//end of edit
-
-
+    } //end of edit
 
     public function update(Request $request)
-    {   
-   
+    {
+
         $request->validate([
-            'company_name_ar'     => ['required','max:255'],
-            'company_name_en'     => ['required','max:255'],
-            'category_dealer_id'  => ['required'],
-            'email'               => ['required'],
-            'phone_master'        => ['required'],
-            'phone'               => ['required'],
-            'other_phone'         => ['required'],
-            'web_site'            => ['required'],
-            'country'             => ['required'],
-            'city'                => ['required'],
-            'title'               => ['required'],
-            'description'         => ['required'],
+            'company_name_ar'    => ['required', 'max:255'],
+            'company_name_en'    => ['required', 'max:255'],
+            'category_dealer_id' => ['required'],
+            'email'              => ['required'],
+            'phone_master'       => ['required'],
+            'phone'              => ['required'],
+            'other_phone'        => ['required'],
+            'country'            => ['required'],
+            'city'               => ['required'],
+            'title'              => ['required'],
+            'description'        => ['required'],
         ]);
 
         try {
 
-            $user    = PromotedDealer::where('id',auth()->user()->id)->first();
+            $user = PromotedDealer::where('id', auth()->user()->id)->first();
 
-            $request_data = $request->except('company_logo','company_certificate','user_id','state');
+            $request_data = $request->except('company_logo', 'company_certificate', 'user_id', 'state');
 
             $request_data['user_id'] = auth()->user()->id;
 
@@ -113,15 +127,15 @@ class PromotedDealerController extends Controller
 
                 Storage::disk('local')->delete('public/' . $user->company_logo);
 
-                $request_data['company_logo']        = $request->file('company_logo')->store('company_logo','public');
-                
+                $request_data['company_logo'] = $request->file('company_logo')->store('company_logo', 'public');
+
             }
 
             if ($request->company_certificate) {
 
                 Storage::disk('local')->delete('public/' . $user->company_certificate);
-                
-                $request_data['company_certificate'] = $request->file('company_certificate')->store('company_certificate','public');
+
+                $request_data['company_certificate'] = $request->file('company_certificate')->store('company_certificate', 'public');
             }
 
             $user->update($request_data);
@@ -132,33 +146,88 @@ class PromotedDealerController extends Controller
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        }//end try
+        } //end try
 
-    }//end of update
-
-
+    } //end of update
 
     public function destroy()
     {
 
         try {
 
-            $user    = PromotedDealer::where('id',auth()->user()->id)->first();
-            
+            $user = PromotedDealer::where('id', auth()->user()->id)->first();
+
             Storage::disk('local')->delete('public/' . $user->company_logo);
             Storage::disk('local')->delete('public/' . $user->company_certificate);
-            
+
             $user->delete();
 
             return redirect()->route('profile.index');
 
-         } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        }//end try
-        
-    }//end pf destroy
+        } //end try
+
+    } //end pf destroy
+
+    public function packages()
+    {
+        $statusPackages = PromotedDealer::where('user_id', auth()->user()->id)->where('packages_id', '>', '0')->where('status', '1')->first();
+
+        if ($statusPackages) {
+
+            notify()->success(__('dashboard.added_successfully'));
+
+            return redirect()->route('profile.index');
+
+        }
+
+        $packages = Package::all();
+
+        return view('home.my_acount.promoted_dealers.packages', compact('packages'));
+
+    } //end of packages
+
+    public function packagesStore(Request $request)
+    {
+        $user      = PromotedDealer::where('user_id', auth()->id())->first();
+        $package   = Package::where('id', $request->package_id)->first();
 
 
-}//end of controller
+        $end_month = $package->month + date('m'); 
+        $data_yery = date('Y');
+        $day       = date('d');
+
+        if ($end_month >= 12) {
+            $end_month -= 12;
+            $data_yery  = date('Y') + 1;
+        }
+
+        $date        = strtotime($day . '-' . $end_month . '-' . $data_yery);
+        $end_month   = date('d-m-Y', $date);
+        $start_month = date('d'.'-'.'m'.'-'.'Y');
+
+        $request_data_user                = $request->except('image', 'package_id');
+        $request_data_user['packages_id'] = $request->package_id;
+        $request_data_user['status']      = '1';
+
+        $user->update($request_data_user);
+
+        $request_data_package                       = $request->except('image', 'package_id');
+        $request_data_package['promoted_dealer_id'] = $user->id;
+        $request_data_package['package_id']         = $request->package_id;
+        $request_data_package['start_month']        = $start_month;
+        $request_data_package['end_month']          = $end_month;
+        $request_data_package['image']              = $request->file('image')->store('promoted_dealers_images', 'public');
+
+        PackagePromoted::create($request_data_package);
+
+        notify()->success(__('dashboard.added_successfully'));
+
+        return redirect()->route('profile.index');
+
+    } //end of packagesStore
+
+} //end of controller

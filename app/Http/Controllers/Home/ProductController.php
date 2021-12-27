@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
 use App\Models\Categorey;
+use App\Models\Notification;
 use App\Models\ImageProduct;
 use Illuminate\Http\Request;
 
@@ -52,7 +53,7 @@ class ProductController extends Controller
             // return 'fda';
             $request_data = $request->except('image');
 
-            $request_data['user_id'] = auth()->user()->id;
+            $request_data['user_id'] = auth()->id();
 
             $products = Product::create($request_data);
 
@@ -132,7 +133,7 @@ class ProductController extends Controller
 
             $request_data = $request->except('image');
 
-            $request_data['user_id'] = auth()->user()->id;
+            $request_data['user_id'] = auth()->id();
 
             $product->update($request_data);
 

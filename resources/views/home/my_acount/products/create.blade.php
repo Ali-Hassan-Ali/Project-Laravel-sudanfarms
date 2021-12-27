@@ -175,13 +175,42 @@
 		                            </select>
 		                        </div> --}}
 
-		                        <div class="col-md-6 col-lg-4 mx-auto">
-		                            <div class="form-group">
-		                                <button class="form-btn" type="submit">
-		                                	<i class="fa fa-plus"></i> @lang('dashboard.add')
-		                                </button>
-		                            </div>
-		                        </div>
+		                        @php
+		                        	$promoted_dealer  = App\Models\PromotedDealer::where('user_id',auth()->id())->first();
+
+		                        	$user = App\Models\PromotedDealer::where('user_id', auth()->id())->first();
+
+							        $promoted_dealer_package  = App\Models\PackagePromoted::where('promoted_dealer_id',$user->id)->first();
+							        $product_package  = App\Models\Product::where('user_id',auth()->id())->count();
+
+							        $countproduct = $promoted_dealer_package->package->qty_product;
+
+		                        @endphp
+
+		                        @if ($promoted_dealer->package_id)
+
+		                        	@if ($countproduct > $product_package)
+
+		                        		<div class="col-md-6 col-lg-4 mx-auto">
+				                            <div class="form-group">
+				                                <a href="{{ route('promoted_dealers.packages') }}" class="form-btn" type="submit">
+				                                	<i class="fa fa-plus"></i> @lang('dashboard.packages')
+				                                </a>
+				                            </div>
+				                        </div>
+
+		                        	@endif
+
+		                        	
+		                        @else
+			                        <div class="col-md-6 col-lg-4 mx-auto">
+			                            <div class="form-group">
+			                                <button class="form-btn" type="submit">
+			                                	<i class="fa fa-plus"></i> @lang('dashboard.add')
+			                                </button>
+			                            </div>
+			                        </div>
+		                        @endif
 
 		                    </form><!-- end of form -->
 

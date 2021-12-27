@@ -23,14 +23,14 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            {{-- <h3>{{ $categorys_count }}</h3> --}}
+                            <h3>{{ $categorys_count }}</h3>
 
                             <p>@lang('dashboard.categorey')</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-list-alt"></i>
                         </div>
-                        {{-- <a href="{{ route('dashboard.categoreys.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                        <a href="{{ route('dashboard.categoreys.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -87,29 +87,29 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            {{-- <h3>{{ $cupons_count }}</h3> --}}
+                            <h3>{{ $sub_categoreys_count }}</h3>
 
-                            <p>@lang('dashboard.cupons')</p>
+                            <p>@lang('dashboard.sub_categoreys')</p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-gift"></i>
+                            <i class="fa fa-list-alt"></i>
                         </div>
-                        {{-- <a href="{{ route('dashboard.cupons.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                        <a href="{{ route('dashboard.sub_categoreys.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-
+                
                 {{--products--}}
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-green">
                         <div class="inner">
-                            {{-- <h3>{{ $orders_active }}</h3> --}}
+                            <h3>{{ $promoted_activ_count }}</h3>
 
-                            <p>@lang('dashboard.orders_active')</p>
+                            <p>@lang('dashboard.promoted_dealers') | @lang('dashboard.inactive')</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-sort-amount-up-alt"></i>
                         </div>
-                        {{-- <a href="{{ route('dashboard.orders.index',['status'=> 1]) }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                        <a href="{{ route('dashboard.promoted_dealers.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -117,14 +117,14 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            {{-- <h3>{{ $orders_unactive }}</h3> --}}
+                            <h3>{{ $promoted_inactiv_count }}</h3>
 
-                            <p>@lang('dashboard.orders_inactive')</p>
+                            <p>@lang('dashboard.promoted_dealers') | @lang('dashboard.active')</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-sort-amount-down-alt"></i>
                         </div>
-                        {{-- <a href="{{ route('dashboard.orders.index',['status'=> 0]) }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                        <a href="{{ route('dashboard.promoted_dealers.index',['status'=> 0]) }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -132,14 +132,14 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-red">
                         <div class="inner">
-                            {{-- <h3>{{ $supports_count }}</h3> --}}
+                            <h3>{{ $category_dealers_count }}</h3>
 
-                            <p>@lang('dashboard.orders')</p>
+                            <p>@lang('dashboard.category_dealers')</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-shopping-cart"></i>
                         </div>
-                        {{-- <a href="{{ route('dashboard.orders.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                        <a href="{{ route('dashboard.category_dealers.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 

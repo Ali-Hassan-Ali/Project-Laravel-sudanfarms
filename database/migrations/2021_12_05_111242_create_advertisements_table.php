@@ -18,7 +18,7 @@ class CreateAdvertisementsTable extends Migration
             $table->string('image')->default('advertisement_images/default.png');
             $table->longText('title_ar');
             $table->longText('title_en');
-            $table->string('status')->default('0');
+            $table->boolean('status')->default('0');
             $table->text('link')->default('#');
             $table->timestamps();
         });

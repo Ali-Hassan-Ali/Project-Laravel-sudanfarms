@@ -49,6 +49,12 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasPermission('packages_read'))
+                <li class="{{ Route::Is(['dashboard.packages.index','dashboard.packages.create','dashboard.packages.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.packages.index') }}"><i class="fa fa-list-alt"></i><span>@lang('dashboard.packages')</span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('products_read'))
                 <li class="{{ Route::Is(['dashboard.products.index','dashboard.products.create','dashboard.products.edit']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.products.index') }}"><i class="fab fa-product-hunt"></i><span> @lang('dashboard.products') </span></a>

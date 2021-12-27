@@ -3,49 +3,77 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
-use App\Rules\OldPassword;
-use App\Models\User;
-use App\Models\RequestCustmer;
+use App\Models\Offer;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Product;
+use App\Models\PackagePromoted;
 use App\Models\PromotedDealer;
+use App\Models\RequestCustmer;
+use App\Models\User;
+use App\Rules\OldPassword;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
     public function index()
-    {   
-        $user = auth()->user()->id;
+    {
+        // return date('d') + 2;
+        // return date('d'.'-'.'m'.'-'.'Y');
 
-        $promoted_dealer = PromotedDealer::where('user_id',$user)->first();
+        $userId = auth()->id();
+
+        $promoted_dealer = PromotedDealer::where('user_id', $userId)->first();
+        $PackagePromoted = PackagePromoted::where('promoted_dealer_id', $promoted_dealer->id)->first();
+        if ($promoted_dealer) {
+
+            if ($promoted_dealer->packages_id) {
+
+                if ($PackagePromoted->end_month > date('d-m-Y')) {
+
+                    $promoted_dealer->update([
+                        'status' => 0
+                        // 'status' => 0
+                    ]);
+
+                } //end of if
+
+            } //end of if
+
+        } //emd pf
 
         if ($promoted_dealer) {
-            
-            $promoted_dealer  = PromotedDealer::where('user_id',$user)->first();
 
-            $request_custmers = RequestCustmer::where('promoted_dealer_id',$promoted_dealer->id)->get();
+            $promoted_dealer = PromotedDealer::where('user_id', $userId)->first();
+
+            $request_custmers = RequestCustmer::where('promoted_dealer_id', $promoted_dealer->id)->get();
 
         } else {
 
-            $promoted_dealer  = 0;
+            $promoted_dealer = 0;
 
             $request_custmers = 0;
-        } 
+        }
 
-        return view('home.my_acount.profile',compact('request_custmers','promoted_dealer'));
+        $user      = PromotedDealer::where('user_id', $userId)->first();
+        $products  = Product::where('user_id', $userId)->count();
+        $offers    = Offer::where('user_id', $userId)->count();
+        $orderItem = OrderItem::where('promoted_dealer_id', $userId)->count();
+        $orders    = Order::where('user_id', $userId)->count();
+        $recustm   = RequestCustmer::count();
 
-    }//end of index
+        return view('home.my_acount.profile', compact('request_custmers', 'promoted_dealer', 'user', 'products', 'offers', 'orderItem', 'orders', 'recustm'));
 
-
+    } //end of index
 
     public function passwprd_index()
     {
         return view('home.my_acount.change_password');
 
-    }//end of passwprd_index
-
-
+    } //end of passwprd_index
 
     public function passwprd_store(Request $request)
     {
@@ -54,22 +82,22 @@ class ProfileController extends Controller
             'new_password'         => ['required'],
             'new_confirm_password' => ['same:new_password'],
         ]);
-   
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-   
+
+        User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
+
         return view('home.my_acount.profile');
 
-    }//end of chabge password
+    } //end of chabge password
 
     public function update(Request $request)
-    {   
-        
+    {
+
         $user = User::find(auth()->user()->id);
 
         $request->validate([
-            'name'          => ['required'],
-            'email'         => ['required', Rule::unique('users')->ignore($user->id)],
-            'phone'         => ['required'],
+            'name'  => ['required'],
+            'email' => ['required', Rule::unique('users')->ignore($user->id)],
+            'phone' => ['required'],
         ]);
 
         $request_data = $request->except(['image']);
@@ -82,17 +110,17 @@ class ProfileController extends Controller
 
             } //end of inner if
 
-            $request_data['image'] = $request->file('image')->store('user_images','public');
+            $request_data['image'] = $request->file('image')->store('user_images', 'public');
 
         } //end of external if
-            $request_data['country'] = 'sfgsfg';
+        $request_data['country'] = 'sfgsfg';
 
         $user->update($request_data);
 
         notify()->success(__('dashboard.updated_successfully'));
-        
+
         return redirect()->back();
 
-    }//end of store
-    
-}//end of controller
+    } //end of store
+
+} //end of controller

@@ -20,6 +20,19 @@ function () {
 
     Route::get('/dd', function() {
 
+        return date('Y');
+        $user      = App\Models\PromotedDealer::where('user_id', auth()->id())->first();
+        $promoted_dealer_package  = App\Models\PackagePromoted::where('promoted_dealer_id',$user->id)->first();
+
+        return $promoted_dealer_package->package;
+        $name = Http::get('http://ip-api.com/json/');
+        return json_decode($name);
+        return date('m');
+        return $name['country'];
+        json_decode($name);
+        return $name['geoplugin_request'];
+        return \Location::get('154.96.131.72');
+        return Request::ip();
         return Cart::destroy();
         return Cart::content();
 
@@ -60,6 +73,7 @@ function () {
     Route::get('files', [HeaderController::class,'files'])->name('files.index');
     Route::get('common_questions', [HeaderController::class,'common_questions'])->name('common_questions.index');
     Route::get('shops', [HeaderController::class,'shops'])->name('shops.index');
+    Route::get('special_requests', [HeaderController::class,'special_requests'])->name('special_requests.index');
     Route::get('request_custmers', [HeaderController::class,'request_custmers'])->name('request_custmers.index');
     Route::get('request_custmers/create', [HeaderController::class,'RequestCustmersCreate'])->name('request_custmers.create')->middleware('auth');
     Route::post('request_custmers/store', [HeaderController::class,'RequestCustmersStore'])->name('request_custmers.store')->middleware('auth');
@@ -89,8 +103,11 @@ function () {
 
         //promoted_dealers route
         Route::get('/promoted_dealers', [PromotedDealerController::class,'index'])->name('promoted_dealers.index');
+        Route::get('/promoted_dealers', [PromotedDealerController::class,'index'])->name('promoted_dealers.index');
         Route::post('/promoted_dealers', [PromotedDealerController::class,'store'])->name('promoted_dealers.store');
         Route::get('/promoted_dealers.edit', [PromotedDealerController::class,'edit'])->name('promoted_dealers.edit');
+        Route::get('/promoted_dealers.packages', [PromotedDealerController::class,'packages'])->name('promoted_dealers.packages');
+        Route::post('/promoted_dealers.packages', [PromotedDealerController::class,'packagesStore'])->name('promoted_dealers.packages');
         Route::post('/promoted_dealers.update', [PromotedDealerController::class,'update'])->name('promoted_dealers.update');
         Route::get('/promoted_dealers.destroy', [PromotedDealerController::class,'update'])->name('promoted_dealers.destroy');
 

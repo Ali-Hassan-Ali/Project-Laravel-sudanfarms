@@ -97,6 +97,16 @@
                                             @else
                                                 <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i></a>
                                             @endif
+                                            <a href="{{ route('dashboard.promoted_dealers.status', $dealers->id) }}" 
+                                                class="btn btn-{{ $dealers->status == 0 ? 'danger' : 'success' }} btn-sm">
+                                                @if ($dealers->status == 0)
+                                                <i class="fas fa-toggle-off"></i>
+                                                    
+                                                @else
+
+                                                <i class="fas fa-toggle-on"></i>
+                                                @endif
+                                            </a>
                                             @if (auth()->user()->hasPermission('promoted_dealers_show'))
                                                 <a href="{{ route('dashboard.promoted_dealers.show', $dealers->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                             @else

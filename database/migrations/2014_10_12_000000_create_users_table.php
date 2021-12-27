@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('country')->default('country');
             $table->string('city')->nullable();
             $table->string('title')->nullable();
+            $table->string('state')->nullable();
             $table->string('image')->default('user_images/default.png');
 
             $table->string('email')->unique();

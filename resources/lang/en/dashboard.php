@@ -9,6 +9,7 @@ return [
     'about_customers'      => 'about customers',
     'logoute_successfully' => 'Signed out successfully',
     'login_successfully'   => 'You are logged in successfully',
+    'special_requests'     => 'Special Requests',
     
     'englsih'        => 'Englsih',
     'arbic'          => 'Arbic',
@@ -295,5 +296,18 @@ return [
     'manager_word_en'  => 'manager word english',
 
     'advertisements'  => 'advertisements',
+
+    'packages'         => 'packages',
+    'package'          => 'package',
+    'guard'            => 'guard',
+    'free'             => 'free',
+    'infree'           => 'driven',
+    'data'             => 'Duration',
+    'qty_product'      => 'number of products',
+    'month'            => 'month',
+    'months'           => 'months',
+    'select_moth'      => 'select moth',
+    'select_package'   => 'select package',
+    'bill'             => 'image bill',
 
 ];

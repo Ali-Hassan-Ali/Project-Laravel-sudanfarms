@@ -58,11 +58,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label>@lang('dashboard.category_dealer')</label>
+                            <label>@lang('dashboard.clients')</label>
                             <select name="user_id" class="form-control">
                                 <option value="">@lang('dashboard.all_categories')</option>
                                 @foreach ($clients as $client)
-                                    <option value="{{ $client->id }}" {{ old('category_dealer_id') == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
+                                    <option value="{{ $client->id }}" {{ old('user_id') == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -58,10 +58,10 @@
                         @auth
                             <img src="{{ auth()->user()->image_path }}" alt="user">
                         @else
-                            <img src="{{ asset('home_files/image/menn.png') }}" alt="user">
+                            <img src="{{ asset('home_files/image/logo.png') }}" alt="user">
                         @endauth
                     </button>
-                    <a href="/" class="header-logo">
+                    <a href="/">
                         <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
                     </a>
                     <button class="header-src">

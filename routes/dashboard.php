@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\PromotedDealerController;
 use App\Http\Controllers\Dashboard\ClientsController;
 use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Dashboard\OffersController;
+use App\Http\Controllers\Dashboard\PackageController;
 use App\Http\Controllers\Dashboard\NotificationController;
 
 //Setting Controller
@@ -79,10 +80,14 @@ function () {
 
         //promoted_dealers routes
         Route::resource('promoted_dealers', PromotedDealerController::class);
+        Route::get('promoted_dealers.status/{promoted_dealer}', [PromotedDealerController::class,'status'])->name('promoted_dealers.status');
 
         //newsletters routes
         Route::resource('newsletters', NewsletterController::class)->except(['show']);
 
+        //newsletters routes
+        Route::resource('packages', PackageController::class)->except(['show']);
+        
         //contacts routes
         Route::resource('contacts', ContactController::class)->except(['show','store','create','edit','update']);
 

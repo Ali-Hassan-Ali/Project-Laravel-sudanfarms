@@ -35,7 +35,7 @@ class CategoryDealer extends Model
             ->orWhere('name_en', 'like', "%$search%");
         });
         
-    }//end ofscopeWhenSearch`
+    }//end of scopeWhenSearch`
 
 
     public function getImagePathAttribute()

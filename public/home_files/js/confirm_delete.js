@@ -28,9 +28,17 @@ $(document).ready(function() {
     $(document).on('change', '#category-dealer-id', function (e) {
         e.preventDefault();
 
-        var id = $(this).data('id');
-        alert('aSome');
+        var id = $(this).find(':selected').data('id');
 
+        if (id == 1) {
+
+            $('#company-certificate').addClass('d-none');
+
+        } else {
+
+            $('#company-certificate').removeClass('d-none');
+
+        }//end of if
 
     });//end of change
 

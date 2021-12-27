@@ -65,7 +65,7 @@
 	                                <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
 	                            </h6>
 	                            <button class="product-add add-cart" 
-                                    	data-url="{{ route('cart.add') }}" data-id="{{ $min_product->id }}" 
+                                    	data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" 
                                     	title="@lang('home.add_cart')">
 	                                <i class="fas fa-shopping-basket"></i><span>@lang('home.add_cart')</span>
 	                            </button>
