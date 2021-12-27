@@ -20,6 +20,7 @@ function () {
 
     Route::get('/dd', function() {
 
+        return Cart::destroy();
         return date('Y');
         $user      = App\Models\PromotedDealer::where('user_id', auth()->id())->first();
         $promoted_dealer_package  = App\Models\PackagePromoted::where('promoted_dealer_id',$user->id)->first();

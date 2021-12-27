@@ -17,7 +17,7 @@ class CreateOrderItemsTable extends Migration
             $table->id();
             $table->bigInteger('order_id')->unsigned()->nullable();
             $table->bigInteger('product_id')->unsigned()->nullable();
-            $table->bigInteger('promoted_dealer_id')->unsigned()->nullable();
+            $table->string('promoted_dealer_id')->nullable();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('quantity');
             $table->string('price');
@@ -25,7 +25,7 @@ class CreateOrderItemsTable extends Migration
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('promoted_dealer_id')->references('id')->on('promoted_dealers')->onDelete('cascade');
+            // $table->foreign('promoted_dealer_id')->references('id')->on('promoted_dealers')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

@@ -11,6 +11,8 @@ return [
     'login_successfully'   => 'You are logged in successfully',
     'special_requests'     => 'Special Requests',
     
+    'sales_graph'    => 'sales graph',
+    'total'          => 'total',
     'englsih'        => 'Englsih',
     'arbic'          => 'Arbic',
     'status_offer'   => 'Offers on the home page',

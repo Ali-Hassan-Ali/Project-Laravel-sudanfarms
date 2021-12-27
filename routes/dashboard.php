@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Dashboard\WelcomController;
 use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Dashboard\OrderController;
 use App\Http\Controllers\Dashboard\LoginController;
 use App\Http\Controllers\Dashboard\CategoreyController;
 use App\Http\Controllers\Dashboard\SubCategoreyController;
@@ -61,6 +62,9 @@ function () {
 
         //user routes
         Route::resource('clients', ClientsController::class)->except(['show']);
+
+        //user routes
+        Route::resource('orders', OrderController::class)->except(['create','edit','update']);
 
         //categoreys routes
         Route::resource('categoreys', CategoreyController::class)->except(['show']);

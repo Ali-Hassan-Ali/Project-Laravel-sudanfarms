@@ -41,7 +41,7 @@
 
     	                                        <tr>
     	                                            <td class="table-name">
-    	                                                <h6>{{ $index + 1 }}</h6>
+    	                                                <h6>{{ $order->id }}</h6>
     	                                            </td>
     	                                            <td class="table-name">
     	                                                <h6>{{ $order->totle_price }}</h6>

@@ -23,4 +23,14 @@ class Order extends Model
 
     }//end of item
 
+    public function scopeWhenSearch($query , $search) 
+    {
+        return $query->when($search, function ($q) use ($search) {
+
+            return $q->where('id' , 'like', "%$search%")
+            ->orWhere('phone', 'like', "%$search%");
+        });
+        
+    }//end of scope WhenSearch`
+
 }//end of model

@@ -8,7 +8,9 @@ use App\Models\CategoryDealer;
 use App\Models\Product;
 use App\Models\PromotedDealer;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WelcomController extends Controller
 {
@@ -30,9 +32,15 @@ class WelcomController extends Controller
         $promoted_activ_count   = PromotedDealer::where('status', 0)->count();
         $promoted_inactiv_count = PromotedDealer::where('status', 1)->count();
 
+        $sales_data = Order::select(
+            DB::raw('YEAR(created_at) as year'),
+            DB::raw('MONTH(created_at) as month'),
+            DB::raw('SUM(totle_price) as sum')
+        )->groupBy('month')->get();
+        
         return view('dashboard.welcome', compact(
             'admins_count', 'clients_count', 'products_count', 'categorys_count',
-            'category_dealers_count', 'promoted_activ_count', 'promoted_inactiv_count', 'sub_categoreys_count'));
+            'category_dealers_count', 'promoted_activ_count', 'promoted_inactiv_count', 'sub_categoreys_count','sales_data'));
 
     } //end of index function
 

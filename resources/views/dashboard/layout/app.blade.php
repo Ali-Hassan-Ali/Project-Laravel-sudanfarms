@@ -231,5 +231,6 @@
 </script>
 @stack('welcome')
 @stack('products')
+@stack('scripts')
 </body>
 </html>
