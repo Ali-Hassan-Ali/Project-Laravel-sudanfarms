@@ -61,7 +61,7 @@
                             <img src="{{ asset('home_files/image/logo.png') }}" alt="user">
                         @endauth
                     </button>
-                    <a href="/">
+                    <a href="{{ route('welcome.index') }}">
                         <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
                     </a>
                     <button class="header-src">
@@ -69,7 +69,7 @@
                     </button>
                 </div>
 
-                <a href="/" class="header-logo">
+                <a href="{{ route('welcome.index') }}" class="header-logo">
                     <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
                 </a>
 
@@ -118,7 +118,7 @@
                     <div class="navbar-content">
                         <ul class="navbar-list">
                             <li class="navbar-item">
-                                <a class="navbar-link" href="/">@lang('dashboard.home')</a>
+                                <a class="navbar-link" href="{{ route('welcome.index') }}">@lang('dashboard.home')</a>
                             </li>
                             <li class="navbar-item dropdown-megamenu"><a class="navbar-link dropdown-arrow" href="#">@lang('dashboard.products')</a>
                                 <div class="megamenu">
@@ -413,7 +413,7 @@
             <ul class="nav-list">
 
                 <li>
-                    <a class="nav-link" href="/">
+                    <a class="nav-link" href="{{ route('welcome.index') }}">
                         <i class="icofont-home"></i><span>@lang('dashboard.home')</span>
                     </a>
                 </li>
@@ -502,7 +502,7 @@
         </div>
     </aside>
     <menu class="mobile-menu">
-        <a href="/" title="Home Page">
+        <a href="{{ route('welcome.index') }}" title="Home Page">
             <i class="fas fa-home"></i><span>@lang('dashboard.home')</span>
         </a>
         <button class="cate-btn" id="category-model" title="@lang('dashboard.categorey')">
