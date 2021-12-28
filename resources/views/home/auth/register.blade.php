@@ -94,6 +94,7 @@
                                     Login by Facebook
                                 </a>
                             </div>
+                            <p class="text-center">or</p>
                             <div class="form-button">
                                 <a href="{{ url('login/google') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#ea4335;">
                                     Login by Gmail

@@ -99,6 +99,13 @@
         addToHomescreen();
     </script>
 
+    <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61c9d0e839533b05"></script>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61c9d0e839533b05"></script>
+
+
     {{-- include packages notify js --}}
     @notifyJs
     

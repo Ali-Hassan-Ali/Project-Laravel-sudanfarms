@@ -20,22 +20,7 @@ function () {
 
     Route::get('/dd', function() {
 
-        return Cart::destroy();
-        return date('Y');
-        $user      = App\Models\PromotedDealer::where('user_id', auth()->id())->first();
-        $promoted_dealer_package  = App\Models\PackagePromoted::where('promoted_dealer_id',$user->id)->first();
-
-        return $promoted_dealer_package->package;
-        $name = Http::get('http://ip-api.com/json/');
-        return json_decode($name);
-        return date('m');
-        return $name['country'];
-        json_decode($name);
-        return $name['geoplugin_request'];
-        return \Location::get('154.96.131.72');
-        return Request::ip();
-        return Cart::destroy();
-        return Cart::content();
+        return $notys = App\Models\Notification::with('user')->latest()->limit(10)->get();
 
     });
     

@@ -29,7 +29,7 @@
                                 {{-- <li><i class="icofont-share-boxed"></i><span>34 مشاركة</span></li> --}}
                             </ul>
                             <h2 class="blog-details-title">{{ $blog->title }}</h2>
-                            <p class="blog-details-desc">{{ $blog->description }}</p>
+                            <p class="blog-details-desc">{!! $blog->description !!}</p>
                         </div>
                     </article>
                     <div class="blog-details-profile">

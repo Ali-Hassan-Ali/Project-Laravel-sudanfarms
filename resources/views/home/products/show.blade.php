@@ -111,6 +111,10 @@
                                 @endforeach
                             </ul>
                         </div>
+
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox mb-4"></div>
+            
                         <div class="details-action-group">
                             <a class="details-wish wish count-call-phone" 
                                 data-url="{{ route('count_call_phone',$promoted_dealer->id) }}" href="tel:{{ $promoted_dealer->phone }}" title="@lang('dashboard.call_me')">

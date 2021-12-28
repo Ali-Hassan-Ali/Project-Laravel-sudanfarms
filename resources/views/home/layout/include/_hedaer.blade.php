@@ -92,10 +92,17 @@
                     <a href="{{ setting('twitter') }}" target="_blank" class="header-widget"><i class="icofont-twitter"></i></a>
 
                     <a href="{{ setting('instagram') }}" target="_blank" class="header-widget"><i class="icofont-instagram"></i></a>
+                    <a href="{{ setting('instagram') }}" target="_blank" class="header-widget"><i class="icofont-instagram"></i></a>
 
                     <a href="{{ setting('whatsapp') }}" target="_blank" class="header-widget">
                         <i class="fab fa-whatsapp"></i>
                     </a>
+                    @php
+                        $notys = App\Models\Notification::where('user_id',auth()->id())->latest()->limit(10)->get();
+                    @endphp
+                    <button class="header-widget header-cart-noty" title="@lang('home.cart')">
+                        <i class="fas fa-bell"></i><sup class="cart-count">{{ $notys->count() }}</sup>
+                    </button>
 
                     <button class="header-widget header-cart" title="@lang('home.cart')">
                         <i class="fas fa-shopping-basket"></i><sup class="cart-count">{{ Cart::count() }}</sup>
@@ -327,6 +334,47 @@
         </div>
     </aside>
 
+
+    <aside class="cart-sidebar-noty cart-sidebar-noty">
+        <div class="cart-header">
+            <div class="cart-total"><i class="fas fa-bell"></i>
+                <span class="all-product"> @lang('dashboard.count_noty') 
+                    <div class="cart-count">{{ $notys->count() }}</div>
+                </span>
+            </div>
+            <button class="cart-close-noty"><i class="icofont-close"></i></button>
+        </div>
+        <ul class="cart-list" id="add-cart-product">
+
+            @if ($notys->count() > 0)
+                
+                @foreach ($notys as $noty)
+
+                    <li class="cart-item">
+                        
+                        <div class="cart-info-group">
+                            <div class="cart-info text-center">
+
+                                <h6><a href="#">{{ $noty->title }}</a></h6>
+                                <p class="product-price">
+                                    {{-- {{ $product->model->quantity_guard }} - {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }}  --}}
+
+                                    {{-- {{ $product->price_decount - $product->price }}     --}}
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    
+                @endforeach
+
+            @else
+
+                <h2 class="no-data">@lang('dashboard.no_data_found')</h2>
+
+            @endif
+        </ul>
+    </aside>
+
     <aside class="nav-sidebar">
         <div class="nav-header">
             <a href="#"><img src="{{ asset('home_files/image/logo.svg') }}" alt="logo"></a>
@@ -465,6 +513,9 @@
             <i class="fas fa-users"></i>
             <span>@lang('dashboard.suppliers')</span>
         </a>
+        <button class="header-widget header-cart-noty" title="@lang('dashboard.notifications')">
+            <i class="fas fa-bell"></i><sup class="cart-count">{{ $notys->count() }}</sup>
+        </button>
         <button class="header-widget header-cart" title="@lang('home.shops')">
             <i class="fas fa-shopping-basket"></i>
             <sup class="cart-count">{{ Cart::count() }}</sup>

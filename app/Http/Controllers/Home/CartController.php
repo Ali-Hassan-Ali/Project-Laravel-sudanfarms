@@ -119,6 +119,12 @@ class CartController extends Controller
                 'user_id'  => auth()->user()->id,
             ]); //end of create
 
+            $data = Notification::create([
+                'title_ar' => 'قمت بطلب منتجات من سودان فارمس',
+                'title_en' => 'I ordered products from Sudan Farms',
+                'user_id'  => auth()->user()->id,
+            ]); //end of create
+
             \Mail::to(auth()->user()->email)->send(new \App\Mail\OrderEmail($data));
 
             foreach (Cart::content() as $product) {

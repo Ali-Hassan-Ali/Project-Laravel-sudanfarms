@@ -10,6 +10,8 @@ return [
     'logoute_successfully' => 'Signed out successfully',
     'login_successfully'   => 'You are logged in successfully',
     'special_requests'     => 'Special Requests',
+    'notifications'        => 'notifications',
+    'count_noty'           => 'notifications count',
     
     'sales_graph'    => 'sales graph',
     'total'          => 'total',

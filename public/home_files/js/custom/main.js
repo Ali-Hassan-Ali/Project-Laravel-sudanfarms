@@ -18,7 +18,16 @@ $(window).on("scroll", (function () {
     $("body").css("overflow", "hidden"), $(".cart-sidebar").addClass("active"), $(".cart-close").on("click", (function () {
         $("body").css("overflow", "inherit"), $(".cart-sidebar").removeClass("active"), $(".backdrop").fadeOut()
     }))
-})), $(".header-user, .header-cart, .header-cate, .cart-btn, .cate-btn").on("click", (function () {
+})),
+
+
+$(".header-cart-noty, .cart-btn").on("click", (function () {
+    $("body").css("overflow", "hidden"), $(".cart-sidebar-noty").addClass("active"), $(".cart-close-noty").on("click", (function () {
+        $("body").css("overflow", "inherit"), $(".cart-sidebar-noty").removeClass("active"), $(".backdrop").fadeOut()
+    }))
+})),
+
+ $(".header-user, .header-cart, .header-cate, .cart-btn, .cate-btn").on("click", (function () {
     $(".backdrop").fadeIn(), $(".backdrop").on("click", (function () {
         $(this).fadeOut(), $("body").css("overflow", "inherit"), $(".nav-sidebar").removeClass("active"), $(".cart-sidebar").removeClass("active"), $(".category-sidebar").removeClass("active")
     }))

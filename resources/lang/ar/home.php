@@ -25,7 +25,7 @@ return [
 
     'delivery_service'      => 'خدمة التوصيل السريع',
     'return_policy'         => 'سياسة إرجاع معينة',
-    'support_system'        => 'نظام دعم سريع',
+    'support_system'        => 'الدعم الفني',
     'payment_methods'       => 'طرق دفع آمنه',
  
     'error' 			  => 'الرجاء التأكد من البيانات المدخلة',

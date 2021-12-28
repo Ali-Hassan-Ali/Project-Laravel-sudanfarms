@@ -37,7 +37,8 @@
                             @csrf
                             @method('post')
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="@lang('dashboard.email')">
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" 
+                                    value="super_admin@app.com" placeholder="@lang('dashboard.email')">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,7 +46,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="@lang('dashboard.password')">
+                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" 
+                                    value="123123123" placeholder="@lang('dashboard.password')">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -65,6 +67,7 @@
                                     Login by Facebook
                                 </a>
                             </div>
+                            <p class="text-center">or</p>
                             <div class="form-button">
                                 <a href="{{ url('login/google') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#ea4335;">
                                     Login by Gmail

@@ -23,11 +23,11 @@ class Blog extends Model
     {
         if (app()->getLocale() == 'ar') {
             
-            return $this->title_ar;
+            return $this->description_ar;
 
         } else {
 
-            return $this->title_en;
+            return $this->description_en;
             
         }//end of if
 
