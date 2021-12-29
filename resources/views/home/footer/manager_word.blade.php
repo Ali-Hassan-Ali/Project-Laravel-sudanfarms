@@ -4,7 +4,7 @@
 
 @section('title', __('dashboard.manager_word'))
 
-    <section class="single-banner inner-section mt-5 pt-5">
+    <section class="single-banner inner-section pt-5">
         <div class="container">
             <h2>@lang('dashboard.manager_word')</h2>
             <ol class="breadcrumb">

@@ -6,7 +6,7 @@ return [
     'added_successfully'   => 'تم اضافه البيانات بنجاح',
     'updated_successfully' => 'تم تعديل البيانات بنجاح',
     'deleted_successfully' => 'تم حذف البيانات بنجاح',
-    'about_customers'      => 'عرض العملاء',
+    'about_customers'      => 'مدراء الموقع',
     'logoute_successfully' => 'تم تسجيل الخروج بنجاح',
     'login_successfully'   => 'تم تسجيل الدخول بنجاح',
     'special_requests'     => 'الطلبات الخاصة',
@@ -14,6 +14,7 @@ return [
     'notifications'        => 'الاشعارات',
     'count_noty'           => 'عد الاشعارات',
     'link_video'           => 'رابط الفديو',
+    'reply_message'        => 'رد علي الرسالة',
     
     'sales_graph'    => 'رسم بياني للمبيعات',
     'total'          => 'المجموع',

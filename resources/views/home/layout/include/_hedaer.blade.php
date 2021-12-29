@@ -101,7 +101,7 @@
                         $notys = App\Models\Notification::where('user_id',auth()->id())->latest()->limit(10)->get();
                     @endphp
                     <button class="header-widget header-cart-noty" title="@lang('home.cart')">
-                        <i class="fas fa-bell"></i><sup class="cart-count">{{ $notys->count() }}</sup>
+                        <i class="fas fa-bell"></i><sup class="cart-countt">{{ $notys->count() }}</sup>
                     </button>
 
                     <button class="header-widget header-cart" title="@lang('home.cart')">

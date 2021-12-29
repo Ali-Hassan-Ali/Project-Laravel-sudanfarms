@@ -58,6 +58,7 @@
                                 <th>@lang('dashboard.phone')</th>
                                 <th>@lang('dashboard.body')</th>
                                 <th>@lang('dashboard.message')</th>
+                                <th>@lang('dashboard.reply_message')</th>
                                 <th>@lang('dashboard.created_at')</th>
                                 <th>@lang('dashboard.action')</th>
                             </tr>
@@ -72,6 +73,11 @@
                                     <td>{{ $client->phone }}</td>
                                     <td>{{ $client->body }}</td>
                                     <td>{{ $client->message }}</td>
+                                    <td>                                        
+                                        <a href="{{ route('dashboard.reply_message.index',$client->id) }}" class="btn btn-success btn-sm">
+                                            <i class="fa fa-edit"></i> @lang('dashboard.reply_message')
+                                        </a>
+                                    </td>
                                     <td>{{ $client->created_at->toFormattedDateString() }}</td>
                                     <td>
                                         @if (auth()->user()->hasPermission('contacts_delete'))

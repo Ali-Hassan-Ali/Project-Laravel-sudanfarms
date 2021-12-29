@@ -94,6 +94,8 @@ function () {
         
         //contacts routes
         Route::resource('contacts', ContactController::class)->except(['show','store','create','edit','update']);
+        Route::get('reply_message/{contact}', [ContactController::class,'ReplyMessageIndex'])->name('reply_message.index');
+        Route::put('reply_message/{contact}', [ContactController::class,'ReplyMessage'])->name('contacts.reply_message.send');
 
 
         Route::prefix('settings')->name('settings.')->group(function () {
