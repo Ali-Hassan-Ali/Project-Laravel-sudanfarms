@@ -58,7 +58,7 @@
                         @auth
                             <img src="{{ auth()->user()->image_path }}" alt="user">
                         @else
-                            <img src="{{ asset('home_files/image/logo.png') }}" alt="user">
+                            <img src="{{ asset('home_files/image/menn.png') }}" alt="user">
                         @endauth
                     </button>
                     <a href="{{ route('welcome.index') }}">

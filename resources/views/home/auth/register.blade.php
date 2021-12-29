@@ -22,7 +22,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                     <div class="user-form-logo">
-                        <a href="/">
+                        <a href="{{ route('welcome.index') }}">
                             <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
                         </a>
                     </div>

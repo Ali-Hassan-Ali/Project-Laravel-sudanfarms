@@ -8,7 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <link rel="icon" href="{{ asset('home_files/image/logo.svg') }}">
+    <meta name="msapplication-square70x70logo" content="{{ asset('home_files/image/logo.svg') }}"/>
+    <meta name="msapplication-square150x150logo" content="{{ asset('home_files/image/logo.svg') }}"/>
+    <meta name="msapplication-wide310x150logo" content="{{ asset('home_files/image/logo.svg') }}"/>
+    <meta name="msapplication-square310x310logo" content="{{ asset('home_files/image/logo.svg') }}"/>
+    <link rel="icon" type="image/svg" href="{{ asset('home_files/image/logo.svg') }}">
     
     {{-- font awesome --}}
     <link rel="stylesheet" href="{{ asset('home_files/fonts/flaticon/flaticon.css') }}">
