@@ -38,13 +38,18 @@
                             $names = ['manager_word_ar','manager_word_en'];
                         @endphp
 
+                        <div class="form-group">
+                            <label>@lang('dashboard.link_video')</label>
+                            <input type="text" name="link_video" class="form-control" value="{{ setting('link_video') }}">
+                        </div>
+
                         @foreach ($names as $desc)
 
                             <div class="form-group">
                                 <label>@lang('dashboard.' . $desc)</label>
                                 <textarea type="text" name="{{ $desc }}" class="ckeditor form-control">{!! setting($desc) !!}</textarea>
                             </div>
-                            
+
                         @endforeach
 
                         <div class="form-group">

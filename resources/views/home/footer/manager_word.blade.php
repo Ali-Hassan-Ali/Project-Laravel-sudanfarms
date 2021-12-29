@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', __('home.manager_word'))
+@section('title', __('dashboard.manager_word'))
 
     <section class="single-banner inner-section mt-5 pt-5">
         <div class="container">
@@ -33,12 +33,14 @@
 
                     </div>
                 </div>
-
+                @php
+                    $user = App\Models\User::find(1);
+                @endphp
                 <div class="col-lg-4">
                     <div class="product-details-frame frame2">
                         <div class="tab-descrip">
-                        	<img src="images/video.jpg" alt="video">
-                        	<a title="كلمة المدير" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                        	<img src="{{ $user->image_path }}" alt="video">
+                        	<a title="كلمة المدير" href="{{ setting('link_video') }}" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
                         </div>
                     </div>
                 </div>

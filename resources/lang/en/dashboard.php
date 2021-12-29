@@ -12,6 +12,7 @@ return [
     'special_requests'     => 'Special Requests',
     'notifications'        => 'notifications',
     'count_noty'           => 'notifications count',
+    'link_video'           => 'link video',
     
     'sales_graph'    => 'sales graph',
     'total'          => 'total',

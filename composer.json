@@ -17,6 +17,7 @@
         "mcamara/laravel-localization": "^1.6",
         "mckenziearts/laravel-notify": "^2.2",
         "santigarcor/laratrust": "^6.3",
+        "silviolleite/laravelpwa": "^2.0",
         "stevebauman/location": "^6.2"
     },
     "require-dev": {
