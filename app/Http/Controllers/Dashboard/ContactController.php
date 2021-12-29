@@ -45,7 +45,9 @@ class ContactController extends Controller
 
     public function ReplyMessageIndex(Contact $contact)
     {
-        return view('dashboard.contacts.reply_message',compact('contact'));
+        $reply_contact = ReplyContact::where('contact_id',$contact->id)->get();
+
+        return view('dashboard.contacts.reply_message',compact('contact','reply_contact'));
 
     }//end of contact
 

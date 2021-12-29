@@ -59,6 +59,64 @@
 
         </section><!-- end of content -->
 
+        <section class="content-header">
+
+            <h1>@lang('dashboard.reply_message')</h1>
+
+            <ol class="breadcrumb">
+                <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
+                <li class="active">@lang('dashboard.reply_message')</li>
+            </ol>
+
+        </section>
+
+        <section class="content">
+
+            <div class="box box-primary">
+
+                <div class="box-body">
+
+                    @if ($reply_contact->count() > 0)
+
+                        <div class="table-responsive">
+
+                            <table class="table table-hover">
+
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>@lang('dashboard.reply_message')</th>
+                                </tr>
+                                </thead>
+                                
+                                <tbody>
+                                @foreach ($reply_contact as $index=>$client)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{!! $client->reply_message !!}</td>
+                                    </tr>
+                                
+                                @endforeach
+                                </tbody>
+
+                            </table><!-- end of table -->
+                            
+                            {{-- {{ $contacts->appends(request()->query())->links() }} --}}
+
+                        </div><!-- end of table  responsive-->
+                        
+                    @else
+                        
+                        <h2>@lang('dashboard.no_data_found')</h2>
+                        
+                    @endif
+
+                </div><!-- end of box body -->
+
+            </div><!-- end of box -->
+
+        </section><!-- end of content -->
+        
     </div><!-- end of content wrapper -->
 
 @endsection

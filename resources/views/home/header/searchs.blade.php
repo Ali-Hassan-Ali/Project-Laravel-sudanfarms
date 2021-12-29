@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('contact', __('home.search'))
+@section('title', __('dashboard.search'))
 
 <section class="section recent-part mt-5 pt-5">
     <div class="container">

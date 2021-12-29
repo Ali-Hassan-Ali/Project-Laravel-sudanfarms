@@ -2,13 +2,13 @@
 
 @section('content')
 
-@section('contact', __('home.blogs'))
+@section('title', __('dashboard.blogs') . ' | ' . __('dashboard.blog_details'))
 
     <section class="inner-section single-banner">
         <div class="container">
             <h2>@lang('dashboard.blog_details')</h2>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="\">@lang('dashboard.home')</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('welcome.index') }}">@lang('dashboard.home')</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">@lang('dashboard.blogs')</a></li>
                 <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.blog_details')</li>
             </ol>

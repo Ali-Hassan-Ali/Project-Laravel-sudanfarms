@@ -13,7 +13,7 @@ class NewsletterTableSeeder extends Seeder
      */
     public function run()
     {
-        $emails = ['ah965961@gmail.com','alihassanalimadny@gmail.comx@gmail.com'];
+        $emails = ['ah965961@gmail.com','alihassanalimadny@gmail.com','enginery.ali.hassan@gmail.com'];
 
         foreach ($emails as $email) {
             

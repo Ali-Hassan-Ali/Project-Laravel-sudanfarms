@@ -8,7 +8,7 @@
     <div class="container">
         <h2>الموردون</h2>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('welcome.index') }}">الرئيسية</a></li>
             <li class="breadcrumb-item active" aria-current="page">الموردون</li>
         </ol>
     </div>

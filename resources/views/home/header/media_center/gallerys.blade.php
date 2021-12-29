@@ -2,13 +2,13 @@
 
 @section('content')
 
-@section('contact', __('home.gallerys'))
+@section('title', __('dashboard.gallerys'))
 
     <section class="inner-section single-banner">
         <div class="container">
             <h2>@lang('dashboard.gallerys')</h2>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">@lang('dashboard.home')</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('welcome.index') }}">@lang('dashboard.home')</a></li>
                 <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.gallerys')</li>
             </ol>
         </div>

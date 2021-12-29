@@ -39,10 +39,28 @@
                                 @else
                                     <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @endif
+                                {{-- <a href="{{ route('dashboard.newsletters.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.message')</a> --}}
                             </div>
 
                         </div>
                     </form><!-- end of form -->
+
+                </div><!-- end of box header -->
+
+                <div class="box-header with-border">
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <a href="{{ route('dashboard.newsletters.create') }}" class="btn btn-primary">
+                                <i class="fa fa-plus"></i>
+                                @lang('dashboard.message')
+                            </a>
+
+                        </div>
+
+                    </div>{{-- row --}}
 
                 </div><!-- end of box header -->
 

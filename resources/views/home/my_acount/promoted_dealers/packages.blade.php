@@ -8,7 +8,7 @@
     <div class="container">
         <h2>@lang('dashboard.packages')</h2>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">@lang('dashboard.home')</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('welcome.index') }}">@lang('dashboard.home')</a></li>
             <li class="breadcrumb-item"><a href="{{ route('profile.index') }}">@lang('home.profile')</a></li>
             <li class="breadcrumb-item active" aria-current="page"> @lang('dashboard.packages')</li>
         </ol>

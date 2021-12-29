@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutCustomerTableSeeder::class);
         $this->call(PackageTableSeeder::class);
         $this->call(ContactTableSeeder::class);
+        $this->call(NewsletterTableSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }
