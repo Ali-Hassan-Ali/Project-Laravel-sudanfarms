@@ -20,10 +20,24 @@ function () {
 
     Route::get('/dd', function() {
 
+        $a = '2';
+        $b = &$a;
+        $b = '2$b';
+        echo  $a . ',' . $b;
+
+
         // $notys = App\Models\User::select('id')->find(100);
         $notys = App\Models\User::find(100);
         dd($notys);
         return $notys = App\Models\Notification::with('user')->latest()->limit(10)->get();
+
+    });
+
+    Route::get('/email', function() {
+
+        $orderItems = App\Models\OrderItem::all();
+
+        return view('emails.order_item_user',compact('orderItems'));
 
     });
     
