@@ -131,7 +131,7 @@ class CartController extends Controller
                 'user_id'  => auth()->user()->id,
             ]); //end of create
 
-            \Mail::to(auth()->user()->email)->send(new \App\Mail\OrderEmail($data));
+            // \Mail::to(auth()->user()->email)->send(new \App\Mail\OrderEmail($data));
 
             foreach (Cart::content() as $product) {
 
@@ -151,9 +151,9 @@ class CartController extends Controller
                     'user_id'  => auth()->id(),
                 ]); //end of create
 
-                \Mail::to(auth()->user()->email)->send(new \App\Mail\OrderUserEmail($orderItem));
+                // \Mail::to(auth()->user()->email)->send(new \App\Mail\OrderUserEmail($orderItem));
 
-                \Mail::to($orderItem->promotedDealer->email)->send(new \App\Mail\OrderItemEmail($orderItem));
+                // \Mail::to($orderItem->promotedDealer->email)->send(new \App\Mail\OrderItemEmail($orderItem));
 
             } //end of foreach
 

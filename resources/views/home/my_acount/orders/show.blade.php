@@ -32,8 +32,10 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">@lang('dashboard.image')</th>
                                                 <th scope="col">@lang('dashboard.name')</th>
+                                                <th scope="col">@lang('dashboard.phone')</th>
+                                                <th scope="col">@lang('dashboard.email')</th>
+                                                <th scope="col">@lang('dashboard.image')</th>
                                                 <th scope="col">@lang('dashboard.price')</th>
                                                 <th scope="col">@lang('dashboard.quantity')</th>
                                                 <th scope="col">@lang('dashboard.totalprice')</th>
@@ -48,8 +50,30 @@
     	                                                <h6>{{ $index + 1 }}</h6>
     	                                            </td>
     	                                            <td class="table-name">
-    	                                                <h6>{{ $order->product->name }}</h6>
+    	                                                <h6>{{ $order->Promoted->name }}</h6>
     	                                            </td>
+                                                    <td class="table-name">
+                                                        <h6>
+                                                            <a href="tel:{{ $order->Promoted->phone }}">
+                                                                {{ $order->Promoted->phone }}
+                                                            </a>
+                                                            <br>
+                                                            <a href="tel:{{ $order->Promoted->phone_master }}">
+                                                                {{ $order->Promoted->phone_master }}
+                                                            </a>
+                                                            <br>
+                                                            <a href="tel:{{ $order->Promoted->other_phone }}">
+                                                                {{ $order->Promoted->other_phone }}
+                                                            </a>
+                                                        </h6>
+                                                    </td>
+                                                    <td class="table-name">
+                                                        <h6>
+                                                            <a href="mailto:{{ $order->Promoted->email }}">
+                                                                {{ $order->Promoted->email }}
+                                                            </a>
+                                                        </h6>
+                                                    </td>
                                                     @php
                                                         $image = App\Models\ImageProduct::where('product_id', $order->product->id)->first();
                                                     @endphp
@@ -57,7 +81,7 @@
                                                         <img src="{{ $image->image_path }}" width="200">
                                                     </td>
                                                     <td class="table-name">
-                                                        <h6>{{ $order->price }}</h6>
+                                                        <h6>{{ $order->product->new_price }}</h6>
                                                     </td>
                                                     <td class="table-name">
                                                         <h6>{{ $order->quantity }}</h6>
