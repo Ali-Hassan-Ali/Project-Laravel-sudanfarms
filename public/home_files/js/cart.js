@@ -29,7 +29,8 @@ $(document).ready(function() {
 
                 if (data.product.qty == 1) {
 
-                    var subTotle = $.number(data.product.price * data.product.qty ,2);
+                    var subTotle     = $.number(data.product.price * data.product.qty ,2);
+                    var productPrice = $.number(data.product.price,2);
 
                     var item =  `<li class="cart-item cart-item-${data.product.id}">
                                     <div class="cart-media">
@@ -44,7 +45,7 @@ $(document).ready(function() {
                                     <div class="cart-info-group">
                                     <div class="cart-info">
                                         <h6><a href="4">name ar</a></h6>
-                                        <p class="product-qty-4"> ${data.product_model.quantity_guard} - ${data.product.price} ${data.currency}</p>
+                                        <p class="product-qty-4"> ${data.product_model.quantity_guard} - ${productPrice} ${data.currency}</p>
                                     </div>
                                     <div class="cart-action-group">
                                         <div class="product-action">

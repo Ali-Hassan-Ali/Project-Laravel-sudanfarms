@@ -137,7 +137,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="promo-img">
-                            <a href="{{ $advertone->link }}"><img src="{{ $advertone->image_path }}" alt="promo"></a>
+                            <a href="{{ $advertone->link }}" target="_blank">
+                                <img src="{{ $advertone->image_path }}" alt="promo">
+                            </a>
                             <h3>{{ $advertone->title }}</h3>
                         </div>
                     </div>
@@ -352,7 +354,9 @@
                 @if ($adverthre->status == '1')
                 <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
                     <div class="promo-img">
-                        <a href="{{ $adverthre->link }}"><img src="{{ $adverthre->image_path }}" alt="promo"></a>
+                        <a href="{{ $adverthre->link }}" target="_blank">
+                            <img src="{{ $adverthre->image_path }}" alt="promo">
+                        </a>
                         <h3>{{ $adverthre->title }}</h3>
                     </div>
                 </div>

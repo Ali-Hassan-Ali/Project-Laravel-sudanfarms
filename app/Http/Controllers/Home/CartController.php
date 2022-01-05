@@ -25,12 +25,12 @@ class CartController extends Controller
 
                 $image_product = ImageProduct::where('product_id', $request->id)->first();
 
-                $product = Cart::add($product_model->id, $product_model->name, 1, $product_model->price)
+                $product = Cart::add($product_model->id, $product_model->name, 1, preg_replace('/,/', '', $product_model->new_price))
                     ->associate('App\Models\Product');
 
                 $count    = Cart::count();
                 $subtotal = Cart::subtotal();
-                $currency = app()->getLocale() == 'ar' ? 'جس' : 'SDG';
+                $currency = app()->getLocale() == 'ar' ? 'ج س' : 'SDG';
 
                 return response()->json([
                     'product'       => $product,
@@ -51,6 +51,8 @@ class CartController extends Controller
 
     } //end of function add_cart
 
+
+
     public function update_cart(Request $request)
     {
 
@@ -63,7 +65,7 @@ class CartController extends Controller
                 $count    = Cart::count();
                 $subtotal = Cart::subtotal();
 
-                $currency = app()->getLocale() == 'ar' ? 'جس' : 'SDG';
+                $currency = app()->getLocale() == 'ar' ? 'ج س' : 'SDG';
 
                 return response()->json(['product' => $product, 'count' => $count, 'currency' => $currency, 'subtotal' => $subtotal]);
 
@@ -77,6 +79,8 @@ class CartController extends Controller
 
     } //end of function update_cart
 
+
+
     public function destroy_cart(Request $request)
     {
 
@@ -88,7 +92,7 @@ class CartController extends Controller
 
                 $count    = Cart::count();
                 $subtotal = Cart::subtotal();
-                $currency = app()->getLocale() == 'ar' ? 'جس' : 'SDG';
+                $currency = app()->getLocale() == 'ar' ? 'ج س' : 'SDG';
 
                 return response()->json(['subtotal' => $subtotal, 'currency' => $currency, 'count' => $count]);
 
@@ -101,6 +105,8 @@ class CartController extends Controller
         } //end try
 
     } //end of function destroy_cart
+
+
 
     public function send()
     {
@@ -165,5 +171,7 @@ class CartController extends Controller
         } //end of if
 
     } //end of send
+
+    
 
 } //end of controller

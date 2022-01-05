@@ -271,7 +271,7 @@
                                 <p class="product-price-{{ $product->id }}">
                                     {{ $product->model->quantity_guard }} - {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }} 
 
-                                    {{ $product->price_decount - $product->price }}    
+                                    {{ $product->model->new_price }}    
                                 </p>
                             </div>
                             <div class="cart-action-group">
@@ -290,7 +290,7 @@
                                 <h6>
                                     <p class="new-price product-sub-totle-{{ $product->id }}">
                                         {{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} 
-                                        {{ number_format($product->qty * $product->price,2) }}
+                                        {{ number_format($product->qty * preg_replace('/,/', '', $product->model->new_price),2) }}
                                     </p>
                                 </h6>
                             </div>
