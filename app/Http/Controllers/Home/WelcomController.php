@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PromotedDealer;
 use App\Models\Newsletter;
 use App\Models\Categorey;
+use App\Models\Currenccy;
 use App\Models\Offer;
 
 class WelcomController extends Controller
@@ -68,5 +69,57 @@ class WelcomController extends Controller
         }//end of if
 
     }//end of newsletter
+
+
+    public function amount(Request $request)
+    {
+        $currency  = Currenccy::first(); 
+        
+        session()->put('product-price', $request->price);
+
+        if ($request->price == null) {
+
+            $totle = number_format(preg_replace('/,/', '', 1 * $currency->amount),2);
+
+            
+        } else {
+
+            $totle = number_format(preg_replace('/,/', '', $request->price * $currency->amount),2);
+
+        }//end of if
+
+        session()->put('product-totle_price', $currency);
+
+        $cry = app()->getLocale() == 'ar' ? 'ج س' : 'SDG';
+
+        return response()->json(['price' => $totle , 'cry' => $cry]);
+
+    }//end of amount
+
+
+    public function amountDecount(Request $request)
+    {
+        $currency  = Currenccy::first(); 
+        
+        session()->put('product-decount-price', $request->price);
+
+        if ($request->price == null) {
+
+            $totle = number_format(preg_replace('/,/', '', 1 * $currency->amount),2);
+
+            
+        } else {
+
+            $totle = number_format(preg_replace('/,/', '', $request->price * $currency->amount),2);
+
+        }//end of if
+
+        session()->put('product-totle_price', $currency);
+
+        $cry = app()->getLocale() == 'ar' ? 'ج س' : 'SDG';
+
+        return response()->json(['price' => $totle , 'cry' => $cry]);
+
+    }//end of amount decount
     
 }//end of controller

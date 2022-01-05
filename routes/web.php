@@ -14,23 +14,29 @@ use App\Http\Controllers\Home\OfferController;
 use App\Http\Controllers\Home\SocialController;
 use App\Http\Controllers\Home\OrderController;
 
+use AmrShawky\LaravelCurrency\Facade\Currency;
+use App\Models\Product;
+
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
 
     Route::get('/dd', function() {
+        $packages    = \App\Models\PromotedDealer::where('user_id',auth()->id())
+                                                          ->where('status','1')
+                                                          ->where('packages_id','>','0')
+                                                          ->count();
 
-        $a = '2';
-        $b = &$a;
-        $b = '2$b';
-        echo  $a . ',' . $b;
+                                                          dd($packages);
 
-
-        // $notys = App\Models\User::select('id')->find(100);
-        $notys = App\Models\User::find(100);
-        dd($notys);
-        return $notys = App\Models\Notification::with('user')->latest()->limit(10)->get();
-
+        return '<p><p class="text-red totle-price">0</p>SDG</p>';
+        return Product::first();
+        return number_format($data->amount * 4,2);
+        return Currency::convert()  
+        ->from('USD')
+        ->to('SDG')
+        ->amount(1)
+        ->get();
     });
 
     Route::get('/email', function() {
@@ -54,6 +60,8 @@ function () {
     Route::post('logout', [AuthController::class,'user_logout'])->name('home.logout');
 
     Route::get('/', [WelcomController::class,'index'])->name('welcome.index');
+    Route::post('amount', [WelcomController::class,'amount'])->name('amount.index');
+    Route::post('amount_decount', [WelcomController::class,'amountDecount'])->name('amount.decount.index');
 
     Route::get('count_call_phone/{promoted_dealer}', [WelcomController::class,'count_call_phone'])->name('count_call_phone');
     Route::get('count_call_email/{promoted_dealer}', [WelcomController::class,'count_call_email'])->name('count_call_email');

@@ -205,10 +205,9 @@ class PromotedDealerController extends Controller
             $data_yery  = date('Y') + 1;
         }
 
-        $date        = strtotime($day . '-' . $end_month . '-' . $data_yery);
-        $end_month   = date('d-m-Y', $date);
-        $start_month = date('d'.'-'.'m'.'-'.'Y');
-
+        $end_month   = date($end_month . '-' . $day . '-' . $data_yery);
+        $start_month = date('m'.'-'.'d'.'-'.'Y');
+        
         $request_data_user                = $request->except('image', 'package_id');
         $request_data_user['packages_id'] = $request->package_id;
         $request_data_user['status']      = '1';

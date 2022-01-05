@@ -75,29 +75,37 @@
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.image') | @lang('dashboard.mult_image')</label>
-		                            <input type="file" multiple name="image[]" class="form-control image">
+		                            <input type="file" multiple name="image[]" accept="image/*" class="form-control image" id="file-input">
 		                        </div>
 
 		                        @php
 		                            $images = App\Models\ImageProduct::where('product_id',$product->id)->get();
 		                        @endphp
 
-		                        <div class="form-group d-block">
-		                            @foreach ($images as $image)
+		                        <div class="form-group">
+		                            <div id="preview" class="d-flex justify-content-center">
+			                            @foreach ($images as $image)
 
-		                                <img src="{{ $image->image_path }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
-		                                
-		                            @endforeach
+			                                <img src="{{ $image->image_path }}" width="100">
+			                                
+			                            @endforeach
+		                            </div>
 		                        </div>
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.price')</label>
-		                            <input type="number" step="0.01" step="any" name="price" class="form-control" value="{{ $product->price }}">
+		                            <p class="text-red product-val-price">{{ $product->price }} $</p>
+                            		<p class="text-red totle-price">{{ $product->new_price }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }}</p>
+		                            <input type="number" name="price" class="form-control product-price" 
+		                            		value="{{ $product->price }}">
 		                        </div>
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.price_decount')</label>
-		                            <input type="number" step="0.01" step="any" name="price_decount" class="form-control" value="{{ $product->price_decount }}">
+		                            <p class="text-red product-val-decount">{{ $product->price_decount }} $</p>
+                            		<p class="text-red totle-decount">{{ $product->new_price_decount }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }}</p>
+                            		<input type="number" name="price_decount" class="form-control product-decount @error('price_decount') is-invalid @enderror" 
+                            			   value="{{ $product->price_decount }}">
 		                        </div>
 
 		                        <div class="form-group">
@@ -144,40 +152,3 @@
 </section>
 
 @endsection
-
-
-@push('products')
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $(document).on('change', '#select-category', function(e) {
-                e.preventDefault();
-                
-                var $option   = $(this).find(":selected");
-                var url       = $option.data('url');
-                var method    = 'get';
-
-                $.ajax({
-                    url: url,
-                    method: method,
-                    success: function (data) {
-                        
-                        $.each(data, function(index, category) {
-                            
-                            var html = '<option value="'+category.id+'">'+category.name+'</option>';
-
-                            $('#select-sub-category').empty('');
-
-                            $('#select-sub-category').append(html);
-
-                        });//end of each
-
-                    }//end of success
-
-                });//endof ajax
-                
-            });//end od change product
-            
-        });//end of redy
-    </script>
-@endpush

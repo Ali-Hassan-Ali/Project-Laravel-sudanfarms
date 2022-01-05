@@ -11,7 +11,7 @@ class Product extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['name','description','quantity_guard','condition'];
+    protected $appends = ['name','description','quantity_guard','condition','new_price','new_price_decount','image_path','cury'];
 
     public function getNameAttribute()
     {
@@ -39,7 +39,7 @@ class Product extends Model
             
         }//end of if
 
-    }//end of get name
+    }//end of get description
 
     public function getQuantityGuardAttribute()
     {
@@ -53,7 +53,7 @@ class Product extends Model
             
         }//end of if
 
-    }//end of get description
+    }//end of get quantity_guard
 
     public function getConditionAttribute()
     {
@@ -68,6 +68,40 @@ class Product extends Model
         }//end of if
 
     }//end of get condition
+
+    public function getNewPriceAttribute()
+    {
+        $amount = Currenccy::first();
+
+        $totle  = $this->price * $amount->amount;
+
+        return number_format(preg_replace('/,/', '', $totle),2);
+
+    }//end of new price
+
+    public function getNewPriceDecountAttribute()
+    {
+        $amount = Currenccy::first();
+
+        $totle  = $this->price_decount * $amount->amount;
+
+        return number_format(preg_replace('/,/', '', $totle),2);
+
+    }//end of new price decount
+
+    public function getImagePathAttribute()
+    {
+        $image_product = ImageProduct::where('product_id', $this->id)->first();
+
+        return $image_product->image_path;
+
+    }//end of new image path
+
+    public function getCuryAttribute()
+    {
+        return app()->getLocale() == 'ar' ? 'ج س' : 'SDG';
+
+    }//end of new image path
 
     public function scopeWhenSearch($query , $search) 
     {
@@ -87,16 +121,19 @@ class Product extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+
     }//end of belongsTo user
 
     public function category()
     {
         return $this->belongsTo(Categorey::class,'sub_category_id');
+
     }//end of belongsTo category
 
     public function imageProduct()
     {
         return $this->hasMany(imageProduct::class,'product_id');
+
     }//end of hasMany image product
     
 }//end of model

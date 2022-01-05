@@ -24,7 +24,7 @@
 
                     <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.offers') <small>{{ $offers->total() }}</small></h3>
 
-                    <form action="{{ route('dashboard.categoreys.index') }}" method="get">
+                    <form action="{{ route('dashboard.offers.index') }}" method="get">
 
                         <div class="row">
 

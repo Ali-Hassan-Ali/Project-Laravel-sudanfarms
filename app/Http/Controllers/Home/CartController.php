@@ -152,7 +152,7 @@ class CartController extends Controller
             } //end of foreach
 
             Cart::destroy();
-
+            
             notify()->success(__('dashboard.added_successfully'));
             return redirect()->route('orders.index');
 

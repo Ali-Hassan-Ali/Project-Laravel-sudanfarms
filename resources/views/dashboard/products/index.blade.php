@@ -93,8 +93,8 @@
                                         {{-- <td>{!! $product->description !!}</td> --}}
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->user->name }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td>{{ $product->price_decount }}</td>
+                                        <td>{{ $product->new_price }}</td>
+                                        <td>{{ $product->new_price_decount }}</td>
                                         {{-- <td>
                                             @for ($i = 0; $i < $product->stars; $i++)
                                                 <i class="fa fa-star" style="color: #ffe066;"></i>

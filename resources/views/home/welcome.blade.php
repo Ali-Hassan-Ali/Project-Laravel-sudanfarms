@@ -71,8 +71,6 @@
                                 </div>
                                 <button class="product-wish wish"><i class="fas fa-heart"></i></button>
                                 @php
-                                    
-                                    $image_product = App\Models\ImageProduct::where('product_id',$product->id)->first();
 
                                     $user_id = $product->user->id;
 
@@ -80,7 +78,7 @@
 
                                 @endphp
                                 <a class="product-image" href="{{ route('product.show',$product->id) }}">
-                                    <img src="{{ $image_product->image_path }}" alt="product" style="width: 100%;">
+                                    <img src="{{ $product->image_path }}" alt="product" style="width: 100%;">
                                 </a>
                                 <div class="product-widget">
                                     <a title="مقارنة المنتج" href="#" class="fas fa-random"></a>
@@ -105,8 +103,8 @@
                                     <span>{{ $promoted_dealer->name }}</span>
                                 </h6>
                                 <h6 class="product-price">
-                                    <del>SDG{{ $product->price_decount }}</del>
-                                    <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
+                                    <del>{{ $product->cury }} {{ $product->new_price_decount }}</del>
+                                    <span>{{ $product->cury }} {{ $product->new_price }}<small>/{{ $product->quantity_guard }}</small></span>
                                 </h6>
                                 <button class="product-add add-cart" data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" title="@lang('home.add_cart')">
                                     <i class="fas fa-shopping-basket"></i><span>@lang('home.add_cart')</span>
@@ -172,8 +170,6 @@
                                     <i class="fas fa-heart"></i>
                                 </button>
                                 @php
-                                    
-                                    $image_product = App\Models\ImageProduct::where('product_id',$product->id)->first();
 
                                     $user_id = $product->user->id;
 
@@ -181,7 +177,7 @@
 
                                 @endphp
                                 <a class="feature-image" href="{{ route('product.show',$product->id) }}">
-                                    <img src="{{ $image_product->image_path }}" alt="product">
+                                    <img src="{{ $product->image_path }}" alt="product">
                                 </a>
                                 <div class="feature-widget">
                                     <a title="مقارنة المنتج" href="#" class="fas fa-random"></a>
@@ -200,8 +196,8 @@
                                     <a href="{{ route('product.show',$product->id) }}">{{ $promoted_dealer->name }}</a>
                                 </div>
                                 <h6 class="feature-price">
-                                    <del>SDG {{ $product->price_decount }} </del>
-                                    <span>SDG {{ $product->price }} <small>/{{ $product->quantity_guard }}</small></span>
+                                    <del>{{ $product->cury }} {{ $product->new_price_decount }} </del>
+                                    <span>{{ $product->cury }} {{ $product->new_price }} <small>/{{ $product->quantity_guard }}</small></span>
                                 </h6>
                                 <p class="feature-desc">{{ $product->description }}</p>
                                 <button class="product-add add-cart" data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" title="@lang('home.add_cart')">
@@ -250,7 +246,7 @@
                     <div class="col-lg-1"></div>
                     <div class="col-lg-5">
                         <div class="countdown-img"><img src="{{ asset('home_files/image/countdown.png') }}" alt="countdown">
-                            <div class="countdown-off"><span>{{ $offer->price }}</span>
+                            <div class="countdown-off"><span>{{ $offer->new_price }}</span>
                                 <span style="font-size: 18px;">@lang('home.discount')</span>
                             </div>
                         </div>
@@ -284,8 +280,6 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     @php
-                                        
-                                        $image_product = App\Models\ImageProduct::where('product_id',$product->id)->first();
 
                                         $user_id = $product->user->id;
 
@@ -293,7 +287,7 @@
 
                                     @endphp
                                     <a class="product-image" href="{{ route('product.show',$product->id) }}">
-                                        <img src="{{ $image_product->image_path }}" alt="product">
+                                        <img src="{{ $product->image_path }}" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         <a title="مقارنة المنتج" href="#" class="fas fa-random"></a>
@@ -312,8 +306,8 @@
                                         <a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a>
                                     </h6>
                                     <h6 class="product-price mb-0">
-                                        <del>SDG{{ $product->price_decount }}</del>
-                                        <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
+                                        <del>{{ $product->cury }} {{ $product->new_price_decount }}</del>
+                                        <span>{{ $product->cury }} {{ $product->new_price }}<small>/{{ $product->quantity_guard }}</small></span>
                                     </h6>
                                     <h6 class="product-price"><span>{{ $promoted_dealer->name }}</span></h6>
                                     <button class="product-add add-cart" data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" title="@lang('home.add_cart')">

@@ -21,7 +21,7 @@
                     <div class="shop-widget">
                         <h6 class="shop-widget-title">تصفية حسب السعر</h6>
                         <form>
-                            <div class="shop-widget-group"><input type="text" placeholder="أقل - 00"><input type="text" placeholder="أكثر - SDG"></div><button class="shop-widget-btn"><i class="fas fa-search"></i><span>بحث</span></button>
+                            <div class="shop-widget-group"><input type="text" placeholder="أقل - 00"><input type="text" placeholder="أكثر - {{ $product->cury }} "></div><button class="shop-widget-btn"><i class="fas fa-search"></i><span>بحث</span></button>
                         </form>
                     </div>
 
@@ -58,8 +58,6 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         @php
-                                        
-                                            $image_product = App\Models\ImageProduct::where('product_id',$product->id)->first();
 
                                             $user_id = $product->user->id;
 
@@ -67,7 +65,7 @@
 
                                         @endphp
                                         <a class="product-image" href="{{ route('product.show',$product->id) }}">
-                                            <img src="{{ $image_product->image_path }}" alt="product">
+                                            <img src="{{ $product->image_path }}" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="مقارنة المنتج" href="#" class="fas fa-random"></a>
@@ -87,8 +85,8 @@
                                             <a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <del>SDG{{ $product->price_decount }}</del>
-                                            <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
+                                            <del>{{ $product->cury }} {{ $product->new_price_decount }}</del>
+                                            <span>{{ $product->cury }} {{ $product->new_price }}<small>/{{ $product->quantity_guard }}</small></span>
                                         </h6>
                                         <h6 class="product-price"><span>{{ $promoted_dealer->name }}</span></h6>
                                         <button class="product-add add-cart" data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" title="@lang('home.add_cart')">

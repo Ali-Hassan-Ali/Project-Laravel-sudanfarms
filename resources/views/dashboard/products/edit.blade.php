@@ -79,7 +79,7 @@
 
                         <div class="form-group">
                             <label>@lang('dashboard.image') | @lang('dashboard.mult_image')</label>
-                            <input type="file" multiple name="image[]" class="form-control image">
+                            <input type="file" multiple name="image[]" accept="image/*" class="form-control image" id="file-input">
                         </div>
 
                         @php
@@ -87,21 +87,27 @@
                         @endphp
 
                         <div class="form-group">
-                            @foreach ($images as $image)
+                            <div id="preview" class="d-flex justify-content-center">
+                                @foreach ($images as $image)
 
-                                <img src="{{ $image->image_path }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
-                                
-                            @endforeach
+                                    <img src="{{ $image->image_path }}" width="100">
+                                    
+                                @endforeach
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label>@lang('dashboard.price')</label>
-                            <input type="number" step="0.01" step="any" name="price" class="form-control" value="{{ $product->price }}">
+                            <p class="text-red product-val-price">{{ $product->price }} $</p>
+                            <p class="text-red totle-price">{{ $product->new_price }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }}</p>
+                            <input type="number" name="price" class="form-control product-price" value="{{ $product->price }}">
                         </div>
 
                         <div class="form-group">
                             <label>@lang('dashboard.price_decount')</label>
-                            <input type="number" step="0.01" step="any" name="price_decount" class="form-control" value="{{ $product->price_decount }}">
+                            <p class="text-red product-val-decount">{{ $product->price_decount }} $</p>
+                            <p class="text-red totle-decount">{{ $product->new_price_decount }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }}</p>
+                            <input type="number" name="price_decount" class="form-control product-decount" value="{{ $product->price_decount }}">
                         </div>
 
                         <div class="form-group">
@@ -120,12 +126,12 @@
 
                         <div class="form-group">
                             <label>@lang('dashboard.start_time')</label>
-                            <input type="data" name="start_time" class="form-control" value="{{ $product->start_time }}">
+                            <input type="date" name="start_time" class="form-control" value="{{ $product->start_time }}">
                         </div>
 
                         <div class="form-group">
                             <label>@lang('dashboard.end_time')</label>
-                            <input type="data" name="end_time" class="form-control" value="{{ $product->end_time }}">
+                            <input type="date" name="end_time" class="form-control" value="{{ $product->end_time }}">
                         </div>
 
                         {{-- <div class="form-group">

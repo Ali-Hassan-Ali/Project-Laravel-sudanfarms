@@ -61,8 +61,8 @@
 	                                <span>{{ $promoted_dealer->name }}</span>
 	                            </h6>
 	                            <h6 class="product-price">
-	                                <del>SDG{{ $product->price_decount }}</del>
-	                                <span>SDG{{ $product->price }}<small>/{{ $product->quantity_guard }}</small></span>
+	                                <del>{{ $product->cury }} {{ $product->new_price_decount }}</del>
+	                                <span>{{ $product->cury }} {{ $product->new_price }}<small>/{{ $product->quantity_guard }}</small></span>
 	                            </h6>
 	                            <button class="product-add add-cart" 
                                     	data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" 

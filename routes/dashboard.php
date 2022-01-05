@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Dashboard\OffersController;
 use App\Http\Controllers\Dashboard\PackageController;
 use App\Http\Controllers\Dashboard\NotificationController;
+use App\Http\Controllers\Dashboard\CurrenccyController;
 
 //Setting Controller
 use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
@@ -65,6 +66,9 @@ function () {
 
         //user routes
         Route::resource('orders', OrderController::class)->except(['create','edit','update']);
+
+        //user routes
+        Route::resource('currenccys', CurrenccyController::class)->except(['create','store','show','destroy']);
 
         //categoreys routes
         Route::resource('categoreys', CategoreyController::class)->except(['show']);

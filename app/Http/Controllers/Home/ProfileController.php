@@ -28,22 +28,27 @@ class ProfileController extends Controller
 
         if ($promoted_dealer) {
 
-            $PackagePromoted = PackagePromoted::where('promoted_dealer_id', $promoted_dealer->id)->first();
-
+            $PackagePromoted = PackagePromoted::where('promoted_dealer_id', $promoted_dealer->id)->latest()->first();
+            
             if ($promoted_dealer) {
 
                 if ($promoted_dealer->packages_id) {
-
-                    if ($PackagePromoted->end_month > date('d-m-Y')) {
-
+                    
+                    if ($PackagePromoted->end_month < date('m-d-Y')) {
+                        
                         $promoted_dealer->update([
                             'status' => 0,
-                            // 'status' => 0
+                        ]);
+
+                    } else {
+
+                        $promoted_dealer->update([
+                            'status' => 1,
                         ]);
 
                     } //end of if
 
-                } //end of if
+                }//end of if
 
             } //emd pf
 
@@ -69,15 +74,29 @@ class ProfileController extends Controller
         $orders    = Order::where('user_id', $userId)->count();
         $recustm   = RequestCustmer::count();
 
-        return view('home.my_acount.profile', compact('request_custmers', 'promoted_dealer', 'user', 'products', 'offers', 'orderItem', 'orders', 'recustm'));
+        $uuser_state = PromotedDealer::where('user_id',auth()->id())->where('state','0')->first();
+        $packages    = PromotedDealer::where('user_id',auth()->id())
+                                                  ->where('status','>','0')
+                                                  ->where('packages_id','>','0')
+                                                  ->first();
+
+        $packagCount = PromotedDealer::where('user_id',auth()->id())
+                                                  ->where('status','1')
+                                                  ->count();
+                                    
+        return view('home.my_acount.profile', compact('request_custmers', 'promoted_dealer', 'user',
+                                                      'products', 'offers', 'orderItem', 'orders', 'recustm'
+                                                      ,'uuser_state','packages','packagCount'));
 
     } //end of index
+
 
     public function passwprd_index()
     {
         return view('home.my_acount.change_password');
 
     } //end of passwprd_index
+
 
     public function passwprd_store(Request $request)
     {
@@ -92,6 +111,7 @@ class ProfileController extends Controller
         return view('home.my_acount.profile');
 
     } //end of chabge password
+
 
     public function update(Request $request)
     {
@@ -126,5 +146,6 @@ class ProfileController extends Controller
         return redirect()->back();
 
     } //end of store
+    
 
 } //end of controller

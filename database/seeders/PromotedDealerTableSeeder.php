@@ -15,7 +15,7 @@ class PromotedDealerTableSeeder extends Seeder
     {
         $name = ['شركة سيدتك للزراعة','شركة قريت إيرث','شركة حلا الدولية','شركة تست للزراعة','شركة الزراعة الدولية'];
 
-        foreach ($name as  $data) {
+        foreach ($name as  $iid=>$data) {
             
             \App\Models\PromotedDealer::create([
                 'user_id'            => '1',

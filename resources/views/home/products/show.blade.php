@@ -96,8 +96,8 @@
                         </div>
 
                         <h3 class="details-price">
-                            <del>{{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}{{ $min_product->price_decount }}</del> 
-                            <span> {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}{{ $min_product->price }}<small>/{{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}</small></span>
+                            <del>{{ app()->getLocale() == 'ar' ? 'ج س' : '{{ $product->cury }} '}}{{ $min_product->new_price_decount }}</del> 
+                            <span> {{ app()->getLocale() == 'ar' ? 'ج س' : '{{ $product->cury }} '}}{{ $min_product->new_price }}<small>/{{ app()->getLocale() == 'ar' ? 'ج س' : '{{ $product->cury }} '}}</small></span>
                         </h3>
                         <p class="details-desc">{{ $min_product->description }}</p>
                         <div class="details-list-group"><label class="details-list-title">@lang('dashboard.similar_products'):</label>
@@ -175,7 +175,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">@lang('dashboard.price')</th>
-                                        <td>{{ $min_product->price }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}</td>
+                                        <td>{{ $min_product->new_price }} {{ app()->getLocale() == 'ar' ? 'ج س' : '{{ $product->cury }} '}}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">@lang('dashboard.map')</th>

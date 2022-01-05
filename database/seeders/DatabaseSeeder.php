@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PackageTableSeeder::class);
         $this->call(ContactTableSeeder::class);
         $this->call(NewsletterTableSeeder::class);
+        $this->call(CurrencyTableSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }

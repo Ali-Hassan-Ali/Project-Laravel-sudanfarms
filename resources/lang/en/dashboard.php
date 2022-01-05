@@ -14,6 +14,7 @@ return [
     'count_noty'           => 'notifications count',
     'link_video'           => 'link video',
     'reply_message'        => 'reply message',
+    'currenccys'           => 'currenccys',
     
     'sales_graph'    => 'sales graph',
     'total'          => 'total',
@@ -302,6 +303,7 @@ return [
     'manager_word_en'  => 'manager word english',
 
     'advertisements'  => 'advertisements',
+    'link'            => 'Link',
 
     'packages'         => 'packages',
     'package'          => 'package',

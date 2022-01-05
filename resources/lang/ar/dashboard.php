@@ -15,6 +15,7 @@ return [
     'count_noty'           => 'عد الاشعارات',
     'link_video'           => 'رابط الفديو',
     'reply_message'        => 'رد علي الرسالة',
+    'currenccys'           => 'العملات',
     
     'sales_graph'    => 'رسم بياني للمبيعات',
     'total'          => 'المجموع',
@@ -301,7 +302,8 @@ return [
     'manager_word_ar'  => 'كلمة المدير بلعربي',
     'manager_word_en'  => 'كلمة المدير بلانجلزي',
     
-    'advertisements'  => 'الاعلانات',
+    'advertisements'   => 'الاعلانات',
+    'link'             => 'الرابط',
 
     'packages'         => 'الباقات',
     'package'          => 'الباقة',

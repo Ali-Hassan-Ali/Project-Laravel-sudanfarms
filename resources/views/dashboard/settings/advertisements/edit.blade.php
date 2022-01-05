@@ -35,7 +35,7 @@
                         {{ method_field('put') }}
 
                         @php
-                            $names = ['title_ar','title_en'];
+                            $names = ['title_ar','title_en','link'];
                         @endphp
 
                         @foreach ($names as $name)

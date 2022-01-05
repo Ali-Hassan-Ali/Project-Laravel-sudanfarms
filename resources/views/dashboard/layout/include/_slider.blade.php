@@ -31,6 +31,12 @@
                 </a>
             </li>
 
+            <li class="{{ Route::Is('dashboard.currenccys.index') ? 'active' : '' }}">
+                <a href="{{ route('dashboard.currenccys.index') }}">
+                    <i class="fa fa-dashboard"></i><span>@lang('dashboard.currenccys')</span>
+                </a>
+            </li>
+
             @if (auth()->user()->hasPermission('users_read'))
                 <li class="{{ Route::Is(['dashboard.users.index','dashboard.users.create','dashboard.users.edit']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.users.index') }}"><i class="fas fa-users-cog"></i><span> @lang('dashboard.users') </span></a>

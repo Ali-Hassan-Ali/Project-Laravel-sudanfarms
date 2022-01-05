@@ -80,10 +80,10 @@
 	                                                <h6>{{ $product->category->name }}</h6>
 	                                            </td>
 	                                            <td class="table-price">
-	                                                <h6>{{ $product->price }}</h6>
+	                                                <h6>{{ $product->new_price }}</h6>
 	                                            </td>
 	                                            <td class="table-price">
-	                                                <h6>{{ $product->price_decount }}</h6>
+	                                                <h6>{{ $product->new_price_decount }}</h6>
 	                                            </td>
 	                                            <td class="table-price">
 	                                                <h6>{{ $product->created_at }}</h6>

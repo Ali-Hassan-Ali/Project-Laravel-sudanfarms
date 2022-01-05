@@ -52,7 +52,14 @@
     @include('home.layout.include._footer')
         
     <x:notify-messages />
+    
+    <div id="amount-url" hidden>
+        {{ route('amount.index') }}
+    </div>
 
+    <div id="amount-decount-url" hidden>
+        {{ route('amount.decount.index') }}
+    </div>
     {{-- js vendor --}}
     <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('home_files/js/vendor/popper.min.js') }}"></script>
@@ -94,6 +101,9 @@
 
     {{--addtohomescreen js--}}
     <script src="{{ asset('home_files/plugns/addToHomescreen/addToHomescreen.js') }}"></script>
+
+    {{--addtohomescreen js--}}
+    <script src="{{ asset('dashboard_files/js/product.js') }}"></script>
 
     <script type="text/javascript">
         addToHomescreen();

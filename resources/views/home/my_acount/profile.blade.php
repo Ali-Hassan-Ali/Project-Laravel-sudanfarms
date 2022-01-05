@@ -18,11 +18,6 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                @php
-                    $uuser_state = app\Models\PromotedDealer::where('user_id',auth()->user()->id)->where('state','0')->first();
-                    $packages    = app\Models\PromotedDealer::where('user_id',auth()->user()->id)->where('packages_id','>','0')->where('status','1')->first();
-
-                @endphp
 
                 @if ($uuser_state)
                 
@@ -219,7 +214,8 @@
                         </div>
                     </div>
                 </div>
-                @if (!$packages)
+                
+                @if ($packagCount == '0')
 
                     <div class="col-lg-12">
                         <div class="account-card">
