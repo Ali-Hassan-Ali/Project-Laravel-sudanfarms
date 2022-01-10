@@ -9,7 +9,12 @@ return [
     'Join'         => 'إنضم الآن!',
     'create_new'   => 'انشئ حساب جديد في دقيقة',
     'have_account' => 'انشئ حساب جديد في دقيقة',
+    
+    'filter_by_price' => 'تصفية حسب السعر',
+    'new'             => 'جديد',
 
+    'Login_by_Facebook' => 'تسجيل باستخدام فيس بوك',
+    'Login_by_Google'   => 'تسجيل باستخدام الاميل',
     //profile
     'bouquet_setup'      => 'إعداد باقة',
     'account_activation' => 'في انتظار تفعيل الحساب .....',

@@ -116,7 +116,7 @@ class Product extends Model
             ->orWhere('quantity', 'like', "%$search%");
         });
         
-    }//end of scopeWhenSearch`
+    }//end of scope When Search`
 
     public function user()
     {

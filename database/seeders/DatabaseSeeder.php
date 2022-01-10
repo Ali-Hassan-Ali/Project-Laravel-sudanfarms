@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrencyTableSeeder::class);
         $this->call(GobTableSeeder::class);
         $this->call(PriceTableTableSeeder::class);
+        $this->call(UnitTableSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }

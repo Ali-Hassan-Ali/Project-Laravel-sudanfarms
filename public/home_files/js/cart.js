@@ -204,4 +204,10 @@ $(document).ready(function() {
 
     });//end of product-removal button
 
+    $(document).on('click','.btn-send',function () {
+
+        $(this).addClass('d-none');
+
+    });//end of btn-send
+
 });//end of document redy qtyval

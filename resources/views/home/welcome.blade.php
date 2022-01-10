@@ -67,7 +67,7 @@
                         <div class="product-card">
                             <div class="product-media">
                                 <div class="product-label">
-                                    <label class="label-text new">جديد</label>
+                                    <label class="label-text new">@lang('lang.new')</label>
                                 </div>
                                 <button class="product-wish wish"><i class="fas fa-heart"></i></button>
                                 @php

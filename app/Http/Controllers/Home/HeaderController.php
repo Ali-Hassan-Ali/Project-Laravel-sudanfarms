@@ -38,9 +38,16 @@ class HeaderController extends Controller
 
     public function shops()
     {
+        if (request()->from_price || request()->to_price) {
+
+            $products = Product::whereBetween('price',[request()->from_price,request()->to_price])->latest()->paginate(20);
+
+            return view('home.shop',compact('products'));            
+        }
+
         $products = Product::inRandomOrder()->latest()->paginate(20);
 
-        return view('home.shop',compact('products'));    
+        return view('home.shop',compact('products'));
 
     }//end of shop
 
@@ -150,9 +157,19 @@ class HeaderController extends Controller
 
     public function show_category($id)
     {
+
+        if (request()->from_price || request()->to_price) {
+
+            $categorey   = Categorey::where('id',$id)->first();
+
+            $min_product = Product::where('sub_category_id',$categorey->id)->whereBetween('price',[request()->from_price, request()->to_price])->with('imageProduct')->latest()->paginate(20);
+
+            return view('home.header.categories',compact('categorey','min_product'));
+        }
+
         $categorey   = Categorey::where('id',$id)->first();
 
-        $min_product = Product::where('sub_category_id',$categorey->id)->with('imageProduct')->get();
+        $min_product = Product::where('sub_category_id',$categorey->id)->with('imageProduct')->latest()->paginate(20);
         
         return view('home.header.categories',compact('categorey','min_product'));
 

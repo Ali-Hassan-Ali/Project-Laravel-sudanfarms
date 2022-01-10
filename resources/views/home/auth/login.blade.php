@@ -64,13 +64,13 @@
                             <hr>
                             <div class="form-button">
                                 <a href="{{ url('login/facebook') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#3b5998;">
-                                    Login by Facebook
+                                    @lang('lang.Login_by_Facebook')
                                 </a>
                             </div>
                             <p class="text-center">or</p>
                             <div class="form-button">
                                 <a href="{{ url('login/google') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#ea4335;">
-                                    Login by Gmail
+                                    @lang('lang.Login_by_Google')
                                 </a>
                             </div>
 

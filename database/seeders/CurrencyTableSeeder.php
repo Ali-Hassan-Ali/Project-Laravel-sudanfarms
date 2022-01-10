@@ -19,6 +19,16 @@ class CurrencyTableSeeder extends Seeder
         ->to('SDG')
         ->amount(1)
         ->get();
+
+        if ($currency) {
+            
+            $currency = $currency;
+
+        } else {
+
+            $currency = '450';
+
+        }
         
          \App\Models\Currenccy::create([
             'amount' => number_format(preg_replace('/,/', '', $currency),2),

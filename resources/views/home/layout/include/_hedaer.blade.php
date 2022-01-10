@@ -316,7 +316,7 @@
         <div class="cart-footer">
             @auth
                 
-                <a class="cart-checkout-btn" href="{{ route('cart.send') }}">
+                <a class="cart-checkout-btn btn-send" href="{{ route('cart.send') }}">
                     <span class="checkout-label">@lang('home.send')</span>
                     <span class="checkout-price cart-totle">
                         {{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} {{ Cart::subtotal() }}
@@ -325,7 +325,7 @@
 
             @else
 
-                <a class="cart-checkout-btn" href="{{ route('home.login') }}">
+                <a class="cart-checkout-btn btn-send" href="{{ route('home.login') }}">
                     <span class="checkout-label">@lang('home.login')</span>
                     <span class="checkout-price cart-totle">
                         {{ app()->getLocale() == 'ar' ? 'س' : 'SDG' }} {{ Cart::subtotal() }}

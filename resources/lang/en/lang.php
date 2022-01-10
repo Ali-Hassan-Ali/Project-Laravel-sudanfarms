@@ -10,6 +10,12 @@ return [
     'create_new'   => 'Create a new account in a minute',
     'have_account' => 'you have an account ?',
 
+    'filter_by_price' => 'filter by price',
+    'new'             => 'new',
+
+    'Login_by_Facebook' => 'Login by Facebook',
+    'Login_by_Google'   => 'Login by Google',
+
     //profile
     'bouquet_setup'      => 'bouquet setup',
     'account_activation' => 'Waiting for account activation...',

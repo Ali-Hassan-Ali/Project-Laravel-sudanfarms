@@ -13,7 +13,7 @@ class generateCurrencys extends Command
      *
      * @var string
      */
-    protected $signature = 'get:Currency';
+    protected $signature = 'get:currency';
 
     /**
      * The console command description.
@@ -44,6 +44,16 @@ class generateCurrencys extends Command
         ->to('SDG')
         ->amount(1)
         ->get();
+
+        if ($currency) {
+            
+            $currency = $currency;
+
+        } else {
+            
+            $curr     = Currenccy::first();
+            $currency = $curr->amount;
+        }
         
         Currenccy::create([
             'amount' => number_format(preg_replace('/,/', '', $currency),2),
