@@ -13,6 +13,7 @@ use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\OfferController;
 use App\Http\Controllers\Home\SocialController;
 use App\Http\Controllers\Home\OrderController;
+use App\Http\Controllers\Home\GobController;
 
 use AmrShawky\LaravelCurrency\Facade\Currency;
 use App\Models\Product;
@@ -22,22 +23,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 function () {
 
     Route::get('/dd', function() {
-        $packages    = \App\Models\PromotedDealer::where('user_id',auth()->id())
-                                                          ->where('status','1')
-                                                          ->where('packages_id','>','0')
-                                                          ->count();
 
-                                                          dd($packages);
-
-        return '<p><p class="text-red totle-price">0</p>SDG</p>';
-        return Product::first();
-        return number_format($data->amount * 4,2);
-        return Currency::convert()  
-        ->from('USD')
-        ->to('SDG')
-        ->amount(1)
-        ->get();
     });
+    
 
     Route::get('/email', function() {
 
@@ -90,6 +78,7 @@ function () {
     Route::post('request_custmers/store', [HeaderController::class,'RequestCustmersStore'])->name('request_custmers.store')->middleware('auth');
     Route::get('offers_client', [HeaderController::class,'offers'])->name('offers.clients.index');
     Route::get('offers_client/show/{id}', [HeaderController::class,'offersShow'])->name('offers.clients.show');
+    Route::get('price_tables', [HeaderController::class,'price_tables'])->name('price_tables.index');
 
     Route::get('manager_word', [FooterController::class,'ManagerWord'])->name('manager_word.index');
     Route::get('copyrights', [FooterController::class,'copyrights'])->name('copyrights.index');
@@ -124,6 +113,10 @@ function () {
 
         //products routes
         Route::resource('products', ProductController::class);
+        
+        //gobs routes
+        Route::resource('gobs', GobController::class);
+
         Route::get('sub_category/{id}', [ProductController::class, 'sub_categoreys'])->name('home.sub_categorys');
 
         Route::get('my_order', [OrderController::class, 'index'])->name('orders.index');

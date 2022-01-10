@@ -44,7 +44,8 @@
 
                                 <tr>
                                     <td align="center" height="70" style="height:70px;">
-                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="100" border="0" style="display: block; width: 100px;" src="https://mdbootstrap.com/img/logo/mdb-email.png" alt="" /></a>
+                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;">
+                                            <img width="100" border="0" style="display: block; width: 100px;" src="{{ asset('home_files/image/logo.svg') }}" alt="" /></a>
                                     </td>
                                 </tr>
 
@@ -54,13 +55,13 @@
                                             class="container590 hide">
                                             <tr>
                                                 <td width="120" align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                                    <a href="" style="color: #312c32; text-decoration: none;">MEN</a>
+                                                    <a href="{{ route('offers.clients.index') }}" style="color: #312c32; text-decoration: none;">@lang('dashboard.offers')</a>
                                                 </td>
                                                 <td width="120" align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                                    <a href="" style="color: #312c32; text-decoration: none;">WOMEN</a>
+                                                    <a href="{{ route('common_questions.index') }}" style="color: #312c32; text-decoration: none;">@lang('dashboard.common_questions')</a>
                                                 </td>
                                                 <td width="120" align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                                    <a href="" style="color: #312c32; text-decoration: none;">BLOG</a>
+                                                    <a href="{{ route('home.contact') }}" style="color: #312c32; text-decoration: none;">@lang('dashboard.contacts')</a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -82,29 +83,18 @@
                             <td align="center">
                                 <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
                                     <tr>
-
+                                        @php
+                                            $banner = App\Models\SettingBanner::first();
+                                        @endphp
                                         <td align="center" class="section-img">
                                             <a href="" style=" border-style: none !important; display: block; border: 0 !important;">
-                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(59).jpg" 
+                                                <img src="{{ $banner->image_path }}" 
                                                 style="display: block; width: 590px;" width="590" border="0" alt="" /></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
                                     </tr>
-                                    <tr>
-                                        <td align="center" style="color: #343434; font-size: 24px; font-family: Quicksand, Calibri, sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;"
-                                            class="main-header">
-
-
-                                            <div style="line-height: 35px">
-
-                                                NEW IN <span style="color: #5caad2;">NOVEMBER</span>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-
                                     <tr>
                                         <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
                                     </tr>
@@ -153,10 +143,13 @@
 
                                                 <tr>
                                                     <td align="center" style="color: #ffffff; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 26px;">
-
-
                                                         <div style="line-height: 26px;">
                                                             <a href="{{ route('shops.index') }}" style="color: #ffffff; text-decoration: none;">@lang('dashboard.shop')</a>
+                                                        </div>
+                                                    </td>
+                                                    <td align="center" style="color: #ffffff; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 26px;">
+                                                        <div style="line-height: 26px;">
+                                                            <a href="{{ route('offers.clients.index') }}" style="color: #ffffff; text-decoration: none;">@lang('dashboard.offers')</a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -205,10 +198,10 @@
                                 class="container590">
 
 
-                                <tr>
+                                <tr> 
                                     <td align="center">
-                                        <a href="" style=" border-style: none !important; border: 0 !important;">
-                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(31).jpg" 
+                                        <a href="{{ route('product.show',$item->id) }}" style=" border-style: none !important; border: 0 !important;">
+                                            <img src="{{ $item->image_path }}" 
                                             style="display: block; width: 280px;" width="280" border="0" /></a>
                                     </td>
                                 </tr>

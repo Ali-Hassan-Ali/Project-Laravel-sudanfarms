@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ContactTableSeeder::class);
         $this->call(NewsletterTableSeeder::class);
         $this->call(CurrencyTableSeeder::class);
+        $this->call(GobTableSeeder::class);
+        $this->call(PriceTableTableSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }

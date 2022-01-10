@@ -16,6 +16,12 @@ return [
     'link_video'           => 'رابط الفديو',
     'reply_message'        => 'رد علي الرسالة',
     'currenccys'           => 'العملات',
+    'gobs'                 => 'وظائف',
+    
+    'start_data'           => 'من تاريخ',
+    'end_data'             => 'الي نهايه تاريخ',
+    'count'                => 'عدد الاشخاص',
+    'price_tables'         => 'جدول الاسعار',
     
     'sales_graph'    => 'رسم بياني للمبيعات',
     'total'          => 'المجموع',

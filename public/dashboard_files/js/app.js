@@ -11,20 +11,35 @@ $(document).ready(function () {
     //delete
     $('.delete').click(function (e) {
 
+        app = $('#getLocale').text();
+        
+        if (app == 'ar') {
+
+            var confarm = 'الاستمرار في الحذف';
+            var yes     = 'نعم';
+            var no      = 'لا';
+
+        } else {
+
+            var confarm = 'confirm delete';
+            var yes     = 'yes';
+            var no      = 'no';
+        }
+
         var that = $(this)
 
         e.preventDefault();
 
         var n = new Noty({
-            text: "@lang('dashboard.confirm_delete')",
+            text: confarm,
             type: "warning",
             killer: true,
             buttons: [
-                Noty.button("@lang('dashboard.yes')", 'btn btn-success mr-2', function () {
+                Noty.button(yes, 'btn btn-success mr-2', function () {
                     that.closest('form').submit();
                 }),
 
-                Noty.button("@lang('dashboard.no')", 'btn btn-primary mr-2', function () {
+                Noty.button(no, 'btn btn-primary mr-2', function () {
                     n.close();
                 })
             ]

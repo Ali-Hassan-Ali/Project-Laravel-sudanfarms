@@ -15,6 +15,12 @@ return [
     'link_video'           => 'link video',
     'reply_message'        => 'reply message',
     'currenccys'           => 'currenccys',
+    'gobs'                 => 'gobs',
+
+    'start_data'           => 'Start data',
+    'end_data'             => 'end data',
+    'count'                => 'count',
+    'price_tables'         => 'price tables',
     
     'sales_graph'    => 'sales graph',
     'total'          => 'total',

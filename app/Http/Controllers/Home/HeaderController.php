@@ -21,6 +21,7 @@ use App\Models\Blog;
 use App\Models\File;
 use App\Models\Offer;
 use App\Models\OrderItem;
+use App\Models\PriceTable;
 
 class HeaderController extends Controller
 {
@@ -160,6 +161,12 @@ class HeaderController extends Controller
 
     public function request_custmers()
     {
+        if (!auth()->check()) {
+            
+            return redirect()->route('home.login');
+
+        }//end of if auth check
+
         $request_custmers = RequestCustmer::where('promoted_dealer_id',null)->paginate(10);
 
         return view('home.header.request_custmers.index',compact('request_custmers'));
@@ -175,6 +182,7 @@ class HeaderController extends Controller
 
     }//end if request_custmers create
 
+
     public function RequestCustmersStore(Request $request)
     {
         $request->validate([
@@ -184,7 +192,6 @@ class HeaderController extends Controller
             'title'           => 'required',
             'product_name'    => 'required',
             'quantity_guard'  => 'required',
-            // 'promoted_dealer_id'=> 'required',
             'quantity'        => 'required',
             'date_shipment'   => 'required',
             'end_time'        => 'required',
@@ -302,6 +309,14 @@ class HeaderController extends Controller
         return view('home.my_acount.orders.special_requests',compact('orderItems'));
 
     }//end of special_requests
+
+    public function price_tables()
+    {   
+        $price_tables = PriceTable::whenSearch(request()->search)->latest()->paginate(10);
+
+        return view('home.header.media_center.price_tables',compact('price_tables'));
+
+    }//end of price tables
 
 
 }//end of controller

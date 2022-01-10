@@ -15,6 +15,15 @@ class CreateGobsTable extends Migration
     {
         Schema::create('gobs', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->double('count');
+            $table->text('description');
+            $table->string('start_data');
+            $table->string('end_data');
+
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

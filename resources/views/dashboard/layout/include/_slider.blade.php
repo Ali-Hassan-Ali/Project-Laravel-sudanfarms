@@ -25,6 +25,12 @@
                 </a>
             </li>
 
+            <li class="{{ Route::Is('dashboard.price_tables.index') ? 'active' : '' }}">
+                <a href="{{ route('dashboard.price_tables.index') }}">
+                    <i class="fa fa-dashboard"></i><span>@lang('dashboard.price_tables')</span>
+                </a>
+            </li>
+
             <li class="{{ Route::Is('dashboard.orders.index') ? 'active' : '' }}">
                 <a href="{{ route('dashboard.orders.index') }}">
                     <i class="fa fa-dashboard"></i><span>@lang('dashboard.orders')</span>

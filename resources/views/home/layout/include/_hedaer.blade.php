@@ -155,6 +155,8 @@
                             </li>
                             <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="javascript:void(0);">@lang('home.social_center')</a>
                                 <ul class="dropdown-position-list">
+                                    <li><a href="{{ route('price_tables.index') }}">@lang('dashboard.price_tables')</a></li>
+                                    <li><a href="{{ route('gobs.index') }}">@lang('dashboard.gobs')</a></li>
                                     <li><a href="{{ route('gallerys.index') }}">@lang('dashboard.gallerys')</a></li>
                                     <li><a href="{{ route('videos.index') }}">@lang('dashboard.videos')</a></li>
                                     <li><a href="{{ route('blogs.index') }}">@lang('dashboard.blogs')</a></li>

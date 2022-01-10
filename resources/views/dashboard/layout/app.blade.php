@@ -137,6 +137,8 @@
     {{ route('amount.decount.index') }}
 </div>
 
+<div id="getLocale" hidden>{{ app()->getLocale() }}</div>
+
 {{-- Bootstrap 3.3.7 --}}
 <script src="{{ asset('dashboard_files/js/bootstrap.min.js') }}"></script>
 

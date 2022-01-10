@@ -17,6 +17,7 @@ use App\Http\Controllers\Dashboard\OffersController;
 use App\Http\Controllers\Dashboard\PackageController;
 use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\CurrenccyController;
+use App\Http\Controllers\Dashboard\PriceTableController;
 
 //Setting Controller
 use App\Http\Controllers\Dashboard\Setting\SettingBannerController;
@@ -95,6 +96,10 @@ function () {
 
         //newsletters routes
         Route::resource('packages', PackageController::class)->except(['show']);
+        
+        
+        Route::resource('price_tables', PriceTableController::class)->except(['show']);
+
         
         //contacts routes
         Route::resource('contacts', ContactController::class)->except(['show','store','create','edit','update']);

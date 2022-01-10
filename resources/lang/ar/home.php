@@ -22,6 +22,7 @@ return [
     'an_offer'       => 'عرض تخفيض خاص',
     'farms_of_sudan' => 'من مزارع السودان',
     'discount'       => 'تخفيض',
+    'gobs'           => 'وظائف',
 
     'delivery_service'      => 'خدمة التوصيل السريع',
     'return_policy'         => 'سياسة إرجاع معينة',
