@@ -98,7 +98,7 @@
                         <i class="fab fa-whatsapp"></i>
                     </a>
                     @php
-                        $notys = App\Models\Notification::where('user_id',auth()->id())->latest()->limit(10)->get();
+                        $notys = App\Models\NotificationUser::where('user_id',auth()->id())->latest()->limit(10)->get();
                     @endphp
                     <button class="header-widget header-cart-noty" title="@lang('home.cart')">
                         <i class="fas fa-bell"></i><sup class="cart-countt">{{ $notys->count() }}</sup>

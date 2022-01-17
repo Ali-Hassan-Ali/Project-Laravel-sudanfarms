@@ -10,6 +10,8 @@ class PackagePromoted extends Model
     use HasFactory;
 
     protected $guarded = [];
+    
+    protected $appends = ['image_path'];
 
     public function promotedDealer()
     {
@@ -22,5 +24,11 @@ class PackagePromoted extends Model
         return $this->belongsTo(Package::class);
 
     }//end of package
+
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+
+    }//end of get image path
 
 }//end of model

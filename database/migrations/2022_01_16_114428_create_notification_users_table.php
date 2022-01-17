@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotificationsTable extends Migration
+class CreateNotificationUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('notification_users', function (Blueprint $table) {
             $table->id();
             $table->string('title_ar')->default('تم ترقيه حساب جديد');
             $table->string('title_en')->default('New account upgraded');
+            $table->text('type', 
+                ['create_acount', 'create_promoted_dealer', 'create_packages', 'create_order', 'login'])
+                ->nullable();
             $table->longText('body')->nullable();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ class CreateNotificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('notification_users');
     }
 }

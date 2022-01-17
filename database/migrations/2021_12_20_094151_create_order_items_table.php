@@ -15,18 +15,16 @@ class CreateOrderItemsTable extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('order_id')->unsigned()->nullable();
-            $table->bigInteger('product_id')->unsigned()->nullable();
-            $table->string('promoted_dealer_id')->nullable();
-            $table->bigInteger('user_id')->unsigned()->nullable();
+
             $table->string('quantity');
             $table->string('price');
             $table->string('subtotal');
 
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            // $table->foreign('promoted_dealer_id')->references('id')->on('promoted_dealers')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('promoted_dealer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }

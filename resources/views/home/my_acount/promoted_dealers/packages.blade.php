@@ -22,6 +22,7 @@
                 
             <div class="col-md-6 col-lg-4">
                 <div class="contact-card"><i class="icofont-email"></i>
+                    <h4>@lang('dashboard.name') | {{ $package->name }}</h4>
                     <h4>@lang('dashboard.package') | @lang('dashboard.' . $package->guard == 0 ? 'free' : 'infree')</h4>
                     <p>@lang('dashboard.price') | {{ $package->price }}</p>
                     <p>@lang('dashboard.month') | {{ $package->month }}</p>
@@ -40,12 +41,15 @@
 
                     <div class="form-group">
                         <label>@lang('dashboard.packages')</label>
-                        <select name="package_id" class="form-control">
+                        <select name="package_id" required class="form-control">
                             <option value="">@lang('dashboard.select_package')</option>
                             @foreach ($packages as $package)
                                 <option value="{{ $package->id }}"
                                     {{ old('package_id') == $package->id ? 'selected' : '' }}>
-                                    @lang('dashboard.' . $package->guard == 0 ? 'free' : 'infree') - {{ $package->price }}
+                                    @lang('dashboard.' . $package->guard == 0 ? 'free' : 'infree') 
+                                    - {{ $package->price }} 
+                                    - {{ $package->month }}
+                                    - {{ $package->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -55,7 +59,7 @@
                         <label>@lang('dashboard.bill')</label>
                         <div class="form-input-group">
                             <input class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" 
-                                    type="file" name="image" placeholder="@lang('dashboard.image')">
+                                    type="file" name="image" required placeholder="@lang('dashboard.image')">
                             <i class="icofont-image"></i>
                             @error('image')
                                 <span class="invalid-feedback" role="alert">

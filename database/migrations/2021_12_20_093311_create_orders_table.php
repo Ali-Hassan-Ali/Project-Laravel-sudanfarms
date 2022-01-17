@@ -17,9 +17,9 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('totle_price');
             $table->string('phone')->nullable();
-            $table->bigInteger('user_id')->unsigned()->nullable();
+            
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

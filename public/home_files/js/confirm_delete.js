@@ -32,14 +32,43 @@ $(document).ready(function() {
 
         if (id == 1) {
 
-            $('#company-certificate').addClass('d-none');
+            $('.company-certificate').addClass('d-none');
 
         } else {
 
-            $('#company-certificate').removeClass('d-none');
+            $('.company-certificate').removeClass('d-none');
 
         }//end of if
 
     });//end of change
+
+    // image preview
+    $("#company-logo").change(function () {
+
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.company-logo').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(this.files[0]);
+        }
+
+    });
+
+    $("#company-certificate").change(function () {
+
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.company-certificate').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(this.files[0]);
+        }
+
+    });
 
 });//end of document redy

@@ -2,14 +2,15 @@
 
 @section('content')
 
-@section('title', __('home.promoted_dealers'))
+@section('title', __('dashboard.add') . ' | ' . __('dashboard.promoted_dealers'))
 
 <section class="inner-section single-banner">
     <div class="container">
         <h2>@lang('dashboard.dashboard')</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('welcome.index') }}">@lang('dashboard.home')</a></li>
-            <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.dashboard')</li>
+            <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.add')</li>
+            <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.promoted_dealers')</li>
         </ol>
     </div>
 </section>
@@ -22,32 +23,44 @@
 	        <div class="col-lg-12">
 	            <div class="account-card">
 	                <div class="account-title">
-	                    <h4>@lang('lang.bouquet_setup')</h4>
+	                    <h4>@lang('dashboard.promoted_dealers')</h4>
 	                </div>
 	                <div class="account-content">
 
 	                	<form action="{{ route('promoted_dealers.store') }}" method="post" enctype="multipart/form-data">
 	                		@csrf
 		                    <div class="row">
-		                    	@php
-		                    		$names  = ['company_name_ar','company_name_en'];
-		                    	@endphp
-
-		                    	@foreach ($names as $name)
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                                <label>@lang('dashboard.' . $name)</label>
-		                                <input type="text" name="{{ $name }}" placeholder="@lang('dashboard.' . $name)" class="form-control @error($name) is-invalid @enderror" value="{{ old($name) }}">
-		                                @error($name)
+		                                <label>@lang('dashboard.company_name')</label>
+		                                <input type="text" name="company_name" placeholder="@lang('dashboard.company_name')" class="form-control @error('company_name') is-invalid @enderror" value="{{ old('company_name') }}">
+		                                @error('company_name')
 			                                <span class="invalid-feedback" role="alert">
 			                                    <strong>{{ $message }}</strong>
 			                                </span>
 			                            @enderror
 		                            </div>
 		                        </div>
-		                            
-		                        @endforeach
+
+		                        <div class="col-md-6 col-lg-4">
+		                            <div class="form-group">
+		                            	<label class="form-label">@lang('dashboard.from_inside')</label>
+		                                <select name="from_inside" required class="form-control">
+
+		                                    	<option value="">@lang('dashboard.select')</option>
+
+		                                    	<option value="1" {{ old('from_inside') == '1' ? 'selected' : '' }}>
+		                                    		@lang('dashboard.from_inside_sudan')
+		                                    	</option>
+
+		                                    	<option value="2" {{ old('from_inside') == '2' ? 'selected' : '' }}>
+		                                    		@lang('dashboard.from_outside_sudan')
+		                                    	</option>
+		                                	
+		                                </select>
+		                            </div>
+		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
@@ -174,7 +187,7 @@
 		                        <div class="col-sm-12">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.company_profile')</label>
-		                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30" rows="10" placeholder="@lang('lang.company_profile')">{{ old('description') }}</textarea>
+		                                <textarea name="description" required class="form-control @error('description') is-invalid @enderror" cols="30" rows="10" placeholder="@lang('lang.company_profile')">{{ old('description') }}</textarea>
 		                                @error('description')
 			                                <span class="invalid-feedback" role="alert">
 			                                    <strong>{{ $message }}</strong>
@@ -186,7 +199,7 @@
 	                            <div class="col-sm-12">
 	                                <div class="form-group">
 	                                	<label class="form-label">@lang('lang.company_logo')</label>
-	                                    <input class="form-control" type="file" id="company-logo" name="company_logo">
+	                                    <input class="form-control @error('company_logo') is-invalid @enderror" required accept="image/*" type="file" id="company-logo" name="company_logo">
 	                                    @error('company_logo')
 			                                <span class="invalid-feedback" role="alert">
 			                                    <strong>{{ $message }}</strong>
@@ -201,10 +214,15 @@
 				                    </div>
 				                </div>
 
-	                            <div class="col-sm-12" id="company-certificate">
+	                            <div class="col-sm-12 company-certificate">
 	                                <div class="form-group">
 	                                	<label class="form-label">@lang('lang.commercial_license')</label>
-	                                    <input class="form-control" type="file" name="company_certificate">
+	                                    <input class="form-control @error('company_certificate') is-invalid @enderror" accept="image/*" type="file" id="company-certificate" name="company_certificate">
+	                                    @error('company_certificate')
+			                                <span class="invalid-feedback" role="alert">
+			                                    <strong>{{ $message }}</strong>
+			                                </span>
+			                            @enderror
 	                                </div>
 	                            </div>
 

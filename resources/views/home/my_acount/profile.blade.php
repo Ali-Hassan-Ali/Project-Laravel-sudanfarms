@@ -215,57 +215,107 @@
                     </div>
                 </div>
                 
-                @if ($packagCount == '0')
+                @if ($user->packages_id == '00')
 
-                    <div class="col-lg-12">
-                        <div class="account-card">
-                            <div class="account-title">
-                                <h4>@lang('dashboard.packages')</h4>
-                            </div>
-                            <div class="account-content">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card contact">
-                                            <h6><i class="fas fa-list"></i> @lang('dashboard.package')</h6>
-                                            <a href="{{ route('promoted_dealers.packages') }}">@lang('dashboard.show') @lang('dashboard.package')</a>
+                    @if ($packagCount == '1')
+
+                        <div class="col-lg-12">
+                            <div class="account-card">
+                                <div class="account-title">
+                                    <h4>@lang('dashboard.packages')</h4>
+                                </div>
+                                <div class="account-content">
+                                    <div class="row">
+                                        {{-- <h4 class="text-danger my-4">@lang('dashboard.this_packages')</h4> --}}
+                                        <div class="col-md-6 col-lg-4 alert fade show">
+                                            <div class="profile-card contact">
+                                                <h6><i class="fas fa-list"></i> @lang('dashboard.package')</h6>
+                                                <a href="{{ route('promoted_dealers.packages') }}">@lang('dashboard.add') @lang('dashboard.package')</a>
+                                            </div>
                                         </div>
+
                                     </div>
-                                    {{-- <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card contact">
-                                            <h6><i class="fas fa-times"></i> @lang('dashboard.add') @lang('dashboard.products')</h6>
-                                            <a href="{{ route('products.create') }}">@lang('dashboard.add')</a>
-                                        </div>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                    @endif
                     
                 @else
 
-                    <div class="col-lg-12">
-                        <div class="account-card">
-                            <div class="account-title">
-                                <h4>@lang('dashboard.products')</h4>
-                            </div>
-                            <div class="account-content">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card contact">
-                                            <h6><i class="fas fa-list"></i> @lang('dashboard.products')({{ $products }})</h6>
-                                            <a href="{{ route('products.index') }}">@lang('dashboard.show') @lang('dashboard.products')</a>
+                    @if ($user->status == '1')
+                        
+                        <div class="col-lg-12">
+                            <div class="account-card">
+                                <div class="account-title">
+                                    <h4>@lang('dashboard.products')</h4>
+                                </div>
+                                <div class="account-content">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-4 alert fade show">
+                                            <div class="profile-card contact">
+                                                <h6><i class="fas fa-list"></i> @lang('dashboard.products')({{ $products }})</h6>
+                                                <a href="{{ route('products.index') }}">@lang('dashboard.show') @lang('dashboard.products')</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card contact">
-                                            <h6><i class="fas fa-times"></i> @lang('dashboard.add') @lang('dashboard.products')</h6>
-                                            <a href="{{ route('products.create') }}">@lang('dashboard.add')</a>
+                                        <div class="col-md-6 col-lg-4 alert fade show">
+                                            <div class="profile-card contact">
+                                                <h6><i class="fas fa-times"></i> @lang('dashboard.add') @lang('dashboard.products')</h6>
+                                                <a href="{{ route('products.create') }}">@lang('dashboard.add')</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="col-lg-12">
+                            <div class="account-card">
+                                <div class="account-title">
+                                    <h4>@lang('dashboard.packages')</h4>
+                                </div>
+                                <div class="account-content">
+                                    <div class="row">
+                                        
+                                        <div class="col-md-6 col-lg-4 alert fade show">
+                                            <div class="profile-card contact">
+                                                <h6><i class="fas fa-list"></i> @lang('dashboard.package')</h6>
+                                                <a href="{{ route('promoted_dealers.packages.this_packages') }}">@lang('dashboard.show') @lang('dashboard.package')</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @else
+
+                        <div class="col-lg-12">
+                            <div class="account-card">
+                                <div class="account-title">
+                                    <h4>@lang('dashboard.packages')</h4>
+                                </div>
+                                <div class="account-content">
+                                    <div class="row">
+                                        
+                                        <h4 class="text-danger my-4">@lang('dashboard.no_packages')</h4>
+                                        <div class="col-md-6 col-lg-4 alert fade show">
+                                            <div class="profile-card contact">
+                                                <h6><i class="fas fa-list"></i> @lang('dashboard.package')</h6>
+                                                <a href="{{ route('promoted_dealers.packages') }}">@lang('dashboard.create') @lang('dashboard.package')</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    @endif
+
+
 
                     {{-- <div class="col-lg-12">
                         <div class="account-card">
@@ -330,7 +380,7 @@
                                 @if ($user)
                                 <div class="col-md-6 col-lg-4 alert fade show">
                                     <div class="profile-card contact">
-                                        <h6><i class="fas fa-envelope"></i> @lang('lang.mailing') ( 0)</h6>
+                                        <h6><i class="fas fa-envelope"></i> @lang('lang.mailing') ( 0 )</h6>
                                         <a href="messages.html">@lang('lang.mailing')</a>
                                         <ul>
                                             <li>

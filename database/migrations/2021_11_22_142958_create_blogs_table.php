@@ -20,9 +20,9 @@ class CreateBlogsTable extends Migration
             $table->string('title_en');
             $table->longText('description_ar');
             $table->longText('description_en');
-            $table->bigInteger('users_id')->unsigned();
 
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }

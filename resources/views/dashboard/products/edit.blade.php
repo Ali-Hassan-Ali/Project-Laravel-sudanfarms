@@ -63,7 +63,7 @@
                             <select name="sub_category_id" class="form-control">
                                 <option value="">@lang('dashboard.all_categories')</option>
                                 @foreach ($sub_categoreys as $category)
-                                    <option value="{{ $category->id }}" {{ $categorey_id->id == $category->id ? 'selected' : '' }}>
+                                    <option value="{{ $category->id }}" {{ $category->id == $product->sub_category_id ? 'selected' : '' }}>
                                         {{ $category->name }}
                                     </option>
                                 @endforeach
@@ -82,13 +82,9 @@
                             <input type="file" multiple name="image[]" accept="image/*" class="form-control image" id="file-input">
                         </div>
 
-                        @php
-                            $images = App\Models\ImageProduct::where('product_id',$product->id)->get();
-                        @endphp
-
                         <div class="form-group">
                             <div id="preview" class="d-flex justify-content-center">
-                                @foreach ($images as $image)
+                                @foreach ($product->imageProduct as $image)
 
                                     <img src="{{ $image->image_path }}" width="100">
                                     
@@ -133,15 +129,6 @@
                             <label>@lang('dashboard.end_time')</label>
                             <input type="date" name="end_time" class="form-control" value="{{ $product->end_time }}">
                         </div>
-
-                        {{-- <div class="form-group">
-                            <label>@lang('dashboard.stars')</label>
-                            <select name="stars" class="form-control">
-                                @for ($i = 1; $i < 7; $i++)
-                                    <option value="{{ $i }}" {{ $i == $product->stars ? 'selected' : '' }}>{{ $i }}</option>
-                                @endfor
-                            </select>
-                        </div> --}}
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> @lang('dashboard.edit')</button>

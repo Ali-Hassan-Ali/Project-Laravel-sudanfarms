@@ -34,23 +34,37 @@
                         {{ csrf_field() }}
                         {{ method_field('put') }}
 
-                        @php
-                            $names  = ['company_name_ar','company_name_en'];
-                        @endphp
+                        <div class="form-group">
+                            <label>@lang('dashboard.company_name')</label>
+                            <input type="text" name="company_name" placeholder="@lang('dashboard.company_name')" class="form-control @error('company_name') is-invalid @enderror" value="{{ $promotedDealer->company_name }}">
+                            @error('company_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
-                        @foreach ($names as $name)
+                        <div class="form-group">
+                            <label class="form-label">@lang('dashboard.from_inside')</label>
+                            <select name="from_inside" required class="form-control">
 
-                            <div class="form-group">
-                                <label>@lang('dashboard.' . $name)</label>
-                                <input type="text" name="{{ $name }}" class="form-control" value="{{ $promotedDealer[$name] }}">
-                            </div>
-                            
-                        @endforeach
+                                    <option value="">@lang('dashboard.select')</option>
+
+                                    <option value="1" {{ $promotedDealer->from_inside == '1' ? 'selected' : '' }}>
+                                        @lang('dashboard.from_inside_sudan')
+                                    </option>
+
+                                    <option value="2" {{ $promotedDealer->from_inside == '2' ? 'selected' : '' }}>
+                                        @lang('dashboard.from_outside_sudan')
+                                    </option>
+                                
+                            </select>
+                        </div>
 
                         <div class="form-group">
                             <label>@lang('dashboard.category_dealer')</label>
                             <select name="category_dealer_id" class="form-control">
-                                <option value="">@lang('dashboard.all_categories')</option>
+                                <option value="">@lang('dashboard.select')</option>
                                 @foreach ($category_dealers as $category)
                                     <option value="{{ $category->id }}" {{ $promotedDealer->category_dealer_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                 @endforeach
@@ -60,7 +74,7 @@
                         <div class="form-group">
                             <label>@lang('dashboard.category_dealer')</label>
                             <select name="user_id" class="form-control">
-                                <option value="">@lang('dashboard.all_categories')</option>
+                                <option value="">@lang('dashboard.select')</option>
                                 @foreach ($clients as $client)
                                     <option value="{{ $client->id }}" {{ $promotedDealer->user_id == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
                                 @endforeach

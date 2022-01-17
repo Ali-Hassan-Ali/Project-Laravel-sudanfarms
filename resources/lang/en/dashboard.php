@@ -16,6 +16,9 @@ return [
     'reply_message'        => 'reply message',
     'currenccys'           => 'currenccys',
     'gobs'                 => 'gobs',
+    'select'               => 'select',
+    'this_packages'        => 'You are subscribed to a package, wait 24 hours',
+    'no_packages'          => 'You are subscribed to a package',
 
     'start_data'           => 'Start data',
     'end_data'             => 'end data',
@@ -145,7 +148,11 @@ return [
 
     'promoted_dealers'      => 'promoted dealers',
     'company_name_ar'       => 'company name arbic',
+    'company_name'          => 'company name',
     'company'               => 'company',
+    'from_inside_sudan'     => 'from inside Sudan',
+    'from_outside_sudan'    => 'from outside Sudan',
+    'from_inside'           => 'From inside Sudan or from abroad?',
     'company_name_en'       => 'company name english',
     'company_logo'          => 'company logo',
     'company_certificate'   => 'company certificate',

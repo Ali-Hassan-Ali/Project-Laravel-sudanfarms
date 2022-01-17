@@ -18,6 +18,8 @@ class PackageTableSeeder extends Seeder
         foreach ($packages as $key => $name) {
 
             \App\Models\Package::create([
+                'name_ar'     => 'packages platinum ',
+                'name_en'     => 'الباقه البلاتنيه',
                 'guard'       => 1,
                 'price'       => 200,
                 'month'       => $name,

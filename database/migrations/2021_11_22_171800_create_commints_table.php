@@ -18,11 +18,9 @@ class CreateCommintsTable extends Migration
             $table->string('message');
             $table->string('commints_id')->default('0');
 
-            $table->bigInteger('blog_id')->unsigned();
-            $table->bigInteger('users_id')->unsigned()->nullable();
+            $table->foreignId('blog_id')->constrained()->onDelete('cascade');
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
 
-            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

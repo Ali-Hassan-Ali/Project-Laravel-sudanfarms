@@ -45,15 +45,13 @@ class PromotedDealerController extends Controller
 
 
         $request->validate([
-            'company_name_ar'     => ['required', 'max:255'],
-            'company_name_en'     => ['required', 'max:255'],
-            'company_logo'        => ['required'],
-            'company_certificate' => ['required'],
-            'category_dealer_id'  => ['required'],
-            'email'               => ['required'],
-            'phone_master'        => ['required'],
-            'phone'               => ['required'],
-            'other_phone'         => ['required'],
+            'company_name'        => ['required', 'max:255'],
+            'company_logo'        => ['required','image'],
+            'category_dealer_id'  => ['required','numeric'],
+            'email'               => ['required','email'],
+            'phone_master'        => ['required','numeric'],
+            'phone'               => ['required','numeric'],
+            'other_phone'         => ['required','numeric'],
             'web_site'            => ['required'],
             'country'             => ['required'],
             'city'                => ['required'],
@@ -111,20 +109,17 @@ class PromotedDealerController extends Controller
     public function update(Request $request, PromotedDealer $promotedDealer)
     {
         $request->validate([
-            'company_name_ar'    => ['required', 'max:255'],
-            'company_name_en'    => ['required', 'max:255'],
-            // 'company_logo'        => ['required'],
-            // 'company_certificate' => ['required'],
-            'category_dealer_id' => ['required'],
-            'email'              => ['required'],
-            'phone_master'       => ['required'],
-            'phone'              => ['required'],
-            'other_phone'        => ['required'],
-            'web_site'           => ['required'],
-            'country'            => ['required'],
-            'city'               => ['required'],
-            'title'              => ['required'],
-            'description'        => ['required'],
+            'company_name'        => ['required', 'max:255'],
+            'category_dealer_id'  => ['required','numeric'],
+            'email'               => ['required','email'],
+            'phone_master'        => ['required','numeric'],
+            'phone'               => ['required','numeric'],
+            'other_phone'         => ['required','numeric'],
+            'web_site'            => ['required'],
+            'country'             => ['required'],
+            'city'                => ['required'],
+            'title'               => ['required'],
+            'description'         => ['required'],
         ]);
 
         try {

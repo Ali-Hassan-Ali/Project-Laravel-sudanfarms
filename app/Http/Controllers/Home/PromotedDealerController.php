@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\NotificationUser;
 use App\Models\Notification;
 use App\Models\Package;
 use App\Models\PackagePromoted;
@@ -33,7 +34,7 @@ class PromotedDealerController extends Controller
     {
 
         $request->validate([
-            'company_name_ar'    => ['required', 'max:255'],
+            'company_name'       => ['required', 'max:255'],
             'company_logo'       => ['required'],
             'category_dealer_id' => ['required'],
             'email'              => ['required'],
@@ -47,18 +48,14 @@ class PromotedDealerController extends Controller
             'description'        => ['required'],
         ]);
 
-        try {
+        // try {
 
             $this_user = PromotedDealer::where('id', auth()->id())->first();
 
             $request_data = $request->except('company_logo', 'company_certificate', 'user_id');
 
-            if ($request->company_name_en == null) {
-
-                $request_data['company_name_en'] = $request->company_name_ar;
-            }
-
             $request_data['user_id']      = auth()->id();
+            $request_data['packages_id']  = '00';
             $request_data['company_logo'] = $request->file('company_logo')->store('company_logo', 'public');
 
             if ($request->company_certificate) {
@@ -68,7 +65,7 @@ class PromotedDealerController extends Controller
 
             PromotedDealer::create($request_data);
 
-            auth()->user()->detachRole('clients');
+            // auth()->user()->detachRole('clients');
             auth()->user()->attachRole('promoted');
 
             $user = Notification::create([
@@ -77,16 +74,22 @@ class PromotedDealerController extends Controller
                 'user_id'  => auth()->id(),
             ]); //end of create
 
-            \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
+            $user = NotificationUser::create([
+                'title_ar' => 'لقد تم ترقيه حسابك ',
+                'title_en' => 'Your account has been upgraded',
+                'user_id'  => auth()->id(),
+                'type'     => 'create_promoted_dealer',
+            ]); //end of create
+
+            // \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
 
             return redirect()->route('promoted_dealers.packages');
-            // return redirect()->route('profile.index');
 
-        } catch (\Exception $e) {
+        // } catch (\Exception $e) {
 
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        } //end try
+        // } //end try
 
     } //end of store
 
@@ -102,8 +105,7 @@ class PromotedDealerController extends Controller
     {
 
         $request->validate([
-            'company_name_ar'    => ['required', 'max:255'],
-            'company_name_en'    => ['required', 'max:255'],
+            'company_name'       => ['required', 'max:255'],
             'category_dealer_id' => ['required'],
             'email'              => ['required'],
             'phone_master'       => ['required'],
@@ -192,9 +194,14 @@ class PromotedDealerController extends Controller
 
     public function packagesStore(Request $request)
     {
+
+        $request->validate([
+            'package_id'=> ['required','numeric'],
+            'image'     => ['required','image'],
+        ]);
+
         $user      = PromotedDealer::where('user_id', auth()->id())->first();
         $package   = Package::where('id', $request->package_id)->first();
-
 
         $end_month = $package->month + date('m'); 
         $data_yery = date('Y');
@@ -206,11 +213,11 @@ class PromotedDealerController extends Controller
         }
 
         $end_month   = date($end_month . '-' . $day . '-' . $data_yery);
-        $start_month = date('m'.'-'.'d'.'-'.'Y');
+        $start_month = date('m-d-Y');
         
         $request_data_user                = $request->except('image', 'package_id');
         $request_data_user['packages_id'] = $request->package_id;
-        $request_data_user['status']      = '1';
+        $request_data_user['status']      = '0';
 
         $user->update($request_data_user);
 
@@ -228,5 +235,17 @@ class PromotedDealerController extends Controller
         return redirect()->route('profile.index');
 
     } //end of packagesStore
+
+
+    public function packagesThisPackage()
+    {
+
+        $user     = PromotedDealer::where('user_id', auth()->id())->first();
+
+        $packages = PackagePromoted::where('promoted_dealer_id',$user->id)->with('package')->latest()->paginate(10);
+
+        return view('home.my_acount.promoted_dealers.this_packages', compact('packages'));
+
+    }//end of packagesThisPackage
 
 } //end of controller

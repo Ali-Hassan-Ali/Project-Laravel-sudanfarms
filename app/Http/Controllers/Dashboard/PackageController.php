@@ -39,10 +39,12 @@ class PackageController extends Controller
     {
 
         $request->validate([
-            'guard'       => 'required',
-            'price'       => 'required',
-            'month'       => 'required',
-            'qty_product' => 'required',
+            'name_ar'     => ['required'],
+            'name_en'     => ['required'],
+            'guard'       => ['required'],
+            'price'       => ['required','numeric'],
+            'month'       => ['required','numeric'],
+            'qty_product' => ['required','numeric'],
         ]);
 
         try {
@@ -71,10 +73,12 @@ class PackageController extends Controller
     {
         
         $request->validate([
-            'guard'       => 'required',
-            'price'       => 'required',
-            'month'       => 'required',
-            'qty_product' => 'required',
+            'name_ar'     => ['required'],
+            'name_en'     => ['required'],
+            'guard'       => ['required'],
+            'price'       => ['required','numeric'],
+            'month'       => ['required','numeric'],
+            'qty_product' => ['required','numeric'],
         ]);
 
         try {

@@ -15,6 +15,7 @@
                 <li><a href="{{ route('dashboard.promoted_dealers.index') }}"> @lang('dashboard.categorey')</a></li>
                 <li class="active">@lang('dashboard.add')</li>
             </ol>
+
         </section>
 
         <section class="content">
@@ -34,18 +35,35 @@
                         {{ csrf_field() }}
                         {{ method_field('post') }}
 
-                        @php
-                            $names  = ['company_name_ar','company_name_en'];
-                        @endphp
+                        
+                        <div class="form-group">
+                            <label>@lang('dashboard.company_name')</label>
+                            <input type="text" name="company_name" placeholder="@lang('dashboard.company_name')" class="form-control @error('company_name') is-invalid @enderror" value="{{ old('company_name') }}">
+                            @error('company_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    
 
-                        @foreach ($names as $name)
+                        <div class="form-group">
+                            <label class="form-label">@lang('dashboard.from_inside')</label>
+                            <select name="from_inside" required class="form-control">
 
-                            <div class="form-group">
-                                <label>@lang('dashboard.' . $name)</label>
-                                <input type="text" name="{{ $name }}" class="form-control" value="{{ old($name) }}">
-                            </div>
-                            
-                        @endforeach
+                                    <option value="">@lang('dashboard.select')</option>
+
+                                    <option value="1" {{ old('from_inside') == '1' ? 'selected' : '' }}>
+                                        @lang('dashboard.from_inside_sudan')
+                                    </option>
+
+                                    <option value="2" {{ old('from_inside') == '2' ? 'selected' : '' }}>
+                                        @lang('dashboard.from_outside_sudan')
+                                    </option>
+                                
+                            </select>
+                        </div>
+                        
 
                         <div class="form-group">
                             <label>@lang('dashboard.category_dealer')</label>
@@ -69,7 +87,7 @@
 
                         <div class="form-group">
                             <label>@lang('dashboard.company_logo')</label>
-                            <input type="file" name="company_logo" class="form-control image">
+                            <input type="file" name="company_logo" except="image/*" class="form-control image">
                         </div>
 
                         <div class="form-group">

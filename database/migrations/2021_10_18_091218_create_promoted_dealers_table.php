@@ -15,17 +15,13 @@ class CreatePromotedDealersTable extends Migration
     {
         Schema::create('promoted_dealers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('category_dealer_id')->unsigned();
-
-            $table->string('packages_id')->default('0');
             $table->string('image')->default('0');
             
             $table->boolean('status')->default('0');
             $table->string('count_call_phone')->default('0');
             $table->string('count_call_email')->default('0');
-            $table->string('company_name_ar')->nullable();
-            $table->string('company_name_en')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('from_inside')->default('1');
 
             $table->string('company_logo')->default('company_logo/logo.png');
             $table->string('company_certificate')->default('company_certificate/certificate.png')->nullable();
@@ -41,8 +37,10 @@ class CreatePromotedDealersTable extends Migration
             $table->string('title')->nullable();
             $table->string('description')->nullable();
 
-            $table->foreign('category_dealer_id')->references('id')->on('category_dealers')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('category_dealer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('packages_id')->constrained()->onDelete('cascade')->default('0');
+
             $table->timestamps();
         });
     }

@@ -35,9 +35,20 @@
                         {{ method_field('put') }}
 
                         @php
+                            $name  = ['name_ar','name_en'];
                             $names = ['price','qty_product'];
                             $guard = ['free','infree'];
+                            $months= ['1','2','3','4','5','6','7','8','9','10','11','12'];
                         @endphp
+
+                        @foreach ($name as $nam)
+
+                            <div class="form-group">
+                                <label>@lang('dashboard.' . $nam)</label>
+                                <input type="text" name="{{ $nam }}" class="form-control" value="{{ $package[$nam] }}">
+                            </div>
+
+                        @endforeach
 
                         <div class="form-group d-none">
                             <label>@lang('dashboard.guard')</label>
@@ -51,16 +62,29 @@
 
                         @foreach ($names as $name)
 
+                            @if ($name == 'price')
+                                <p class="text-red product-val-price">{{ $package->price }} $</p>
+                                <p class="text-red totle-price">{{ $package->new_price }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }}</p>
+                            @endif
+
                             <div class="form-group">
                                 <label>@lang('dashboard.' . $name)</label>
-                                <input type="number" name="{{ $name }}" class="form-control" value="{{ $package[$name] }}">
+                                <input type="number" name="{{ $name }}" class="form-control {{ $name == 'price' ? 'product-price' : '' }}" value="{{ $package[$name] }}">
                             </div>
 
                         @endforeach
 
-                        <div class="form-group">
-                            <label>@lang('dashboard.data')</label>
-                            <input type="date" name="data" class="form-control" value="{{ $package->data }}">
+                        <div class="form-group d-none">
+                            <label>@lang('dashboard.months')</label>
+                            <select name="month" class="form-control">
+                                <option value="">@lang('dashboard.select_moth')</option>
+                                @foreach ($months as $month)
+                                    <option value="{{ $month}}"
+                                        {{ $package->month == $month ? 'selected' : '' }}>
+                                        {{ $month }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">

@@ -26,7 +26,7 @@ return [
     'promotion_categorey'=> 'اختر الفئة',
     'email'              => 'البريد الإلكتروني',
     'phone_master'       => 'الشخص المسؤول عن الإتصال',
-    'other_phone'        => 'هاتف اخر',
+    'other_phone'        => 'هاتف الواتساب',
     'state'              => 'الولاية',
     'company_profile'    => 'نبذة عن الشركة',
     'company_logo'       => 'رفع شعار الشركة',

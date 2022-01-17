@@ -30,7 +30,7 @@ class ProfileController extends Controller
 
             $PackagePromoted = PackagePromoted::where('promoted_dealer_id', $promoted_dealer->id)->latest()->first();
             
-            if ($promoted_dealer) {
+            if ($PackagePromoted) {
 
                 if ($promoted_dealer->packages_id) {
                     
@@ -42,9 +42,9 @@ class ProfileController extends Controller
 
                     } else {
 
-                        $promoted_dealer->update([
-                            'status' => 1,
-                        ]);
+                        // $promoted_dealer->update([
+                        //     'status' => 1,
+                        // ]);
 
                     } //end of if
 
@@ -54,15 +54,17 @@ class ProfileController extends Controller
 
         } //end of if
 
+        // return $promoted_dealer;
+
         if ($promoted_dealer) {
 
-            $promoted_dealer = PromotedDealer::where('user_id', $userId)->first();
+            $promoted_dealer  = PromotedDealer::where('user_id', $userId)->first();
 
             $request_custmers = RequestCustmer::where('promoted_dealer_id', $promoted_dealer->id)->get();
 
         } else {
 
-            $promoted_dealer = 0;
+            $promoted_dealer  = 0;
 
             $request_custmers = 0;
         }
@@ -74,14 +76,15 @@ class ProfileController extends Controller
         $orders    = Order::where('user_id', $userId)->count();
         $recustm   = RequestCustmer::count();
 
-        $uuser_state = PromotedDealer::where('user_id',auth()->id())->where('state','0')->first();
-        $packages    = PromotedDealer::where('user_id',auth()->id())
-                                                  ->where('status','>','0')
+        $uuser_state = PromotedDealer::where('user_id',$userId)->where('state','0')->first();
+        $packages    = PromotedDealer::where('user_id',$userId)
                                                   ->where('packages_id','>','0')
+                                                  ->where('status','0')
                                                   ->first();
 
-        $packagCount = PromotedDealer::where('user_id',auth()->id())
-                                                  ->where('status','1')
+        $packagCount = PromotedDealer::where('user_id',$userId)
+                                                  ->where('packages_id','>','0')
+                                                  ->where('status','0')
                                                   ->count();
                                     
         return view('home.my_acount.profile', compact('request_custmers', 'promoted_dealer', 'user',
@@ -116,7 +119,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
 
-        $user = User::find(auth()->user()->id);
+        $user = User::find(auth()->id());
 
         $request->validate([
             'name'  => ['required'],
@@ -124,26 +127,35 @@ class ProfileController extends Controller
             'phone' => ['required'],
         ]);
 
-        $request_data = $request->except(['image']);
+        try {
 
-        if ($request->image) {
+            $request_data = $request->except(['image']);
 
-            if ($user->image != 'default.png') {
+            if ($request->image) {
 
-                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+                if ($user->image != 'default.png') {
 
-            } //end of inner if
+                    Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
 
-            $request_data['image'] = $request->file('image')->store('user_images', 'public');
+                } //end of inner if
 
-        } //end of external if
-        $request_data['country'] = 'sfgsfg';
+                $request_data['image'] = $request->file('image')->store('user_images', 'public');
 
-        $user->update($request_data);
+            } //end of external if
 
-        notify()->success(__('dashboard.updated_successfully'));
+            $request_data['country'] = 'country';
 
-        return redirect()->back();
+            $user->update($request_data);
+
+            notify()->success(__('dashboard.updated_successfully'));
+
+            return redirect()->back();
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     } //end of store
     

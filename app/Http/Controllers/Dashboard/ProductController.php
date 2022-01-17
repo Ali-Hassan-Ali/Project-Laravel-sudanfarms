@@ -107,9 +107,8 @@ class ProductController extends Controller
     {
         $sub_categoreys     = Categorey::where('sub_categoreys','0')->get();
         $categoreys_product = Categorey::where('id', $product->sub_category_id)->first();
-        $categorey_id       = Categorey::where('id', $categoreys_product->sub_categoreys)->first();
 
-        return view('dashboard.products.edit',compact('sub_categoreys','product','categorey_id'));
+        return view('dashboard.products.edit',compact('sub_categoreys','product'));
 
     }//end of edit
 

@@ -23,7 +23,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 function () {
 
     Route::get('/dd', function() {
-
+        return auth()->user()->hasRole('clients');
+        auth()->user()->detachRole('promoted');
+        return date('m'.'-'.'d'.'-'.'Y');
+        return date('m-d-Y');
     });
     
 
@@ -108,6 +111,7 @@ function () {
         Route::get('/promoted_dealers.edit', [PromotedDealerController::class,'edit'])->name('promoted_dealers.edit');
         Route::get('/promoted_dealers.packages', [PromotedDealerController::class,'packages'])->name('promoted_dealers.packages');
         Route::post('/promoted_dealers.packages', [PromotedDealerController::class,'packagesStore'])->name('promoted_dealers.packages');
+        Route::get('promoted_dealers.packages.this_packages', [PromotedDealerController::class,'packagesThisPackage'])->name('promoted_dealers.packages.this_packages');
         Route::post('/promoted_dealers.update', [PromotedDealerController::class,'update'])->name('promoted_dealers.update');
         Route::get('/promoted_dealers.destroy', [PromotedDealerController::class,'update'])->name('promoted_dealers.destroy');
 

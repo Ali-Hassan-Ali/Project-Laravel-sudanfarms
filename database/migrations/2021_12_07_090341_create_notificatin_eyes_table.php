@@ -15,11 +15,10 @@ class CreateNotificatinEyesTable extends Migration
     {
         Schema::create('notificatin_eyes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('notifications_id')->unsigned()->nullable();
-            $table->bigInteger('user_id')->unsigned()->nullable();
+            
+            $table->foreignId('notifications_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
-            $table->foreign('notifications_id')->references('id')->on('notifications')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

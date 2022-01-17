@@ -11,7 +11,9 @@ class Product extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['name','description','quantity_guard','condition','new_price','new_price_decount','image_path','cury'];
+    protected $appends = ['name','description','quantity_guard',
+                          'condition','new_price','new_price_decount',
+                          'image_path','cury'];
 
     public function getNameAttribute()
     {

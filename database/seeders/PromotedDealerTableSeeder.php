@@ -19,8 +19,8 @@ class PromotedDealerTableSeeder extends Seeder
             
             \App\Models\PromotedDealer::create([
                 'user_id'            => '1',
-                'company_name_ar'    => $data,
-                'company_name_en'    => $data,
+                'company_name'       => $data,
+                'packages_id'        => '1',
                 'category_dealer_id' => '1',
                 'email'              => 'email@gmail.com',
                 'phone_master'       => '123143413',
