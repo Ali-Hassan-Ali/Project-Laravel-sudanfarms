@@ -78,13 +78,9 @@
 		                            <input type="file" multiple name="image[]" accept="image/*" class="form-control image" id="file-input">
 		                        </div>
 
-		                        @php
-		                            $images = App\Models\ImageProduct::where('product_id',$product->id)->get();
-		                        @endphp
-
 		                        <div class="form-group">
 		                            <div id="preview" class="d-flex justify-content-center">
-			                            @foreach ($images as $image)
+			                            @foreach ($product->imageProduct as $image)
 
 			                                <img src="{{ $image->image_path }}" width="100">
 			                                

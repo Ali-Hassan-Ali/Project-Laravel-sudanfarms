@@ -1,0 +1,10 @@
+.at-expanding-share-button.at-expanding-share-button-desktop .at-expanding-share-button-toggle {
+    height: 150px !important;
+}
+
+/*swal*/
+.swal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

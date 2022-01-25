@@ -18,8 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name_ar');
             $table->string('name_en');
             $table->string('quantity');
-            $table->string('quantity_guard_ar');
-            $table->string('quantity_guard_en');
+            $table->foreignId('units_id')->constrained()->onDelete('cascade');
             $table->string('start_time');
             $table->string('end_time');
             $table->longText('description_ar');
@@ -30,10 +29,9 @@ class CreateProductsTable extends Migration
             $table->double('price', 8, 2)->nullable();
             $table->double('price_decount', 8, 2)->default('0');
             $table->bigInteger('sub_category_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
 
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreign('sub_category_id')->references('id')->on('categoreys')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PackageTableSeeder::class);
         $this->call(PromotedDealerTableSeeder::class);
         $this->call(SettingBannersTableSeeder::class);
+        $this->call(UnitTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
         $this->call(GallerySeederTableSeeder::class);
         $this->call(VideoSeederTableSeeder::class);
@@ -38,6 +39,5 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrencyTableSeeder::class);
         $this->call(GobTableSeeder::class);
         $this->call(PriceTableTableSeeder::class);
-        $this->call(UnitTableSeeder::class);
     }
 }

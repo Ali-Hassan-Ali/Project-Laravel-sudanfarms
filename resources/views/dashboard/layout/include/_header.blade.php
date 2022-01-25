@@ -46,7 +46,7 @@
                                             <h4>
                                                 {{ $noty->user->name }}
                                                 <small>
-                                                    <i class="fa fa-clock-o"></i> 5 mins
+                                                    <i class="fa fa-clock-o"></i> {{ $noty->created_at->toFormattedDateString() }}
                                                 </small>
                                             </h4>
                                             <p>{{ $noty->title }}</p>

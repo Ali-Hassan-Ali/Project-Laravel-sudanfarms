@@ -126,6 +126,12 @@ class Product extends Model
 
     }//end of belongsTo user
 
+    public function units()
+    {
+        return $this->belongsTo(Unit::class);
+
+    }//end of belongsTo units
+
     public function category()
     {
         return $this->belongsTo(Categorey::class,'sub_category_id');

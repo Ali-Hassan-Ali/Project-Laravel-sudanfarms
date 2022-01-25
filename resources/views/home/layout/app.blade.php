@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/about.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('home_files/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/index.css') }}">
 
     {{-- plugin  sweetalert2--}}

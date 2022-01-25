@@ -23,10 +23,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 function () {
 
     Route::get('/dd', function() {
-        return auth()->user()->hasRole('clients');
-        auth()->user()->detachRole('promoted');
-        return date('m'.'-'.'d'.'-'.'Y');
-        return date('m-d-Y');
+
+        $product = App\Models\Product::first();
+
+        return $product->units->name;
+
     });
     
 

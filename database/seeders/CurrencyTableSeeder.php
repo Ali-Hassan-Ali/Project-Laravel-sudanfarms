@@ -14,7 +14,7 @@ class CurrencyTableSeeder extends Seeder
      */
     public function run()
     {
-        $currency = Currency::convert()
+        $currency = \AmrShawky\LaravelCurrency\Facade\Currency::convert()
         ->from('USD')
         ->to('SDG')
         ->amount(1)

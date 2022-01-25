@@ -39,7 +39,8 @@ class CreatePromotedDealersTable extends Migration
 
             $table->foreignId('category_dealer_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('packages_id')->constrained()->onDelete('cascade')->default('0');
+            // $table->foreignId('packages_id')->constrained()->onDelete('cascade')->default('0');
+            $table->string('packages_id')->default('00');
 
             $table->timestamps();
         });

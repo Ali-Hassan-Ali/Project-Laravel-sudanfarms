@@ -55,14 +55,14 @@ class PromotedDealerController extends Controller
             $request_data = $request->except('company_logo', 'company_certificate', 'user_id');
 
             $request_data['user_id']      = auth()->id();
-            $request_data['packages_id']  = '00';
+            // $request_data['packages_id']  = '00';
             $request_data['company_logo'] = $request->file('company_logo')->store('company_logo', 'public');
 
             if ($request->company_certificate) {
 
                 $request_data['company_certificate'] = $request->file('company_certificate')->store('company_certificate', 'public');
             }
-
+            
             PromotedDealer::create($request_data);
 
             // auth()->user()->detachRole('clients');
@@ -217,7 +217,7 @@ class PromotedDealerController extends Controller
         
         $request_data_user                = $request->except('image', 'package_id');
         $request_data_user['packages_id'] = $request->package_id;
-        $request_data_user['status']      = '0';
+        $request_data_user['status']      = '1';
 
         $user->update($request_data_user);
 

@@ -72,8 +72,8 @@ function () {
         Route::resource('currenccys', CurrenccyController::class)->except(['create','store','show','destroy']);
 
         //categoreys routes
-        Route::resource('categoreys', CategoreyController::class)->except(['show']);
         Route::get('sub_category/{id}', [CategoreyController::class, 'sub_categoreys'])->name('sub_categorys');
+        Route::resource('categoreys', CategoreyController::class)->except(['show']);
 
         //sub categoreys routes
         Route::resource('sub_categoreys', SubCategoreyController::class)->except(['show']);
@@ -88,8 +88,8 @@ function () {
         Route::resource('category_dealers', CategoryDealerController::class)->except(['show']);
 
         //promoted_dealers routes
-        Route::resource('promoted_dealers', PromotedDealerController::class);
         Route::get('promoted_dealers.status/{promoted_dealer}', [PromotedDealerController::class,'status'])->name('promoted_dealers.status');
+        Route::resource('promoted_dealers', PromotedDealerController::class);
 
         //newsletters routes
         Route::resource('newsletters', NewsletterController::class)->except(['show']);
@@ -102,20 +102,19 @@ function () {
 
         
         //contacts routes
-        Route::resource('contacts', ContactController::class)->except(['show','store','create','edit','update']);
         Route::get('reply_message/{contact}', [ContactController::class,'ReplyMessageIndex'])->name('reply_message.index');
         Route::put('reply_message/{contact}', [ContactController::class,'ReplyMessage'])->name('contacts.reply_message.send');
+        Route::resource('contacts', ContactController::class)->except(['show','store','create','edit','update']);
 
 
         Route::prefix('settings')->name('settings.')->group(function () {
 
             //policys routes
-            Route::resource('policys', PolicyController::class)->except(['show','index']);
-
             Route::get('copyrights', [PolicyController::class,'copyrights'])->name('copyrights.index');
             Route::get('privacys', [PolicyController::class,'privacys'])->name('privacys.index');
             Route::get('terms_conditions', [PolicyController::class,'terms_conditions'])->name('terms_conditions.index');
             Route::get('evacuation_responsibilatys', [PolicyController::class,'evacuation_responsibilatys'])->name('evacuation_responsibilatys.index');
+            Route::resource('policys', PolicyController::class)->except(['show','index']);
 
             //setting_banners routes
             Route::resource('setting_banners', SettingBannerController::class)->except(['show']);
