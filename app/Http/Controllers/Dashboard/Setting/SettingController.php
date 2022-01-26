@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
 
+    public function contact_us()
+    {
+        return view('dashboard.settings.contact_us');
+
+    }// end of contact_us
+
     public function social_links()
     {
         return view('dashboard.settings.social_links');

@@ -130,6 +130,7 @@ function () {
             Route::resource('advertisements', AdvertisementController::class)->except(['create','store','show','destroy']);
             Route::resource('about_customers', AboutCustomerController::class)->except(['show']);
             //settings route
+            Route::get('contact_us', [SettingController::class,'contact_us'])->name('contact_us.index');
             Route::get('services', [SettingController::class,'services'])->name('services.index');
             Route::get('social_links', [SettingController::class,'social_links'])->name('social_links.index');
             Route::get('manager_word', [SettingController::class,'manager_word'])->name('manager_word.index');

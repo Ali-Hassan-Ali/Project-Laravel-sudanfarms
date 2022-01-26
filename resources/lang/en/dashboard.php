@@ -2,6 +2,7 @@
 
 return [
 
+    'count_month'          => 'count month',
     'home_page'            => 'home',
     'confirm_delete'       => 'Confirm Delete',
     'added_successfully'   => 'Added Successfully',

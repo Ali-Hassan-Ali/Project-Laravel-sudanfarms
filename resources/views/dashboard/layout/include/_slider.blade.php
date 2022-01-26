@@ -197,13 +197,20 @@
                   <ul class="treeview-menu 
                   {{  Route::Is(['dashboard.settings.setting_banners.index',
                                  'dashboard.settings.setting_banners.create',
-                                 'dashboard.contact_us.index',
+                                 'dashboard.settings.contact_us.index',
                                  'dashboard.settings.social_links.index',
                                  'dashboard.settings.manager_word.index',
                                  'dashboard.settings.services.index',
                                  'dashboard.settings.about.index']) ? 'treeview menu-open' : 'treeview' }}" style="display: {{  request()->routeIs(['dashboard.settings.setting_banners.index','dashboard.settings.setting_banners.create','dashboard.settings.setting_banners.edit','dashboard.settings.social_links.index','dashboard.settings.services.index','dashboard.settings.about.index']) ? 'block' : 'none' }};">
 
-                     <li class="{{ Route::Is('dashboard.settings.about.index') ? 'active' : '' }}">
+                    <li class="{{ Route::Is('dashboard.settings.contact_us') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.contact_us.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('settings.contact_us')
+                        </a>
+                    </li>
+
+                    <li class="{{ Route::Is('dashboard.settings.about.index') ? 'active' : '' }}">
                         <a href="{{ route('dashboard.settings.about.index') }}">
                             <i class="fa fa-concierge-bell"></i> 
                             @lang('dashboard.about')

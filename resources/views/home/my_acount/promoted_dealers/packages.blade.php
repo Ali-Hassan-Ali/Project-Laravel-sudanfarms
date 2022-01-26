@@ -22,10 +22,10 @@
                 
             <div class="col-md-6 col-lg-4">
                 <div class="contact-card"><i class="icofont-email"></i>
-                    <h4>@lang('dashboard.name') | {{ $package->name }}</h4>
-                    <h4>@lang('dashboard.package') | @lang('dashboard.' . $package->guard == 0 ? 'free' : 'infree')</h4>
-                    <p>@lang('dashboard.price') | {{ $package->price }}</p>
-                    <p>@lang('dashboard.month') | {{ $package->month }}</p>
+                    <h4>{{ $package->name }}</h4>
+                    <h4>@lang('dashboard.' . $package->guard == 0 ? 'free' : 'infree')</h4>
+                    <p>@lang('dashboard.price') {{ $package->price }}</p>
+                    <p>@lang('dashboard.count_month') | {{ $package->month }}</p>
                     <p>@lang('dashboard.qty_product') | {{ $package->qty_product }}</p>
                 </div>
             </div>

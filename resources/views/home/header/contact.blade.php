@@ -21,9 +21,9 @@
                 <div class="contact-card"><i class="icofont-location-pin"></i>
                     <h4>@lang('dashboard.map')</h4>
                     @if (app()->getLocale() == 'ar')
-                        <p>{{ setting('map_ar') }}</p>
+                        <p>{{ setting('contact_map_ar') }}</p>
                     @else
-                        <p>{{ setting('map_en') }}</p>
+                        <p>{{ setting('contact_map_en') }}</p>
                     @endif
                     
                 </div>
@@ -32,8 +32,8 @@
                 <div class="contact-card active"><i class="icofont-phone"></i>
                     <h4>@lang('dashboard.phone')</h4>
                     <p>
-                        <a href="tel:{{ setting('phone_one') }}">{{ setting('phone_one') }} <span>(whatsapp)</span></a>
-                        <a href="tel:{{ setting('phone') }}">{{ setting('phone') }}</a>
+                        <a href="tel:{{ setting('contact_phone_whatsapp') }}">{{ setting('contact_phone_whatsapp') }} <span>(whatsapp)</span></a>
+                        <a href="tel:{{ setting('contact_phone') }}">{{ setting('contact_phone') }}</a>
                     </p>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                 <div class="contact-card"><i class="icofont-email"></i>
                     <h4>@lang('dashboard.email')</h4>
                     <p>
-                        <a href="mailto:{{ setting('email_one') }}">{{ setting('email_one') }}</a>
-                        <a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a>
+                        <a href="mailto:{{ setting('contact_email_one') }}">{{ setting('contact_email_one') }}</a>
+                        <a href="mailto:{{ setting('contact_email_tow') }}">{{ setting('contact_email_tow') }}</a>
                     </p>
                 </div>
             </div>

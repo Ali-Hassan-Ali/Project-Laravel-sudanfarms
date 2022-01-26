@@ -14,21 +14,21 @@ class CurrencyTableSeeder extends Seeder
      */
     public function run()
     {
-        $currency = Currency::convert()
-        ->from('USD')
-        ->to('SDG')
-        ->amount(1)
-        ->get();
+        // $currency = Currency::convert()
+        // ->from('USD')
+        // ->to('SDG')
+        // ->amount(1)
+        // ->get();
 
-        if ($currency) {
+        // if ($currency) {
             
-            $currency = $currency;
+        //     $currency = $currency;
 
-        } else {
+        // } else {
 
+
+        // }
             $currency = '450';
-
-        }
         
          \App\Models\Currenccy::create([
             'amount' => number_format(preg_replace('/,/', '', $currency),2),

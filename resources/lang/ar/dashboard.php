@@ -2,6 +2,7 @@
 
 return [
 
+    'count_month'          => 'عدد الاشهر',
     'home_page'            => 'لارئسية',
     'confirm_delete'       => '!تأكيد الحذف',
     'added_successfully'   => 'تم اضافه البيانات بنجاح',
