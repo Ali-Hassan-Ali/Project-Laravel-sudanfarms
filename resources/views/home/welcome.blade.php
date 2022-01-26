@@ -207,9 +207,19 @@
                                     {{-- <i class="icofont-star"></i> --}}
                                     <a href="{{ route('product.show',$product->id) }}">{{ $promoted_dealer->name }}</a>
                                 </div>
-                                <h6 class="feature-price">
-                                    <del>{{ $product->cury }} {{ $product->new_price_decount }} </del>
-                                    <span>{{ $product->cury }} {{ $product->new_price }} <small>/{{ $product->units->name }}</small></span>
+                                <h6 class="product-price d-flex justify-content-start">
+                                    <span>
+                                        {{ $product->cury }} {{ $product->new_price }}
+                                        <small>/{{ $product->units->name }}</small>
+                                    </span>
+                                </h6>
+                                <h6 class="product-price d-flex justify-content-start">
+                                    <span>
+                                        <del>
+                                            {{ $product->cury }} {{ $product->new_price_decount }}
+                                        </del>
+                                        <small>/{{ $product->units->name }}</small>
+                                    </span>
                                 </h6>
                                 <p class="feature-desc">{{ $product->description }}</p>
                                 <button class="product-add add-cart" data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" title="@lang('home.add_cart')">
