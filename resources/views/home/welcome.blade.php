@@ -453,7 +453,7 @@
             </div>
             <div class="brand-slider slider-arrow">
 
-                @foreach (App\Models\PromotedDealer::all() as $promoted)
+                @foreach ($promoted_from_inside as $promoted)
 
                     <div class="brand-wrap">
                         <div class="brand-media">
@@ -472,5 +472,38 @@
         </div>
     </section> 
 
+    @if ($promoted_from_unnside->count() > 0)
+        
+        <section class="section brand-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-heading">
+                            <h2>@lang('home.latest_suppliers_from')</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="brand-slider slider-arrow">
+
+                    @foreach ($promoted_from_unnside as $promoted)
+
+                        <div class="brand-wrap">
+                            <div class="brand-media">
+                                <img src="{{ $promoted->logo_path }}" alt="brand">
+                                <div class="brand-overlay"><a href="#"><i class="fas fa-link"></i></a></div>
+                            </div>
+                            <div class="brand-meta">
+                                <h4>{{ $promoted->name }}</h4>
+                                <p>{{ $promoted->city }}</p>
+                            </div>
+                        </div>
+
+                    @endforeach
+                    
+                </div>
+            </div>
+        </section> 
+
+    @endif
 
 @endsection

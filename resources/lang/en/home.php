@@ -88,7 +88,9 @@ return [
     'newly_added_products'=> 'Newly Added Products',
     'featured_products'   => 'Featured Products',
     'new_products'        => 'new products',
-    'latest_suppliers'    => 'Latest Suppliers',
+
+    'latest_suppliers'     => 'Latest from inside Sudan',
+    'latest_suppliers_from'=> 'Latest from outside Sudan',
 
 
     'currency'     => 'The Currency',

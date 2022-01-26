@@ -23,6 +23,7 @@ return [
     'farms_of_sudan' => 'من مزارع السودان',
     'discount'       => 'تخفيض',
     'gobs'           => 'وظائف',
+    'gobs'           => 'وظائف',
 
     'delivery_service'      => 'خدمة التوصيل السريع',
     'return_policy'         => 'سياسة إرجاع معينة',
@@ -95,7 +96,9 @@ return [
     'newly_added_products'=> 'المنتجات المضافة حديثا',
     'featured_products'   => 'المنتجات المميزة',
     'new_products'        => 'المنتجات الجديده',
-    'latest_suppliers'    => 'أحدث الموردين',
+
+    'latest_suppliers'     => 'أحدث الموردين من داخل السودان',
+    'latest_suppliers_from'=> 'أحدث الموردين من خارج السودان',
 
     
     'currency'     => 'العملة',

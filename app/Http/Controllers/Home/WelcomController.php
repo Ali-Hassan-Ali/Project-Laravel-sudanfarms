@@ -20,7 +20,11 @@ class WelcomController extends Controller
 
         $offers         = Offer::count();
 
-        return view('home.welcome',compact('sub_categoreys','offer','offers'));
+        $promoted_from_inside  = PromotedDealer::where('from_inside','1')->get();
+        $promoted_from_unnside = PromotedDealer::where('from_inside','0')->get();
+
+        return view('home.welcome',compact('sub_categoreys','offer','offers',
+                                            'promoted_from_inside','promoted_from_unnside'));
 
     }//end of index
 
