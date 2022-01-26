@@ -37,10 +37,16 @@
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/index.css') }}">
 
     {{-- plugin  sweetalert2--}}
-    <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }}">
 
     {{-- plugin  addtohomescreen--}}
-    <link rel="stylesheet" href="{{ asset('home_files/plugns/addtohomescreen/addtohomescreen.css') }} ">
+    <link rel="stylesheet" href="{{ asset('home_files/plugns/addtohomescreen/addtohomescreen.css') }}">
+
+    <style type="text/css">
+        .at-expanding-share-button.at-expanding-share-button-mobile .at-expanding-share-button-toggle {
+            margin-bottom: 100px !important;
+        }
+    </style>
 
 </head>
 
