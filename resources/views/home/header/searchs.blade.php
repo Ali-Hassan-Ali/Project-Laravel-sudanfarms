@@ -61,9 +61,19 @@
 	                                <span>{{ $promoted_dealer->name }}</span>
 	                            </h6>
 	                            <h6 class="product-price">
-	                                <del>{{ $product->cury }} {{ $product->new_price_decount }}</del>
-	                                <span>{{ $product->cury }} {{ $product->new_price }}<small>/{{ $product->quantity_guard }}</small></span>
-	                            </h6>
+                                    <span>
+                                        {{ $product->cury }} {{ $product->new_price }}
+                                        <small>/{{ $product->units->name }}</small>
+                                    </span>
+                                </h6>
+                                <h6 class="product-price">
+                                    <span>
+                                        <del>
+                                            {{ $product->cury }} {{ $product->new_price_decount }}
+                                        </del>
+                                        <small>/{{ $product->units->name }}</small>
+                                    </span>
+                                </h6>
 	                            <button class="product-add add-cart" 
                                     	data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" 
                                     	title="@lang('home.add_cart')">

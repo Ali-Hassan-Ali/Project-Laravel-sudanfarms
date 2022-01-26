@@ -14,24 +14,24 @@ class CurrencyTableSeeder extends Seeder
      */
     public function run()
     {
-        // $currency = \AmrShawky\LaravelCurrency\Facade\Currency::convert()
-        // ->from('USD')
-        // ->to('SDG')
-        // ->amount(1)
-        // ->get();
+        $currency = Currency::convert()
+        ->from('USD')
+        ->to('SDG')
+        ->amount(1)
+        ->get();
 
-        // if ($currency) {
+        if ($currency) {
             
-        //     $currency = $currency;
+            $currency = $currency;
 
-        // } else {
+        } else {
 
-        //     $currency = '450';
+            $currency = '450';
 
-        // }
+        }
         
          \App\Models\Currenccy::create([
-            'amount' => number_format(preg_replace('/,/', '', '450'),2),
+            'amount' => number_format(preg_replace('/,/', '', $currency),2),
         ]);
         
     }//end of run
