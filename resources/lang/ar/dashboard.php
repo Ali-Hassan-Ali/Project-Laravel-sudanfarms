@@ -2,6 +2,7 @@
 
 return [
 
+    'home_page'            => 'لارئسية',
     'confirm_delete'       => '!تأكيد الحذف',
     'added_successfully'   => 'تم اضافه البيانات بنجاح',
     'updated_successfully' => 'تم تعديل البيانات بنجاح',

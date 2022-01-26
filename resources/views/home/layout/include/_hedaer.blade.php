@@ -505,7 +505,7 @@
     </aside>
     <menu class="mobile-menu">
         <a href="{{ route('welcome.index') }}" title="Home Page">
-            <i class="fas fa-home"></i><span>@lang('dashboard.home')</span>
+            <i class="fas fa-home"></i><span>@lang('dashboard.home_page')</span>
         </a>
         <button class="cate-btn" id="category-model" title="@lang('dashboard.categorey')">
             <i class="fas fa-list"></i>
@@ -515,14 +515,15 @@
             <i class="fas fa-users"></i>
             <span>@lang('dashboard.suppliers')</span>
         </a>
+        <a href="{{ route('home.contact') }}" title="@lang('dashboard.contacts')">
+            <i class="fas fa-phone"></i><span> @lang('dashboard.contacts')</span>
+        </a>
         <button class="header-widget header-cart-noty" title="@lang('dashboard.notifications')">
-            <i class="fas fa-bell"></i><sup class="cart-count">{{ $notys->count() }}</sup>
+            <i class="fas fa-bell"></i>
+            <sup class="cart-count">{{ $notys->count() }}</sup>
         </button>
         <button class="header-widget header-cart" title="@lang('home.shops')">
             <i class="fas fa-shopping-basket"></i>
             <sup class="cart-count">{{ Cart::count() }}</sup>
         </button>
-        <a href="{{ route('home.contact') }}" title="@lang('dashboard.contacts')">
-            <i class="fas fa-phone"></i><span> @lang('dashboard.contacts')</span>
-        </a>
     </menu>
