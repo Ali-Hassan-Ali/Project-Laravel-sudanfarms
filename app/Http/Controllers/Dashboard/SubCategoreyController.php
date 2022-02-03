@@ -92,10 +92,15 @@ class SubCategoreyController extends Controller
                 
                 $request_data = $request->except('image');
 
-                Storage::disk('local')->delete('public/' . $categorey->image);
+                if ($categorey->image != 'default.png') {
+
+                    Storage::disk('local')->delete('public/' . $categorey->image);
+
+                } //end of inner if
 
                 $request_data['image'] = $request->file('image')->store('sub_categorey_images','public');
-            }
+
+            }//end of if
             
             $categorey->update($request_data);
             
@@ -117,7 +122,11 @@ class SubCategoreyController extends Controller
 
             $categorey = Categorey::find($id);
 
-            Storage::disk('local')->delete('public/' . $categorey->image);
+            if ($categorey->image != 'default.png') {
+
+                Storage::disk('local')->delete('public/' . $categorey->image);
+
+            } //end of inner if  
 
             $categorey->delete();
             session()->flash('success', __('dashboard.deleted_successfully'));

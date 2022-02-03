@@ -1,6 +1,12 @@
 <?php
 
 return [
+    
+    'width'        => 'width',
+    'height'       => 'height',
+
+    'add_new_Packages' => 'Please renew your subscription',
+    'wait_request'     => 'Wait until your request is accepted',
 
     'no'           => 'no',
     'yes'          => 'yes',

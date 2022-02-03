@@ -6,7 +6,7 @@
 
     <section class="home-index-slider slider-arrow slider-dots">
         
-        @foreach (App\Models\SettingBanner::all() as $index=>$data)
+        @foreach ($setting_banners as $index=>$data)
 
         <div class="banner-part banner-4" style="background: url({{ $data->image_path }});">
             <div class="container">
@@ -42,7 +42,9 @@
                     <li>
                         <a class="suggest-card" href="{{ route('category.show',$category->id) }}">
                         <img src="{{ $category->image_path }}" alt="suggest">
-                            <h5>{{ $category->name }}<span>{{ $category->product->count() }} @lang('home.item')</span></h5>
+                            <h5>{{ $category->name }}<span>
+                                {{ $category->product->count() }} @lang('home.item')</span>
+                            </h5>
                         </a>
                     </li>
                 @endforeach

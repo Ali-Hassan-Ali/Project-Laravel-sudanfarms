@@ -56,7 +56,19 @@
                     </div>
 
                     <div class="form-group">
-                        <label>@lang('dashboard.bill')</label>
+                        <label>
+                            {{-- @lang('dashboard.bill')  --}}
+                            @if (app()->getLocale() == 'ar')
+                                
+                                {{ setting('account_number_details_ar') }}
+
+                            @else
+
+                                {{ setting('account_number_details_ar') }}
+
+                            @endif
+                            : {{ setting('account_number') }}
+                        </label>
                         <div class="form-input-group">
                             <input class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" 
                                     type="file" name="image" required placeholder="@lang('dashboard.image')">

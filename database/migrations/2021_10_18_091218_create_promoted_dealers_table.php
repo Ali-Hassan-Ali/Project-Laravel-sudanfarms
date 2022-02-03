@@ -17,7 +17,7 @@ class CreatePromotedDealersTable extends Migration
             $table->id();
             $table->string('image')->default('0');
             
-            $table->boolean('status')->default('0');
+            $table->string('status')->nullable('');
             $table->string('count_call_phone')->default('0');
             $table->string('count_call_email')->default('0');
             $table->string('company_name')->nullable();

@@ -33,7 +33,6 @@
 		                        @php
 		                            $names  = ['name_ar','name_en'];
 		                            $descr  = ['description_ar','description_en','conditions_ar','conditions_en'];
-		                            $qguard = ['quantity_guard_ar','quantity_guard_en'];
 		                        @endphp
 
 		                        @foreach ($names as $name)
@@ -74,6 +73,7 @@
 		                        </div>
 
 		                        <div class="form-group">
+		                        	<label>@lang('lang.width') 450px | @lang('lang.height') 450px</label>
 		                            <label>@lang('dashboard.image') | @lang('dashboard.mult_image')</label>
 		                            <input type="file" multiple name="image[]" accept="image/*" class="form-control image" id="file-input">
 		                        </div>
@@ -109,14 +109,18 @@
 		                            <input type="number" name="quantity" class="form-control" value="{{ $product->quantity }}">
 		                        </div>
 
-		                        @foreach ($qguard as $name)
-
-		                            <div class="form-group">
-		                                <label>@lang('dashboard.' . $name)</label>
-		                                <input type="text" name="{{ $name }}" class="form-control" value="{{ $product[$name] }}">
-		                            </div>
-		                            
-		                        @endforeach
+		                        <div class="form-group">
+		                            <label>@lang('dashboard.units')</label>
+		                            <select name="units_id" required class="form-control @error('email') is-invalid @enderror">
+		                                <option value="">@lang('dashboard.all_categories')</option>
+		                                @foreach ($units as $unit)
+		                                    <option value="{{ $unit->id }}" 
+		                                        {{ $unit->id == $product->units_id ? 'selected' : '' }}>
+		                                        {{ $unit->name }}
+		                                    </option>
+		                                @endforeach
+		                            </select>
+		                        </div>
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.start_time')</label>

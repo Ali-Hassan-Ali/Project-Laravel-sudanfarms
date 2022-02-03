@@ -76,7 +76,7 @@
                         <h3 class="details-name">{{ $min_product->name }}</h3>
                         <div class="details-meta mb-1">
                             <p>@lang('dashboard.company')</p>
-                            <p>{{ $promoted_dealer->name }}</p>
+                            <p>{{ $promoted_dealer->company_name }}</p>
                         </div>
                         <div class="details-meta mb-1">
                             <p class="mt-0">@lang('dashboard.country')</p>
@@ -143,14 +143,14 @@
     </section>
     <section class="inner-section">
         <div class="container">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-12">
                     <ul class="nav nav-tabs">
                         <li><a href="#tab-desc" class="tab-link active" data-bs-toggle="tab">@lang('dashboard.description')</a></li>
                         <li><a href="#tab-spec" class="tab-link" data-bs-toggle="tab">@lang('home.informations')</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
             <div class="tab-pane" id="tab-desc">
                 <div class="row">
                     <div class="col-lg-12">
@@ -193,6 +193,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product-details-frame">
+                            <div class="tab-descrip">
+                                <p>{{ $min_product->description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -203,7 +212,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>@lang('home.newly_added_products')</h2>
+                        <h2>@lang('home.related_products')</h2>
                     </div>
                 </div>
             </div>
@@ -247,7 +256,7 @@
                                     <a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a>
                                 </h6>
                                 <h6 class="product-price mb-0">
-                                    <span>{{ $promoted_dealer->name }}</span>
+                                    <span>{{ $promoted_dealer->company_name }}</span>
                                 </h6>
                                 <h6 class="product-price">
                                     <span>

@@ -96,6 +96,7 @@ return [
     'newly_added_products'=> 'المنتجات المضافة حديثا',
     'featured_products'   => 'المنتجات المميزة',
     'new_products'        => 'المنتجات الجديده',
+    'related_products'    => 'منتجات ذات صله',
 
     'latest_suppliers'     => 'أحدث الموردين من داخل السودان',
     'latest_suppliers_from'=> 'أحدث الموردين من خارج السودان',

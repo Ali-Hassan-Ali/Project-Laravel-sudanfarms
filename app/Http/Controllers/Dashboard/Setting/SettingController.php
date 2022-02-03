@@ -38,6 +38,12 @@ class SettingController extends Controller
 
     }//end of about
 
+    public function account_number()
+    {
+        return view('dashboard.settings.account_number');
+
+    }// end of account_number
+
     public function store(Request $request)
     {
         setting($request->all())->save();

@@ -85,7 +85,12 @@ class CategoryDealerController extends Controller
 
             if ($request->image) {    
 
-                Storage::disk('local')->delete('public/' . $categoryDealer->image);
+                if ($categoryDealer->image != 'default.png') {
+
+                    Storage::disk('local')->delete('public/' . $categoryDealer->image);
+
+                } //end of inner if
+
 
                 $request_data['image'] = $request->file('image')->store('category_dealers_image','public');
             }
@@ -108,7 +113,11 @@ class CategoryDealerController extends Controller
     {
         try {
 
-            Storage::disk('local')->delete('public/' . $categoryDealer->image);
+            if ($categoryDealer->image != 'default.png') {
+
+                Storage::disk('local')->delete('public/' . $categoryDealer->image);
+
+            } //end of inner if
 
             $categoryDealer->delete();
             session()->flash('success', __('dashboard.deleted_successfully'));

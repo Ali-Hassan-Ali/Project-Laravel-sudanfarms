@@ -118,9 +118,14 @@ class OffersController extends Controller
 
             $request_data = $request->except('image');
 
-            if ($request->image) {    
+            if ($request->image) {
 
-                Storage::disk('local')->delete('public/' . $offer->image);
+                if ($offer->image != 'default.png') {
+
+                    Storage::disk('local')->delete('public/' . $offer->image);
+
+                } //end of inner if   
+
 
                 $request_data['image'] = $request->file('image')->store('offer_images','public');
             }

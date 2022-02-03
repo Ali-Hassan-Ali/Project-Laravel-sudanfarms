@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(LaratrustSeeder::class);
+        $this->call(CategoryDealerTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(ClientsTableSeeder::class);
         $this->call(CategorysTableSeeder::class);
         $this->call(SubCategorysTableSeeder::class);
-        $this->call(CategoryDealerTableSeeder::class);
         $this->call(PackageTableSeeder::class);
         $this->call(PromotedDealerTableSeeder::class);
         $this->call(SettingBannersTableSeeder::class);

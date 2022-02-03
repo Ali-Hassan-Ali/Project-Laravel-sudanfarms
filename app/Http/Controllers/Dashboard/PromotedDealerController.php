@@ -59,7 +59,7 @@ class PromotedDealerController extends Controller
             'description'         => ['required'],
         ]);
 
-        // try {
+        try {
 
             $this_user = PromotedDealer::where('id', $request->user_id)->first();
 
@@ -83,11 +83,11 @@ class PromotedDealerController extends Controller
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.promoted_dealers.index');
 
-        // } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-        //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        // }//end try
+        }//end try
 
     }//end of store
 
@@ -139,9 +139,9 @@ class PromotedDealerController extends Controller
                 $request_data['company_certificate'] = $request->file('company_certificate')->store('company_certificate', 'public');
             }
 
-            $this_user = PromotedDealer::where('id', auth()->user()->id)->first();
+            $this_user = PromotedDealer::where('id', auth()->id())->first();
 
-            $request_data['user_id'] = auth()->user()->id;
+            $request_data['user_id'] = auth()->id();
 
             $promotedDealer->update($request_data);
 
@@ -178,8 +178,17 @@ class PromotedDealerController extends Controller
 
     public function status(PromotedDealer $promotedDealer)
     {
+        if ($promotedDealer->status == '-1') {
+            $status = 1;
+        }
+        if ($promotedDealer->status == '0') {
+            $status = 1;
+        }
+        if ($promotedDealer->status == '1') {
+            $status = 0;
+        }
         $promotedDealer->update([
-            'status' => $promotedDealer->status == 1 ? 0 : 1,
+            'status' => $status,
         ]);
 
         session()->flash('success', __('dashboard.updated_successfully'));

@@ -16,6 +16,7 @@ use App\Http\Controllers\Home\OrderController;
 use App\Http\Controllers\Home\GobController;
 
 use AmrShawky\LaravelCurrency\Facade\Currency;
+use App\Models\PromotedDealer;
 use App\Models\Product;
 
 
@@ -24,9 +25,6 @@ function () {
 
     Route::get('/dd', function() {
 
-        $product = App\Models\Product::first();
-
-        return $product->units->name;
 
     });
     

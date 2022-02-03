@@ -33,6 +33,7 @@ use App\Http\Controllers\Dashboard\Setting\NewsletterController;
 use App\Http\Controllers\Dashboard\Setting\PolicyController;
 use App\Http\Controllers\Dashboard\Setting\AdvertisementController;
 use App\Http\Controllers\Dashboard\Setting\AboutCustomerController;
+use App\Http\Controllers\Dashboard\Setting\UnitController;
 
 
 
@@ -116,6 +117,9 @@ function () {
             Route::get('evacuation_responsibilatys', [PolicyController::class,'evacuation_responsibilatys'])->name('evacuation_responsibilatys.index');
             Route::resource('policys', PolicyController::class)->except(['show','index']);
 
+            // units toute
+            Route::resource('units', UnitController::class)->except(['show']);
+
             //setting_banners routes
             Route::resource('setting_banners', SettingBannerController::class)->except(['show']);
 
@@ -135,6 +139,7 @@ function () {
             Route::get('social_links', [SettingController::class,'social_links'])->name('social_links.index');
             Route::get('manager_word', [SettingController::class,'manager_word'])->name('manager_word.index');
             Route::get('about', [SettingController::class,'about'])->name('about.index');
+            Route::get('account_number', [SettingController::class,'account_number'])->name('account_number.index');
             Route::post('/settings', [SettingController::class,'store'])->name('settings.store');
 
         }); //end of settings routes

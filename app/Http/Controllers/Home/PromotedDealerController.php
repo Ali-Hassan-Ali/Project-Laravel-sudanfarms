@@ -16,7 +16,10 @@ class PromotedDealerController extends Controller
 
     public function index()
     {
-        $statusPackages = PromotedDealer::where('user_id', auth()->user()->id)->where('packages_id', '>', '0')->where('status', '1')->first();
+        $statusPackages = PromotedDealer::where('user_id', auth()->id())
+                                        ->where('packages_id', '>', '0')
+                                        ->where('status', '1')
+                                        ->first();
 
         if ($statusPackages) {
 
@@ -200,32 +203,20 @@ class PromotedDealerController extends Controller
             'image'     => ['required','image'],
         ]);
 
-        $user      = PromotedDealer::where('user_id', auth()->id())->first();
-        $package   = Package::where('id', $request->package_id)->first();
-
-        $end_month = $package->month + date('m'); 
-        $data_yery = date('Y');
-        $day       = date('d');
-
-        if ($end_month >= 12) {
-            $end_month -= 12;
-            $data_yery  = date('Y') + 1;
-        }
-
-        $end_month   = date($end_month . '-' . $day . '-' . $data_yery);
-        $start_month = date('m-d-Y');
+        $PromotedDealer = PromotedDealer::where('user_id', auth()->id())->first();
+        $package        = Package::find($request->package_id);
         
         $request_data_user                = $request->except('image', 'package_id');
         $request_data_user['packages_id'] = $request->package_id;
-        $request_data_user['status']      = '1';
+        $request_data_user['status']      = '-1';
 
-        $user->update($request_data_user);
+        $PromotedDealer->update($request_data_user);
 
         $request_data_package                       = $request->except('image', 'package_id');
-        $request_data_package['promoted_dealer_id'] = $user->id;
+        $request_data_package['promoted_dealer_id'] = $PromotedDealer->id;
         $request_data_package['package_id']         = $request->package_id;
-        $request_data_package['start_month']        = $start_month;
-        $request_data_package['end_month']          = $end_month;
+        $request_data_package['start_month']        = now();
+        $request_data_package['end_month']          = now()->addMonths($package->month);
         $request_data_package['image']              = $request->file('image')->store('promoted_dealers_images', 'public');
 
         PackagePromoted::create($request_data_package);

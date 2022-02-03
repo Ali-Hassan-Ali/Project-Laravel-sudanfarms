@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PromotedDealer;
+use App\Models\SettingBanner;
 use App\Models\Newsletter;
 use App\Models\Categorey;
 use App\Models\Currenccy;
+use App\Models\Product;
 use App\Models\Offer;
 
 class WelcomController extends Controller
 {
     public function index()
     {   
-        $sub_categoreys = Categorey::where('sub_categoreys','>','0')->get();
 
         $offer          = Offer::latest()->first();
 
@@ -23,8 +24,13 @@ class WelcomController extends Controller
         $promoted_from_inside  = PromotedDealer::where('from_inside','1')->get();
         $promoted_from_unnside = PromotedDealer::where('from_inside','0')->get();
 
+        $setting_banners = SettingBanner::all();
+        $sub_categoreys  = Categorey::where('sub_categoreys','>','0')->get();
+        // $sub_categoreys  = Product::latest()->paginate(10);
+
         return view('home.welcome',compact('sub_categoreys','offer','offers',
-                                            'promoted_from_inside','promoted_from_unnside'));
+                                            'promoted_from_inside','promoted_from_unnside'
+                                            ,'setting_banners'));
 
     }//end of index
 

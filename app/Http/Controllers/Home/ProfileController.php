@@ -21,53 +21,25 @@ class ProfileController extends Controller
 {
     public function index()
     {
-
         $userId = auth()->id();
 
         $promoted_dealer = PromotedDealer::where('user_id', $userId)->first();
 
         if ($promoted_dealer) {
-
-            $PackagePromoted = PackagePromoted::where('promoted_dealer_id', $promoted_dealer->id)->latest()->first();
             
-            if ($PackagePromoted) {
+            if ($promoted_dealer->PromotedDealerFirst->first()) {
 
-                if ($promoted_dealer->packages_id) {
+                if ($promoted_dealer->PromotedDealerFirst->first()->end_month < now()) {
                     
-                    if ($PackagePromoted->end_month < date('m-d-Y')) {
-                        
-                        $promoted_dealer->update([
-                            'status' => 0,
-                        ]);
-
-                    } else {
-
-                        // $promoted_dealer->update([
-                        //     'status' => 1,
-                        // ]);
-
-                    } //end of if
+                    $promoted_dealer->update([
+                        'status' => 0,
+                    ]);
 
                 }//end of if
 
-            } //emd pf
+            } //end of if
 
-        } //end of if
-
-        // return $promoted_dealer;
-
-        if ($promoted_dealer) {
-
-            $promoted_dealer  = PromotedDealer::where('user_id', $userId)->first();
-
-            $request_custmers = RequestCustmer::where('promoted_dealer_id', $promoted_dealer->id)->get();
-
-        } else {
-
-            $promoted_dealer  = 0;
-
-            $request_custmers = 0;
-        }
+        }//end of count promoted_dealer
 
         $user      = PromotedDealer::where('user_id', $userId)->first();
         $products  = Product::where('user_id', $userId)->count();
@@ -75,21 +47,9 @@ class ProfileController extends Controller
         $orderItem = OrderItem::where('promoted_dealer_id', $userId)->count();
         $orders    = Order::where('user_id', $userId)->count();
         $recustm   = RequestCustmer::count();
-
-        $uuser_state = PromotedDealer::where('user_id',$userId)->where('state','0')->first();
-        $packages    = PromotedDealer::where('user_id',$userId)
-                                                  ->where('packages_id','>','0')
-                                                  ->where('status','0')
-                                                  ->first();
-
-        $packagCount = PromotedDealer::where('user_id',$userId)
-                                                  ->where('packages_id','>','0')
-                                                  ->where('status','0')
-                                                  ->count();
                                     
-        return view('home.my_acount.profile', compact('request_custmers', 'promoted_dealer', 'user',
-                                                      'products', 'offers', 'orderItem', 'orders', 'recustm'
-                                                      ,'uuser_state','packages','packagCount'));
+        return view('home.my_acount.profile', compact('recustm', 'promoted_dealer', 'user',
+                                                      'products', 'offers', 'orderItem', 'orders', 'recustm'));
 
     } //end of index
 

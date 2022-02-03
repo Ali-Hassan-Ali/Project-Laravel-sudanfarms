@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Unit;
 use App\Models\Product;
 use App\Models\Categorey;
 use App\Models\ImageProduct;
@@ -25,8 +26,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::whenSearch(request()->search)->latest()->paginate(10);
-
+        $products = Product::whenSearch(request()->search)->where('user_id','1')->latest()->paginate(10);
+        
         return view('dashboard.products.index',compact('products'));
 
     }//end of model
@@ -36,7 +37,9 @@ class ProductController extends Controller
     {
         $sub_categoreys = Categorey::where('sub_categoreys','0')->get();
 
-        return view('dashboard.products.create',compact('sub_categoreys'));
+        $units = Unit::all();
+
+        return view('dashboard.products.create',compact('sub_categoreys','units'));
 
     }//end of create
 
@@ -44,27 +47,25 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name_ar'           => 'required',
-            'name_en'           => 'required',
-            'quantity'          => 'required',
-            'quantity_guard_ar' => 'required',
-            'quantity_guard_en' => 'required',
-            'start_time'        => 'required',
-            'end_time'          => 'required',
-            'description_ar'    => 'required',
-            'description_en'    => 'required',
-            'price'             => 'required',
-            'price_decount'     => 'required',
-            'sub_category_id'   => 'required',
-            // 'user_id'           => 'required',
-            // 'image'             => 'required',
+            'name_ar'           => ['required'],
+            'name_en'           => ['required'],
+            'quantity'          => ['required','numeric'],
+            'units_id'          => ['required','numeric'],
+            'start_time'        => ['required'],
+            'end_time'          => ['required'],
+            'description_ar'    => ['required'],
+            'description_en'    => ['required'],
+            'price'             => ['required','numeric'],
+            'price_decount'     => ['required','numeric'],
+            'sub_category_id'   => ['required','numeric'],
+            'image'             => ['required','array','imag'],
         ]);
 
         try {
 
             $request_data = $request->except('image');
 
-            $request_data['user_id'] = auth()->user()->id;
+            $request_data['user_id'] = auth()->id();
 
             $products = Product::create($request_data);
 
@@ -108,7 +109,9 @@ class ProductController extends Controller
         $sub_categoreys     = Categorey::where('sub_categoreys','0')->get();
         $categoreys_product = Categorey::where('id', $product->sub_category_id)->first();
 
-        return view('dashboard.products.edit',compact('sub_categoreys','product'));
+        $units = Unit::all();
+
+        return view('dashboard.products.edit',compact('sub_categoreys','product','units'));
 
     }//end of edit
 
@@ -118,27 +121,25 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'name_ar'           => 'required',
-            'name_en'           => 'required',
-            'quantity'          => 'required',
-            'quantity_guard_ar' => 'required',
-            'quantity_guard_en' => 'required',
-            'start_time'        => 'required',
-            'end_time'          => 'required',
-            'description_ar'    => 'required',
-            'description_en'    => 'required',
-            'price'             => 'required',
-            'price_decount'     => 'required',
-            'sub_category_id'   => 'required',
-            // 'user_id'         => 'required',
-            // 'image'           => 'image',
+            'name_ar'           => ['required'],
+            'name_en'           => ['required'],
+            'quantity'          => ['required','numeric'],
+            'units_id'          => ['required','numeric'],
+            'start_time'        => ['required'],
+            'end_time'          => ['required'],
+            'description_ar'    => ['required'],
+            'description_en'    => ['required'],
+            'price'             => ['required','numeric'],
+            'price_decount'     => ['required','numeric'],
+            'sub_category_id'   => ['required','numeric'],
+            'image'             => ['required','array','imag'],
         ]);
 
         try {
 
             $request_data = $request->except('image');
 
-            $request_data['user_id'] = auth()->user()->id;
+            $request_data['user_id'] = auth()->id();
 
             $product->update($request_data);
 
@@ -149,10 +150,15 @@ class ProductController extends Controller
 
                 foreach ($product_image as  $image) {
 
-                    Storage::disk('local')->delete('public/' . $image->image);
+                    if ($image->image != 'default.png') {
+
+                        Storage::disk('local')->delete('public/' . $image->image);
+
+                    } //end of inner if  
 
                     $image->delete();
-                }
+
+                }//end of foreach
 
                 
                 foreach ($request->image as $key=>$imag) {

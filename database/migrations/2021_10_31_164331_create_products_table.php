@@ -31,6 +31,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('sub_category_id')->unsigned();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('promoted_dealer_id')->constrained()->onDelete('cascade');
             $table->foreign('sub_category_id')->references('id')->on('categoreys')->onDelete('cascade');
             $table->timestamps();
         });

@@ -38,6 +38,7 @@ return [
             'packages'         => 'c,r,u,d',
             'about_customers'  => 'c,r,u,d',
             'price_tables'     => 'c,r,u,d',
+            'units'            => 'c,r,u,d',
             'advertisements'   => 'c,r,u',
         ],
         

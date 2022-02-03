@@ -14,6 +14,7 @@
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
                 <li class="active">@lang('dashboard.promoted_dealers')</li>
             </ol>
+
         </section>
 
         <section class="content">
@@ -82,10 +83,18 @@
 
                                                 <p class="text-red">@lang('dashboard.not_available')</p>
 
-                                            @else
+                                            @endif
+                                            
+                                            @if ($dealers->status == 1)
 
                                                 <p class="text-success">@lang('dashboard.available')</p>
+                                                
+                                            @endif
 
+                                            @if ($dealers->status == -1)
+
+                                                <p class="text-red">@lang('dashboard.not_available')</p>
+                                                
                                             @endif
                                         </td>
                                         <td>{{ $dealers->user->name }}</td>
@@ -97,21 +106,30 @@
                                             @else
                                                 <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i></a>
                                             @endif
+                                            @php
+                                                $status = $dealers->status;
+                                            @endphp
                                             <a href="{{ route('dashboard.promoted_dealers.status', $dealers->id) }}" 
-                                                class="btn btn-{{ $dealers->status == 0 ? 'danger' : 'success' }} btn-sm">
-                                                @if ($dealers->status == 0)
-                                                <i class="fas fa-toggle-off"></i>
-                                                    
-                                                @else
+                                                class="btn btn-{{ $status == 0 ? 'danger' : '' }}{{ $status == -1 ? 'danger' : '' }}{{ $status == 1 ? 'success' : '' }} btn-sm">
 
-                                                <i class="fas fa-toggle-on"></i>
+                                                @if ($dealers->status == 0)
+                                                    <i class="fas fa-toggle-off"></i> 
                                                 @endif
+                                                @if ($dealers->status == -1)
+                                                    <i class="fas fa-toggle-off"></i> 
+                                                @endif
+                                                @if ($dealers->status == 1)
+                                                    <i class="fas fa-toggle-on"></i>
+                                                @endif
+
                                             </a>
+                                            
                                             @if (auth()->user()->hasPermission('promoted_dealers_show'))
                                                 <a href="{{ route('dashboard.promoted_dealers.show', $dealers->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                             @else
                                                 <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i></a>
                                             @endif
+
                                             @if (auth()->user()->hasPermission('promoted_dealers_delete'))
                                                 <form action="{{ route('dashboard.promoted_dealers.destroy', $dealers->id) }}" method="post" style="display: inline-block">
                                                     {{ csrf_field() }}

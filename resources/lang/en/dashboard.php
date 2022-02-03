@@ -19,6 +19,7 @@ return [
     'currenccys'           => 'currenccys',
     'gobs'                 => 'gobs',
     'select'               => 'select',
+    'units'                => 'units',
     'this_packages'        => 'You are subscribed to a package, wait 24 hours',
     'no_packages'          => 'You are subscribed to a package',
 
@@ -292,6 +293,9 @@ return [
     'smart_email'       => 'Smart Email',
 
     'settings'          => 'Settings',
+    'account_number'               => 'account number',
+    'account_number_details_ar'    => 'account number details Arbic',
+    'account_number_details_en'    => 'account number details english',
 
     'gallery_categorys' => 'gallery categorys',
     'gallerys'          => 'gallerys',

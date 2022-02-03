@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Categorey;
 use App\Models\Notification;
 use App\Models\ImageProduct;
-use Illuminate\Http\Request;
+use App\Models\Unit;
 
 class ProductController extends Controller
 {
@@ -24,8 +25,10 @@ class ProductController extends Controller
     public function create()
     {
         $sub_categoreys = Categorey::where('sub_categoreys','0')->get();
+
+        $units = Unit::all();
         
-        return view('home.my_acount.products.create',compact('sub_categoreys'));
+        return view('home.my_acount.products.create',compact('sub_categoreys','units'));
 
     }//end of create
 
@@ -34,19 +37,18 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'name_ar'           => 'required',
-            'name_en'           => 'required',
-            'quantity'          => 'required',
-            'quantity_guard_ar' => 'required',
-            'quantity_guard_en' => 'required',
-            'start_time'        => 'required',
-            'end_time'          => 'required',
-            'description_ar'    => 'required',
-            'description_en'    => 'required',
-            'price'             => 'required',
-            'price_decount'     => 'required',
-            'sub_category_id'   => 'required',
-            'image'             => 'required',
+            'name_ar'           => ['required'],
+            'name_en'           => ['required'],
+            'quantity'          => ['required','numeric'],
+            'units_id'          => ['required','numeric'],
+            'start_time'        => ['required'],
+            'end_time'          => ['required'],
+            'description_ar'    => ['required'],
+            'description_en'    => ['required'],
+            'price'             => ['required','numeric'],
+            'price_decount'     => ['required','numeric'],
+            'sub_category_id'   => ['required','numeric'],
+            'image'             => ['required','array','imag'],
         ]);
 
         try {
@@ -104,8 +106,9 @@ class ProductController extends Controller
         $sub_categoreys     = Categorey::where('sub_categoreys','0')->get();
         $categoreys_product = Categorey::where('id', $product->sub_category_id)->first();
         $categorey_id       = Categorey::where('id', $categoreys_product->sub_categoreys)->first();
+        $units              = Unit::all();
 
-        return view('home.my_acount.products.edit',compact('sub_categoreys','product','categorey_id'));
+        return view('home.my_acount.products.edit',compact('sub_categoreys','product','categorey_id','units'));
 
     }//end of edit
 
@@ -115,18 +118,17 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'name_ar'           => 'required',
-            'name_en'           => 'required',
-            'quantity'          => 'required',
-            'quantity_guard_ar' => 'required',
-            'quantity_guard_en' => 'required',
-            'start_time'        => 'required',
-            'end_time'          => 'required',
-            'description_ar'    => 'required',
-            'description_en'    => 'required',
-            'price'             => 'required',
-            'price_decount'     => 'required',
-            'sub_category_id'   => 'required',
+            'name_ar'           => ['required'],
+            'name_en'           => ['required'],
+            'quantity'          => ['required','numeric'],
+            'units_id'          => ['required','numeric'],
+            'start_time'        => ['required'],
+            'end_time'          => ['required'],
+            'description_ar'    => ['required'],
+            'description_en'    => ['required'],
+            'price'             => ['required','numeric'],
+            'price_decount'     => ['required','numeric'],
+            'sub_category_id'   => ['required','numeric'],
         ]);
 
       try {

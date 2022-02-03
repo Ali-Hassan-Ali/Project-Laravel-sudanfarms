@@ -126,6 +126,12 @@ class Product extends Model
 
     }//end of belongsTo user
 
+    public function Promoted()
+    {
+        return PromotedDealer::where('user_id',$this->user_id)->latest()->first();
+
+    }//end of belongsTo user
+
     public function units()
     {
         return $this->belongsTo(Unit::class);

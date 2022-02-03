@@ -27,13 +27,19 @@ class PromotedDealer extends Model
 
     public function package()
     {
-        return $this->belongsTo(Package::class,'packages_id')->withDefault();
+        return $this->belongsTo(Package::class,'packages_id');
         
     }//end of category_dealer
 
     public function PromotedDealer()
     {
         return $this->hasMany(PackagePromoted::class,'promoted_dealer_id');
+        
+    }//end of package
+
+    public function PromotedDealerFirst()
+    {
+        return $this->PromotedDealer()->take(1);
         
     }//end of package
 

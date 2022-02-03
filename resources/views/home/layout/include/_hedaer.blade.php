@@ -153,7 +153,10 @@
                                 <a class="navbar-link" href="{{ route('request_custmers.index') }}">
                                 @lang('dashboard.request_custmers')</a>
                             </li>
-                            <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="javascript:void(0);">@lang('home.social_center')</a>
+                            <li class="navbar-item dropdown">
+                                <a class="navbar-link dropdown-arrow" href="javascript:void(0);">
+                                    @lang('home.social_center')
+                                </a>
                                 <ul class="dropdown-position-list">
                                     <li><a href="{{ route('price_tables.index') }}">@lang('dashboard.price_tables')</a></li>
                                     <li><a href="{{ route('gobs.index') }}">@lang('dashboard.gobs')</a></li>
@@ -414,11 +417,73 @@
             </div>
             <ul class="nav-list">
 
+                @auth
+                    <li>
+                        <a class="nav-link dropdown-link" href="#">
+                            <i class="icofont-lock"></i><span>@lang('home.safety')</span>
+                        </a>
+                        <ul class="dropdown-list">
+                            <li><a href="{{ route('change_password.index') }}">@lang('home.change_password')</a></li>
+                        </ul>
+                    </li>
+                @endauth
+
                 <li>
                     <a class="nav-link" href="{{ route('welcome.index') }}">
                         <i class="icofont-home"></i><span>@lang('dashboard.home')</span>
                     </a>
                 </li>
+
+                <li>
+                    <a class="nav-link" href="{{ route('home.supplier') }}">
+                        <i class="icofont-home"></i><span>@lang('dashboard.suppliers')</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="{{ route('request_custmers.index') }}">
+                        <i class="icofont-home"></i><span>@lang('dashboard.request_custmers')</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link dropdown-link" href="#">
+                        <i class="icofont-lock"></i><span>@lang('home.social_center')</span>
+                    </a>
+                    <ul class="dropdown-list">
+                        <li>
+                            <a href="{{ route('price_tables.index') }}">
+                                @lang('home.price_tables')
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('gobs.index') }}">
+                                @lang('dashboard.gobs')
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('gallerys.index') }}">
+                                @lang('dashboard.gallerys')
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('videos.index') }}">
+                                @lang('dashboard.videos')
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('blogs.index') }}">
+                                @lang('dashboard.blogs')
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('files.index') }}">
+                                @lang('dashboard.files')
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
                 <li>
                     <a class="nav-link" hreflang="{{ app()->getLocale() == 'ar' ? 'en' : 'ar' }}" 
@@ -443,21 +508,16 @@
                 </li>
 
                 <li>
+                    <a class="nav-link" href="{{ route('home.contact') }}">
+                        <i class="icofont-food-cart"></i><span>@lang('dashboard.contact')</span>
+                    </a>
+                </li>
+
+                <li>
                     <a class="nav-link" href="{{ route('shops.index') }}">
                         <i class="icofont-food-cart"></i><span>@lang('home.shops')</span>
                     </a>
                 </li>
-
-                @auth
-                    <li>
-                        <a class="nav-link dropdown-link" href="#">
-                            <i class="icofont-lock"></i><span>@lang('home.safety')</span>
-                        </a>
-                        <ul class="dropdown-list">
-                            <li><a href="{{ route('change_password.index') }}">@lang('home.change_password')</a></li>
-                        </ul>
-                    </li>
-                @endauth
 
                 <li>
                     <a class="nav-link" href="{{ route('offers.clients.index') }}">

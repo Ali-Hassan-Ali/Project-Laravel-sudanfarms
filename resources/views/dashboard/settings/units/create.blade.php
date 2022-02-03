@@ -2,16 +2,17 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.setting_banners')  .' - '. __('dashboard.add'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.units')  .' - '. __('dashboard.add'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.setting_banners')</h1>
+            <h1>@lang('dashboard.units')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
+                <li><a href="{{ route('dashboard.settings.units.index') }}"> @lang('dashboard.units')</a></li>
                 <li class="active">@lang('dashboard.add')</li>
             </ol>
 
@@ -29,36 +30,28 @@
 
                     @include('partials._errors')
 
-                    <form action="{{ route('dashboard.settings.settings.store') }}" method="post">
+                    <form action="{{ route('dashboard.settings.units.store') }}" method="post">
 
                         {{ csrf_field() }}
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['facebook','twitter','instagram','whatsapp','email',
-                                      'email_one','phone','phone_one','map_ar','map_en',
-                                      'link_map','welcome_ar','welcom_en','about_ar','about_en'];
+                            $names = ['name_ar','name_en'];
                         @endphp
-
-                        <div class="form-group">
-                            <label>@lang('dashboard.status_offer')</label>
-                            <select name="status_offer" class="form-control">
-                                    <option value="1" {{ setting('status_offer') == 1 ? 'selected' : '' }}>@lang('dashboard.active')</option>
-                                    <option value="0" {{ setting('status_offer') == 0 ? 'selected' : '' }}>@lang('dashboard.inactive')</option>
-                            </select>
-                        </div>
 
                         @foreach ($names as $name)
 
                             <div class="form-group">
                                 <label>@lang('dashboard.' . $name)</label>
-                                <input type="text" name="{{ $name }}" class="form-control" value="{!! setting($name) !!}">
+                                <input type="text" name="{{ $name }}" class="form-control" value="{{ old($name) }}">
                             </div>
-                            
+
                         @endforeach
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> @lang('dashboard.add')
+                            </button>
                         </div>
 
                     </form><!-- end of form -->

@@ -31,6 +31,12 @@
                 </a>
             </li>
 
+            <li class="{{ Route::Is('dashboard.settings.units.index') ? 'active' : '' }}">
+                <a href="{{ route('dashboard.settings.units.index') }}">
+                    <i class="fa fa-dashboard"></i><span>@lang('dashboard.units')</span>
+                </a>
+            </li>
+
             <li class="{{ Route::Is('dashboard.orders.index') ? 'active' : '' }}">
                 <a href="{{ route('dashboard.orders.index') }}">
                     <i class="fa fa-dashboard"></i><span>@lang('dashboard.orders')</span>
@@ -207,6 +213,13 @@
                         <a href="{{ route('dashboard.settings.contact_us.index') }}">
                             <i class="fa fa-concierge-bell"></i> 
                             @lang('settings.contact_us')
+                        </a>
+                    </li>
+
+                    <li class="{{ Route::Is('dashboard.settings.account_number') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.settings.account_number.index') }}">
+                            <i class="fa fa-concierge-bell"></i> 
+                            @lang('settings.account_number')
                         </a>
                     </li>
 

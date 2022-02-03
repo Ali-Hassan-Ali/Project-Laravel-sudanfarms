@@ -20,6 +20,7 @@ return [
     'currenccys'           => 'العملات',
     'gobs'                 => 'وظائف',
     'select'               => 'تحديد',
+    'units'                => 'وحدات القياس',
     'this_packages'        => 'انت مشترك في باقه انتظر حتي يتم التاكيد من الاداره خلال 24 ساعة',
     // 'no_packages'          => 'يرجي الاشتراك في احدي البقات لكي تقوم بعمل منتجات',
     
@@ -292,6 +293,10 @@ return [
     'smart_email'       => 'بريد إلكتروني ذكي',
     
     'settings'          => 'الإعدادات',
+
+    'account_number'               => 'ارقام الحسبات',
+    'account_number_details_ar'    => 'ملحوظة عن الحساب بلعربي',
+    'account_number_details_en'    => 'ملحوظة عن الحساب بلانجلزي',
     
     'gallery_categorys' => 'اقسام الصور',
     'gallerys'          => 'معرض الصور',
