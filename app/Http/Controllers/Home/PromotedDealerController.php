@@ -51,7 +51,7 @@ class PromotedDealerController extends Controller
             'description'        => ['required'],
         ]);
 
-        // try {
+        try {
 
             $this_user = PromotedDealer::where('id', auth()->id())->first();
 
@@ -88,11 +88,11 @@ class PromotedDealerController extends Controller
 
             return redirect()->route('promoted_dealers.packages');
 
-        // } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-        //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        // } //end try
+        } //end try
 
     } //end of store
 

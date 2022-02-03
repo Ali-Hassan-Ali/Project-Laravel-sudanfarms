@@ -25,6 +25,9 @@ function () {
 
     Route::get('/dd', function() {
 
+        $Product = Product::first();
+
+        return $Product;
 
     });
     

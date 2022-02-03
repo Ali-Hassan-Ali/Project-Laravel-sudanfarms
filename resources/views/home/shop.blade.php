@@ -110,7 +110,7 @@
                         <div class="col-lg-12">
                             <div class="bottom-paginate">
 
-                                @include('paginations.defulte',$products)
+                                {{-- @include('paginations.defulte',$products) --}}
 
                             </div>
                         </div>

@@ -17,20 +17,22 @@ class WelcomController extends Controller
     public function index()
     {   
 
-        $offer          = Offer::latest()->first();
-
-        $offers         = Offer::count();
+        $offer  = Offer::latest()->first();
+        $offers = Offer::count();
 
         $promoted_from_inside  = PromotedDealer::where('from_inside','1')->get();
         $promoted_from_unnside = PromotedDealer::where('from_inside','0')->get();
 
         $setting_banners = SettingBanner::all();
         $sub_categoreys  = Categorey::where('sub_categoreys','>','0')->get();
-        // $sub_categoreys  = Product::latest()->paginate(10);
+
+        $newly_added_products = Product::latest()->limit(10)->get()->where('status',1);
+        $featured_products    = Product::inRandomOrder()->latest()->limit(6)->get()->where('status',1);
+        $new_products         = Product::orderBy('eye_count','DESC')->limit(10)->get()->where('status',1);
 
         return view('home.welcome',compact('sub_categoreys','offer','offers',
-                                            'promoted_from_inside','promoted_from_unnside'
-                                            ,'setting_banners'));
+                                            'promoted_from_inside','promoted_from_unnside','setting_banners'
+                                            ,'newly_added_products','featured_products','new_products'));
 
     }//end of index
 

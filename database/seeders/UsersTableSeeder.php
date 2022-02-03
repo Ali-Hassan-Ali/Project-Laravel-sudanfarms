@@ -33,6 +33,7 @@ class UsersTableSeeder extends Seeder
                 'other_phone'        => '123143413',
                 'web_site'           => 'web-site.com',
                 'country'            => 'sudan',
+                'status'             => 1,
                 'city'               => 'sudan',
                 'title'              => 'title',
                 'description'        => 'description',

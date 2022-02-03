@@ -13,7 +13,7 @@ class Product extends Model
 
     protected $appends = ['name','description','quantity_guard',
                           'condition','new_price','new_price_decount',
-                          'image_path','cury'];
+                          'image_path','cury','status','company_name'];
 
     public function getNameAttribute()
     {
@@ -90,6 +90,24 @@ class Product extends Model
         return number_format(preg_replace('/,/', '', $totle),2);
 
     }//end of new price decount
+
+    public function getStatusAttribute()
+    {
+
+        $data = PromotedDealer::where('user_id',$this->user_id)->first();
+
+        return $data->status;
+
+    }//end of status
+
+    public function getCompanyNameAttribute()
+    {
+
+        $data = PromotedDealer::where('user_id',$this->user_id)->first();
+
+        return $data->company_name;
+
+    }//end of company_name
 
     public function getImagePathAttribute()
     {

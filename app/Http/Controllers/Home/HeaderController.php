@@ -28,7 +28,10 @@ class HeaderController extends Controller
 
     public function searchs()
     {
-        $products = Product::whenSearch(request()->search)->latest()->paginate(10);
+        $products = Product::whenSearch(request()->search)
+                           ->orderBy('eye_count','DESC')
+                           ->paginate(10)
+                           ->where('status',1);
 
         return view('home.header.searchs',compact('products'));
 
@@ -40,12 +43,15 @@ class HeaderController extends Controller
     {
         if (request()->from_price || request()->to_price) {
 
-            $products = Product::whereBetween('price',[request()->from_price,request()->to_price])->latest()->paginate(20);
+            $products = Product::whereBetween('price',[request()->from_price,request()->to_price])
+                                ->orderBy('eye_count','DESC')
+                                ->paginate(20)
+                                ->where('status',1);
 
             return view('home.shop',compact('products'));            
         }
 
-        $products = Product::inRandomOrder()->latest()->paginate(20);
+        $products = Product::orderBy('eye_count','DESC')->limit(10)->get()->where('status',1);
 
         return view('home.shop',compact('products'));
 
@@ -65,7 +71,7 @@ class HeaderController extends Controller
 
     public function offersShow($id)
     {
-        $products = Product::where('sub_category_id',$id)->latest()->paginate(10);
+        $products = Product::where('sub_category_id',$id)->orderBy('eye_count','DESC')->paginate(10);
 
         return view('home.header.offers.show', compact('products'));
 
@@ -113,8 +119,12 @@ class HeaderController extends Controller
     public function show_product(Product $product)
     {
 
-        $min_product        = $product;
+        $min_product = $product;
         
+        $min_product->update([
+            'eye_count' => $min_product->eye_count + 1
+        ]);
+
         $category_product   = Categorey::where('sub_categoreys',$min_product->sub_category_id)->latest()->limit(4)->get();
         
         $image_product      = ImageProduct::where('product_id',$product->id)->get();
@@ -133,7 +143,7 @@ class HeaderController extends Controller
 
             $next_image_product = 0;
 
-        }
+        }//end of if next_product
 
         if (Product::find($product->id - 1)) {
             
@@ -147,9 +157,11 @@ class HeaderController extends Controller
             
             $prev_image_product = 0;
 
-        }
+        }//end of if prev_product
 
-        return view('home.products.show',compact('product','image_product','next_product','next_image_product','prev_product','prev_image_product','promoted_dealer','min_product','category_product'));
+        return view('home.products.show',compact('product','image_product','next_product',
+                                                 'next_image_product','prev_product','prev_image_product',
+                                                 'promoted_dealer','min_product','category_product'));
 
     }//end of show product
 
@@ -214,7 +226,7 @@ class HeaderController extends Controller
             'end_time'        => 'required',
         ]);
 
-        $request['user_id'] = auth()->user()->id;
+        $request['user_id'] = auth()->id();
 
         RequestCustmer::create($request->all());
 
@@ -291,7 +303,7 @@ class HeaderController extends Controller
             'message'    => 'required',
         ]);
         
-        $request['users_id'] = auth()->user()->id;
+        $request['users_id'] = auth()->id();
 
         Commint::create($request->all());
 

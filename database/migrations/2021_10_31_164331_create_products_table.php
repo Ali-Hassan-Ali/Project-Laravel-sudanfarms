@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name_ar');
             $table->string('name_en');
             $table->string('quantity');
+            $table->double('eye_count')->default(0);
             $table->foreignId('units_id')->constrained()->onDelete('cascade');
             $table->string('start_time');
             $table->string('end_time');

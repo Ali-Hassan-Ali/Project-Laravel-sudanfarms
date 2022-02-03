@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-                @foreach (\App\Models\Product::latest()->paginate(10) as $product)
+                @foreach ($newly_added_products as $product)
                     
                     <div class="col">
                         <div class="product-card">
@@ -72,13 +72,6 @@
                                     <label class="label-text new">@lang('lang.new')</label>
                                 </div>
                                 <button class="product-wish wish"><i class="fas fa-heart"></i></button>
-                                @php
-
-                                    $user_id = $product->user->id;
-
-                                    $promoted_dealer = App\Models\PromotedDealer::where('user_id',$user_id)->first();
-
-                                @endphp
                                 <a class="product-image" href="{{ route('product.show',$product->id) }}">
                                     <img src="{{ $product->image_path }}" alt="product" style="width: 100%;">
                                 </a>
@@ -102,7 +95,7 @@
                                     <a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a>
                                 </h6>
                                 <h6 class="product-price mb-0">
-                                    <span>{{ $promoted_dealer->name }}</span>
+                                    <span>{{ $product->company_name }}</span>
                                 </h6>
                                 <h6 class="product-price">
                                     <span>
@@ -172,7 +165,7 @@
             </div>
             <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
                 
-                @foreach (\App\Models\Product::inRandomOrder()->latest()->paginate(6) as $product)
+                @foreach ($featured_products as $product)
                 
                     <div class="col">
                         <div class="feature-card">
@@ -183,13 +176,6 @@
                                 <button class="feature-wish wish">
                                     <i class="fas fa-heart"></i>
                                 </button>
-                                @php
-
-                                    $user_id = $product->user->id;
-
-                                    $promoted_dealer = App\Models\PromotedDealer::where('user_id',$user_id)->first();
-
-                                @endphp
                                 <a class="feature-image" href="{{ route('product.show',$product->id) }}">
                                     <img src="{{ $product->image_path }}" alt="product">
                                 </a>
@@ -207,7 +193,7 @@
                                         <i class="active icofont-star"></i>
                                     @endfor
                                     {{-- <i class="icofont-star"></i> --}}
-                                    <a href="{{ route('product.show',$product->id) }}">{{ $promoted_dealer->name }}</a>
+                                    <span>{{ $product->company_name }}</span>
                                 </div>
                                 <h6 class="product-price d-flex justify-content-start">
                                     <span>
@@ -295,7 +281,7 @@
                 <div class="col">
                     <ul class="new-slider slider-arrow">
 
-                        @foreach (\App\Models\Product::inRandomOrder()->latest()->paginate(10) as $product)
+                        @foreach ($new_products as $product)
 
                         <li>
                             <div class="product-card">
@@ -303,13 +289,6 @@
                                     <button class="product-wish wish">
                                         <i class="fas fa-heart"></i>
                                     </button>
-                                    @php
-
-                                        $user_id = $product->user->id;
-
-                                        $promoted_dealer = App\Models\PromotedDealer::where('user_id',$user_id)->first();
-
-                                    @endphp
                                     <a class="product-image" href="{{ route('product.show',$product->id) }}">
                                         <img src="{{ $product->image_path }}" alt="product">
                                     </a>
@@ -343,7 +322,9 @@
                                             <small>/{{ $product->units->name }}</small>
                                         </span>
                                     </h6>
-                                    <h6 class="product-price"><span>{{ $promoted_dealer->name }}</span></h6>
+                                    <h6 class="product-price">
+                                        <span>{{ $product->company_name }}</span>
+                                    </h6>
                                     <button class="product-add add-cart" data-url="{{ route('cart.add') }}" data-id="{{ $product->id }}" title="@lang('home.add_cart')">
                                         <i class="fas fa-shopping-basket"></i><span>@lang('home.add_cart')</span>
                                     </button>
