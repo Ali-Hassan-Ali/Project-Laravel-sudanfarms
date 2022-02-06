@@ -314,6 +314,64 @@
                         <div class="col-lg-12">
                             <div class="account-card">
                                 <div class="account-title">
+                                    <h4>@lang('lang.correspondence')</h4>
+                                </div>
+                                <div class="account-content">
+                                    <div class="row">
+                                        @if ($user)
+                                        <div class="col-md-6 col-lg-4 alert fade show">
+                                            <div class="profile-card contact">
+                                                <h6><i class="fas fa-envelope"></i> @lang('lang.mailing') ( 0 )</h6>
+                                                <a href="messages.html">@lang('lang.mailing')</a>
+                                                <ul>
+                                                    <li>
+                                                        <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button>
+                                                    </li>
+                                                    <li><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 alert fade show">
+                                            <div class="profile-card contact active">
+                                                <h6>
+                                                    <i class="fas fa-user" style="margin-left: 9px">
+                                                    </i> {{ $user->category_dealer->name }} | 
+                                                </h6>
+                                                <a href="{{ route('promoted_dealers.edit') }}">@lang('dashboard.edit')</a>
+                                                <ul>
+                                                    <li>
+                                                        <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>    
+                                        @else
+                                        <div class="col-md-6 col-lg-4 alert fade show">
+                                            <div class="profile-card contact active">
+                                                <h6><i class="fas fa-user" style="margin-left: 9px"></i>@lang('lang.subscribe_promotion')</h6>
+                                                <a href="{{ route('promoted_dealers.index') }}">@lang('lang.promotion')</a>
+                                                <ul>
+                                                    <li>
+                                                        <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="account-card">
+                                <div class="account-title">
                                     <h4>@lang('dashboard.products')</h4>
                                 </div>
                                 <div class="account-content">

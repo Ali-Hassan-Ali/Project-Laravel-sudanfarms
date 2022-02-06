@@ -169,31 +169,10 @@
 	                                @enderror
 		                        </div>
 
-{{-- 		                        <div class="form-group">
-		                            <label>@lang('dashboard.stars')</label>
-		                            <select name="stars" class="form-control">
-		                                @for ($i = 1; $i < 7; $i++)
-		                                    <option value="{{ $i }}">{{ $i }}</option>
-		                                @endfor
-		                            </select>
-		                        </div> --}}
+	                        	@if ($productCount > $package->qty_product)
 
-		                        @php
-		                        	$promoted_dealer  = App\Models\PromotedDealer::where('user_id',auth()->id())->first();
-
-		                        	$user = App\Models\PromotedDealer::where('user_id', auth()->id())->first();
-
-							        $promoted_dealer_package  = App\Models\PackagePromoted::where('promoted_dealer_id',$user->id)->first();
-							        $product_package  = App\Models\Product::where('user_id',auth()->id())->count();
-
-							        $countproduct = $promoted_dealer_package->package->qty_product;
-
-		                        @endphp
-
-		                        @if ($promoted_dealer->package_id)
-
-		                        	@if ($countproduct > $product_package)
-
+		                        	@if ($PromotedDealer->status == '1')
+		                        		
 		                        		<div class="col-md-6 col-lg-4 mx-auto">
 				                            <div class="form-group">
 				                                <a href="{{ route('promoted_dealers.packages') }}" class="form-btn" type="submit">
@@ -204,16 +183,31 @@
 
 		                        	@endif
 
-		                        	
-		                        @else
-			                        <div class="col-md-6 col-lg-4 mx-auto">
-			                            <div class="form-group">
-			                                <button class="form-btn" type="submit">
-			                                	<i class="fa fa-plus"></i> @lang('dashboard.add')
-			                                </button>
-			                            </div>
-			                        </div>
-		                        @endif
+	                        	@else
+
+	                        		@if ($PromotedDealer->status == '1')
+		                        		
+		                        		<div class="col-md-6 col-lg-4 mx-auto">
+				                            <div class="form-group">
+				                                <a href="{{ route('promoted_dealers.packages') }}" class="form-btn" type="submit">
+				                                	<i class="fa fa-plus"></i> @lang('dashboard.packages')
+				                                </a>
+				                            </div>
+				                        </div>
+
+		                        	@else
+
+				                        <div class="col-md-6 col-lg-4 mx-auto">
+				                            <div class="form-group">
+				                                <button class="form-btn" type="submit">
+				                                	<i class="fa fa-plus"></i> @lang('dashboard.add')
+				                                </button>
+				                            </div>
+				                        </div>
+
+		                        	@endif
+
+	                        	@endif
 
 		                    </form><!-- end of form -->
 

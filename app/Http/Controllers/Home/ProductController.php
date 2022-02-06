@@ -9,6 +9,8 @@ use App\Models\Product;
 use App\Models\Categorey;
 use App\Models\Notification;
 use App\Models\ImageProduct;
+use App\Models\PromotedDealer;
+use App\Models\Package;
 use App\Models\Unit;
 
 class ProductController extends Controller
@@ -24,17 +26,48 @@ class ProductController extends Controller
 
     public function create()
     {
+
+        $PromotedDealer = PromotedDealer::where('user_id', auth()->id())->first();
+
+        $id = $PromotedDealer->PromotedDealerFirst[0]->package_id;
+
+        if ($id) {
+
+            $package = Package::find($id);
+
+        }//end of if
+
         $sub_categoreys = Categorey::where('sub_categoreys','0')->get();
+
+        $productCount = Product::where('user_id', auth()->id())->count();
 
         $units = Unit::all();
         
-        return view('home.my_acount.products.create',compact('sub_categoreys','units'));
+        return view('home.my_acount.products.create',compact('sub_categoreys','units','package','PromotedDealer','productCount'));
 
     }//end of create
 
    
     public function store(Request $request)
     {
+
+        $PromotedDealer = PromotedDealer::where('user_id', auth()->id())->first();
+
+        $id = $PromotedDealer->PromotedDealerFirst[0]->package_id;
+
+        if ($id) {
+
+          $package = Package::find($id);
+
+          $productCount = Product::where('user_id', auth()->id())->count();
+
+          if ($productCount > $package->qty_product) {
+              
+            return redirect()->back();
+
+          }//end of if
+
+        }//end of if
 
         $request->validate([
             'name_ar'           => ['required'],

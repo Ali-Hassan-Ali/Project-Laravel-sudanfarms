@@ -83,23 +83,14 @@
 
 		                        <div class="form-group">
 		                            <label>@lang('home.quantity_guard')</label>
-		                            <select name="quantity_guard" class="form-control">
-		                                <option value="حبة">حبة</option>
-		                                <option value="طن">طن</option>
-		                                <option value="كياوو">كياوو</option>
+		                            <select name="units_id" class="form-control">
+		                            	@foreach ($units as $unit)
+		                            		
+		                                	<option value="{{ $unit->id }}">{{ $unit->name }}</option>
+
+		                            	@endforeach
 		                            </select>
 		                        </div>
-
-{{-- 		                        <div class="form-group">
-		                            <label>@lang('dashboard.promoted_dealers')</label>
-		                            <select name="promoted_dealer_id" class="form-control @error('promoted_dealer_id') is-invalid @enderror">
-		                                <option value="">@lang('home.all')</option>
-		                                @foreach ($promoted_dealers as $promoted_dealer)
-		                                    <option value="{{ $promoted_dealer->id }}"
-		                                        {{ old('promoted_dealer_id') == $promoted_dealer->id ? 'selected' : '' }}>{{ $promoted_dealer->name }}</option>
-		                                @endforeach
-		                            </select>
-		                        </div> --}}
 
 
 		                        <div class="form-group">

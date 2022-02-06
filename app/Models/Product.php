@@ -94,7 +94,7 @@ class Product extends Model
     public function getStatusAttribute()
     {
 
-        $data = PromotedDealer::where('user_id',$this->user_id)->first();
+        $data = PromotedDealer::where('user_id', $this->user_id)->first();
 
         return $data->status;
 
@@ -103,7 +103,7 @@ class Product extends Model
     public function getCompanyNameAttribute()
     {
 
-        $data = PromotedDealer::where('user_id',$this->user_id)->first();
+        $data = PromotedDealer::where('user_id', $this->user_id)->first();
 
         return $data->company_name;
 
@@ -146,7 +146,7 @@ class Product extends Model
 
     public function Promoted()
     {
-        return PromotedDealer::where('user_id',$this->user_id)->latest()->first();
+        return PromotedDealer::where('user_id', $this->user_id)->latest()->first();
 
     }//end of belongsTo user
 

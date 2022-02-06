@@ -20,7 +20,7 @@ class CreateRequestCustmersTable extends Migration
             $table->string('email');
             $table->string('title');
             $table->string('product_name');
-            $table->string('quantity_guard');
+            $table->foreignId('units_id')->constrained()->onDelete('cascade');
             $table->dateTime('date_shipment');
             $table->dateTime('end_time');
             $table->double('quantity');

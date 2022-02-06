@@ -20,6 +20,7 @@ use App\Models\Video;
 use App\Models\Blog;
 use App\Models\File;
 use App\Models\Offer;
+use App\Models\Unit;
 use App\Models\OrderItem;
 use App\Models\PriceTable;
 
@@ -196,7 +197,7 @@ class HeaderController extends Controller
 
         }//end of if auth check
 
-        $request_custmers = RequestCustmer::where('promoted_dealer_id',null)->paginate(10);
+        $request_custmers = RequestCustmer::paginate(10);
 
         return view('home.header.request_custmers.index',compact('request_custmers'));
 
@@ -207,7 +208,9 @@ class HeaderController extends Controller
     {
         $promoted_dealers = PromotedDealer::all();
 
-        return view('home.header.request_custmers.create',compact('promoted_dealers'));
+        $units = Unit::all();
+
+        return view('home.header.request_custmers.create',compact('promoted_dealers','units'));
 
     }//end if request_custmers create
 
@@ -215,15 +218,15 @@ class HeaderController extends Controller
     public function RequestCustmersStore(Request $request)
     {
         $request->validate([
-            'name'            => 'required',
-            'phone'           => 'required',
-            'email'           => 'required',
-            'title'           => 'required',
-            'product_name'    => 'required',
-            'quantity_guard'  => 'required',
-            'quantity'        => 'required',
-            'date_shipment'   => 'required',
-            'end_time'        => 'required',
+            'name'            => ['required'],
+            'phone'           => ['required'],
+            'email'           => ['required'],
+            'title'           => ['required'],
+            'product_name'    => ['required'],
+            'units_id'        => ['required'],
+            'quantity'        => ['required'],
+            'date_shipment'   => ['required'],
+            'end_time'        => ['required'],
         ]);
 
         $request['user_id'] = auth()->id();

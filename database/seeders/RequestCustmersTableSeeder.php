@@ -24,7 +24,7 @@ class RequestCustmersTableSeeder extends Seeder
                 'title'              => 'الخرطوم',
                 'phone'              => '+249 114929635',
                 'email'              => 'alihassanali@gmail.com',
-                'quantity_guard'     => 'قطعة',
+                'units_id'           => 1,
                 'date_shipment'      => Carbon::create('2021', '02', '01'),
                 'end_time'           => Carbon::create('2021', '03', '01'),
                 'quantity'           => '24',
