@@ -23,6 +23,9 @@ return [
     'this_packages'        => 'You are subscribed to a package, wait 24 hours',
     'no_packages'          => 'You are subscribed to a package',
 
+    'start_month'          => 'start month',
+    'end_month'            => 'end month',
+
     'start_data'           => 'Start data',
     'end_data'             => 'end data',
     'count'                => 'count',

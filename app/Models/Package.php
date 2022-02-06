@@ -11,7 +11,7 @@ class Package extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['name','new_price'];
+    protected $appends = ['name','new_price','cury'];
 
     public function getNameAttribute()
     {
@@ -26,6 +26,12 @@ class Package extends Model
         }//end of if
 
     }//end of get name attr
+
+    public function getCuryAttribute()
+    {
+        return app()->getLocale() == 'ar' ? 'ج س' : 'SDG';
+
+    }//end of new image path
 
 
     public function scopeWhenSearch($query , $search) 

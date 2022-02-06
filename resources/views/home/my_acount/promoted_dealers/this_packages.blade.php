@@ -58,7 +58,7 @@
     	                                                <h6><img src="{{ $package->image_path }}" width="100"></h6>
     	                                            </td>
                                                     <td class="table-price">
-                                                        <h6>{{ $package->package->guard == '1' ? '' : '' }}</h6>
+                                                        <h6>{{ $package->package->name }}</h6>
                                                     </td>
     	                                        </tr>
 
