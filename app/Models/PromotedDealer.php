@@ -31,6 +31,12 @@ class PromotedDealer extends Model
         
     }//end of category_dealer
 
+    public function products()
+    {
+        return $this->hasMany(Product::class,'user_id');
+        
+    }//end of category_dealer
+
     public function PromotedDealer()
     {
         return $this->hasMany(PackagePromoted::class,'promoted_dealer_id');
