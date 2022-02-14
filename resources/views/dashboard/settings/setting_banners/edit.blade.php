@@ -40,6 +40,7 @@
                         @endphp
 
                         <div class="form-group">
+                            <label>@lang('lang.width') 1920px | @lang('lang.height') 1000px</label> <br>
                             <label>@lang('dashboard.image')</label>
                             <input type="file" name="image" class="form-control image">
                         </div>

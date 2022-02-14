@@ -86,10 +86,8 @@ class AuthController extends Controller
 
     public function store_register(Request $request)
     {
-        
         $request->validate([
             'name'     => ['required', 'max:15'],
-            'username' => ['required', 'unique:users', 'max:20'],
             'phone'    => ['required', 'max:15', 'min:9'],
             'email'    => ['required', 'email', 'unique:users', 'max:25'],
             'password' => ['required', 'confirmed', 'max:20'],
@@ -104,7 +102,6 @@ class AuthController extends Controller
            
             if ($position) {
 
-                $request_data['country'] = $position['country'];
                 $request_data['city']    = $position['regionName'];
                 $request_data['state']   = $position['regionName'];
                 $request_data['title']   = $position['city'];

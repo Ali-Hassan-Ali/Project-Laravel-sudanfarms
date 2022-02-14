@@ -33,6 +33,7 @@ use App\Http\Controllers\Dashboard\Setting\NewsletterController;
 use App\Http\Controllers\Dashboard\Setting\PolicyController;
 use App\Http\Controllers\Dashboard\Setting\AdvertisementController;
 use App\Http\Controllers\Dashboard\Setting\AboutCustomerController;
+use App\Http\Controllers\Dashboard\Setting\MessageController;
 use App\Http\Controllers\Dashboard\Setting\UnitController;
 
 
@@ -122,6 +123,9 @@ function () {
 
             //setting_banners routes
             Route::resource('setting_banners', SettingBannerController::class)->except(['show']);
+
+            //message routes
+            Route::resource('messages', MessageController::class)->except(['show']);
 
             //setting routes gallery_categorys
             Route::resource('gallery_categorys', GalleryCategoryController::class)->except(['show']);

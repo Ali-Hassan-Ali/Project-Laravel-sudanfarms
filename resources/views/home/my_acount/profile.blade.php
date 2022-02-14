@@ -89,7 +89,9 @@
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
                                     	<label class="form-label">@lang('dashboard.phone')</label>
-                                    	<input class="form-control @error('phone') is-invalid @enderror" type="number" name="phone" value="{{ auth()->user()->phone }}">
+                                    	<input id="phone" class="form-control @error('phone') is-invalid @enderror" type="tel" name="phone" value="{{ auth()->user()->phone }}">
+                                        <input id="code" name="phone_code" type="tel" value="+{{ auth()->user()->phone_code }}" hidden>
+                                        <input id="country-code" name="country_phone_code" type="text" value="{{ auth()->user()->country_phone_code }}" hidden>
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -101,7 +103,9 @@
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
                                     	<label class="form-label">@lang('dashboard.country')</label>
-                                    	<input class="form-control @error('country') is-invalid @enderror" type="text" name="country" value="{{ auth()->user()->country }}">
+                                        <br>
+                                    	<input id="country_selector" class="form-control @error('country') is-invalid @enderror" type="text" name="country">
+                                        <input id="country-user-code" type="text" name="country_code" value="{{ auth()->user()->country_code }}" hidden>
                                         @error('country')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -534,7 +538,6 @@
 
 @push('profile')
     <script type="text/javascript">
-
     // image preview certificate
         $("#user-image").change(function () {
             

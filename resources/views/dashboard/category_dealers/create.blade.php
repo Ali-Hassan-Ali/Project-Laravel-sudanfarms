@@ -49,6 +49,7 @@
                         @endforeach
 
                         <div class="form-group">
+                            <label>@lang('lang.width') 350px | @lang('lang.height') 250px</label> <br>
                             <label>@lang('dashboard.image')</label>
                             <input type="file" name="image" class="form-control image">
                         </div>

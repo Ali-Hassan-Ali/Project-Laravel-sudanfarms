@@ -46,6 +46,7 @@ class Categorey extends Model
     public function product()
     {
         return $this->hasMany(Categorey::class,'sub_categoreys');
+        
     }//end of belongsTo category
     
 }//end of model

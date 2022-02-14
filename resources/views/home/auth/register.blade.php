@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+--<!DOCTYPE html>
 <html lang="en" dir="rtl">
 
 <head>
@@ -14,6 +14,10 @@
     {{-- custom style --}}
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/main.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/custom/user-form.css') }}">
+
+    {{-- plugin  tel-input css--}}
+    <link rel="stylesheet" href="{{ asset('home_files/plugns/tel-input/css/intlTelInput.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('home_files/plugns/tel-input/css/demo.css') }}"> --}}
 </head>
 
 <body>
@@ -30,7 +34,7 @@
                         <div class="user-form-title">
                             <h2>@lang('lang.Join')</h2>
                         </div>
-                        <form class="user-form" action="{{ route('home.register.store') }}" method="post">
+                        <form class="user-form" id="register" action="{{ route('home.register.store') }}" method="post">
                             @csrf
                             @method('post')
 
@@ -42,24 +46,20 @@
                                     </span>
                                 @enderror
                             </div>
+
                             <div class="form-group">
-                                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="@lang('dashboard.username')">
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="@lang('dashboard.phone')">
+                                <input id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" type="tel" value="{{ old('phone') }}">
+                                <input id="code" name="phone_code" type="tel" value="+249" hidden>
+                                <input id="country-code" name="country_phone_code" type="text" value="sd" hidden>
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="@lang('dashboard.email')">
+                                <input type="email" name="email" value="test@gmail.com" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="@lang('dashboard.email')">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -116,6 +116,48 @@
     <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('home_files/js/vendor/popper.min.js') }}"></script>
     <script src="{{ asset('home_files/js/vendor/bootstrap.min.js') }}"></script>
+
+        {{-- plugins tel-input js--}}
+    <script src="{{ asset('home_files/plugns/tel-input/js/intlTelInput.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#register').on('click', function () {
+
+                var code = $('.iti__selected-dial-code').text();
+                
+                $('#code').val(code);
+                
+            });//end of click
+    
+        });
+        // addToHomescreen();
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+          // allowDropdown: true,
+          autoHideDialCode: true,
+          // autoPlaceholder: "off",
+          // dropdownContainer: document.body,
+          // excludeCountries: ["sd"],
+          // formatOnDisplay: false,
+          // geoIpLookup: function(callback) {
+          //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+          //     var countryCode = (resp && resp.country) ? resp.country : "";
+          //     callback(countryCode);
+          //   });
+          // },
+          // hiddenInput: "full_number",
+          initialCountry: "sd",
+          // localizedCountries: { 'de': 'Deutschland' },
+          // nationalMode: false,
+          // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+          // placeholderNumberType: "MOBILE",
+          // preferredCountries: ['cn', 'jp'],
+          separateDialCode: true,
+          utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
+        });
+    </script>
 </body>
 
 </html>

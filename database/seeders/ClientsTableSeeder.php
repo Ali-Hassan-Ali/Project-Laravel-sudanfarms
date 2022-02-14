@@ -13,13 +13,12 @@ class ClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = ['client','clients2','clients3','clients4','clients5','clients6','clients7','clients8','clients9'];
+        $users = ['client','client2','client3','client4','client5','client6','client7','client8','client9'];
 
         foreach ($users as $key => $name) {
             
             $user = \App\Models\User::create([
                 'name'     => $name,
-                'username' => $name,
                 'phone'    => '123456789',
                 'email'    => $name . '@app.com',
                 'country'  => 'country',

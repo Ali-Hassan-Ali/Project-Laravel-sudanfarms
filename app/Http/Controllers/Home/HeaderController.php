@@ -261,7 +261,7 @@ class HeaderController extends Controller
 
     public function blogs()
     {
-        $blogs        = Blog::whenSearch(request()->search)->latest()->paginate(8);
+        $blogs        = Blog::whenSearch(request()->search)->latest()->paginate(10);
         $random_blogs = Blog::inRandomOrder()->latest()->paginate(6);
 
         return view('home.header.media_center.blogs.index',compact('blogs','random_blogs'));

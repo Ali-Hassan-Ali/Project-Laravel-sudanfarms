@@ -24,6 +24,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 function () {
 
     Route::get('/dd', function() {
+        
+        return auth()->user()->phone;
 
         $Product = Product::first();
 

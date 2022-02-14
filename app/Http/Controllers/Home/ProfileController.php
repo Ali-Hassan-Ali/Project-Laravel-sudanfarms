@@ -78,7 +78,6 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-
         $user = User::find(auth()->id());
 
         $request->validate([
@@ -89,7 +88,7 @@ class ProfileController extends Controller
 
         try {
 
-            $request_data = $request->except(['image']);
+            $request_data             = $request->except(['image']);
 
             if ($request->image) {
 
@@ -102,8 +101,6 @@ class ProfileController extends Controller
                 $request_data['image'] = $request->file('image')->store('user_images', 'public');
 
             } //end of external if
-
-            $request_data['country'] = 'country';
 
             $user->update($request_data);
 

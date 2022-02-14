@@ -8,3 +8,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.country-select {
+    width: 100% !important;
+}

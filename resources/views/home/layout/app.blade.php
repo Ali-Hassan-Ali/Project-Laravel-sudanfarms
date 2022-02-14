@@ -39,8 +39,11 @@
     {{-- plugin  sweetalert2--}}
     <link rel="stylesheet" href="{{ asset('home_files/plugns/sweetalert/sweetalert2.min.css') }}">
 
-    {{-- plugin  addtohomescreen--}}
-    <link rel="stylesheet" href="{{ asset('home_files/plugns/addtohomescreen/addtohomescreen.css') }}">
+    {{-- plugin  tel-input css--}}
+    <link rel="stylesheet" href="{{ asset('home_files/plugns/tel-input/css/intlTelInput.css') }}">
+
+    {{-- plugin  country  css--}}
+    <link rel="stylesheet" href="{{ asset('home_files/plugns/country/css/countrySelect.css') }}">
 
     <style type="text/css">
         .at-expanding-share-button.at-expanding-share-button-mobile .at-expanding-share-button-toggle {
@@ -69,6 +72,7 @@
     </div>
     {{-- js vendor --}}
     <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    @stack('profile')
     <script src="{{ asset('home_files/js/vendor/popper.min.js') }}"></script>
     <script src="{{ asset('home_files/js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ asset('home_files/js/vendor/nice-select.min.js') }}"></script>
@@ -112,8 +116,22 @@
     {{--addtohomescreen js--}}
     <script src="{{ asset('dashboard_files/js/product.js') }}"></script>
 
+    {{-- plugins tel-input js--}}
+    <script src="{{ asset('home_files/plugns/tel-input/js/intlTelInput.js') }}"></script>
+
+    {{-- plugins country-input js--}}
+    <script src="{{ asset('home_files/plugns/country/js/countrySelect.js') }}"></script>
+
     <script type="text/javascript">
-        addToHomescreen();
+
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+          autoHideDialCode: true,
+          initialCountry: "{{ auth()->user()->country_phone_code }}",
+          separateDialCode: true,
+          utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
+        });
+
     </script>
 
     <!-- Go to www.addthis.com/dashboard to customize your tools --> 
@@ -122,13 +140,16 @@
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61c9d0e839533b05"></script>
 
-
     {{-- include packages notify js --}}
     @notifyJs
     
-    @stack('profile')
     @stack('products')
     @stack('gallery')
+    <script type="text/javascript">
+        $("#country_selector").countrySelect({
+            defaultCountry: "{{ auth()->user()->country_code }}",
+        });
+    </script>
 </body>
 
 </html>
