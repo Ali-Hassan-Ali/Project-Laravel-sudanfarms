@@ -503,6 +503,7 @@
 			// update selected flag and active list item
 			var countryCode = listItem.attr("data-country-code");
 			$('#country-user-code').val(countryCode);
+			$('#country-code').val(countryCode);
 			this._selectFlag(countryCode);
 			this._closeDropdown();
 			// update input value

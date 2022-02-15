@@ -43,7 +43,7 @@ class PromotedDealerController extends Controller
             'email'              => ['required'],
             'phone_master'       => ['required', 'min:9', 'max:15'],
             'phone'              => ['required', 'min:9', 'max:15'],
-            'other_phone'        => ['required', 'min:9', 'max:15'],
+            // 'other_phone'        => ['required', 'min:9', 'max:15'],
             'country'            => ['required'],
             'state'              => ['required'],
             'city'               => ['required'],

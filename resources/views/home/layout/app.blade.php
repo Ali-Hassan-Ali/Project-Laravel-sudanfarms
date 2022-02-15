@@ -17,6 +17,12 @@
 
     {{-- include packages notify css --}}
     @notifyCss
+    <style type="text/css">
+        .notify {
+            margin-top: 90px;
+            position: absolute;
+        }
+    </style>
     {{-- vendor style --}}
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/nice-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/venobox.min.css') }}">
@@ -122,6 +128,7 @@
     {{-- plugins country-input js--}}
     <script src="{{ asset('home_files/plugns/country/js/countrySelect.js') }}"></script>
 
+    @auth
     <script type="text/javascript">
 
         var input = document.querySelector("#phone");
@@ -133,6 +140,20 @@
         });
 
     </script>
+        
+    @else
+    <script type="text/javascript">
+
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+          autoHideDialCode: true,
+          initialCountry: "sd",
+          separateDialCode: true,
+          utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
+        });
+
+    </script>
+    @endauth
 
     <!-- Go to www.addthis.com/dashboard to customize your tools --> 
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61c9d0e839533b05"></script>
@@ -145,11 +166,110 @@
     
     @stack('products')
     @stack('gallery')
+    @auth
     <script type="text/javascript">
         $("#country_selector").countrySelect({
             defaultCountry: "{{ auth()->user()->country_code }}",
         });
     </script>
+    @else
+    <script type="text/javascript">
+        $("#country_selector").countrySelect({
+            defaultCountry: "sd",
+        });
+    </script>
+    @endauth
+
+
+    @php
+        $promoted_dealer = App\Models\PromotedDealer::where('user_id', auth()->id())->first();
+    @endphp
+
+    @if ($promoted_dealer)
+        <script type="text/javascript">
+            $("#country-promoted-dealer").countrySelect({
+                defaultCountry: "{{ $promoted_dealer->country }}",
+            });
+        </script>
+    @else
+        <script type="text/javascript">
+            $("#country-promoted-dealer").countrySelect({
+                defaultCountry: "sd",
+            });
+        </script>
+    @endif
+
+
+    @if ($promoted_dealer)
+        <script type="text/javascript">
+            var input = document.querySelector("#country_selector-promoted-master-phone");
+            window.intlTelInput(input, {
+              autoHideDialCode: true,
+              initialCountry: "{{ $promoted_dealer->phone_master_code }}",
+              separateDialCode: true,
+              utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
+            });
+        </script>
+    @else
+        <script type="text/javascript">
+            var input = document.querySelector("#country_selector-promoted-master-phone");
+            window.intlTelInput(input, {
+              autoHideDialCode: true,
+              initialCountry: "sd",
+              separateDialCode: true,
+              utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
+            });
+        </script>
+    @endif
+
+    @if ($promoted_dealer)
+        <script type="text/javascript">
+
+            var input = document.querySelector("#country_selector-promoted-other-phone");
+            window.intlTelInput(input, {
+              autoHideDialCode: true,
+              initialCountry: "{{ $promoted_dealer->other_phone_code }}",
+              separateDialCode: true,
+              utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
+            });
+
+        </script>
+    @else
+        <script type="text/javascript">
+            var input = document.querySelector("#country_selector-promoted-other-phone");
+            window.intlTelInput(input, {
+              autoHideDialCode: true,
+              initialCountry: "sd",
+              separateDialCode: true,
+              utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
+            });
+        </script>
+    @endif
+
+
+
+
+    @if ($promoted_dealer)
+        <script type="text/javascript">
+            var input = document.querySelector("#country_selector-promoted-phone");
+            window.intlTelInput(input, {
+              autoHideDialCode: true,
+              initialCountry: "{{ $promoted_dealer->phone_code }}",
+              separateDialCode: true,
+              utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
+            });
+        </script>
+    @else
+        <script type="text/javascript">
+            var input = document.querySelector("#country_selector-promoted-phone");
+            window.intlTelInput(input, {
+              autoHideDialCode: true,
+              initialCountry: "sd",
+              separateDialCode: true,
+              utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
+            });
+        </script>
+    @endif
 </body>
 
 </html>

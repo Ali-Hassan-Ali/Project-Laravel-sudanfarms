@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" type="tel" value="{{ old('phone') }}">
+                                <input id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" type="number" value="{{ old('phone') }}">
                                 <input id="code" name="phone_code" type="tel" value="+249" hidden>
                                 <input id="country-code" name="country_phone_code" type="text" value="sd" hidden>
                                 @error('phone')

@@ -4,6 +4,7 @@ return [
     
     'width'        => 'width',
     'height'       => 'height',
+    'required'     => 'required',
 
     'add_new_Packages' => 'Please renew your subscription',
     'wait_request'     => 'Wait until your request is accepted',

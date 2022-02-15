@@ -26,12 +26,17 @@ class CreatePromotedDealersTable extends Migration
             $table->string('company_logo')->default('company_logo/logo.png');
             $table->string('company_certificate')->default('company_certificate/certificate.png')->nullable();
             
-            $table->string('email')->nullable();
             $table->string('phone_master')->nullable();
+            $table->string('phone_master_code')->default('sd');
             $table->string('phone')->nullable();
+            $table->string('phone_code')->default('sd');
             $table->string('other_phone')->nullable();
+            $table->string('other_phone_code')->default('sd');
+
+            $table->string('email')->nullable();
             $table->string('web_site')->nullable();
             $table->string('country')->nullable();
+            $table->string('country_code')->default('sd');
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('title')->nullable();

@@ -4,6 +4,7 @@ return [
 
     'width'        => 'العرض',
     'height'       => 'ارتفاع',
+    'required'     => 'مطلوب',
 
     'add_new_Packages' => 'يرجي تجديد الاشتراك',
     'wait_request'     => 'انطظر حتي يتم قبول طلبك',

@@ -55,6 +55,12 @@ class AuthController extends Controller
                         'email'    => $request->email,
                         'password' => $request->password], $remember_me)) {
 
+                        Notification::create([
+                            'title_ar' => 'لقد قمت بتسجيل الدخول',
+                            'title_en' => 'I have clicked login',
+                            'user_id'  => auth()->id(),
+                        ]); //end of create
+
                         notify()->success(__('dashboard.login_successfully'));
                         return redirect()->route('profile.index');
 

@@ -33,7 +33,7 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                                <label>@lang('dashboard.company_name')</label>
+		                                <label>@lang('dashboard.company_name') <span class="text-danger"> : @lang('lang.required')</span> </label>
 		                                <input type="text" name="company_name" placeholder="@lang('dashboard.company_name')" class="form-control @error('company_name') is-invalid @enderror" value="{{ old('company_name') }}">
 		                                @error('company_name')
 			                                <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.from_inside')</label>
+		                            	<label class="form-label">@lang('dashboard.from_inside') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                                <select name="from_inside" required class="form-control">
 
 		                                    	<option value="">@lang('dashboard.select')</option>
@@ -64,7 +64,7 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.promotion')</label>
+		                            	<label class="form-label">@lang('lang.promotion') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                                <select name="category_dealer_id" id="category-dealer-id" required class="form-control">
 		                                    	<option value="">@lang('lang.promotion_categorey')</option>
 		                                	@foreach (App\Models\CategoryDealer::all() as $data)
@@ -77,7 +77,7 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.email')</label>
+		                            	<label class="form-label">@lang('lang.email') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                            	<input class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ auth()->user()->email }}" 
 		                            	placeholder="@lang('lang.email')">
 		                            	@error('email')
@@ -90,8 +90,9 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.phone_master')</label>
-		                            	<input class="form-control @error('phone_master') is-invalid @enderror" value="{{ old('phone_master') }}" type="number" name="phone_master" placeholder="@lang('lang.phone_master')">
+		                            	<label class="form-label">@lang('lang.phone_master') <span class="text-danger"> : @lang('lang.required')</span></label>
+		                            	<br>
+		                            	<input id="country_selector-promoted-master-phone" class="form-control @error('phone_master') is-invalid @enderror" value="{{ old('phone_master') }}" type="number" name="phone_master" placeholder="@lang('lang.phone_master')">
 		                            	@error('phone_master')
 			                                <span class="invalid-feedback" role="alert">
 			                                    <strong>{{ $message }}</strong>
@@ -102,8 +103,9 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.phone')</label>
-		                            	<input class="form-control @error('phone') is-invalid @enderror" value="{{ auth()->user()->phone }}" type="number" name="phone" placeholder="@lang('dashboard.phone')">
+		                            	<label class="form-label">@lang('dashboard.phone') <span class="text-danger"> : @lang('lang.required')</span></label>
+		                            	<br>
+		                            	<input id="country_selector-promoted-phone" class="form-control @error('phone') is-invalid @enderror" value="{{ auth()->user()->phone }}" type="number" name="phone" placeholder="@lang('dashboard.phone')">
 		                            	@error('phone')
 			                                <span class="invalid-feedback" role="alert">
 			                                    <strong>{{ $message }}</strong>
@@ -115,7 +117,8 @@
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.other_phone')</label>
-		                            	<input class="form-control @error('other_phone') is-invalid @enderror" value="{{ old('other_phone') }}" type="number" name="other_phone" placeholder="@lang('lang.other_phone')">
+		                            	<br>
+		                            	<input id="country_selector-promoted-other-phone" class="form-control @error('other_phone') is-invalid @enderror" value="{{ old('other_phone') }}" type="number" name="other_phone" placeholder="@lang('lang.other_phone')">
 		                            	@error('other_phone')
 			                                <span class="invalid-feedback" role="alert">
 			                                    <strong>{{ $message }}</strong>
@@ -138,8 +141,10 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.country')</label>
-		                            	<input class="form-control @error('country') is-invalid @enderror" type="text" value="{{ auth()->user()->country }}" name="country" placeholder="@lang('dashboard.country')">
+		                            	<label class="form-label">@lang('dashboard.country') <span class="text-danger"> : @lang('lang.required')</span></label>
+		                            	<br>
+		                            	<input id="country-promoted-dealer" class="form-control @error('country') is-invalid @enderror" type="text" name="country" placeholder="@lang('dashboard.country')">
+		                            	<input id="country-code" type="text" name="country_code" value="sd" hidden>
 		                            	@error('country')
 			                                <span class="invalid-feedback" role="alert">
 			                                    <strong>{{ $message }}</strong>
@@ -150,7 +155,7 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.state')</label>
+		                            	<label class="form-label">@lang('lang.state') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                            	<input class="form-control @error('state') is-invalid @enderror" type="text" value="{{ auth()->user()->state }}" name="state" placeholder="@lang('lang.state')">
 		                            	@error('state')
 			                                <span class="invalid-feedback" role="alert">
@@ -162,7 +167,7 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.city')</label>
+		                            	<label class="form-label">@lang('dashboard.city') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                            	<input class="form-control @error('city') is-invalid @enderror" type="text" value="{{ auth()->user()->city }}" name="city" placeholder="@lang('dashboard.city')">
 		                            	@error('city')
 			                                <span class="invalid-feedback" role="alert">
@@ -186,7 +191,7 @@
 
 		                        <div class="col-sm-12">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.company_profile')</label>
+		                            	<label class="form-label">@lang('lang.company_profile') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                                <textarea name="description" required class="form-control @error('description') is-invalid @enderror" cols="30" rows="10" placeholder="@lang('lang.company_profile')">{{ old('description') }}</textarea>
 		                                @error('description')
 			                                <span class="invalid-feedback" role="alert">
@@ -198,7 +203,7 @@
 
 	                            <div class="col-sm-12">
 	                                <div class="form-group">
-	                                	<label class="form-label">@lang('lang.company_logo')</label>
+	                                	<label class="form-label">@lang('lang.company_logo') <span class="text-danger"> : @lang('lang.required')</span></label>
 	                                    <input class="form-control @error('company_logo') is-invalid @enderror" required accept="image/*" type="file" id="company-logo" name="company_logo">
 	                                    @error('company_logo')
 			                                <span class="invalid-feedback" role="alert">
