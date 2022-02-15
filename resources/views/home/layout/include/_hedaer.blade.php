@@ -101,7 +101,7 @@
                         $notys = App\Models\NotificationUser::where('user_id',auth()->id())->latest()->limit(10)->get();
                     @endphp
                     <button class="header-widget header-cart-noty" title="@lang('home.cart')">
-                        <i class="fas fa-bell"></i><sup class="cart-countt">{{ $notys->count() }}</sup>
+                        <i class="fas fa-bell"></i><sup class="notys-count">{{ $notys->count() }}</sup>
                     </button>
 
                     <button class="header-widget header-cart" title="@lang('home.cart')">
@@ -344,7 +344,7 @@
         <div class="cart-header">
             <div class="cart-total"><i class="fas fa-bell"></i>
                 <span class="all-product"> @lang('dashboard.count_noty') 
-                    <div class="cart-count">{{ $notys->count() }}</div>
+                    <div class="notys-count">{{ $notys->count() }}</div>
                 </span>
             </div>
             <button class="cart-close-noty"><i class="icofont-close"></i></button>
@@ -453,7 +453,7 @@
                     <ul class="dropdown-list">
                         <li>
                             <a href="{{ route('price_tables.index') }}">
-                                @lang('home.price_tables')
+                                @lang('dashboard.price_tables')
                             </a>
                         </li>
                         <li>
@@ -580,7 +580,7 @@
         </a>
         <button class="header-widget header-cart-noty" title="@lang('dashboard.notifications')">
             <i class="fas fa-bell"></i>
-            <sup class="cart-count">{{ $notys->count() }}</sup>
+            <sup class="notys-count">{{ $notys->count() }}</sup>
         </button>
         <button class="header-widget header-cart" title="@lang('home.shops')">
             <i class="fas fa-shopping-basket"></i>
