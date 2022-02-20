@@ -11,6 +11,8 @@ use App\Models\Categorey;
 use App\Models\Currenccy;
 use App\Models\Product;
 use App\Models\Offer;
+use App\Models\Country;
+use App\Models\City;
 
 class WelcomController extends Controller
 {
@@ -133,5 +135,13 @@ class WelcomController extends Controller
         return response()->json(['price' => $totle , 'cry' => $cry]);
 
     }//end of amount decount
+
+    public function get_city(Country $country)
+    {
+        $citys = City::where('country_id', $country->id)->get();
+
+        return response()->json(['citys' => $citys]);
+
+    }//end of get_city
     
 }//end of controller

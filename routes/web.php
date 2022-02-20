@@ -24,11 +24,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 function () {
 
     Route::get('/dd', function() {
-        return auth()->id();
-        return auth()->user()->logout();
-    });
+        
+        $users = App\Models\User::first();
 
-    
+        return $users;
+
+    });
 
     Route::get('/email', function() {
 
@@ -61,6 +62,9 @@ function () {
     //header contact
     Route::get('contact', [HeaderController::class,'contact'])->name('home.contact');
     Route::post('contact', [HeaderController::class,'contactStore'])->name('home.contact.store');
+
+    //get city from country
+    Route::get('cty_form_country/{country}', [WelcomController::class,'get_city'])->name('home.get_city');
 
     //header suppliers route
     Route::get('searchs', [HeaderController::class,'searchs'])->name('searchs');

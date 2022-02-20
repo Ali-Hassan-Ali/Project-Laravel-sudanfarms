@@ -33,11 +33,11 @@ class CreatePromotedDealersTable extends Migration
             $table->string('other_phone')->nullable();
             $table->string('other_phone_code')->default('sd');
 
+            $table->foreignId('country_id')->constrained()->onDelete('cascade');
+            $table->foreignId('city_id')->constrained()->onDelete('cascade');
+
             $table->string('email')->nullable();
             $table->string('web_site')->nullable();
-            $table->string('country')->nullable();
-            $table->string('country_code')->default('sd');
-            $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('title')->nullable();
             $table->string('description')->nullable();

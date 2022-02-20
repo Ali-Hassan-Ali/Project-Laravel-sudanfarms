@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(LaratrustSeeder::class);
+        $this->call(CountryTableSeeder::class);
+        $this->call(CityTableSeeder::class);
         $this->call(CategoryDealerTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(ClientsTableSeeder::class);
@@ -39,5 +41,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrencyTableSeeder::class);
         $this->call(GobTableSeeder::class);
         $this->call(PriceTableTableSeeder::class);
-    }
-}
+        // $this->call(StateTableSeeder::class);
+
+    }//end of run
+
+}//end of Seeder

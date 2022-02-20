@@ -28,8 +28,8 @@ class PromotedDealerTableSeeder extends Seeder
                 'phone'              => '123143413',
                 'other_phone'        => '123143413',
                 'web_site'           => 'web-site.com',
-                'country'            => 'country',
-                'city'               => 'city',
+                'country_id'         => 181,
+                'city_id'            => 3110,
                 'title'              => 'title',
                 'description'        => 'description',
             ]);

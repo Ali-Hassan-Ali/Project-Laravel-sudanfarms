@@ -111,6 +111,9 @@
     <script src="{{ asset('home_files/js/products.js') }} "></script>
 
     {{-- products js.js --}}
+    <script src="{{ asset('home_files/js/app.js') }} "></script>
+
+    {{-- products js.js --}}
     <script src="{{ asset('home_files/js/confirm_delete.js') }} "></script>
 
     {{--noty js--}}

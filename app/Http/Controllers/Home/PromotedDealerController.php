@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\NotificationUser;
 use App\Models\Notification;
+use App\Models\Country;
 use App\Models\Package;
+use App\Models\City;
 use App\Models\PackagePromoted;
 use App\Models\PromotedDealer;
 use Illuminate\Http\Request;
@@ -16,6 +18,7 @@ class PromotedDealerController extends Controller
 
     public function index()
     {
+
         $statusPackages = PromotedDealer::where('user_id', auth()->id())
                                         ->where('packages_id', '>', '0')
                                         ->where('status', '1')
@@ -29,7 +32,10 @@ class PromotedDealerController extends Controller
 
         }
 
-        return view('home.my_acount.promoted_dealers.index');
+        $countrys = Country::all();
+        $citys    = City::where('country_id', '181')->get();
+
+        return view('home.my_acount.promoted_dealers.index',compact('countrys','citys'));
 
     } //ene of index
 
@@ -43,12 +49,12 @@ class PromotedDealerController extends Controller
             'email'              => ['required'],
             'phone_master'       => ['required', 'min:9', 'max:15'],
             'phone'              => ['required', 'min:9', 'max:15'],
-            // 'other_phone'        => ['required', 'min:9', 'max:15'],
-            'country'            => ['required'],
-            'state'              => ['required'],
-            'city'               => ['required'],
-            'title'              => ['required'],
+            'country_id'         => ['required'],
+            'city_id'            => ['required'],
             'description'        => ['required'],
+            // 'other_phone'        => ['required', 'min:9', 'max:15'],
+            // 'state'              => ['required'],
+            // 'title'              => ['required'],
         ]);
 
         try {
@@ -58,7 +64,8 @@ class PromotedDealerController extends Controller
             $request_data = $request->except('company_logo', 'company_certificate', 'user_id');
 
             $request_data['user_id']      = auth()->id();
-            // $request_data['packages_id']  = '00';
+            $request_data['from_inside']  = $request->country_id == 181 ? '1' : '2';
+            
             $request_data['company_logo'] = $request->file('company_logo')->store('company_logo', 'public');
 
             if ($request->company_certificate) {

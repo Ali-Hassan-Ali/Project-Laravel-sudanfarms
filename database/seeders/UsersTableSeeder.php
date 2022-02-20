@@ -31,9 +31,9 @@ class UsersTableSeeder extends Seeder
             'phone'              => '123143413',
             'other_phone'        => '123143413',
             'web_site'           => 'web-site.com',
-            'country'            => 'sudan',
+            'country_id'         => 181,
+            'city_id'            => 3110,
             'status'             => 1,
-            'city'               => 'sudan',
             'title'              => 'title',
             'description'        => 'description',
         ]);

@@ -29,9 +29,10 @@
 
 	                	<form action="{{ route('promoted_dealers.store') }}" method="post" enctype="multipart/form-data">
 	                		@csrf
+	                		
 		                    <div class="row">
 
-		                        <div class="col-md-6 col-lg-4">
+		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
 		                                <label>@lang('dashboard.company_name') <span class="text-danger"> : @lang('lang.required')</span> </label>
 		                                <input type="text" name="company_name" placeholder="@lang('dashboard.company_name')" class="form-control @error('company_name') is-invalid @enderror" value="{{ old('company_name') }}">
@@ -43,26 +44,7 @@
 		                            </div>
 		                        </div>
 
-		                        <div class="col-md-6 col-lg-4">
-		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.from_inside') <span class="text-danger"> : @lang('lang.required')</span></label>
-		                                <select name="from_inside" required class="form-control">
-
-		                                    	<option value="">@lang('dashboard.select')</option>
-
-		                                    	<option value="1" {{ old('from_inside') == '1' ? 'selected' : '' }}>
-		                                    		@lang('dashboard.from_inside_sudan')
-		                                    	</option>
-
-		                                    	<option value="2" {{ old('from_inside') == '2' ? 'selected' : '' }}>
-		                                    		@lang('dashboard.from_outside_sudan')
-		                                    	</option>
-		                                	
-		                                </select>
-		                            </div>
-		                        </div>
-
-		                        <div class="col-md-6 col-lg-4">
+		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.promotion') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                                <select name="category_dealer_id" id="category-dealer-id" required class="form-control">
@@ -142,42 +124,36 @@
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('dashboard.country') <span class="text-danger"> : @lang('lang.required')</span></label>
-		                            	<br>
-		                            	<input id="country-promoted-dealer" class="form-control @error('country') is-invalid @enderror" type="text" name="country" placeholder="@lang('dashboard.country')">
-		                            	<input id="country-code" type="text" name="country_code" value="sd" hidden>
-		                            	@error('country')
-			                                <span class="invalid-feedback" role="alert">
-			                                    <strong>{{ $message }}</strong>
-			                                </span>
-			                            @enderror
+		                            	<select name="country_id" id="select-country" required class="form-control">
+	                                    	<option value="">@lang('lang.promotion_categorey')</option>
+		                                	@foreach ($countrys as $country)
+		                                    	<option value="{{ $country->id }}" data-id="{{ $country->id }}"
+		                                    		{{ old('category_dealer_id') == $country->id ? 'selected' : '' }}
+		                                    		{{ $country->id == 181 ? 'selected' : '' }}>
+		                                    			{{ $country->name }}
+	                                    		</option>
+		                                	@endforeach
+		                                </select>
 		                            </div>
 		                        </div>
 
-		                        <div class="col-md-6 col-lg-4">
+		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.state') <span class="text-danger"> : @lang('lang.required')</span></label>
-		                            	<input class="form-control @error('state') is-invalid @enderror" type="text" value="{{ auth()->user()->state }}" name="state" placeholder="@lang('lang.state')">
-		                            	@error('state')
-			                                <span class="invalid-feedback" role="alert">
-			                                    <strong>{{ $message }}</strong>
-			                                </span>
-			                            @enderror
+		                            	<select name="city_id" id="select-city" required class="form-control">
+		                                	<option value="">@lang('lang.promotion_categorey')</option>
+		                                	@foreach ($citys as $city)
+		                                    	<option value="{{ $city->id }}" data-id="{{ $city->id }}"
+		                                    		{{ old('category_dealer_id') == $country->id ? 'selected' : '' }}
+		                                    		{{ $city->id == 3110 ? 'selected' : ''  }}>
+		                                    			{{ $city->name }}
+	                                    		</option>
+		                                	@endforeach
+		                                </select>
 		                            </div>
 		                        </div>
 
-		                        <div class="col-md-6 col-lg-4">
-		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.city') <span class="text-danger"> : @lang('lang.required')</span></label>
-		                            	<input class="form-control @error('city') is-invalid @enderror" type="text" value="{{ auth()->user()->city }}" name="city" placeholder="@lang('dashboard.city')">
-		                            	@error('city')
-			                                <span class="invalid-feedback" role="alert">
-			                                    <strong>{{ $message }}</strong>
-			                                </span>
-			                            @enderror
-		                            </div>
-		                        </div>
-
-		                        <div class="col-md-6 col-lg-4">
+		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('dashboard.title')</label>
 		                            	<input class="form-control @error('title') is-invalid @enderror" type="text" value="{{ auth()->user()->title }}" name="title" placeholder="@lang('dashboard.title')">

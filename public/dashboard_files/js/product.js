@@ -18,11 +18,11 @@ $(document).ready(function() {
             method: method,
             success: function (data) {
                 
+                $('#select-sub-category').empty('');
+
                 $.each(data, function(index, category) {
                     
                     var html = '<option value="'+category.id+'">'+category.name+'</option>';
-
-                    $('#select-sub-category').empty('');
 
                     $('#select-sub-category').append(html);
 
