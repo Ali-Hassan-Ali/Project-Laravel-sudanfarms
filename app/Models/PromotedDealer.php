@@ -25,6 +25,19 @@ class PromotedDealer extends Model
 
     }//end of category_dealer
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class,'country_id');
+
+    }//end of city
+
+    public function city()
+    {
+        return $this->belongsTo(City::class,'city_id');
+
+    }//end of city
+
+
     public function package()
     {
         return $this->belongsTo(Package::class,'packages_id');

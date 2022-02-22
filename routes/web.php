@@ -25,9 +25,12 @@ function () {
 
     Route::get('/dd', function() {
         
-        $users = App\Models\User::first();
+        // return App\Models\OrderItem::all();
+        $order = App\Models\Order::with('item')->find(1);
 
-        return $users;
+        \Mail::to('alihassanalimadny@gmail.com')->send(new \App\Mail\OrderItemEmail($order));
+        return true;
+        return view('emails.order_item', compact('order'));
 
     });
 

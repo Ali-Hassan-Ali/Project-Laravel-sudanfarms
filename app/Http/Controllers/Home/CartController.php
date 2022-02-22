@@ -114,28 +114,27 @@ class CartController extends Controller
         if (Cart::count() > 0) {
 
             $order = Order::create([
-                'user_id'     => auth()->user()->id,
+                'user_id'     => auth()->id(),
                 'phone'       => auth()->user()->phone,
                 'totle_price' => Cart::subtotal(),
             ]);
 
-            $data = Notification::create([
+            Notification::create([
                 'title_ar' => 'قمت بطلب منتجات من سودان فارمس',
                 'title_en' => 'I ordered products from Sudan Farms',
-                'user_id'  => auth()->user()->id,
+                'user_id'  => auth()->id(),
             ]); //end of create
 
-            $data = Notification::create([
+            Notification::create([
                 'title_ar' => 'قمت بطلب منتجات من سودان فارمس',
                 'title_en' => 'I ordered products from Sudan Farms',
-                'user_id'  => auth()->user()->id,
+                'user_id'  => '1',
             ]); //end of create
 
-            // \Mail::to(auth()->user()->email)->send(new \App\Mail\OrderEmail($data));
 
             foreach (Cart::content() as $product) {
 
-                $orderItem = OrderItem::create([
+            $orderItem = OrderItem::create([
                     'order_id'           => $order->id,
                     'product_id'         => $product->model->id,
                     'quantity'           => $product->qty,
@@ -145,20 +144,20 @@ class CartController extends Controller
                     'user_id'            => auth()->id(),
                 ]);
 
-                $user = Notification::create([
-                    'title_ar' => 'تم طلب منتج جديد',
+                Notification::create([
+                    'title_ar' => 'تم طلguب منتج جديد',
                     'title_en' => 'New product ordered',
-                    'user_id'  => auth()->id(),
+                    'user_id'  => $orderItem->promotedDealer->user_id,
                 ]); //end of create
 
-                // \Mail::to(auth()->user()->email)->send(new \App\Mail\OrderUserEmail($orderItem));
-
-                // \Mail::to($orderItem->promotedDealer->email)->send(new \App\Mail\OrderItemEmail($orderItem));
+                \Mail::to($orderItem->promotedDealer->email)->send(new \App\Mail\OrderItemEmail($orderItem));
 
             } //end of foreach
 
-            Cart::destroy();
+            \Mail::to(auth()->user()->email)->send(new \App\Mail\OrderUserEmail($order));
             
+            Cart::destroy();
+                
             notify()->success(__('dashboard.added_successfully'));
             return redirect()->route('orders.index');
 

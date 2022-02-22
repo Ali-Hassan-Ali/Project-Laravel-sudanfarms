@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Models\CategoryDealer;
 use Illuminate\Http\Request;
 
@@ -48,7 +49,10 @@ class CategoryDealerController extends Controller
 
             $request_data = $request->except('image');
 
-            $request_data['image'] = $request->file('image')->store('category_dealers_image','public');
+            $new_image = Image::make($request->image)->resize(360, 220)->encode('jpg');
+
+            Storage::disk('local')->put('public/category_dealers_image/' . $imag->hashName() , (string)$new_image, 'public');
+            $request_data['image'] = 'category_dealers_image/' . $imag->hashName();
 
             CategoryDealer::create($request_data);
 
@@ -91,8 +95,10 @@ class CategoryDealerController extends Controller
 
                 } //end of inner if
 
+                $new_image = Image::make($request->image)->resize(360, 220)->encode('jpg');
 
-                $request_data['image'] = $request->file('image')->store('category_dealers_image','public');
+                Storage::disk('local')->put('public/category_dealers_image/' . $imag->hashName() , (string)$new_image, 'public');
+                $request_data['image'] = 'category_dealers_image/' . $imag->hashName();
             }
 
             $categoryDealer->update($request_data);

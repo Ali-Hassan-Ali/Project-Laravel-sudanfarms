@@ -25,7 +25,7 @@ class PromotedDealerController extends Controller
 
     public function index()
     {
-        $promoted_dealers = PromotedDealer::whenSearch(request()->search)->latest()->paginate(10);
+        $promoted_dealers = PromotedDealer::whenSearch(request()->search)->with('PromotedDealer')->latest()->paginate(10);
 
         return view('dashboard.promoted_dealers.index', compact('promoted_dealers'));
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Models\Categorey;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,10 @@ class SubCategoreyController extends Controller
 
             $request_data = $request->except('image');
 
-            $request_data['image'] = $request->file('image')->store('sub_categorey_images','public');
+            $new_image = Image::make($request->image)->resize(150, 150)->encode('jpg');
+
+            Storage::disk('local')->put('public/sub_categorey_images/' . $imag->hashName() , (string)$new_image, 'public');
+            $request_data['image'] = 'sub_categorey_images/' . $imag->hashName();
 
             categorey::create($request_data);
 
@@ -98,7 +102,10 @@ class SubCategoreyController extends Controller
 
                 } //end of inner if
 
-                $request_data['image'] = $request->file('image')->store('sub_categorey_images','public');
+                $new_image = Image::make($request->image)->resize(150, 150)->encode('jpg');
+
+                Storage::disk('local')->put('public/sub_categorey_images/' . $imag->hashName() , (string)$new_image, 'public');
+                $request_data['image'] = 'sub_categorey_images/' . $imag->hashName();
 
             }//end of if
             

@@ -11,11 +11,11 @@ class OrderItemEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $orderItem;
+    public $item;
 
     public function __construct($orderItem)
     {
-        $this->orderItem = $orderItem;
+        $this->item = $orderItem;
     }
 
     /**

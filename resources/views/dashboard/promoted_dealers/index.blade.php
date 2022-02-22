@@ -62,6 +62,7 @@
                                     <th>@lang('dashboard.email')</th>
                                     <th>@lang('dashboard.phone_master')</th>
                                     <th>@lang('dashboard.country')</th>
+                                    <th>@lang('dashboard.city')</th>
                                     <th>@lang('dashboard.status')</th>
                                     <th>@lang('dashboard.clients')</th>
                                     <th>@lang('dashboard.category_dealer')</th>
@@ -72,12 +73,15 @@
                                 
                                 <tbody>
                                 @foreach ($promoted_dealers as $index=>$dealers)
+                                    @if ($dealers->PromotedDealer->count() > 0)
+
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $dealers->name }}</td>
                                         <td>{{ $dealers->email }}</td>
                                         <td>{{ $dealers->phone_master }}</td>
-                                        <td>{{ $dealers->country }}</td>
+                                        <td>{{ $dealers->country->name }}</td>
+                                        <td>{{ $dealers->city->name }}</td>
                                         <td>
                                             @if ($dealers->status == 0)
 
@@ -141,7 +145,8 @@
                                             @endif
                                         </td>
                                     </tr>
-                                
+                                    
+                                    @endif
                                 @endforeach
                                 </tbody>
 

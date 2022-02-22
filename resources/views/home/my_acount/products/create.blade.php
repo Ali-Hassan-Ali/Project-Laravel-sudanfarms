@@ -187,21 +187,21 @@
 
 	                        		@if ($PromotedDealer->status == '1')
 		                        		
-		                        		<div class="col-md-6 col-lg-4 mx-auto">
-				                            <div class="form-group">
-				                                <a href="{{ route('promoted_dealers.packages') }}" class="form-btn" type="submit">
-				                                	<i class="fa fa-plus"></i> @lang('dashboard.packages')
-				                                </a>
-				                            </div>
-				                        </div>
-
-		                        	@else
-
 				                        <div class="col-md-6 col-lg-4 mx-auto">
 				                            <div class="form-group">
 				                                <button class="form-btn" type="submit">
 				                                	<i class="fa fa-plus"></i> @lang('dashboard.add')
 				                                </button>
+				                            </div>
+				                        </div>
+
+		                        	@else
+
+		                        		<div class="col-md-6 col-lg-4 mx-auto">
+				                            <div class="form-group">
+				                                <a href="{{ route('promoted_dealers.packages') }}" class="form-btn" type="submit">
+				                                	<i class="fa fa-plus"></i> @lang('dashboard.packages')
+				                                </a>
 				                            </div>
 				                        </div>
 

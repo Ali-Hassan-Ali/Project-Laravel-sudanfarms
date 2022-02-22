@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Models\Unit;
 use App\Models\Product;
 use App\Models\Categorey;
@@ -58,7 +59,7 @@ class ProductController extends Controller
             'price'             => ['required','numeric'],
             'price_decount'     => ['required','numeric'],
             'sub_category_id'   => ['required','numeric'],
-            'image'             => ['required','array','imag'],
+            'image'             => ['required','array'],
         ]);
 
         try {
@@ -71,11 +72,14 @@ class ProductController extends Controller
 
             foreach ($request->image as $key=>$imag) {
 
-                $request_image['imag'][$key] = $imag->store('product_images','public');
+                $new_image = Image::make($imag)->resize(450, 450)->encode('jpg');
+
+                Storage::disk('local')->put('public/product_images/' . $imag->hashName() , (string)$new_image, 'public');
+                $request_image['images'][$key] = 'product_images/' . $imag->hashName();
 
             }//end of foreach
 
-            foreach ($request_image['imag'] as $image) {
+            foreach ($request_image['images'] as $image) {
                 
                 ImageProduct::create([
                     'product_id' => $products->id,
@@ -132,7 +136,7 @@ class ProductController extends Controller
             'price'             => ['required','numeric'],
             'price_decount'     => ['required','numeric'],
             'sub_category_id'   => ['required','numeric'],
-            'image'             => ['required','array','imag'],
+            'image'             => ['required','array'],
         ]);
 
         try {
@@ -163,11 +167,15 @@ class ProductController extends Controller
                 
                 foreach ($request->image as $key=>$imag) {
 
-                    $request_image['imag'][$key] = $imag->store('product_images','public');
+                    $new_image = Image::make($imag)->resize(450, 450)->encode('jpg');
+
+                    Storage::disk('local')->put('public/product_images/' . $imag->hashName() , (string)$new_image, 'public');
+                    $request_image['images'][$key] = 'product_images/' . $imag->hashName();
+
 
                 }//end of foreach
 
-                foreach ($request_image['imag'] as $image) {
+                foreach ($request_image['images'] as $image) {
 
                     ImageProduct::create([
                         'product_id' => $product->id,

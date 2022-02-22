@@ -181,6 +181,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
 
+        Intervention\Image\ImageServiceProvider::class,
+
 
     ],
 
@@ -240,6 +242,9 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
         'Location' => Stevebauman\Location\Facades\Location::class,
+
+        'Image' => Intervention\Image\Facades\Image::class,
+
 
     ],
 

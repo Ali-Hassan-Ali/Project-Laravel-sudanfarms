@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Models\Categorey;
 use App\Models\Product;
 use App\Models\Offer;
@@ -63,7 +64,10 @@ class OffersController extends Controller
 
             $request_data = $request->except('image');
 
-            $request_data['image'] = $request->file('image')->store('offer_images','public');
+            $new_image = Image::make($request->image)->resize(150, 150)->encode('jpg');
+
+            Storage::disk('local')->put('public/offer_images/' . $imag->hashName() , (string)$new_image, 'public');
+            $request_data['image'] = 'offer_images/' . $imag->hashName();
 
             Offer::create($request_data);
 
@@ -126,8 +130,10 @@ class OffersController extends Controller
 
                 } //end of inner if   
 
+                $new_image = Image::make($request->image)->resize(150, 150)->encode('jpg');
 
-                $request_data['image'] = $request->file('image')->store('offer_images','public');
+                Storage::disk('local')->put('public/offer_images/' . $imag->hashName() , (string)$new_image, 'public');
+                $request_data['image'] = 'offer_images/' . $imag->hashName();
             }
 
             Offer::create($request_data);

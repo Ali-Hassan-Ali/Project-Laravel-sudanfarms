@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Categorey;
@@ -49,8 +50,7 @@ class ProductController extends Controller
 
    
     public function store(Request $request)
-    {
-
+    {   
         $PromotedDealer = PromotedDealer::where('user_id', auth()->id())->first();
 
         $id = $PromotedDealer->PromotedDealerFirst[0]->package_id;
@@ -81,10 +81,12 @@ class ProductController extends Controller
             'price'             => ['required','numeric'],
             'price_decount'     => ['required','numeric'],
             'sub_category_id'   => ['required','numeric'],
-            'image'             => ['required','array','imag'],
+            'image'             => ['required','array'],
         ]);
+        // dd($request->all());
+        // return $request->all();
 
-        try {
+        // try {
             // return 'fda';
             $request_data = $request->except('image');
 
@@ -94,11 +96,14 @@ class ProductController extends Controller
 
             foreach ($request->image as $key=>$imag) {
 
-                $request_image['imag'][$key] = $imag->store('product_images','public');
+                $new_image = Image::make($imag)->resize(450, 450)->encode('jpg');
+
+                Storage::disk('local')->put('public/product_images/' . $imag->hashName() , (string)$new_image, 'public');
+                $request_image['images'][$key] = 'product_images/' . $imag->hashName();
 
             }//end of foreach
 
-            foreach ($request_image['imag'] as $image) {
+            foreach ($request_image['images'] as $image) {
                 
                 ImageProduct::create([
                     'product_id' => $products->id,
@@ -118,11 +123,11 @@ class ProductController extends Controller
             notify()->success( __('dashboard.added_successfully'));
             return redirect()->route('products.index');
 
-        } catch (\Exception $e) {
+        // } catch (\Exception $e) {
 
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            // return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        }//end try
+        // }//end try
 
     }//end of store
 
@@ -131,6 +136,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('home.my_acount.products.show',compact('product'));
+
     }//en end of show
 
     
@@ -178,8 +184,8 @@ class ProductController extends Controller
 
 
                 foreach ($product_image as  $image) {
-                    
-                    Storage::disk('public_uploads')->delete($image->image);
+
+                    Storage::disk('local')->delete('storage/' . $image->image);
 
                     $image->delete();
                 }
@@ -187,11 +193,14 @@ class ProductController extends Controller
                 
                 foreach ($request->image as $key=>$imag) {
 
-                    $request_image['imag'][$key] = $imag->store('product_images','public_uploads');
+                    $new_image = Image::make($imag)->resize(450, 450)->encode('jpg');
+
+                    Storage::disk('local')->put('public/product_images/' . $imag->hashName() , (string)$new_image, 'public');
+                    $request_image['images'][$key] = 'product_images/' . $imag->hashName();
 
                 }//end of foreach
 
-                foreach ($request_image['imag'] as $image) {
+                foreach ($request_image['images'] as $image) {
 
                     ImageProduct::create([
                         'product_id' => $product->id,

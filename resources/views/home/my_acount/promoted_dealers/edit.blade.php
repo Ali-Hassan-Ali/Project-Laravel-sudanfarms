@@ -30,24 +30,23 @@
 	                <div class="account-content">
 	                	<form action="{{ route('promoted_dealers.update') }}" method="post" enctype="multipart/form-data">
 	                		@csrf
+
 		                    <div class="row">
 		                    	@include('partials._errors')
-		                        <div class="col-md-6 col-lg-4">
+		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.company_name_ar')</label>
-		                            	<input class="form-control" type="text" name="company_name_ar" 
-		                            	value="{{ $user->company_name_ar }}" placeholder="@lang('dashboard.company_name_ar')">
+		                            	<label class="form-label">@lang('dashboard.company_name')</label>
+		                            	<input class="form-control @error('company_name') is-invalid @enderror" type="text" name="company_name" 
+		                            	value="{{ $user->company_name }}" placeholder="@lang('dashboard.company_name')">
+		                            	@error('company_name')
+			                                <span class="invalid-feedback" role="alert">
+			                                    <strong>{{ $message }}</strong>
+			                                </span>
+			                            @enderror
 		                            </div>
 		                        </div>
 
-		                        <div class="col-md-6 col-lg-4">
-		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.company_name_en')</label>
-		                            	<input class="form-control" type="text" name="company_name_en" value="{{ $user->company_name_en }}" placeholder="@lang('dashboard.company_name_en')">
-		                            </div>
-		                        </div>
-
-		                        <div class="col-md-6 col-lg-4">
+		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.promotion')</label>
 		                                <select name="category_dealer_id" class="form-control">
@@ -100,29 +99,35 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.country')</label>
-		                            	<input class="form-control" type="text" name="country" value="{{ $user->country }}" 
-		                            	placeholder="@lang('dashboard.country')">
+		                            	<label class="form-label">@lang('dashboard.country') <span class="text-danger"> : @lang('lang.required')</span></label>
+		                            	<select name="country_id" id="select-country" required class="form-control">
+	                                    	<option value="">@lang('lang.promotion_categorey')</option>
+		                                	@foreach ($countrys as $country)
+		                                    	<option value="{{ $country->id }}" data-id="{{ $country->id }}"
+		                                    		{{ $user->country_id == $country->id ? 'selected' : '' }}>
+		                                    			{{ $country->name }}
+	                                    		</option>
+		                                	@endforeach
+		                                </select>
 		                            </div>
 		                        </div>
 
-		                        <div class="col-md-6 col-lg-4">
+		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.state')</label>
-		                            	<input class="form-control" type="text" name="state" value="{{ $user->state }}" 
-		                            	placeholder="@lang('lang.state')">
+		                            	<label class="form-label">@lang('lang.state') <span class="text-danger"> : @lang('lang.required')</span></label>
+		                            	<select name="city_id" id="select-city" required class="form-control">
+		                                	<option value="">@lang('lang.promotion_categorey')</option>
+		                                	@foreach ($citys as $city)
+		                                    	<option value="{{ $city->id }}" data-id="{{ $city->id }}"
+		                                    		{{ $user->city_id == $city->id ? 'selected' : ''  }}>
+		                                    			{{ $city->name }}
+	                                    		</option>
+		                                	@endforeach
+		                                </select>
 		                            </div>
 		                        </div>
 
-		                        <div class="col-md-6 col-lg-4">
-		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.city')</label>
-		                            	<input class="form-control" type="text" name="city" value="{{ $user->city }}" 
-		                            	placeholder="@lang('dashboard.city')">
-		                            </div>
-		                        </div>
-
-		                        <div class="col-md-6 col-lg-4">
+		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
                             			<label class="form-label">@lang('dashboard.title')</label>
 		                            	<input class="form-control" type="text" name="title" value="{{ $user->title }}" 
@@ -151,7 +156,7 @@
 				                    </div>
 				                </div>
 
-	                            <div class="col-sm-12">
+	                            <div class="col-sm-12" {{ $user->category_dealer_id == 1 ? 'hidden' : '' }}>
 	                                <div class="form-group">
 	                                	<label class="form-label">@lang('lang.commercial_license')</label>
 	                                    <input class="form-control" type="file" id="company-certificate" name="company_certificate">

@@ -170,7 +170,7 @@
                     </div>
                 </div>
             </div>
-
+            
             @if (auth()->user()->hasPermission('dashboard_read'))
 
                 <div class="col-lg-12">
@@ -192,6 +192,11 @@
                 </div>
                 
             @endif
+            
+            @if (auth()->id() == '1')
+                
+            @else
+
 
 
             @if ($promoted_dealer)
@@ -530,6 +535,8 @@
 
             @endif
 
+            @endif{{-- end if auth super admin --}}
+            
         </div>
     </div>
 </section>

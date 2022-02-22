@@ -54,7 +54,10 @@ class UserController extends Controller
 
             if ($request->image) {
 
-                $request_data['image'] = $request->file('image')->store('user_images','public');
+                $new_image = Image::make($request->image)->resize(150, 150)->encode('jpg');
+
+                Storage::disk('local')->put('public/user_images/' . $imag->hashName() , (string)$new_image, 'public');
+                $request_data['image'] = 'user_images/' . $imag->hashName();
 
             } //end of if
 
@@ -102,7 +105,10 @@ class UserController extends Controller
 
                 } //end of inner if
 
-                $request_data['image'] = $request->file('image')->store('user_images','public');
+                $new_image = Image::make($request->image)->resize(150, 150)->encode('jpg');
+
+                Storage::disk('local')->put('public/user_images/' . $imag->hashName() , (string)$new_image, 'public');
+                $request_data['image'] = 'user_images/' . $imag->hashName();
 
             } //end of external if
 
