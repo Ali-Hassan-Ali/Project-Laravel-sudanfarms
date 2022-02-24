@@ -135,6 +135,11 @@ class ProductController extends Controller
    
     public function show(Product $product)
     {
+        if (!$product->promotedd->promotedd == '1') {
+
+            return redirect()->route('welcome.index');
+        }
+
         return view('home.my_acount.products.show',compact('product'));
 
     }//en end of show

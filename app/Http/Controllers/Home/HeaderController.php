@@ -29,7 +29,9 @@ class HeaderController extends Controller
 
     public function searchs()
     {
-        $products = Product::whenSearch(request()->search)
+        $products = Product::with('promotedd')
+                           ->whereRelation('promotedd', 'status', '=', '1')
+                           ->whenSearch(request()->search)
                            ->orderBy('eye_count','DESC')
                            ->paginate(10)
                            ->where('status',1);
@@ -52,7 +54,11 @@ class HeaderController extends Controller
             return view('home.shop',compact('products'));            
         }
 
-        $products = Product::orderBy('eye_count','DESC')->limit(10)->get()->where('status',1);
+        $products = Product::with('promotedd')
+                           // ->whereRelation('promotedd', 'status', '=', '1')
+                           ->orderBy('eye_count','DESC')
+                           ->limit(10)->get()
+                           ->where('status',1);
 
         return view('home.shop',compact('products'));
 
@@ -72,7 +78,11 @@ class HeaderController extends Controller
 
     public function offersShow($id)
     {
-        $products = Product::where('sub_category_id',$id)->orderBy('eye_count','DESC')->paginate(10);
+        $products = Product::with('promotedd')
+                           // ->whereRelation('promotedd', 'status', '=', '1')
+                           ->where('sub_category_id',$id)
+                           ->orderBy('eye_count','DESC')
+                           ->paginate(10);
 
         return view('home.header.offers.show', compact('products'));
 
@@ -120,6 +130,12 @@ class HeaderController extends Controller
     public function show_product(Product $product)
     {
 
+        // if (!$product->promotedd->promotedd == '1') {
+
+        //     return redirect()->route('welcome.index');
+
+        // }
+        
         $min_product = $product;
         
         $min_product->update([
@@ -175,14 +191,24 @@ class HeaderController extends Controller
 
             $categorey   = Categorey::where('id',$id)->first();
 
-            $min_product = Product::where('sub_category_id',$categorey->id)->whereBetween('price',[request()->from_price, request()->to_price])->with('imageProduct')->latest()->paginate(20);
+            $min_product = Product::with('promotedd')
+                                   // ->whereRelation('promotedd', 'status', '=', '1')
+                                   ->where('sub_category_id',$categorey->id)
+                                   ->whereBetween('price',[request()->from_price, request()->to_price])
+                                   ->with('imageProduct')
+                                   ->latest()->paginate(20);
 
             return view('home.header.categories',compact('categorey','min_product'));
         }
 
         $categorey   = Categorey::where('id',$id)->first();
 
-        $min_product = Product::where('sub_category_id',$categorey->id)->with('imageProduct')->latest()->paginate(20);
+        $min_product = Product::with('promotedd')
+                               // ->whereRelation('promotedd', 'status', '=', '1')
+                               ->where('sub_category_id',$categorey->id)
+                               ->with('imageProduct')
+                               ->latest()
+                               ->paginate(20);
         
         return view('home.header.categories',compact('categorey','min_product'));
 

@@ -80,7 +80,7 @@
                         </div>
                         <div class="details-meta mb-1">
                             <p class="mt-0">@lang('dashboard.country')</p>
-                            <p class="mt-0">{{ $promoted_dealer->country }}</p>
+                            <p class="mt-0">{{ $min_product->promotedd->country->name }}</p>
                         </div>
                         <div class="details-meta mb-1">
                             <p class="mt-0">ID</p>
@@ -182,7 +182,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">@lang('dashboard.map')</th>
-                                        <td>{{ $promoted_dealer->city }}</td>
+                                        <td>{{ $min_product->promotedd->city->name }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">@lang('dashboard.conditions')</th>

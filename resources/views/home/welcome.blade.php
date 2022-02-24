@@ -455,7 +455,7 @@
                         </div>
                         <div class="brand-meta">
                             <h4>{{ $promoted->name }}</h4>
-                            <p>{{ $promoted->city }}</p>
+                            <p>{{ $promoted->company_name }}</p>
                         </div>
                     </div>
 
@@ -487,7 +487,8 @@
                             </div>
                             <div class="brand-meta">
                                 <h4>{{ $promoted->name }}</h4>
-                                <p>{{ $promoted->city }}</p>
+                                <p>{{ $promoted->company_name }}</p>
+                                {{-- <p>{{ $promoted->city->name }}</p> --}}
                             </div>
                         </div>
 

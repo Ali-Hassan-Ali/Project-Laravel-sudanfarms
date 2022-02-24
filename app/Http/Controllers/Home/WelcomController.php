@@ -28,9 +28,20 @@ class WelcomController extends Controller
         $setting_banners = SettingBanner::all();
         $sub_categoreys  = Categorey::where('sub_categoreys','>','0')->get();
 
-        $newly_added_products = Product::latest()->limit(10)->get()->where('status',1);
-        $featured_products    = Product::inRandomOrder()->latest()->limit(6)->get()->where('status',1);
-        $new_products         = Product::orderBy('eye_count','DESC')->limit(10)->get()->where('status',1);
+        $newly_added_products = Product::with('promotedd')
+                                                // ->whereRelation('promotedd', 'status', '=', '1')
+                                                ->latest()->limit(10)->get()->where('status',1);
+
+
+        $featured_products    = Product::with('promotedd')
+                                                // ->whereRelation('promotedd', 'status', '=', '1')
+                                                ->inRandomOrder()->latest()->limit(6)->get()
+                                                ->where('status',1);
+
+        $new_products         = Product::with('promotedd')
+                                        // ->whereRelation('promotedd', 'status', '=', '1')
+                                        ->orderBy('eye_count','DESC')->limit(10)->get()
+                                        ->where('status',1);
 
         return view('home.welcome',compact('sub_categoreys','offer','offers',
                                             'promoted_from_inside','promoted_from_unnside','setting_banners'

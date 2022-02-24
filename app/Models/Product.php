@@ -144,6 +144,12 @@ class Product extends Model
 
     }//end of belongsTo user
 
+    public function promotedd()
+    {
+        return $this->hasOne(PromotedDealer::class,'user_id');
+
+    }//end of belongsTo user
+
     public function Promoted()
     {
         return PromotedDealer::where('user_id', $this->user_id)->latest()->first();
