@@ -348,10 +348,10 @@ ul.social li{
             </tr>
 
               <tr>
-                <td style="text-align: center;">{{ $item->product->name }}</td>
-                <td style="text-align: center;"><img src="{{ $item->product->image_path }}" width="40"></td>
-                <td style="text-align: center;">{{ $item->price }} - {{ __('dashboard.quantity') }} - {{ $item->quantity }}</td>
-                <td style="text-align: center;">{{ $item->product->company_name }}</td>
+                {{-- <td style="text-align: center;">{{ $item->product->name }}</td> --}}
+                {{-- <td style="text-align: center;"><img src="{{ $item->product->image_path }}" width="40"></td> --}}
+                {{-- <td style="text-align: center;">{{ $item->price }} - {{ __('dashboard.quantity') }} - {{ $item->quantity }}</td> --}}
+                {{-- <td style="text-align: center;">{{ $item->product->company_name }}</td> --}}
                 <td style="text-align: center;">{{ auth()->user()->name }}</td>
               </tr>
 

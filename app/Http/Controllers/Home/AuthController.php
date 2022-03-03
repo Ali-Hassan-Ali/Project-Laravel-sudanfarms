@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use Stevebauman\Location\Facades\Location;
 use App\Models\Notification;
 use App\Models\User;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Mail\ResetPassword;
+use Auth;
 use Mail;
-use Stevebauman\Location\Facades\Location;
 
 class AuthController extends Controller
 {
     public function login()
     {
-        if (Auth::guard('web')->check()) {
+        if (auth()->guard('web')->check()) {
 
             return redirect()->route('welcome.index');
         }
@@ -25,7 +27,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        if (Auth::guard('web')->check()) {
+        if (auth()->guard('web')->check()) {
 
             return redirect()->route('welcome.index');
         }
@@ -43,7 +45,7 @@ class AuthController extends Controller
 
         try {
 
-            if (Auth::guard('web')->check()) {
+            if (auth()->guard('web')->check()) {
 
                 return redirect()->route('welcome.index');
 
@@ -51,7 +53,7 @@ class AuthController extends Controller
 
                 if (User::where('email', $request->email)->first()) {
                     $remember_me = $request->has('remember') ? true : false;
-                    if (\Auth::guard('web')->attempt([
+                    if (auth()->guard('web')->attempt([
                         'email'    => $request->email,
                         'password' => $request->password], $remember_me)) {
 
@@ -67,7 +69,7 @@ class AuthController extends Controller
                     } else {
 
                         return back()->withErrors([
-                            'password' => 'The password is incorrect',
+                            'password' => __('auth.The_password_is_incorrect'),
                         ]);
 
                     } //end of attempt
@@ -75,7 +77,7 @@ class AuthController extends Controller
                 } else {
 
                     return back()->withErrors([
-                        'email' => 'The email is incorrect',
+                        'email' => __('auth.The_email_is_incorrect'),
                     ]);
 
                 } //end of email
@@ -108,13 +110,13 @@ class AuthController extends Controller
            
             if ($position) {
 
-                $request_data['city']    = $position['regionName'];
-                $request_data['state']   = $position['regionName'];
-                $request_data['title']   = $position['city'];
+                $request_data['city']    = '';
+                $request_data['state']   = '';
+                $request_data['title']   = '';
                 
             } 
 
-            if (Auth::guard('web')->check()) {
+            if (auth()->guard('web')->check()) {
 
                 return redirect()->route('welcome.index');
 
@@ -132,7 +134,7 @@ class AuthController extends Controller
                     'user_id'  => $user->id,
                 ]); //end of create
 
-                \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
+                Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
 
                 notify()->success(__('dashboard.added_successfully'));
                 return redirect()->route('profile.index');
@@ -149,7 +151,7 @@ class AuthController extends Controller
 
     public function user_logout()
     {
-        Auth::guard('web')->logout();
+        auth()->guard('web')->logout();
 
         notify()->success(__('dashboard.logoute_successfully'));
         return redirect()->route('home.login');

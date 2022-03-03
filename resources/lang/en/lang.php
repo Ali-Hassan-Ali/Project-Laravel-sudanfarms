@@ -5,6 +5,7 @@ return [
     'width'        => 'width',
     'height'       => 'height',
     'required'     => 'required',
+    'send'         => 'send',
 
     'add_new_Packages' => 'Please renew your subscription',
     'wait_request'     => 'Wait until your request is accepted',
@@ -17,6 +18,8 @@ return [
     'create_new'   => 'Create a new account in a minute',
     'have_account' => 'you have an account ?',
 
+    'reest_password'  => 'Forgot your password ?',
+    'send_email'      => 'Enter your email to receive a confirmation email',
     'filter_by_price' => 'filter by price',
     'new'             => 'new',
 

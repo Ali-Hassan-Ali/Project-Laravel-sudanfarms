@@ -79,7 +79,6 @@ class ProductController extends Controller
             'description_ar'    => ['required'],
             'description_en'    => ['required'],
             'price'             => ['required','numeric'],
-            'price_decount'     => ['required','numeric'],
             'sub_category_id'   => ['required','numeric'],
             'image'             => ['required','array'],
         ]);
@@ -171,7 +170,6 @@ class ProductController extends Controller
             'description_ar'    => ['required'],
             'description_en'    => ['required'],
             'price'             => ['required','numeric'],
-            'price_decount'     => ['required','numeric'],
             'sub_category_id'   => ['required','numeric'],
         ]);
 

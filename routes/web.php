@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Home\AuthController;
+use App\Http\Controllers\Home\ForgotPasswordController;
 use App\Http\Controllers\Home\WelcomController;
 use App\Http\Controllers\Home\ProfileController;
 use App\Http\Controllers\Home\PromotedDealerController;
@@ -25,6 +26,7 @@ function () {
 
     Route::get('/dd', function() {
         
+        return view('emails.reset_password');
         // return App\Models\OrderItem::all();
         $order = App\Models\Order::with('item')->find(1);
 
@@ -48,6 +50,10 @@ function () {
     Route::get('register', [AuthController::class,'register'])->name('home.register');
     Route::post('register', [AuthController::class,'store_register'])->name('home.register.store');
 
+    Route::get('verification_email', [ForgotPasswordController::class,'verification_email'])->name('home.verification_email');
+    Route::post('verification_email_store', [ForgotPasswordController::class,'verification_email_store'])->name('home.verification_email.store');
+    Route::get('reset_password/{token}', [ForgotPasswordController::class,'reset_password'])->name('home.reset_password');
+    Route::post('submitReset', [ForgotPasswordController::class,'submitResetPasswordForm'])->name('home.submitResetPasswordForm');
     // login Social
     Route::get('login/{provider}', [SocialController::class,'redirectToProvider'])->where('provider', 'facebook|google');
     Route::get('login/{provider}/callback', [SocialController::class,'handleProviderCallback'])->where('provider', 'facebook|google');
@@ -107,6 +113,7 @@ function () {
     Route::middleware(['auth'])->group(function () {
         //profile routes
         Route::get('/my_acount', [ProfileController::class,'index'])->name('profile.index');
+        Route::get('/setting', [ProfileController::class,'setting'])->name('setting.index');
         Route::post('/my_acount/store', [ProfileController::class,'update'])->name('profile.update');
         Route::get('/change_password', [ProfileController::class,'passwprd_index'])->name('change_password.index');
         Route::post('/change_password', [ProfileController::class,'passwprd_store'])->name('change_password.store');

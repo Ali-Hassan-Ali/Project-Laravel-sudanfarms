@@ -74,45 +74,35 @@
                     
                     <div class="details-content">
                         <h3 class="details-name">{{ $min_product->name }}</h3>
-                        <div class="details-meta mb-1">
-                            <p>@lang('dashboard.company')</p>
-                            <p>{{ $promoted_dealer->company_name }}</p>
-                        </div>
-                        <div class="details-meta mb-1">
-                            <p class="mt-0">@lang('dashboard.country')</p>
-                            <p class="mt-0">{{ $min_product->promotedd->country->name }}</p>
-                        </div>
-                        <div class="details-meta mb-1">
-                            <p class="mt-0">ID</p>
-                            <p class="mt-0">{{ $min_product->id }}</p>
-                        </div>
-                        <div class="details-meta mb-1">
-                            <p class="mt-0">ا@lang('dashboard.quantity_Availabl'):</p>
-                            <p class="mt-0">{{ $min_product->quantity }} | {{ $min_product->quantity_guard }}</p>
-                        </div>
-                        <div class="details-meta">
-                            <p class="mt-0">@lang('dashboard.period'):</p>
-                            <p class="mt-0">@lang('dashboard.product_available')  {{ $min_product->start_time }} - {{ $min_product->end_time }}</p>
-                        </div>
-
-                        <h3 class="details-price">
-                            <del>{{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}{{ $min_product->new_price_decount }}</del> 
-                            <span>{{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}
-                                  {{ $min_product->new_price }}
-                            <small> /{{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}</small>
-                            </span>
-                        </h3>
-                        <p class="details-desc">{{ $min_product->description }}</p>
-                        <div class="details-list-group"><label class="details-list-title">@lang('dashboard.similar_products'):</label>
-                            <ul class="details-tag-list">
-                                @foreach ($category_product as $category)
-                                
-                                    <li>
-                                        <a href="{{ route('category.show',$category->id) }}">{{ $category->name }}</a>
-                                    </li>
-                                    
-                                @endforeach
-                            </ul>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="product-details-frame">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">@lang('dashboard.quantity_Availabl')</th>
+                                                <td>{{ $min_product->quantity }} {{ $min_product->quantity_guard }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">@lang('dashboard.start_time')</th>
+                                                <td>{{ $min_product->start_time }} - {{ $min_product->end_time }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">@lang('dashboard.price')</th>
+                                                <td>{{ $min_product->new_price }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">@lang('dashboard.map')</th>
+                                                {{-- <td>{{ $min_product->promotedd->city->name }}</td> --}}
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">@lang('dashboard.conditions')</th>
+                                                <td>{{ $min_product->condition }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
 
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -163,36 +153,6 @@
                 </div>
             </div>
             <div class="tab-pane active" id="tab-spec">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product-details-frame">
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">@lang('dashboard.quantity_Availabl')</th>
-                                        <td>{{ $min_product->quantity }} {{ $min_product->quantity_guard }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">@lang('dashboard.start_time')</th>
-                                        <td>{{ $min_product->start_time }} - {{ $min_product->end_time }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">@lang('dashboard.price')</th>
-                                        <td>{{ $min_product->new_price }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">@lang('dashboard.map')</th>
-                                        <td>{{ $min_product->promotedd->city->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">@lang('dashboard.conditions')</th>
-                                        <td>{{ $min_product->condition }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="product-details-frame">

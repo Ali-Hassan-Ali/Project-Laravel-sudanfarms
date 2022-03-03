@@ -39,7 +39,7 @@
                             @method('post')
 
                             <div class="form-group">
-                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="@lang('dashboard.name')">
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="@lang('dashboard.name')" required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" type="number" value="{{ old('phone') }}">
+                                <input id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" type="number" value="{{ old('phone') }}" required>
                                 <input id="code" name="phone_code" type="tel" value="+249" hidden>
                                 <input id="country-code" name="country_phone_code" type="text" value="sd" hidden>
                                 @error('phone')
@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="email" name="email" value="test@gmail.com" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="@lang('dashboard.email')">
+                                <input type="email" name="email" value="test@gmail.com" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="@lang('dashboard.email')" required>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -67,7 +67,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="@lang('dashboard.password')">
+                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="@lang('dashboard.password')" required>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password_confirmation" class="form-control" 
-                                placeholder="@lang('dashboard.password_confirmation')">
+                                placeholder="@lang('dashboard.password_confirmation')" required>
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox ">
@@ -91,13 +91,13 @@
                             <hr>
                             <div class="form-button">
                                 <a href="{{ url('login/facebook') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#3b5998;">
-                                    Login by Facebook
+                                    @lang('lang.Login_by_Facebook')
                                 </a>
                             </div>
                             <p class="text-center">or</p>
                             <div class="form-button">
                                 <a href="{{ url('login/google') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#ea4335;">
-                                    Login by Gmail
+                                    @lang('lang.Login_by_Google')
                                 </a>
                             </div>
                         </form>

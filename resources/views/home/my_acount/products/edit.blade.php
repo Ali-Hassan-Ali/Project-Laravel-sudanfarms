@@ -38,8 +38,8 @@
 		                        @foreach ($names as $name)
 
 		                            <div class="form-group">
-		                                <label>@lang('dashboard.' . $name)</label>
-		                                <input type="text" name="{{ $name }}" class="form-control" value="{{ $product[$name] }}">
+		                                <label>@lang(app()->getLocale() == 'ar' ? 'dashboard.product_name_ar' : 'dashboard.product_name_en')</label>
+		                                <input type="text" name="{{ $name }}" class="form-control" value="{{ $product[$name] }}" required>
 		                            </div>
 		                            
 		                        @endforeach
@@ -48,14 +48,14 @@
 
 		                            <div class="form-group">
 		                                <label>@lang('dashboard.' . $desc)</label>
-		                                <textarea type="text" name="{{ $desc }}" class="ckeditor form-control">{{ $product[$desc] }}</textarea>
+		                                <textarea type="text" name="{{ $desc }}" required class="ckeditor form-control">{{ $product[$desc] }}</textarea>
 		                            </div>
 		                            
 		                        @endforeach
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.categorey')</label>
-		                            <select id="select-category" name="sub_category_id" class="form-control">
+		                            <select id="select-category" required name="sub_category_id" class="form-control">
 		                                <option value="">@lang('dashboard.all_categories')</option>
 		                                @foreach ($sub_categoreys as $category)
 		                                    <option value="{{ $category->id }}" data-id="{{ $category->id }}" data-url="{{ route('home.sub_categorys',$category->id) }}" {{ $categorey_id->id == $category->id ? 'selected' : '' }}>
@@ -75,7 +75,7 @@
 		                        <div class="form-group">
 		                        	<label>@lang('lang.width') 450px | @lang('lang.height') 450px</label>
 		                            <label>@lang('dashboard.image') | @lang('dashboard.mult_image')</label>
-		                            <input type="file" multiple name="image[]" accept="image/*" class="form-control image" id="file-input">
+		                            <input type="file" multiple required name="image[]" accept="image/*" class="form-control image" id="file-input">
 		                        </div>
 
 		                        <div class="form-group">
@@ -93,7 +93,7 @@
 		                            <p class="text-red product-val-price">{{ $product->price }} $</p>
                             		<p class="text-red totle-price">{{ $product->new_price }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }}</p>
 		                            <input type="number" name="price" class="form-control product-price" 
-		                            		value="{{ $product->price }}">
+		                            		value="{{ $product->price }}" required>
 		                        </div>
 
 		                        <div class="form-group">
@@ -101,12 +101,12 @@
 		                            <p class="text-red product-val-decount">{{ $product->price_decount }} $</p>
                             		<p class="text-red totle-decount">{{ $product->new_price_decount }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG' }}</p>
                             		<input type="number" name="price_decount" class="form-control product-decount @error('price_decount') is-invalid @enderror" 
-                            			   value="{{ $product->price_decount }}">
+                            			   value="{{ $product->price_decount }}" required>
 		                        </div>
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.quantity')</label>
-		                            <input type="number" name="quantity" class="form-control" value="{{ $product->quantity }}">
+		                            <input type="number" name="quantity" class="form-control" value="{{ $product->quantity }}" required>
 		                        </div>
 
 		                        <div class="form-group">
@@ -124,12 +124,12 @@
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.start_time')</label>
-		                            <input type="date" name="start_time" class="form-control" value="{{ $product->start_time }}">
+		                            <input type="date" name="start_time" class="form-control" value="{{ $product->start_time }}" required>
 		                        </div>
 
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.end_time')</label>
-		                            <input type="date" name="end_time" class="form-control" value="{{ $product->end_time }}">
+		                            <input type="date" name="end_time" class="form-control" value="{{ $product->end_time }}" required>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4 mx-auto">

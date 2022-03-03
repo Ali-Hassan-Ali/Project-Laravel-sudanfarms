@@ -179,6 +179,12 @@ return [
         'new_password'          => 'كلمه المرور الجديده',
         'new_confirm_password'  => 'اعاده كلمه المرور',
         'phone_number'          => 'رقم الهاتف',
+        'body'                  => 'الموضوع',
+        'description'           => 'الوصف',
+        'start_data'            => 'من تاريخ',
+        'end_data'              => 'الي نهايه تاريخ',
+        'count'                 => 'عدد الاشخاص',
+        'country'               => 'البلد',
 
     ],
 ];

@@ -53,6 +53,40 @@ class ProfileController extends Controller
 
     } //end of index
 
+    public function setting()
+    {
+        $userId = auth()->id();
+
+        $promoted_dealer = PromotedDealer::where('user_id', $userId)->first();
+
+        if ($promoted_dealer) {
+            
+            if ($promoted_dealer->PromotedDealerFirst->first()) {
+
+                if ($promoted_dealer->PromotedDealerFirst->first()->end_month < now()) {
+                    
+                    $promoted_dealer->update([
+                        'status' => 0,
+                    ]);
+
+                }//end of if
+
+            } //end of if
+
+        }//end of count promoted_dealer
+
+        $user      = PromotedDealer::where('user_id', $userId)->first();
+        $products  = Product::where('user_id', $userId)->count();
+        $offers    = Offer::where('user_id', $userId)->count();
+        $orderItem = OrderItem::where('promoted_dealer_id', $userId)->count();
+        $orders    = Order::where('user_id', $userId)->count();
+        $recustm   = RequestCustmer::count();
+                                    
+        return view('home.my_acount.setting', compact('recustm', 'promoted_dealer', 'user',
+                                                      'products', 'offers', 'orderItem', 'orders', 'recustm'));
+
+    } //end of index
+
 
     public function passwprd_index()
     {
@@ -81,14 +115,15 @@ class ProfileController extends Controller
         $user = User::find(auth()->id());
 
         $request->validate([
-            'name'  => ['required'],
-            'email' => ['required', Rule::unique('users')->ignore($user->id)],
-            'phone' => ['required'],
+            'name'    => ['required'],
+            'email'   => ['required', Rule::unique('users')->ignore($user->id)],
+            'phone'   => ['required'],
+            'country' => ['required'],
         ]);
 
         try {
 
-            $request_data             = $request->except(['image']);
+            $request_data = $request->except(['image']);
 
             if ($request->image) {
 

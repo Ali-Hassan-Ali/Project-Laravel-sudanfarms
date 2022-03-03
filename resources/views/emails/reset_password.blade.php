@@ -284,6 +284,16 @@ ul.social li{
 
 
 }
+    .btn {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 10px;
+    }
 
 
     </style>
@@ -328,6 +338,9 @@ ul.social li{
 
                     @endif
                     </p>
+                    <p style="text-align:center;">
+                      <a href="{{ route('home.reset_password',$token) }}" class="btn">@lang('dashboard.reest_password') @lang('dashboard.password')</a>
+                    </p>
                   </div>
                 </td>
               </tr>
@@ -336,30 +349,10 @@ ul.social li{
         </tr><!-- end tr -->
         <tr>
 
-           <table class="bg_white" border="1" role="presentation" border="0" width="100%">
-           <p class="bg_white">@lang('dashboard.created_at') @lang('dashboard.orders') : {{ $order->created_at }}</p>
-           <p class="bg_white">@lang('dashboard.name') : {{ $order->user->name }}</p>
-            <tr>
-              <th>@lang('dashboard.name')</th>
-              <th>@lang('dashboard.image')</th>
-              <th>@lang('dashboard.price')</th>
-              <th>@lang('dashboard.company_name')</th>
-            </tr>
-            @foreach ($order->item as $data)
-
-              <tr>
-                <td style="text-align: center;">{{ $data->product->name }}</td>
-                <td style="text-align: center;"><img src="{{ $data->product->image_path }}" width="40"></td>
-                <td style="text-align: center;">{{ $data->price }} - {{ __('dashboard.quantity') }} - {{ $data->quantity }}</td>
-                <td style="text-align: center;">{{ $data->product->company_name }}</td>
-              </tr>
-              
-            @endforeach
-          </table>
-           <p class="bg_white">
+           
+          {{-- <p class="bg_white">
             @lang('dashboard.total') 
-            {{ $order->totle_price }}
-          </p>
+          </p> --}}
 
         </tr><!-- end tr -->
       <!-- 1 Column Text + Button : END -->

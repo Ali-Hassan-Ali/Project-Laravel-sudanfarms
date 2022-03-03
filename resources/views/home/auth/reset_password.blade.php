@@ -30,55 +30,46 @@
                     </div>
                     <div class="user-form-card">
                         <div class="user-form-title">
-                            <h2>@lang('lang.Join')</h2>
-                            <p>@lang('lang.create_new')</p>
+                            <h2>@lang('lang.send_email')</h2>
                         </div>
-                        <form class="user-form" action="{{ route('home.login.store') }}" method="post">
+                        <form class="user-form" action="{{ route('home.submitResetPasswordForm') }}" method="post">
                             @csrf
                             @method('post')
+
                             <div class="form-group">
                                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" 
-                                    value="super_admin@app.com" placeholder="@lang('dashboard.email')">
+                                       value="{{ $email->email }}" placeholder="@lang('dashboard.email')" disabled>
+                                <input type="email" name="email" value="{{ $email->email }}" hidden>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" 
-                                    value="123123123" placeholder="@lang('dashboard.password')">
+                                       value="" placeholder="@lang('dashboard.password')">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                                                        <div class="form-group">
-                                <div class="custom-control custom-checkbox ">
-                                    <input type="checkbox" name="remember" class="custom-control-input" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    <label for="remember" class="custom-control-label" >@lang('home.remember')</label>
-                                </div>
-                            </div>
-                            <div class="form-button"><button type="submit">@lang('dashboard.login')</button></div>
-                            <hr>
-                            <div class="form-button">
-                                <a href="{{ url('login/facebook') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#3b5998;">
-                                    @lang('lang.Login_by_Facebook')
-                                </a>
-                            </div>
-                            <p class="text-center">or</p>
-                            <div class="form-button">
-                                <a href="{{ url('login/google') }}" class="btn btn-block col-12 my-2 btn-primary" style="background:#ea4335;">
-                                    @lang('lang.Login_by_Google')
-                                </a>
+
+                            <div class="form-group">
+                                <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" 
+                                       value="" placeholder="@lang('dashboard.password_confirmation')">
+                                @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
+                            <div class="form-button"><button type="submit">@lang('lang.send')</button></div>
+
                         </form>
-                    </div>
-                    <div class="user-form-remind">
-                        <p>@lang('lang.have_account') <a href="{{ route('home.register') }}">@lang('dashboard.register')</a></p>
-                        <p>@lang('lang.reest_password') <a href="{{ route('home.verification_email') }}">@lang('dashboard.reest_password')</a></p>
                     </div>
                     <div class="user-form-footer">
                         <p>@lang('lang.&COPY')</p>

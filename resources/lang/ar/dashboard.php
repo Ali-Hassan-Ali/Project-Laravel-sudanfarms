@@ -3,6 +3,8 @@
 return [
 
     'count_month'          => 'عدد الاشهر',
+    'send_email_successfully' => 'تم ارسال اميل تاكيد',
+
     'home_page'            => 'لارئسية',
     'confirm_delete'       => '!تأكيد الحذف',
     'added_successfully'   => 'تم اضافه البيانات بنجاح',
@@ -26,6 +28,7 @@ return [
     
     'start_month'          => 'من بدايه الفتره',
     'end_month'            => 'الي نهايه الفتره',
+    'reest_password'       => 'تعيين',
     
     'start_data'           => 'من تاريخ',
     'end_data'             => 'الي نهايه تاريخ',
@@ -138,6 +141,10 @@ return [
     'number'           => 'العدد',
 
     'products'         => 'المنتجات',
+    
+    'product_name_ar'  => 'اسم المنتج بلغة العربية',
+    'product_name_en'  => 'اسم المنتج بلغة الانجلزية',
+
     'product_details'  => 'تفصايل المنتج',
     'description_ar'   => 'الوصف باللغة العربية',
     'description_en'   => 'الوصف باللغة الانجليزية',
@@ -219,6 +226,7 @@ return [
     'name_en'       => 'الاسم باللغة الإنجليزية',
     'replay'        => 'رد', 
     'message'       => 'الرسالة',
+    'messages'      => 'المراسلات',
    
     'setting_banners' => 'الغلاف',
     'title_ar'        => 'العنوان باللغة العربية',

@@ -3,6 +3,9 @@
 return [
 
     'count_month'          => 'count month',
+
+    'send_email_successfully' => 'A confirmation email has been sent',
+    
     'home_page'            => 'home',
     'confirm_delete'       => 'Confirm Delete',
     'added_successfully'   => 'Added Successfully',
@@ -25,6 +28,7 @@ return [
 
     'start_month'          => 'start month',
     'end_month'            => 'end month',
+    'reest_password'       => 'hiring',
 
     'start_data'           => 'Start data',
     'end_data'             => 'end data',
@@ -136,6 +140,8 @@ return [
     'number'           => 'The Number',
 
     'products'         => 'products',
+    'product_name_ar'  => 'Product name in Arbic',
+    'product_name_en'  => 'Product name in English',
     'product_details'  => 'product details',
     'product'          => 'The Product',
     'description_ar'   => 'description arbic',

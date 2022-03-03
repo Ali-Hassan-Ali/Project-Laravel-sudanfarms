@@ -57,7 +57,7 @@
 
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
-                                    	<label class="form-label">@lang('dashboard.name')</label>
+                                    	<label class="form-label">@lang('dashboard.name') <span class="text-danger"> : @lang('lang.required')</span></label>
                                     	<input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{ auth()->user()->name }}">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -69,7 +69,7 @@
 
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
-                                    	<label class="form-label">@lang('dashboard.email')</label>
+                                    	<label class="form-label">@lang('dashboard.email') <span class="text-danger"> : @lang('lang.required')</span></label>
                                     	<input class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ auth()->user()->email }}">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -88,7 +88,7 @@
 
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
-                                    	<label class="form-label">@lang('dashboard.phone')</label>
+                                    	<label class="form-label">@lang('dashboard.phone') <span class="text-danger"> : @lang('lang.required')</span></label>
                                     	<input id="phone" class="form-control @error('phone') is-invalid @enderror" type="tel" name="phone" value="{{ auth()->user()->phone }}">
                                         <input id="code" name="phone_code" type="tel" value="+{{ auth()->user()->phone_code }}" hidden>
                                         <input id="country-code" name="country_phone_code" type="text" value="{{ auth()->user()->country_phone_code }}" hidden>
@@ -102,7 +102,7 @@
 
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
-                                    	<label class="form-label">@lang('dashboard.country')</label>
+                                    	<label class="form-label">@lang('dashboard.country') <span class="text-danger"> : @lang('lang.required')</span></label>
                                         <br>
                                     	<input id="country_selector" class="form-control @error('country') is-invalid @enderror" type="text" name="country">
                                         <input id="country-user-code" type="text" name="country_code" value="{{ auth()->user()->country_code }}" hidden>
@@ -165,6 +165,65 @@
 
                             </form>
 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="account-card">
+                    <div class="account-title">
+                        <h4>@lang('dashboard.dashboard')</h4>
+                    </div>
+                    <div class="account-content">
+                        <div class="row">
+                            
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card contact">
+                                    <h6>
+                                        <img src="{{ asset('icon/setting.svg') }}" width="25" class="mx-1">
+                                        @lang('dashboard.settings')
+                                    </h6>
+                                    <a href="{{ route('dashboard.welcome') }}">
+                                        @lang('dashboard.settings')
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card contact">
+                                    <h6>
+                                        <img src="{{ asset('icon/messages.svg') }}" width="25" class="mx-1">
+                                        @lang('dashboard.messages')
+                                    </h6>
+                                    <a href="{{ route('dashboard.welcome') }}">
+                                        @lang('dashboard.messages')
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card contact">
+                                    <h6>
+                                        <img src="{{ asset('icon/shipping.svg') }}" width="25" class="mx-1">
+                                        @lang('dashboard.orders')
+                                    </h6>
+                                    <a href="{{ route('dashboard.welcome') }}">
+                                        @lang('dashboard.orders')
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card contact">
+                                    <h6>
+                                        <img src="{{ asset('icon/consultant.svg') }}" width="25" class="mx-1">
+                                        @lang('dashboard.request_custmers')
+                                    </h6>
+                                    <a href="{{ route('dashboard.welcome') }}">@lang('dashboard.request_custmers')</a>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
