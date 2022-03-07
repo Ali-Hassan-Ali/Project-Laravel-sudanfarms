@@ -451,7 +451,9 @@
                     <div class="brand-wrap">
                         <div class="brand-media">
                             <img src="{{ $promoted->logo_path }}" alt="brand">
-                            <div class="brand-overlay"><a href="#"><i class="fas fa-link"></i></a></div>
+                            <div class="brand-overlay">
+                                <a href="{{ $promoted->web_site }}" target="_blank"><i class="fas fa-link"></i></a>
+                            </div>
                         </div>
                         <div class="brand-meta">
                             <h4>{{ $promoted->name }}</h4>
@@ -483,7 +485,9 @@
                         <div class="brand-wrap">
                             <div class="brand-media">
                                 <img src="{{ $promoted->logo_path }}" alt="brand">
-                                <div class="brand-overlay"><a href="#"><i class="fas fa-link"></i></a></div>
+                                <div class="brand-overlay">
+                                    <a href="{{ $promoted->web_site }}" target="_blank"><i class="fas fa-link"></i></a>
+                                </div>
                             </div>
                             <div class="brand-meta">
                                 <h4>{{ $promoted->name }}</h4>
