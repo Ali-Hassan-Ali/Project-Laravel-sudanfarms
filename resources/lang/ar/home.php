@@ -24,6 +24,7 @@ return [
     'discount'       => 'تخفيض',
     'gobs'           => 'وظائف',
     'gobs'           => 'وظائف',
+    'link'           => 'رابط تواصل',
 
     'delivery_service'      => 'خدمة التوصيل السريع',
     'return_policy'         => 'سياسة إرجاع معينة',

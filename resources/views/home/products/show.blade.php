@@ -130,6 +130,17 @@
                                 <i class="fas fa-shopping-basket"></i><span> @lang('home.add_cart')</span>
                             </a>
                         </div>
+
+                        @if ($promoted_dealer->web_site)
+                            
+                            <div class="details-action-group my-3">
+                                <a class="details-wish wish" href="{{ $promoted_dealer->web_site }}" target="_blank">
+                                    <i class="fas fa-link"></i><span> @lang('home.link')</span>
+                                </a>
+                            </div>
+
+                        @endif
+
                     </div>
                 </div>
             </div>

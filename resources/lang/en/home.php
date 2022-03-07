@@ -22,6 +22,7 @@ return [
     'farms_of_sudan' => 'From the farms of Sudan',
     'discount'       => 'discount',
     'gobs'           => 'gobs',
+    'link'           => 'link',
 
     'delivery_service'      => 'Express delivery service',
     'return_policy'         => 'Specific return policy',
