@@ -26,6 +26,7 @@ function () {
 
     Route::get('/dd', function() {
         
+        return auth()->user();
         return view('emails.reset_password');
         // return App\Models\OrderItem::all();
         $order = App\Models\Order::with('item')->find(1);

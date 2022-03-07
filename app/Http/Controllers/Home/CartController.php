@@ -170,7 +170,6 @@ class CartController extends Controller
         } //end of if
 
     } //end of send
-
     
 
 } //end of controller

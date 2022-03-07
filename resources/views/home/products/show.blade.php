@@ -80,8 +80,12 @@
                                     <table class="table table-bordered">
                                         <tbody>
                                             <tr>
+                                                <th scope="row">@lang('dashboard.company_name')</th>
+                                                <td>{{ $min_product->company_name }}</td>
+                                            </tr>
+                                            <tr>
                                                 <th scope="row">@lang('dashboard.quantity_Availabl')</th>
-                                                <td>{{ $min_product->quantity }} {{ $min_product->quantity_guard }}</td>
+                                                <td>{{ $min_product->quantity }} / {{ $min_product->units->name }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">@lang('dashboard.start_time')</th>
@@ -92,8 +96,8 @@
                                                 <td>{{ $min_product->new_price }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">@lang('dashboard.map')</th>
-                                                {{-- <td>{{ $min_product->promotedd->city->name }}</td> --}}
+                                                <th scope="row">@lang('dashboard.price_decount')</th>
+                                                <td>{{ $min_product->new_price_decount }} {{ app()->getLocale() == 'ar' ? 'ج س' : 'SDG'}}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">@lang('dashboard.conditions')</th>

@@ -50,7 +50,7 @@
     	                                                <h6>{{ $index + 1 }}</h6>
     	                                            </td>
     	                                            <td class="table-name">
-    	                                                <h6>{{ $order->Promoted->name }}</h6>
+    	                                                <h6>{{ $order->Promoted->company_name }}</h6>
     	                                            </td>
                                                     <td class="table-name">
                                                         <h6>
