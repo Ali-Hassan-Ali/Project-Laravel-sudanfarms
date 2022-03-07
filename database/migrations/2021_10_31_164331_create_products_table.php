@@ -28,7 +28,7 @@ class CreateProductsTable extends Migration
             $table->longText('conditions_en');
             $table->double('stars')->default('0');
             $table->double('price', 8, 2)->nullable();
-            $table->double('price_decount', 8, 2)->default('0');
+            $table->double('price_decount', 8, 2)->nullable()->default(0);
             $table->bigInteger('sub_category_id')->unsigned();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

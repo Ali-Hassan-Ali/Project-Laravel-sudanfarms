@@ -113,7 +113,7 @@ function () {
     Route::middleware(['auth'])->group(function () {
         //profile routes
         Route::get('/my_acount', [ProfileController::class,'index'])->name('profile.index');
-        Route::get('/setting', [ProfileController::class,'setting'])->name('setting.index');
+        Route::get('/my_acount/setting', [ProfileController::class,'setting'])->name('setting.index');
         Route::post('/my_acount/store', [ProfileController::class,'update'])->name('profile.update');
         Route::get('/change_password', [ProfileController::class,'passwprd_index'])->name('change_password.index');
         Route::post('/change_password', [ProfileController::class,'passwprd_store'])->name('change_password.store');

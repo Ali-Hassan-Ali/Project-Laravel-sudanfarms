@@ -70,7 +70,7 @@
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
                                         <label class="form-label">@lang('dashboard.email') <span class="text-danger"> : @lang('lang.required')</span></label>
-                                        <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ auth()->user()->email }}">
+                                        <input class="form-control @error('email') is-invalid @enderror" disabled type="email" name="email" value="{{ auth()->user()->email }}">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

@@ -86,10 +86,11 @@ class ProductController extends Controller
         // return $request->all();
 
         // try {
-            // return 'fda';
+
             $request_data = $request->except('image');
 
-            $request_data['user_id'] = auth()->id();
+            $request_data['user_id']       = auth()->id();
+            $request_data['price_decount'] = $request->price_decount ?? '0';
 
             $products = Product::create($request_data);
 
@@ -118,6 +119,11 @@ class ProductController extends Controller
             ]);//end of create
 
             \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
+
+            session()->forget('product-totle_price');
+            session()->forget('product-price');
+            session()->forget('product-totle_price');
+            session()->forget('product-decount-price');
 
             notify()->success( __('dashboard.added_successfully'));
             return redirect()->route('products.index');

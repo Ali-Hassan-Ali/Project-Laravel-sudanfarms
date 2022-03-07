@@ -106,16 +106,6 @@ class AuthController extends Controller
             $request_data             = $request->except('password_confirmation', 'remember');
             $request_data['password'] = bcrypt($request->password);
 
-            $position = \Http::get('http://ip-api.com/json/');
-           
-            if ($position) {
-
-                $request_data['city']    = '';
-                $request_data['state']   = '';
-                $request_data['title']   = '';
-                
-            } 
-
             if (auth()->guard('web')->check()) {
 
                 return redirect()->route('welcome.index');

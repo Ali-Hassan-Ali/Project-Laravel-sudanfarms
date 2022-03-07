@@ -14,28 +14,28 @@ class UnitTableSeeder extends Seeder
     public function run()
     {
         \App\Models\Unit::create([
-            'name_ar'      => 'item',
-            'name_en'      => 'قطعه',
+            'name_ar'      => 'قطعه',
+            'name_en'      => 'item',
         ]);
 
         \App\Models\Unit::create([
-            'name_ar'      => 'tons',
-            'name_en'      => 'طن',
+            'name_ar'      => 'طن',
+            'name_en'      => 'tons',
         ]);
 
         \App\Models\Unit::create([
-            'name_ar'      => 'Gram',
-            'name_en'      => 'غرام',
+            'name_ar'      => 'غرام',
+            'name_en'      => 'Gram',
         ]);
 
         \App\Models\Unit::create([
-            'name_ar'      => 'pound',
-            'name_en'      => 'رطل',
+            'name_ar'      => 'رطل',
+            'name_en'      => 'pound',
         ]);
 
         \App\Models\Unit::create([
-            'name_ar'      => 'meter',
-            'name_en'      => 'المتر',
+            'name_ar'      => 'المتر',
+            'name_en'      => 'meter',
         ]);
 
     }//end of run

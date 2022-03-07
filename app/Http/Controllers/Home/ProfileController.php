@@ -53,41 +53,6 @@ class ProfileController extends Controller
 
     } //end of index
 
-    public function setting()
-    {
-        $userId = auth()->id();
-
-        $promoted_dealer = PromotedDealer::where('user_id', $userId)->first();
-
-        if ($promoted_dealer) {
-            
-            if ($promoted_dealer->PromotedDealerFirst->first()) {
-
-                if ($promoted_dealer->PromotedDealerFirst->first()->end_month < now()) {
-                    
-                    $promoted_dealer->update([
-                        'status' => 0,
-                    ]);
-
-                }//end of if
-
-            } //end of if
-
-        }//end of count promoted_dealer
-
-        $user      = PromotedDealer::where('user_id', $userId)->first();
-        $products  = Product::where('user_id', $userId)->count();
-        $offers    = Offer::where('user_id', $userId)->count();
-        $orderItem = OrderItem::where('promoted_dealer_id', $userId)->count();
-        $orders    = Order::where('user_id', $userId)->count();
-        $recustm   = RequestCustmer::count();
-                                    
-        return view('home.my_acount.setting', compact('recustm', 'promoted_dealer', 'user',
-                                                      'products', 'offers', 'orderItem', 'orders', 'recustm'));
-
-    } //end of index
-
-
     public function passwprd_index()
     {
         return view('home.my_acount.change_password');
@@ -150,6 +115,17 @@ class ProfileController extends Controller
         }//end try
 
     } //end of store
-    
+
+
+    public function setting()
+    {
+        $userId = auth()->id();
+
+        $promoted_dealer = PromotedDealer::where('user_id', $userId)->first();
+
+        return view('home.my_acount.setting', compact('promoted_dealer'));
+
+    }//end of fun
+
 
 } //end of controller
