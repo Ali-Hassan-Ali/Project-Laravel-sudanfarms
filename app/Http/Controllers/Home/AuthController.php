@@ -95,7 +95,7 @@ class AuthController extends Controller
     public function store_register(Request $request)
     {
         $request->validate([
-            'name'     => ['required', 'max:15'],
+            'name'     => ['required', 'max:25'],
             'phone'    => ['required', 'max:15', 'min:9'],
             'email'    => ['required', 'email', 'unique:users', 'max:25'],
             'password' => ['required', 'confirmed', 'max:20'],

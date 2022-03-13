@@ -15,6 +15,7 @@ use App\Http\Controllers\Home\OfferController;
 use App\Http\Controllers\Home\SocialController;
 use App\Http\Controllers\Home\OrderController;
 use App\Http\Controllers\Home\GobController;
+use App\Http\Controllers\Home\ChatController;
 
 use AmrShawky\LaravelCurrency\Facade\Currency;
 use App\Models\PromotedDealer;
@@ -26,10 +27,7 @@ function () {
 
     Route::get('/dd', function() {
         
-        return auth()->user();
-        return view('emails.reset_password');
-        // return App\Models\OrderItem::all();
-        $order = App\Models\Order::with('item')->find(1);
+        return App\Models\Product::first();
 
         \Mail::to('alihassanalimadny@gmail.com')->send(new \App\Mail\OrderItemEmail($order));
         return true;
@@ -125,6 +123,7 @@ function () {
         Route::post('/promoted_dealers', [PromotedDealerController::class,'store'])->name('promoted_dealers.store');
         Route::get('/promoted_dealers.edit', [PromotedDealerController::class,'edit'])->name('promoted_dealers.edit');
         Route::get('/promoted_dealers.packages', [PromotedDealerController::class,'packages'])->name('promoted_dealers.packages');
+        Route::get('/promoted_dealers/show/{package}', [PromotedDealerController::class,'packages_show'])->name('promoted_dealers.packages.show');
         Route::post('/promoted_dealers.packages', [PromotedDealerController::class,'packagesStore'])->name('promoted_dealers.packages');
         Route::get('promoted_dealers.packages.this_packages', [PromotedDealerController::class,'packagesThisPackage'])->name('promoted_dealers.packages.this_packages');
         Route::post('/promoted_dealers.update', [PromotedDealerController::class,'update'])->name('promoted_dealers.update');
@@ -143,6 +142,9 @@ function () {
 
         // offers route
         Route::resource('offers', OfferController::class);
+
+        //chat routes
+        Route::resource('chats', ChatController::class)->except('create','show','edit','update','destroy');
 
         // Route::resource('users', UserController::class)->except(['show']);
 

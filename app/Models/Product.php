@@ -84,9 +84,13 @@ class Product extends Model
     public function getNewPriceDecountAttribute()
     {
         $amount = Currenccy::first();
-
         $totle  = $this->price_decount * $amount->amount;
 
+        if ($this->price_decount > 0) {
+           
+            return number_format(preg_replace('/,/', '', 0),2);
+        }
+        
         return number_format(preg_replace('/,/', '', $totle),2);
 
     }//end of new price decount

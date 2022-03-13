@@ -51,6 +51,10 @@
     {{-- plugin  country  css--}}
     <link rel="stylesheet" href="{{ asset('home_files/plugns/country/css/countrySelect.css') }}">
 
+    {{-- chat  css--}}
+    <link rel="stylesheet" href="{{ asset('home_files/css/chat.css') }}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
     <style type="text/css">
         .at-expanding-share-button.at-expanding-share-button-mobile .at-expanding-share-button-toggle {
             margin-bottom: 100px !important;

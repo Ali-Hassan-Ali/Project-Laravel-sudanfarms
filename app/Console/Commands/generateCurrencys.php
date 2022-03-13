@@ -40,10 +40,10 @@ class generateCurrencys extends Command
     public function handle()
     {
         $currency = Currency::convert()
-        ->from('USD')
-        ->to('SDG')
-        ->amount(1)
-        ->get();
+                            ->from('USD')
+                            ->to('SDG')
+                            ->amount(1)
+                            ->get();
 
         if ($currency) {
             

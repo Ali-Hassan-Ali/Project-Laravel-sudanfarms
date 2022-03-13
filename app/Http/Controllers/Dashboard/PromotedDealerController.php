@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CategoryDealer;
 use App\Models\PromotedDealer;
 use App\Models\User;
+use App\Models\NotificationUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -180,16 +181,34 @@ class PromotedDealerController extends Controller
     {
         if ($promotedDealer->status == '-1') {
             $status = 1;
+
+            NotificationUser::create([
+                'title_ar' => 'تم ترقيه حساب جديد',
+                'title_en' => 'New account upgraded',
+                'user_id'  => $promotedDealer->user_id,
+            ]); //end of create
         }
         if ($promotedDealer->status == '0') {
             $status = 1;
+
+            NotificationUser::create([
+                'title_ar' => 'تم ترقيه حساب جديد',
+                'title_en' => 'New account upgraded',
+                'user_id'  => $promotedDealer->user_id,
+            ]); //end of create
+
         }
+        
         if ($promotedDealer->status == '1') {
             $status = 0;
+            NotificationUser::create([
+                'title_ar' => 'لقم تم ايقاف حسابك مؤقتا',
+                'title_en' => 'Your account has been temporarily suspended',
+                'user_id'  => $promotedDealer->user_id,
+            ]); //end of create
         }
-        $promotedDealer->update([
-            'status' => $status,
-        ]);
+
+        $promotedDealer->update(['status' => $status]);
 
         session()->flash('success', __('dashboard.updated_successfully'));
         return redirect()->route('dashboard.promoted_dealers.index');

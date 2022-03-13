@@ -23,6 +23,9 @@ return [
     'discount'       => 'discount',
     'gobs'           => 'gobs',
     'link'           => 'link',
+    'sellers'        => 'sellers',
+    'to'             => 'to',
+    'messages'       => 'messages',
 
     'delivery_service'      => 'Express delivery service',
     'return_policy'         => 'Specific return policy',

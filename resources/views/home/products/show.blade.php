@@ -130,6 +130,13 @@
                                 <i class="fas fa-shopping-basket"></i><span> @lang('home.add_cart')</span>
                             </a>
                         </div>
+                        
+                        <div class="details-action-group my-3">
+                            <a class="details-wish wish" 
+                                    href="{{ route('chats.index', ['from' => $promoted_dealer->user->id]) }}">
+                                <i class="fas fa-comment-alt"></i><span> @lang('home.messages')</span>
+                            </a>
+                        </div>
 
                         @if ($promoted_dealer->web_site)
                             
@@ -161,7 +168,7 @@
                     <div class="col-lg-12">
                         <div class="product-details-frame">
                             <div class="tab-descrip">
-                                <p>{{ $min_product->description }}</p>
+                                <p>{!! $min_product->description !!}</p>
                             </div>
                         </div>
                     </div>
@@ -172,7 +179,7 @@
                     <div class="col-lg-12">
                         <div class="product-details-frame">
                             <div class="tab-descrip">
-                                <p>{{ $min_product->description }}</p>
+                                <p>{!! $min_product->description !!}</p>
                             </div>
                         </div>
                     </div>

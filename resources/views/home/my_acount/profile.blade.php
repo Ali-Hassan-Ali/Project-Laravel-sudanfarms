@@ -59,7 +59,7 @@
                                         <img src="{{ asset('icon/messages.svg') }}" width="25" class="mx-1">
                                         @lang('dashboard.messages')
                                     </h6>
-                                    <a href="{{ route('dashboard.welcome') }}">
+                                    <a href="{{ route('chats.index') }}">
                                         @lang('dashboard.messages')
                                     </a>
                                 </div>
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="account-content">
                                     <div class="row">
-                                        <h3 class="text-danger">@lang('lang.wait_request')</h3>
+                                        {{-- <h3 class="text-danger">@lang('lang.wait_request')</h3> --}}
                                         <div class="col-md-6 col-lg-4 alert fade show">
                                             <div class="profile-card contact">
                                                 <h6><i class="fas fa-list"></i> @lang('dashboard.package')</h6>

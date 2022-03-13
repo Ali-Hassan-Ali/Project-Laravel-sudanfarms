@@ -17,22 +17,8 @@
 
 <section class="inner-section contact-part">
     <div class="container">
+
         <div class="row">
-            @foreach ($packages as $package)
-
-                <a href="{{ route('promoted_dealers.packages.show', $package->id) }}" class="col-md-6 col-lg-4">
-                    <div class="contact-card"><i class="icofont-email"></i>
-                        <h4>{{ $package->name }}</h4>
-                        <h4>@lang('dashboard.' . $package->guard == 0 ? 'free' : 'infree')</h4>
-                        <p>@lang('dashboard.price') {{ $package->price }}</p>
-                        <p>@lang('dashboard.count_month') | {{ $package->month }}</p>
-                        <p>@lang('dashboard.qty_product') | {{ $package->qty_product }}</p>
-                    </div>
-                </a>
-
-            @endforeach
-        </div>
-       {{--  <div class="row">
             <div class="col-lg-12">
                 <form class="contact-form" action="{{ route('promoted_dealers.packages') }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -42,22 +28,19 @@
                     <div class="form-group">
                         <label>@lang('dashboard.packages')</label>
                         <select name="package_id" required class="form-control">
-                            <option value="">@lang('dashboard.select_package')</option>
-                            @foreach ($packages as $package)
-                                <option value="{{ $package->id }}"
-                                    {{ old('package_id') == $package->id ? 'selected' : '' }}>
-                                    @lang('dashboard.' . $package->guard == 0 ? 'free' : 'infree') 
-                                    - {{ $package->price }} 
-                                    - {{ $package->month }}
-                                    - {{ $package->name }}
-                                </option>
-                            @endforeach
+                            {{-- <option value="">@lang('dashboard.select_package')</option> --}}
+                            <option value="{{ $package->id }}" selected>
+                                @lang('dashboard.' . $package->guard == 0 ? 'free' : 'infree') 
+                                - {{ $package->price }} 
+                                - {{ $package->month }}
+                                - {{ $package->name }}
+                            </option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>
-                            @lang('dashboard.bill') 
+                            {{-- @lang('dashboard.bill')  --}}
                             @if (app()->getLocale() == 'ar')
                                 
                                 {{ setting('account_number_details_ar') }}
@@ -86,7 +69,7 @@
                     </button>
                 </form>
             </div>
-        </div> --}}
+        </div>
     </div>
 </section> 
 

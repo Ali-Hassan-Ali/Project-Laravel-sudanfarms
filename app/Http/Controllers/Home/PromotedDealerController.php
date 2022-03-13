@@ -78,11 +78,11 @@ class PromotedDealerController extends Controller
             // auth()->user()->detachRole('clients');
             auth()->user()->attachRole('promoted');
 
-            $user = Notification::create([
-                'title_ar' => 'تم ترقيه حساب جديد',
-                'title_en' => 'New account upgraded',
-                'user_id'  => auth()->id(),
-            ]); //end of create
+            // $user = Notification::create([
+            //     'title_ar' => 'في انطظار تفعيل حسابك',
+            //     'title_en' => 'Waiting for your account to be activated',
+            //     'user_id'  => auth()->id(),
+            // ]); //end of create
 
             $user = NotificationUser::create([
                 'title_ar' => 'لقد تم ترقيه حسابك ',
@@ -253,5 +253,11 @@ class PromotedDealerController extends Controller
         return view('home.my_acount.promoted_dealers.this_packages', compact('packages'));
 
     }//end of packagesThisPackage
+
+    public function packages_show(Package $package)
+    {
+        return view('home.my_acount.promoted_dealers.show_packages', compact('package'));
+        
+    }//ene of fun show
 
 } //end of controller
