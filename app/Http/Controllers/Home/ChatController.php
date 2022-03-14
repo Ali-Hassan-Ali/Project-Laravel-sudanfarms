@@ -13,11 +13,9 @@ class ChatController extends Controller
     
     public function index()
     {
-        // return Chat::all();
-
         $chats = Chat::where('to', request()->to)
-                     ->where('from', auth()->id())
-                     ->get();
+                            ->where('from', auth()->id())
+                            ->get();
 
         $chats_me = Chat::where('to', auth()->id())
                      ->where('from', request()->to)
@@ -28,7 +26,7 @@ class ChatController extends Controller
 
         $promoted_dealer = PromotedDealer::where('user_id', '!=', auth()->id())->get();
         $promoted        = PromotedDealer::find(request()->to);
-        $seller          = PromotedDealer::where('user_id',auth()->id())->first();
+        $seller          = PromotedDealer::where('user_id', auth()->id())->first();
 
         return view('home.my_acount.chats.index', compact('chats','promoted_dealer','promoted','users','seller','chats_me'));
 
@@ -42,12 +40,38 @@ class ChatController extends Controller
             'to'      => ['required','numeric'],
         ]);
 
+        if (request()->seller == true) {
+            
+            Chat::create([
+                'message' => $request->message,
+                'from'    => $request->to,
+                'to'      => auth()->id(),
+                'me'      => auth()->id(),
+            ]);
+
+            return redirect()->back();
+
+        }//end of if
+
         Chat::create([
             'message' => $request->message,
             'to'      => $request->to,
             'from'    => auth()->id(),
             'me'      => auth()->id(),
         ]);
+
+        return redirect()->back();
+
+    }//end of store
+
+
+    public function store_seller(Request $request)
+    {
+        request()->validate([
+            'message' => ['required'],
+            'to'      => ['required','numeric'],
+        ]);
+
 
         return redirect()->back();
 

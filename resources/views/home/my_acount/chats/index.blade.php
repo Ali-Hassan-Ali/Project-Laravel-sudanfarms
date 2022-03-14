@@ -99,7 +99,15 @@
                                             @endphp
                                             <li class="chat-{{ $chat->me == auth()->id() ? 'left' : 'right' }}">
                                                 <div class="chat-avatar">
-                                                    <img src="{{ $user->image_path }}" alt="{{ $user->name }}">
+                                                    @if ($chat->me == $seller->user_id)
+                                                        
+                                                        <img src="{{ $seller->logo_path }}" alt="{{ $user->name }}">
+
+                                                    @else
+                                                    
+                                                        <img src="{{ $user->image_path }}" alt="{{ $user->name }}">
+
+                                                    @endif
                                                     <div class="chat-name">{{ $user->name }}</div>
                                                 </div>
                                                 <div class="chat-text">{{ $chat->message }}</div>
@@ -149,6 +157,12 @@
 
                                         <textarea class="form-control" name="message" rows="3" placeholder="Type your message here..."></textarea>
                                         <input type="number" name="to" value="{{ request()->to }}" hidden>
+
+                                        @if ($seller)
+                                        <input type="number" name="seller" value="{{ true }}" hidden>
+                                        @else
+                                        <input type="number" name="seller" value="{{ false }}" hidden>
+                                        @endif
 
                                         <button class="btn btn-outline col-12 my-3">@lang('home.send')</button>
                                         

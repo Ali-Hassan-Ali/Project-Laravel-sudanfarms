@@ -27,7 +27,7 @@ function () {
 
     Route::get('/dd', function() {
         
-        return App\Models\Product::first();
+        return dd(auth()->id());
 
         \Mail::to('alihassanalimadny@gmail.com')->send(new \App\Mail\OrderItemEmail($order));
         return true;
