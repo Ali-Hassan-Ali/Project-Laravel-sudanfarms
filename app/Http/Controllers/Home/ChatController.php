@@ -15,9 +15,9 @@ class ChatController extends Controller
     {
         // return Chat::all();
 
-        return $chats = Chat::where('to', request()->to)
-                            ->where('from', auth()->id())
-                            ->get();
+        $chats = Chat::where('to', request()->to)
+                     ->where('from', auth()->id())
+                     ->get();
 
         $chats_me = Chat::where('to', auth()->id())
                      ->where('from', request()->to)

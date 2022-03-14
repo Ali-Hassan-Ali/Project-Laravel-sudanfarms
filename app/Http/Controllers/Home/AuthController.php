@@ -52,7 +52,8 @@ class AuthController extends Controller
             } else {
 
                 if (User::where('email', $request->email)->first()) {
-                    $remember_me = $request->has('remember') ? true : false;
+                    // $remember_me = $request->has('remember') ? true : false;
+                    $remember_me = $request->has('remember') ? true : true;
                     if (auth()->guard('web')->attempt([
                         'email'    => $request->email,
                         'password' => $request->password], $remember_me)) {
@@ -115,7 +116,7 @@ class AuthController extends Controller
                 $user = User::create($request_data);
                 $user->attachRole('clients');
 
-                $remember_me = $request->has('remember') ? true : false;
+                $remember_me = $request->has('remember') ? true : true;
                 auth()->login($user, $remember_me);
 
                 $user = Notification::create([
