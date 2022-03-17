@@ -173,6 +173,7 @@
     
     @stack('products')
     @stack('gallery')
+    @stack('script')
     @auth
     <script type="text/javascript">
         $("#country_selector").countrySelect({
@@ -278,5 +279,4 @@
         </script>
     @endif
 </body>
-
 </html>

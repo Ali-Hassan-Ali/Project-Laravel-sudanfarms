@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 use App\Models\Categorey;
 use Illuminate\Http\Request;
 
@@ -42,8 +44,8 @@ class SubCategoreyController extends Controller
     {
         
         $request->validate([
-            'name_ar' => ['required','max:255'],
-            'name_en' => ['required','max:255'],
+            'name_ar' => ['required','max:255','unique:categoreys'],
+            'name_en' => ['required','max:255','unique:categoreys'],
             'image'   => ['required','image'],
         ]);
 
@@ -55,6 +57,7 @@ class SubCategoreyController extends Controller
 
             Storage::disk('local')->put('public/sub_categorey_images/' . $imag->hashName() , (string)$new_image, 'public');
             $request_data['image'] = 'sub_categorey_images/' . $imag->hashName();
+            $request_data['slug']  = str::slug($request->name_en, '_');
 
             categorey::create($request_data);
 
@@ -84,8 +87,8 @@ class SubCategoreyController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name_ar'   => ['required','max:255'],
-            'name_en'   => ['required','max:255'],
+            'name_ar'   => ['required','max:255', Rule::unique('categoreys')->ignore($id)],
+            'name_en'   => ['required','max:255', Rule::unique('categoreys')->ignore($id)],
         ]);
 
         try {
@@ -108,7 +111,7 @@ class SubCategoreyController extends Controller
                 $request_data['image'] = 'sub_categorey_images/' . $imag->hashName();
 
             }//end of if
-            
+            $request_data['slug']  = str::slug($categorey->name_en, '_');
             $categorey->update($request_data);
             
             session()->flash('success', __('dashboard.updated_successfully'));

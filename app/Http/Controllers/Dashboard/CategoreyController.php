@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Categorey;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Categorey;
 use App\Http\Requests\CategoryRequest;
 
 class CategoreyController extends Controller
@@ -42,12 +43,13 @@ class CategoreyController extends Controller
     {
 
         $request->validate([
-            'name_ar' => ['required','max:255'],
-            'name_en' => ['required','max:255'],
+            'name_ar' => ['required','max:255','unique:categoreys'],
+            'name_en' => ['required','max:255','unique:categoreys'],
         ]);
 
         try {
 
+            $request['slug'] = str::slug($request->name_en, '_');
             categorey::create($request->all());
 
             session()->flash('success', __('dashboard.added_successfully'));
@@ -73,12 +75,13 @@ class CategoreyController extends Controller
     {
         
         $request->validate([
-            'name_ar'   => ['required','max:255'],
-            'name_en'   => ['required','max:255'],
+            'name_ar'   => ['required','max:255', Rule::unique('categoreys')->ignore($categorey->id)],
+            'name_en'   => ['required','max:255', Rule::unique('categoreys')->ignore($categorey->id)],
         ]);
 
         try {
 
+            $request['slug'] = str::slug($categorey->name_en, '_');
             $categorey->update($request->all());
 
             session()->flash('success', __('dashboard.updated_successfully'));

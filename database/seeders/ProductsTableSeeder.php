@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -21,6 +22,7 @@ class ProductsTableSeeder extends Seeder
                 'name_ar'            => 'name ar',
                 'name_en'            => 'name en',
                 'quantity'           => '22',
+                'slug'               => str::slug('name ar' . ' ' . $data, '_'),
                 'units_id'           => '1',
                 'start_time'         => now()->toDateString(),
                 'end_time'           => now()->toDateString(),
@@ -65,6 +67,7 @@ class ProductsTableSeeder extends Seeder
             $product = \App\Models\Product::create([
                 'name_ar'            => 'name ar',
                 'name_en'            => 'name en',
+                'slug'               => str::slug('name ar ar' . ' ' . $data, '_'),
                 'quantity'           => '22',
                 'units_id'           => '1',
                 'start_time'         => now()->toDateString(),

@@ -9,7 +9,7 @@
             <h2>@lang('dashboard.product_details')</h2>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('welcome.index') }}">@lang('dashboard.home')</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('category.show',$min_product->sub_category_id) }}">@lang('dashboard.products')</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('category.show', $min_product->sub_category_id) }}">@lang('dashboard.products')</a></li>
                 <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.product_details')</li>
             </ol>
         </div>
@@ -101,7 +101,7 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">@lang('dashboard.conditions')</th>
-                                                <td>{{ $min_product->condition }}</td>
+                                                <td>{!! $min_product->condition !!}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -112,6 +112,13 @@
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
                 <div class="addthis_inline_share_toolbox mb-4"></div>
             
+                        <div class="details-action-group">
+                            <a class="details-wish wish copy-link" id="copy-link" 
+                                href="{{ route('product.slug', $min_product->slug) }}">
+                                <i class="fas fa-phone-alt"></i><span>@lang('dashboard.copy ')</span>
+                            </a>
+                        </div>
+                        <br>
                         <div class="details-action-group">
                             <a class="details-wish wish count-call-phone" 
                                 data-url="{{ route('count_call_phone',$promoted_dealer->id) }}" href="tel:{{ $promoted_dealer->phone }}" title="@lang('dashboard.call_me')">
@@ -274,3 +281,23 @@
 
 
 @endsection
+
+@push('script')
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            alert('aSome');
+            $('.copy-link').on('click', function (e) {
+                e.preventDefault();
+                alert('dfdf');
+                var copyText = document.getElementById("copy-link");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /* For mobile devices */
+                navigator.clipboard.writeText(copyText.href);
+                alert("Copied the text: " + copyText.href);
+            });
+
+        });//end of rdy
+
+    </script>
+@endpush

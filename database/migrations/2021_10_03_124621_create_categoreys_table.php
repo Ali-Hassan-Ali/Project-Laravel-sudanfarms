@@ -18,7 +18,7 @@ class CreateCategoreysTable extends Migration
             $table->string('name_ar');
             $table->string('name_en');
             $table->string('image')->default('sub_categorey_images/default.png');
-            $table->string('slug')->default('slug');
+            $table->string('slug')->nullable()->unique();
             $table->string('sub_categoreys')->default('0');
             $table->timestamps();
         });

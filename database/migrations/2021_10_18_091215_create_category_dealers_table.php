@@ -17,6 +17,7 @@ class CreateCategoryDealersTable extends Migration
             $table->id();
             $table->string('image')->default('category_dealers_image/default.png');
 
+            $table->string('slug')->nullable()->unique();
             $table->string('name_ar');
             $table->string('name_en');
             $table->timestamps();

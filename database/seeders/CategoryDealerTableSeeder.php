@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CategoryDealerTableSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class CategoryDealerTableSeeder extends Seeder
             \App\Models\CategoryDealer::create([
                 'name_ar' => $data,
                 'name_en' => $data,
+                'slug'    => str::slug($data, '_'),
             ]);
             
         }//end of foreach

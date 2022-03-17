@@ -29,6 +29,7 @@ return [
     'start_month'          => 'من بدايه الفتره',
     'end_month'            => 'الي نهايه الفتره',
     'reest_password'       => 'تعيين',
+    'chats'                => 'المحدثات',
     
     'start_data'           => 'من تاريخ',
     'end_data'             => 'الي نهايه تاريخ',

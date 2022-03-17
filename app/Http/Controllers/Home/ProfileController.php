@@ -69,7 +69,9 @@ class ProfileController extends Controller
         ]);
 
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
-
+        
+        notify()->success(__('dashboard.updated_successfully'));
+        return redirect()->back();
         return view('home.my_acount.profile');
 
     } //end of chabge password

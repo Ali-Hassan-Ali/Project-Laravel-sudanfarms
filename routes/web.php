@@ -78,6 +78,7 @@ function () {
     Route::get('searchs', [HeaderController::class,'searchs'])->name('searchs');
     Route::get('suppliers', [HeaderController::class,'supplier'])->name('home.supplier');
     Route::get('product/{product}', [HeaderController::class,'show_product'])->name('product.show');
+    Route::get('product_detail/{slug}', [HeaderController::class,'product_slug'])->name('product.slug');
     Route::get('category/{id}', [HeaderController::class,'show_category'])->name('category.show');
     Route::get('gallerys', [HeaderController::class,'gallerys'])->name('gallerys.index');
     Route::get('videos', [HeaderController::class,'videos'])->name('videos.index');

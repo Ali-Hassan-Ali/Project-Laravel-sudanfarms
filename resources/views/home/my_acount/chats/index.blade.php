@@ -10,7 +10,7 @@
     <div class="page-title">
         <div class="row gutters">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <h5 class="title">Chat App</h5>
+                <h5 class="title">@lang('dashboard.chats')</h5>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"> </div>
         </div>

@@ -216,6 +216,8 @@ return [
     'categories_name_sub_en' => 'Sub Categories English',
     'replay'        => 'Replay', 
     'message'       => 'message',
+    'messages'      => 'messages',
+    'chats'         => 'chats',
 
 
     'markets'       => 'Stores',

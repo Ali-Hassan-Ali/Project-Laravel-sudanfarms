@@ -32,11 +32,11 @@
 	                		@csrf
 
 		                    <div class="row">
-		                    	@include('partials._errors')
+		                    	
 		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('dashboard.company_name')</label>
-		                            	<input class="form-control @error('company_name') is-invalid @enderror" type="text" name="company_name" 
+		                            	<label>@lang('dashboard.company_name') <span class="text-danger"> : @lang('lang.required')</span> </label>
+		                            	<input required class="form-control @error('company_name') is-invalid @enderror" type="text" name="company_name" 
 		                            	value="{{ $user->company_name }}" placeholder="@lang('dashboard.company_name')">
 		                            	@error('company_name')
 			                                <span class="invalid-feedback" role="alert">
@@ -48,8 +48,9 @@
 
 		                        <div class="col-md-6 col-lg-6">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.promotion')</label>
-		                                <select name="category_dealer_id" class="form-control">
+		                            	<label class="form-label">@lang('lang.promotion') <span class="text-danger"> : @lang('lang.required')</span></label>
+		                                <select name="category_dealer_id" class="form-control" required>
+		                                	<option value="">@lang('lang.promotion_categorey')</option>
 		                                	@foreach (App\Models\CategoryDealer::all() as $data)
 		                                    	<option value="{{ $data->id }}" {{ $data->id == $user->category_dealer_id ? 'selected' : '' }}>{{ $data->name }}</option>
 		                                	@endforeach
@@ -59,7 +60,7 @@
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.email')</label>
+		                            	<label class="form-label">@lang('lang.email') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                            	<input class="form-control" minlength="9" type="email" name="email" value="{{ $user->email }}" 
 		                            	placeholder="البريد الإلكتروني">
 		                            </div>

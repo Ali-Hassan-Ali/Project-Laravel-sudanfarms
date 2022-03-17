@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', __('home.prfile'))    
+@section('title', __('home.profile'))    
 
 <section class="inner-section single-banner">
     <div class="container">

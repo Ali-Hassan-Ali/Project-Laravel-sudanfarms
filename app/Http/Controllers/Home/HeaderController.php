@@ -135,12 +135,22 @@ class HeaderController extends Controller
         //     return redirect()->route('welcome.index');
 
         // }
-        
         $min_product = $product;
         
         $min_product->update([
             'eye_count' => $min_product->eye_count + 1
         ]);
+
+        return redirect()->route('product.slug', $min_product->slug);
+
+
+    }//end of show product
+
+
+    public function product_slug($slug)
+    {
+        $min_product = Product::where('slug', $slug)->first();
+        $product     = Product::where('slug', $slug)->first();
 
         $category_product   = Categorey::where('sub_categoreys',$min_product->sub_category_id)->latest()->limit(4)->get();
         
@@ -179,8 +189,7 @@ class HeaderController extends Controller
         return view('home.products.show',compact('product','image_product','next_product',
                                                  'next_image_product','prev_product','prev_image_product',
                                                  'promoted_dealer','min_product','category_product'));
-
-    }//end of show product
+    }
 
 
 
@@ -256,7 +265,7 @@ class HeaderController extends Controller
         ]);
 
         $request['user_id'] = auth()->id();
-
+        // return $request->all();
         RequestCustmer::create($request->all());
 
         notify()->success( __('dashboard.added_successfully'));

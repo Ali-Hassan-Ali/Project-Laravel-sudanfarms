@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name_ar');
             $table->string('name_en');
+            $table->string('slug')->nullable()->unique();
             $table->string('quantity');
             $table->double('eye_count')->default(0);
             $table->foreignId('units_id')->constrained()->onDelete('cascade');

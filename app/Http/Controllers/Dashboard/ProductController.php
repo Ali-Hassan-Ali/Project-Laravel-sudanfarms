@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use App\Models\Unit;
 use App\Models\Product;
@@ -68,6 +69,8 @@ class ProductController extends Controller
             $request_data['user_id'] = auth()->id();
 
             $products = Product::create($request_data);
+
+            $products->update(['slug' => str::slug($request->name_ar . ' ' . $products->id, '_')]);
 
             foreach ($request->image as $key=>$imag) {
 

@@ -27,7 +27,8 @@ class CreateRequestCustmersTable extends Migration
             $table->boolean('status')->default('0');
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('promoted_dealer_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('promoted_dealer_id')->constrained()->onDelete('cascade');
+            $table->integer('promoted_dealer_id');
 
             $table->timestamps();
         });

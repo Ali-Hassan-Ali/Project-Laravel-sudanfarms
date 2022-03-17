@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -93,6 +94,8 @@ class ProductController extends Controller
             $request_data['price_decount'] = $request->price_decount ?? '0';
 
             $products = Product::create($request_data);
+
+            $products->update(['slug' => str::slug($request->name_ar . ' ' . $products->id, '_')]);
 
             foreach ($request->image as $key=>$imag) {
 
