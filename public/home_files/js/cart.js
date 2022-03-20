@@ -6,6 +6,24 @@ $(document).ready(function() {
         }
     });//end if ajax sutup
 
+    if ($('#getLocale').text() == 'ar') {
+
+        var addSuccess    = 'تمت الإضافة بنجاح';
+        var confirmDelete = 'الاستمرار في الحذف';
+        var deletedSucces = 'تم الخذف بنجاح';
+        var yes           = 'نعم';
+        var no            = 'لا';
+
+    } else {
+
+        var addSuccess    = 'added successfully';
+        var confirmDelete = 'confirm delete';
+        var deletedSucces = 'deleted Successfully';
+        var yes           = 'yes';
+        var no            = 'no';
+
+    }
+
     $(document).on('click','.add-cart', function(e){
         e.preventDefault();
         
@@ -19,7 +37,7 @@ $(document).ready(function() {
             data:{id: id},
             success: function(data) {
 
-                swal('add success', {
+                swal(addSuccess, {
                     type: "success",
                     icon: "success",
                     buttons: false,
@@ -168,10 +186,10 @@ $(document).ready(function() {
         var method  = 'post';
 
         swal({
-            title: "confirm delete",
+            title: confirmDelete,
             type: "error",
             icon: "warning",
-            buttons: {cancel: "no",defeat:"yes"},
+            buttons: {cancel: no,defeat:yes},
             dangerMode: true
         })
 
@@ -188,7 +206,7 @@ $(document).ready(function() {
                     $('.cart-totle').html(data.subtotal);
 
                     swal({
-                        title: "deleted successfully",
+                        title: deletedSucces,
                         type: "success",
                         icon: 'success',
                         buttons: false,

@@ -98,5 +98,35 @@ $(document).ready(function() {
 		});//end of ajax
 
 	});//end of click phone
+        
+    $('#copy-link').on('click', function (e) {
+        e.preventDefault();
+
+	       var copyText = $(this).attr('href');
+		   document.addEventListener('copy', function(e) {
+		      e.clipboardData.setData('text/plain', copyText);
+		      e.preventDefault();
+		   }, true);
+
+		   document.execCommand('copy');
+
+		   if ($('#getLocale').text() == 'ar') {
+
+		   		var addSuccessCopy = 'تم النسخ بنجاح';
+
+		   } else {
+
+		   		var addSuccessCopy = 'Copy Success';
+
+		   }
+
+	       	swal(addSuccessCopy, {
+	            type: "success",
+	            icon: "success",
+	            buttons: false,
+	            timer: 3000,
+	            timer: 15000
+	       	});
+    });
 
 });//end of document redy function

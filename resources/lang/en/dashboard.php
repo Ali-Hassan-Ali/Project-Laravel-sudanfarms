@@ -34,6 +34,7 @@ return [
     'end_data'             => 'end data',
     'count'                => 'count',
     'price_tables'         => 'price tables',
+    'copy_link'            => 'copy link',
     
     'sales_graph'    => 'sales graph',
     'total'          => 'total',

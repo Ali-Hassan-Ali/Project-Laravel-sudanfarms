@@ -22,6 +22,9 @@
             margin-top: 90px;
             position: absolute;
         }
+        a:hover {
+            color: none;
+        }
     </style>
     {{-- vendor style --}}
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/nice-select.min.css') }}">
@@ -80,6 +83,8 @@
     <div id="amount-decount-url" hidden>
         {{ route('amount.decount.index') }}
     </div>
+    
+    <div id="getLocale">{{ app()->getLocale() }}</div>
     {{-- js vendor --}}
     <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
     @stack('profile')

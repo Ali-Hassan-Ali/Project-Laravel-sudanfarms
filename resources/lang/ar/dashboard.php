@@ -31,6 +31,7 @@ return [
     'reest_password'       => 'تعيين',
     'chats'                => 'المحدثات',
     'items'                => 'المنتجات',
+    'copy_link'            => 'نشخ رابط المنتج',
     
     'start_data'           => 'من تاريخ',
     'end_data'             => 'الي نهايه تاريخ',

@@ -113,33 +113,33 @@
                 <div class="addthis_inline_share_toolbox mb-4"></div>
             
                         <div class="details-action-group">
-                            <a class="details-wish wish copy-link" id="copy-link" 
+                            <a class="details-wish wish link-light copy-link" id="copy-link" 
                                 href="{{ route('product.slug', $min_product->slug) }}">
-                                <i class="fas fa-phone-alt"></i><span>@lang('dashboard.copy ')</span>
+                                <i class="fas fa-link"></i><span>@lang('dashboard.copy_link')</span>
                             </a>
                         </div>
                         <br>
                         <div class="details-action-group">
-                            <a class="details-wish wish count-call-phone" 
+                            <a class="details-wish wish link-light count-call-phone" 
                                 data-url="{{ route('count_call_phone',$promoted_dealer->id) }}" href="tel:{{ $promoted_dealer->phone }}" title="@lang('dashboard.call_me')">
                                 <i class="fas fa-phone-alt"></i><span>@lang('dashboard.call_me')</span>
                             </a>
                         </div>
                         <div class="details-action-group my-3">
-                            <a class="details-wish wish count-call-email" 
+                            <a class="details-wish wish link-light count-call-email" 
                                 data-url="{{ route('count_call_email',$promoted_dealer->id) }}" href="mailto:{{ $promoted_dealer->email }}" title="@lang('dashboard.call_me') @lang('dashboard.email')">
                                 <i class="icofont-ui-email"></i><span> @lang('dashboard.email')</span>
                             </a>
                         </div>
                         <div class="details-action-group my-3">
-                            <a class="details-wish wish count-call-email add-cart" 
+                            <a class="details-wish wish link-light count-call-email add-cart" 
                                     data-url="{{ route('cart.add') }}" data-id="{{ $min_product->id }}">
                                 <i class="fas fa-shopping-basket"></i><span> @lang('home.add_cart')</span>
                             </a>
                         </div>
                         
                         <div class="details-action-group my-3">
-                            <a class="details-wish wish" 
+                            <a class="details-wish wish link-light" 
                                     href="{{ route('chats.index', ['to' => $promoted_dealer->user->id]) }}">
                                 <i class="fas fa-comment-alt"></i><span> @lang('home.messages')</span>
                             </a>
@@ -148,7 +148,7 @@
                         @if ($promoted_dealer->web_site)
                             
                             <div class="details-action-group my-3">
-                                <a class="details-wish wish" href="{{ $promoted_dealer->web_site }}" target="_blank">
+                                <a class="details-wish wish link-light" href="{{ $promoted_dealer->web_site }}" target="_blank">
                                     <i class="fas fa-link"></i><span> @lang('home.link')</span>
                                 </a>
                             </div>
@@ -281,23 +281,3 @@
 
 
 @endsection
-
-@push('script')
-    <script type="text/javascript">
-
-        $(document).ready(function() {
-            alert('aSome');
-            $('.copy-link').on('click', function (e) {
-                e.preventDefault();
-                alert('dfdf');
-                var copyText = document.getElementById("copy-link");
-                copyText.select();
-                copyText.setSelectionRange(0, 99999); /* For mobile devices */
-                navigator.clipboard.writeText(copyText.href);
-                alert("Copied the text: " + copyText.href);
-            });
-
-        });//end of rdy
-
-    </script>
-@endpush
