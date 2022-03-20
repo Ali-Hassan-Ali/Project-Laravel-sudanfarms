@@ -88,7 +88,7 @@ class ProductController extends Controller
                     'image'      => $image,
                 ]);
             }
-
+            // new product send user all
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.products.index');
 

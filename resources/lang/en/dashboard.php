@@ -39,6 +39,7 @@ return [
     'total'          => 'total',
     'englsih'        => 'Englsih',
     'arbic'          => 'Arbic',
+    'items'                => 'items',
     'status_offer'   => 'Offers on the home page',
     'active'         => 'active',
     'inactive'       => 'Inactive',

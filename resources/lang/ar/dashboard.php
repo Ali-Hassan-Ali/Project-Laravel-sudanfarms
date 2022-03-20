@@ -30,6 +30,7 @@ return [
     'end_month'            => 'الي نهايه الفتره',
     'reest_password'       => 'تعيين',
     'chats'                => 'المحدثات',
+    'items'                => 'المنتجات',
     
     'start_data'           => 'من تاريخ',
     'end_data'             => 'الي نهايه تاريخ',
@@ -38,7 +39,7 @@ return [
     
     'sales_graph'    => 'رسم بياني للمبيعات',
     'total'          => 'المجموع',
-    'englsih'        => 'الانجليزية',
+    'englsih'        => 'Englsih',
     'arbic'          => 'العربية',
     'status_offer'   => 'العروض في الصفحه الرئسية',
     'active'         => 'مفعل',
@@ -142,6 +143,7 @@ return [
     'number'           => 'العدد',
 
     'products'         => 'المنتجات',
+    'categoreys'        => 'الاثسام',
     
     'product_name_ar'  => 'اسم المنتج بلغة العربية',
     'product_name_en'  => 'اسم المنتج بلغة الانجلزية',
@@ -192,6 +194,7 @@ return [
 
     'cliants'               => 'العملاء',
     'users'                 => 'المشرفين',
+    'admins'                => 'المشرفين',
     'name'                  => 'الاسم',
     'username'              => 'اسم المستخدم',
     'email'                 => 'البريد الإلكترروني',

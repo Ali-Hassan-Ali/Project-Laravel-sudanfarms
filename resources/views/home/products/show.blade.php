@@ -140,7 +140,7 @@
                         
                         <div class="details-action-group my-3">
                             <a class="details-wish wish" 
-                                    href="{{ route('chats.index', ['from' => $promoted_dealer->user->id]) }}">
+                                    href="{{ route('chats.index', ['to' => $promoted_dealer->user->id]) }}">
                                 <i class="fas fa-comment-alt"></i><span> @lang('home.messages')</span>
                             </a>
                         </div>

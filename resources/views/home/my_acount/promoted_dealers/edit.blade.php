@@ -62,23 +62,23 @@
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.email') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                            	<input class="form-control" minlength="9" type="email" name="email" value="{{ $user->email }}" 
-		                            	placeholder="البريد الإلكتروني">
+		                            	placeholder="البريد الإلكتروني" required>
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.phone_master')</label>
+		                            	<label class="form-label">@lang('lang.phone_master') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                            	<input class="form-control" minlength="9" type="tel" name="phone_master" value="{{ $user->phone_master }}" 
-		                            	placeholder="+240-114929635">
+		                            	placeholder="+240-114929635" required>
 		                            </div>
 		                        </div>
 
 		                        <div class="col-md-6 col-lg-4">
 		                            <div class="form-group">
-		                            	<label class="form-label">@lang('lang.phone')</label>
+		                            	<label class="form-label">@lang('dashboard.phone') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                            	<input class="form-control" minlength="9" type="tel" name="phone" value="{{ $user->phone }}" 
-		                            	 placeholder="+240-114929635">
+		                            	 placeholder="+240-114929635" required>
 		                            </div>
 		                        </div>
 

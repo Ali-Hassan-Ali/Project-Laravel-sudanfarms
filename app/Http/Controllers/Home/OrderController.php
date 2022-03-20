@@ -11,9 +11,20 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::where('user_id', auth()->user()->id)->latest()->paginate(10);
 
+        if (auth()->id() == 1) {
+            
+            $orderItems = OrderItem::where('promoted_dealer_id', auth()->id())->with('product')->latest()->paginate(10);
+
+            return view('home.my_acount.orders.show',compact('orderItems'));
+
+        } else {
+
+            $orders = Order::where('user_id', auth()->id())->latest()->paginate(10);
+        }
         return view('home.my_acount.orders.index',compact('orders'));
+
+
 
     }//end of index
 

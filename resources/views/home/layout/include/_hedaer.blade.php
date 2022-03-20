@@ -69,7 +69,7 @@
                     </button>
                 </div>
 
-                <a href="{{ route('welcome.index') }}" class="header-logo">
+                <a href="{{ route('welcome.index') }}" class="header-logo" style="width: 1200px;">
                     <img src="{{ asset('home_files/image/logo.svg') }}" alt="logo">
                 </a>
 
@@ -177,7 +177,7 @@
 
                                         <span class="d-flex align-items-start">
                                             @lang('dashboard.englsih') 
-                                            <img width="50" class="mx-1" src="{{ asset('home_files/image/lang/en.png') }}">
+                                            <img width="50" class="mx-1" style="width: 30px; margin-top: 7px" src="{{ asset('home_files/image/lang/en.png') }}">
                                         </span>
                                         
                                     @else
@@ -493,7 +493,7 @@
                             <i class="icofont-food-cart"></i>
                             <span class="d-flex align-items-start">
                                 @lang('dashboard.englsih') 
-                                <img width="50" class="mx-1" src="{{ asset('home_files/image/lang/en.png') }}">
+                                <img width="50" class="mx-1" style="width: 30px; margin-top: 7px" src="{{ asset('home_files/image/lang/en.png') }}">
                             </span>
                             
                         @else
