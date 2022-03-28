@@ -38,7 +38,8 @@
         @method('post')
 
         <div class="form-group has-feedback">
-            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email">
+            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email"
+            value="super_admin@app.com">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -48,7 +49,8 @@
         </div>
 
         <div class="form-group has-feedback">
-            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password"
+            value="123123123">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             @error('password')
                 <span class="invalid-feedback" role="alert">

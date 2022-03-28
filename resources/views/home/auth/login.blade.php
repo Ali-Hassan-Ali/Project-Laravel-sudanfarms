@@ -38,7 +38,7 @@
                             @method('post')
                             <div class="form-group">
                                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" 
-                                    value="super_admin@app.com" placeholder="@lang('dashboard.email')">
+                                    value="{{ old('email') }}" placeholder="@lang('dashboard.email')">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" 
-                                    value="123123123" placeholder="@lang('dashboard.password')">
+                                    value="{{ old('password') }}" placeholder="@lang('dashboard.password')">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
