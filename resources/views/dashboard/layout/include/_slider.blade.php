@@ -165,6 +165,12 @@
                 </li>
             @endif
 
+            @if (auth()->user()->hasPermission('sends_read'))
+                <li class="{{ Route::Is(['dashboard.settings.sends.index','dashboard.settings.sends.create','dashboard.settings.sends.edit']) ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.settings.sends.index') }}"><i class="fa fa-comment-alt"></i><span>@lang('dashboard.sends')</span></a>
+                </li>
+            @endif
+
             @if (auth()->user()->hasPermission('payments_read'))
                 <li class="{{ Route::Is(['dashboard.payments.index','dashboard.payments.create','dashboard.payments.edit']) ? 'active' : '' }}">
                     <a href="{{ route('dashboard.payments.index') }}"><i class="fa fa-credit-card"></i><span>@lang('dashboard.payments')</span></a>

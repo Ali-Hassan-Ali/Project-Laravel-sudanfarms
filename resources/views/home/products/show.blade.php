@@ -115,7 +115,7 @@
                         <div class="details-action-group">
                             <a class="details-wish wish link-light copy-link" id="copy-link" 
                                 href="{{ route('product.slug', $min_product->slug) }}">
-                                <i class="fas fa-link"></i><span>@lang('dashboard.copy_link')</span>
+                                <i class="fas fa-copy"></i><span>@lang('dashboard.copy_link')</span>
                             </a>
                         </div>
                         <br>
@@ -132,7 +132,7 @@
                             </a>
                         </div>
                         <div class="details-action-group my-3">
-                            <a class="details-wish wish link-light count-call-email add-cart" 
+                            <a class="details-wish btn btn-success link-light add-cart" 
                                     data-url="{{ route('cart.add') }}" data-id="{{ $min_product->id }}">
                                 <i class="fas fa-shopping-basket"></i><span> @lang('home.add_cart')</span>
                             </a>

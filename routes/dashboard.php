@@ -35,6 +35,7 @@ use App\Http\Controllers\Dashboard\Setting\AdvertisementController;
 use App\Http\Controllers\Dashboard\Setting\AboutCustomerController;
 use App\Http\Controllers\Dashboard\Setting\MessageController;
 use App\Http\Controllers\Dashboard\Setting\UnitController;
+use App\Http\Controllers\Dashboard\Setting\SendController;
 
 
 
@@ -126,6 +127,9 @@ function () {
 
             //message routes
             Route::resource('messages', MessageController::class)->except(['show']);
+
+            //send routes
+            Route::resource('sends', SendController::class)->except(['show']);
 
             //setting routes gallery_categorys
             Route::resource('gallery_categorys', GalleryCategoryController::class)->except(['show']);

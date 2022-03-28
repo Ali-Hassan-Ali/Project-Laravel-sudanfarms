@@ -51,7 +51,8 @@ $(document).ready(function() {
 	            	} else {
 
 	            		var title    = 'add success'
-	            	}
+	            		
+	            	}//end of if
 	            	
 	            	var email   = $('.newsletter-val').val('');
 
@@ -73,7 +74,7 @@ $(document).ready(function() {
 
 	            		var title    = 'Subscribed by'
 
-	            	}
+	            	}//end of if
 
 			        swal(title, {
 			            type: "success",
@@ -118,7 +119,7 @@ $(document).ready(function() {
 
 		   		var addSuccessCopy = 'Copy Success';
 
-		   }
+		   }//end of if
 
 	       	swal(addSuccessCopy, {
 	            type: "success",
@@ -127,6 +128,7 @@ $(document).ready(function() {
 	            timer: 3000,
 	            timer: 15000
 	       	});
-    });
+
+    });//end of  copy-link
 
 });//end of document redy function

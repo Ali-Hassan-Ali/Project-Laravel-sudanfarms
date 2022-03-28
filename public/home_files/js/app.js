@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 				$.each(data.citys, function(index, city) {
 
-                    var html = '<option value="'+city.id+'">'+city.name+'</option>';
+                    var html = `<option value="${city.id}">${city.name}</option>`;
 
                     $('#select-city').append(html);
 

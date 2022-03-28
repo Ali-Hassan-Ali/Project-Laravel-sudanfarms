@@ -29,6 +29,12 @@ class OrderItem extends Model
 
     }//end of belongsTo promotedDealer
 
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+
+    }//end of belongsTo promotedDealer
+
     public function Promoted()
     {
         return $this->belongsTo(PromotedDealer::class,'promoted_dealer_id');

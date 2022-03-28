@@ -22,7 +22,7 @@ $(document).ready(function() {
 
                 $.each(data, function(index, category) {
                     
-                    var html = '<option value="'+category.id+'">'+category.name+'</option>';
+                    var html = `<option value="${category.id}">${category.name}</option>`;
 
                     $('#select-sub-category').append(html);
 
@@ -41,9 +41,10 @@ $(document).ready(function() {
         var url    = $('#amount-url').text();
         var method = 'post';
         
-        if (price == 0) {
-            price = 1;
-            $(this).val('1');
+        if (price < 0) {
+            price = 0;
+
+            $(this).val('0');
         }
 
         $.ajax({
@@ -69,9 +70,10 @@ $(document).ready(function() {
         var url    = $('#amount-decount-url').text();
         var method = 'post';
         
-        if (price == 0) {
-            price = 1;
-            $(this).val('1');
+        if (price < 0) {
+            price = 0;
+            
+            $(this).val('0');
         }
 
         $.ajax({

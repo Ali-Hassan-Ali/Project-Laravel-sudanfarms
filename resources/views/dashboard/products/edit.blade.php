@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label>@lang('dashboard.categorey')</label>
                             <select name="sub_category_id" class="form-control">
-                                <option value="">@lang('dashboard.all_categories')</option>
+                                <option value="">@lang('dashboard.select_category')</option>
                                 @foreach ($sub_categoreys as $category)
                                     <option value="{{ $category->id }}" {{ $category->id == $product->sub_category_id ? 'selected' : '' }}>
                                         {{ $category->name }}
@@ -115,7 +115,7 @@
                         <div class="form-group">
                             <label>@lang('dashboard.units')</label>
                             <select name="units_id" required class="form-control @error('email') is-invalid @enderror">
-                                <option value="">@lang('dashboard.all_categories')</option>
+                                <option value="">@lang('dashboard.select_unit')</option>
                                 @foreach ($units as $unit)
                                     <option value="{{ $unit->id }}" 
                                         {{ old('units_id') == $unit->id ? 'selected' : '' }}>

@@ -2,7 +2,7 @@
 
 return [
 
-    'failed'   => '',
+    'new_order'   => 'اوردر جديد',
     'password' => '',
     'throttle' => '',
 ];

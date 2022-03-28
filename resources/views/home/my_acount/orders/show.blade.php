@@ -8,7 +8,7 @@
         <div class="container">
             <h2>@lang('dashboard.dashboard')</h2>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('welcome.index') }}"">@lang('dashboard.home')</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('welcome.index') }}">@lang('dashboard.home')</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('orders.index') }}">@lang('dashboard.orders')</a></li>
                 <li class="breadcrumb-item active" aria-current="page">@lang('dashboard.show')</li>
             </ol>
@@ -45,32 +45,36 @@
                                         <tbody>
                                         	@foreach ($orderItems as $index=>$order)
 
+                                                @php
+                                                    $promoted_dealer = App\Models\PromotedDealer::where('user_id',$order->promoted_dealer_id)->first();
+                                                @endphp
+
     	                                        <tr>
     	                                            <td class="table-name">
     	                                                <h6>{{ $index + 1 }}</h6>
     	                                            </td>
     	                                            <td class="table-name">
-    	                                                <h6>{{ $order->Promoted->company_name }}</h6>
+    	                                                <h6>{{ $promoted_dealer->company_name }}</h6>
     	                                            </td>
                                                     <td class="table-name">
                                                         <h6>
-                                                            <a href="tel:{{ $order->Promoted->phone }}">
-                                                                {{ $order->Promoted->phone }}
+                                                            <a href="tel:{{ $promoted_dealer->phone }}">
+                                                                {{ $promoted_dealer->phone }}
                                                             </a>
                                                             <br>
-                                                            <a href="tel:{{ $order->Promoted->phone_master }}">
-                                                                {{ $order->Promoted->phone_master }}
+                                                            <a href="tel:{{ $promoted_dealer->phone_master }}">
+                                                                {{ $promoted_dealer->phone_master }}
                                                             </a>
                                                             <br>
-                                                            <a href="tel:{{ $order->Promoted->other_phone }}">
-                                                                {{ $order->Promoted->other_phone }}
+                                                            <a href="tel:{{ $promoted_dealer->other_phone }}">
+                                                                {{ $promoted_dealer->other_phone }}
                                                             </a>
                                                         </h6>
                                                     </td>
                                                     <td class="table-name">
                                                         <h6>
-                                                            <a href="mailto:{{ $order->Promoted->email }}">
-                                                                {{ $order->Promoted->email }}
+                                                            <a href="mailto:{{ $promoted_dealer->email }}">
+                                                                {{ $promoted_dealer->email }}
                                                             </a>
                                                         </h6>
                                                     </td>

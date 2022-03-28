@@ -7,6 +7,7 @@ use App\Models\ImageProduct;
 use App\Models\Notification;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\PromotedDealer;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -142,15 +143,17 @@ class CartController extends Controller
                     'subtotal'           => $product->subtotal,
                     'promoted_dealer_id' => $product->model->user_id,
                     'user_id'            => auth()->id(),
-                ]);
+                ]);;
+
+                $data = PromotedDealer::where('user_id',$orderItem->promoted_dealer_id)->first();
 
                 Notification::create([
                     'title_ar' => 'تم طلguب منتج جديد',
                     'title_en' => 'New product ordered',
-                    'user_id'  => $orderItem->promotedDealer->user_id,
+                    'user_id'  => $product->model->user_id,
                 ]); //end of create
 
-                \Mail::to($orderItem->promotedDealer->email)->send(new \App\Mail\OrderItemEmail($orderItem));
+                \Mail::to($data->email)->send(new \App\Mail\OrderItemEmail($orderItem));
 
             } //end of foreach
 

@@ -77,6 +77,20 @@
                                 </div>
                             </div>
 
+                            @if ($user)
+                            
+                                <div class="col-md-6 col-lg-4 alert fade show">
+                                    <div class="profile-card contact">
+                                        <h6>
+                                            <img src="{{ asset('icon/consultant.svg') }}" width="25" class="mx-1">
+                                            @lang('dashboard.orders')
+                                        </h6>
+                                        <a href="{{ route('my_order.show') }}">@lang('dashboard.orders')</a>
+                                    </div>
+                                </div>
+                                
+                            @endif
+
                             <div class="col-md-6 col-lg-4 alert fade show">
                                 <div class="profile-card contact">
                                     <h6>

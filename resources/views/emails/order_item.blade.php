@@ -328,6 +328,9 @@ ul.social li{
 
                     @endif
                     </p>
+                    <p>
+                      <h3>@lang('email.new_order')</h3>
+                    </p>
                   </div>
                 </td>
               </tr>
@@ -337,28 +340,38 @@ ul.social li{
         <tr>
 
            <table class="bg_white" border="1" role="presentation" border="0" width="100%">
-           <p class="bg_white">@lang('dashboard.created_at') @lang('dashboard.orders') : {{ $item->created_at }}</p>
-           {{-- <p class="bg_white">@lang('dashboard.name') : {{ $order->user->name }}</p> --}}
+           <p class="bg_white">@lang('dashboard.created_at') @lang('dashboard.order') : {{ $item->created_at }}</p>
+           <p class="bg_white">@lang('dashboard.name') : {{ auth()->user()->name }}</p>
             <tr>
               <th>@lang('dashboard.name')</th>
               <th>@lang('dashboard.image')</th>
               <th>@lang('dashboard.price')</th>
               <th>@lang('dashboard.company_name')</th>
-              <th>@lang('dashboard.username')</th>
+              {{-- <th>@lang('dashboard.username')</th> --}}
             </tr>
 
               <tr>
-                {{-- <td style="text-align: center;">{{ $item->product->name }}</td> --}}
-                {{-- <td style="text-align: center;"><img src="{{ $item->product->image_path }}" width="40"></td> --}}
-                {{-- <td style="text-align: center;">{{ $item->price }} - {{ __('dashboard.quantity') }} - {{ $item->quantity }}</td> --}}
-                {{-- <td style="text-align: center;">{{ $item->product->company_name }}</td> --}}
-                <td style="text-align: center;">{{ auth()->user()->name }}</td>
+                <td style="text-align: center;">{{ $item->product->name }}</td>
+                <td style="text-align: center;"><img src="{{ $item->product->image_path }}" width="40"></td>
+                <td style="text-align: center;">{{ $item->price }} - {{ __('dashboard.quantity') }} - {{ $item->quantity }}</td>
+                <td style="text-align: center;">{{ $item->product->company_name }}</td>
+                {{-- <td style="text-align: center;">{{ auth()->user()->name }}</td> --}}
               </tr>
 
           </table>
-           <p class="bg_white">
+           <p class="bg_white" style="text-align: right; right; padding: 15px auto;">
             @lang('dashboard.total') 
             {{ $item->price }}
+          </p>
+
+          <p class="bg_white" style="text-align: right; padding: 15px auto;">
+            @lang('dashboard.phone') 
+            <a href="tel:{{ auth()->user()->phone }}">{{ auth()->user()->phone }}</a>
+          </p>
+
+          <p class="bg_white" style="text-align: right; padding: 15px auto;">
+            @lang('dashboard.email') 
+            <a href="mailto:{{ $item->email }}">{{ auth()->user()->email }}</a>
           </p>
 
         </tr><!-- end tr -->

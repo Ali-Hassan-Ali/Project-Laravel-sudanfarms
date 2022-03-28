@@ -22,9 +22,6 @@
             margin-top: 90px;
             position: absolute;
         }
-        a:hover {
-            color: none;
-        }
     </style>
     {{-- vendor style --}}
     <link rel="stylesheet" href="{{ asset('home_files/css/vendor/nice-select.min.css') }}">

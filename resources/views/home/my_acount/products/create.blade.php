@@ -72,7 +72,7 @@
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.categorey')</label>
 		                            <select id="select-category" required class="form-control @error('email') is-invalid @enderror">
-		                                <option value="">@lang('dashboard.all_categories')</option>
+		                                <option value="">@lang('dashboard.select_category')</option>
 		                                @foreach ($sub_categoreys as $category)
 		                                    <option value="{{ $category->id }}" data-id="{{ $category->id }}" data-url="{{ route('home.sub_categorys',$category->id) }}"
 		                                        {{ old('sub_category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -139,7 +139,7 @@
 		                        <div class="form-group">
 		                            <label>@lang('dashboard.units')</label>
 		                            <select name="units_id" required class="form-control @error('email') is-invalid @enderror" required>
-		                                <option value="">@lang('dashboard.all_categories')</option>
+		                                <option value="">@lang('dashboard.select_unit')</option>
 		                                @foreach ($units as $unit)
 		                                    <option value="{{ $unit->id }}" 
 		                                        {{ old('units_id') == $unit->id ? 'selected' : '' }}>

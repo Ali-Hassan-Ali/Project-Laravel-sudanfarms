@@ -30,6 +30,7 @@ return [
     'end_month'            => 'end month',
     'reest_password'       => 'hiring',
 
+    'sends'                => 'send messages',
     'start_data'           => 'Start data',
     'end_data'             => 'end data',
     'count'                => 'count',
@@ -205,7 +206,8 @@ return [
 
     'categories_name_ar' => 'Categories Name Arbic',
     'categories_name_en' => 'Categories Name English',
-    'selct_category'         => 'اختر القسم',
+    'select_category'    => 'select Categories',
+    'select_unit'        => 'select unit',
     'color1'             => 'color1',
     'color2'             => 'color2',
 

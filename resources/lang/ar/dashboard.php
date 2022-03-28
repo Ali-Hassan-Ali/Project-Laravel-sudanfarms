@@ -2,7 +2,7 @@
 
 return [
 
-    'count_month'          => 'عدد الاشهر',
+    'count_month'             => 'عدد الاشهر',
     'send_email_successfully' => 'تم ارسال اميل تاكيد',
 
     'home_page'            => 'لارئسية',
@@ -33,6 +33,7 @@ return [
     'items'                => 'المنتجات',
     'copy_link'            => 'نشخ رابط المنتج',
     
+    'sends'                => 'الرسائل',
     'start_data'           => 'من تاريخ',
     'end_data'             => 'الي نهايه تاريخ',
     'count'                => 'عدد الاشخاص',
@@ -134,7 +135,7 @@ return [
     'social_login'     => 'إعدادات تسجيل الدخول',
     'expiry'           => 'تاريخ الانتهاء',
     'orders'           => 'الطلبات',
-    'order'            => 'الطلبات',
+    'order'            => 'الطلب',
     'stars'            => 'النقاط',
     'rating'           => 'التقيم',
     'ended_carts'      => 'الكروت المنتهية',
@@ -144,7 +145,10 @@ return [
     'number'           => 'العدد',
 
     'products'         => 'المنتجات',
-    'categoreys'        => 'الاثسام',
+    'categoreys'       => 'الاثسام',
+    'man_category'  => 'اختر القسم',
+    'select_category'  => 'اختر القسم',
+    'select_unit'      => 'اختر وحده القياس',
     
     'product_name_ar'  => 'اسم المنتج بلغة العربية',
     'product_name_en'  => 'اسم المنتج بلغة الانجلزية',

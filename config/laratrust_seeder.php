@@ -40,6 +40,7 @@ return [
             'price_tables'     => 'c,r,u,d',
             'units'            => 'c,r,u,d',
             'advertisements'   => 'c,r,u',
+            'sends'            => 'c,r,d',
         ],
         
         'admin' => [

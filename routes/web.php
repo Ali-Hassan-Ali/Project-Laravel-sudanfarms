@@ -139,6 +139,7 @@ function () {
         Route::get('sub_category/{id}', [ProductController::class, 'sub_categoreys'])->name('home.sub_categorys');
 
         Route::get('my_order', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('my_order_show', [OrderController::class, 'index_order'])->name('my_order.show');
         Route::get('my_order_details/{order}', [OrderController::class, 'show'])->name('orders.show');
 
         // offers route
