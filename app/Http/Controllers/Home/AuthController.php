@@ -123,17 +123,18 @@ class AuthController extends Controller
                 $user = NotificationUser::create([
                     'title_ar' => 'تم انشاء حساب جديد',
                     'title_en' => 'created New account',
-                    'user_id'  => $user->id,
+                    'user_id'  => auth()->id(),
                 ]); //end of create
 
-                Notification::create([
+                $noty = Notification::create([
                     'title_ar' => 'لقد قمت بانشاء حساب جديد',
                     'title_en' => 'A new account has been created',
                     'user_id'  => 1,
                 ]); //end of create
 
                 Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
-                // Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
+
+                Mail::to(env('MAIL_USERNAME'))->send(new \App\Mail\NotyEmail($noty));
 
                 notify()->success(__('dashboard.added_successfully'));
                 return redirect()->route('profile.index');

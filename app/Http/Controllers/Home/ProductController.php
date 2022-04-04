@@ -20,7 +20,10 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::whenSearch(request()->search)->where('user_id', auth()->user()->id)->latest()->paginate(10);
+        $products = Product::whenSearch(request()->search)
+                            ->where('user_id', auth()->id())
+                            ->latest()
+                            ->paginate(10);
 
         return view('home.my_acount.products.index',compact('products'));
 
@@ -119,7 +122,7 @@ class ProductController extends Controller
             $noty = Notification::create([
                 'title_ar' => 'تم اضافه منتج جديد',
                 'title_en' => 'created new product',
-                'user_id'  => auth()->id(),
+                'user_id'  => '1',
             ]);//end of create
 
             $user = NotificationUser::create([
