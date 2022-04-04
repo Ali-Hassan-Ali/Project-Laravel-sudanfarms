@@ -121,6 +121,11 @@
                                     @if ($chats->count() > 0)
                                         
                                         @foreach ($chats as $chat)
+
+                                            @php
+                                                $promoted = App\Models\PromotedDealer::where('user_id', $chat->me)->first();
+                                            @endphp
+
                                             <li class="chat-{{ $chat->me == auth()->id() ? 'left' : 'right' }}">
                                                 <div class="chat-avatar">
                                                     @if ($chat->me == auth()->id())
@@ -144,7 +149,7 @@
 
                                     @else
 
-                                        <p class="text-light">@lang('dashboard.no_data_found')</p>
+                                        {{-- <p class="text-light">@lang('dashboard.no_data_found')</p> --}}
 
                                     @endif
                                 </ul>

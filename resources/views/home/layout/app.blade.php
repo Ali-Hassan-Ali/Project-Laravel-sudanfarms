@@ -181,39 +181,11 @@
     @auth
         
     <script type="text/javascript">
-        $(document).ready(function() {
-
-            $('#register').on('click', function () {
-
-                var code = $('.iti__selected-dial-code').text();
-                
-                $('#code').val(code);
-                
-            });//end of click
-    
-        });
         // addToHomescreen();
         var input = document.querySelector("#phone");
         window.intlTelInput(input, {
-          // allowDropdown: true,
           autoHideDialCode: true,
-          // autoPlaceholder: "off",
-          // dropdownContainer: document.body,
-          // excludeCountries: ["sd"],
-          // formatOnDisplay: false,
-          // geoIpLookup: function(callback) {
-          //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-          //     var countryCode = (resp && resp.country) ? resp.country : "";
-          //     callback(countryCode);
-          //   });
-          // },
-          // hiddenInput: "full_number",
-          initialCountry: "sd",
-          // localizedCountries: { 'de': 'Deutschland' },
-          // nationalMode: false,
-          // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-          // placeholderNumberType: "MOBILE",
-          // preferredCountries: ['cn', 'jp'],
+          initialCountry: "{{ auth()->user()->country_phone_code }}",
           separateDialCode: true,
           utilsScript: "{{ asset('home_files/plugns/tel-input/js/utils.js') }}",
         });
