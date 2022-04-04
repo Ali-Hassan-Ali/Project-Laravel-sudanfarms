@@ -78,11 +78,11 @@ class PromotedDealerController extends Controller
             // auth()->user()->detachRole('clients');
             auth()->user()->attachRole('promoted');
 
-            // $user = Notification::create([
-            //     'title_ar' => 'في انطظار تفعيل حسابك',
-            //     'title_en' => 'Waiting for your account to be activated',
-            //     'user_id'  => auth()->id(),
-            // ]); //end of create
+            $noty = Notification::create([
+                'title_ar' => 'تم ترقيه حساب جديد',
+                'title_en' => 'New account upgraded',
+                'user_id'  => auth()->id(),
+            ]); //end of create
 
             $user = NotificationUser::create([
                 'title_ar' => 'لقد تم ترقيه حسابك ',
@@ -91,7 +91,9 @@ class PromotedDealerController extends Controller
                 'type'     => 'create_promoted_dealer',
             ]); //end of create
 
-            // \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
+            \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
+
+            \Mail::to(env('MAIL_USERNAME'))->send(new \App\Mail\NotyEmail($noty));
 
             return redirect()->route('promoted_dealers.packages');
 
@@ -154,6 +156,13 @@ class PromotedDealerController extends Controller
             }
             
             $user->update($request_data);
+
+            NotificationUser::create([
+                'title_ar' => 'تم تحديث بيناتك ',
+                'title_en' => 'Your data has been updated',
+                'user_id'  => auth()->id(),
+                'type'     => 'update_profile',
+            ]); //end of create
 
             notify()->success(__('dashboard.updated_successfully'));
 

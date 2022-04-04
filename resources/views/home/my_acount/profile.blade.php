@@ -64,6 +64,29 @@
                                     </a>
                                 </div>
                             </div>
+
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card contact">
+                                    <h6>
+                                        <img src="{{ asset('icon/consultant.svg') }}" width="25" class="mx-1">
+                                        @lang('dashboard.request_custmers')
+                                    </h6>
+                                    <a href="{{ route('request_custmers.index') }}">@lang('dashboard.request_custmers')</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="account-card">
+                    <div class="account-title">
+                        <h4>@lang('dashboard.orders')</h4>
+                    </div>
+                    <div class="account-content">
+                        <div class="row">
                             
                             <div class="col-md-6 col-lg-4 alert fade show">
                                 <div class="profile-card contact">
@@ -85,21 +108,11 @@
                                             <img src="{{ asset('icon/consultant.svg') }}" width="25" class="mx-1">
                                             @lang('dashboard.orders')
                                         </h6>
-                                        <a href="{{ route('my_order.show') }}">@lang('dashboard.orders')</a>
+                                        <a href="{{ route('my_order.show') }}">@lang('dashboard.new_orders')</a>
                                     </div>
                                 </div>
                                 
                             @endif
-
-                            <div class="col-md-6 col-lg-4 alert fade show">
-                                <div class="profile-card contact">
-                                    <h6>
-                                        <img src="{{ asset('icon/consultant.svg') }}" width="25" class="mx-1">
-                                        @lang('dashboard.request_custmers')
-                                    </h6>
-                                    <a href="{{ route('request_custmers.index') }}">@lang('dashboard.request_custmers')</a>
-                                </div>
-                            </div>
 
                         </div>
                     </div>

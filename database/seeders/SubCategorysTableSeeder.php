@@ -17,12 +17,14 @@ class SubCategorysTableSeeder extends Seeder
         \App\Models\Categorey::create([
             'name_ar' => 'ملفوفة',
             'name_en' => 'wrapped',
+            'slug'    => str::slug('wrapped', '_'),
             'sub_categoreys' => '1',
         ]);
 
         \App\Models\Categorey::create([
             'name_ar' => 'بروكلي',
             'name_en' => 'Broccoli',
+            'slug'    => str::slug('Broccoli', '_'),
             'sub_categoreys' => '1',
         ]);
 

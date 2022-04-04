@@ -54,7 +54,7 @@
                                             <th scope="col">@lang('dashboard.price')</th>
                                             <th scope="col">@lang('dashboard.price_decount')</th>
                                             <th scope="col">@lang('dashboard.created_at')</th>
-                                            <th scope="col">@lang('dashboard.action')</th>
+                                            <th scope="col">#</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,7 +86,7 @@
 	                                                <h6>{{ $product->new_price_decount }}</h6>
 	                                            </td>
 	                                            <td class="table-price">
-	                                                <h6>{{ $product->created_at }}</h6>
+	                                                <h6>{{ $product->created_at->toFormattedDateString() }}</h6>
 	                                            </td>
 	                                            <td class="table-price">
 	                                                <a href="{{ route('products.edit', $product->id) }}" class="btn-info btn-sm">
@@ -116,15 +116,10 @@
                 </div>
 
 
+
                 <div class="col-lg-12 mt-3">
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#"><i class="icofont-arrow-right"></i></a></li>
-                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">...</li>
-                        <li class="page-item"><a class="page-link" href="#">65</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="icofont-arrow-left"></i></a></li>
+                        @include('paginations.defulte',['products'=>$products])
                     </ul>
                 </div>
 

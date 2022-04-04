@@ -81,7 +81,7 @@
         {{ route('amount.decount.index') }}
     </div>
     
-    <div id="getLocale">{{ app()->getLocale() }}</div>
+    <div id="getLocale" hidden>{{ app()->getLocale() }}</div>
     {{-- js vendor --}}
     <script src="{{ asset('home_files/js/vendor/jquery-1.12.4.min.js') }}"></script>
     @stack('profile')

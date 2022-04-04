@@ -47,7 +47,7 @@
     	                                                <h6>{{ $order->totle_price }}</h6>
     	                                            </td>
     	                                            <td class="table-price">
-    	                                                <h6>{{ $order->created_at }}</h6>
+    	                                                <h6>{{ $order->created_at->toFormattedDateString() }}</h6>
     	                                            </td>
     	                                            <td class="table-price">
     	                                                <a href="{{ route('orders.show', $order->id) }}" class="btn-info btn-sm">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Stevebauman\Location\Facades\Location;
+use App\Models\NotificationUser;
 use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,7 +59,7 @@ class AuthController extends Controller
                         'email'    => $request->email,
                         'password' => $request->password], $remember_me)) {
 
-                        Notification::create([
+                        NotificationUser::create([
                             'title_ar' => 'لقد قمت بتسجيل الدخول',
                             'title_en' => 'I have clicked login',
                             'user_id'  => auth()->id(),
@@ -119,13 +120,20 @@ class AuthController extends Controller
                 $remember_me = $request->has('remember') ? true : true;
                 auth()->login($user, $remember_me);
 
-                $user = Notification::create([
+                $user = NotificationUser::create([
                     'title_ar' => 'تم انشاء حساب جديد',
                     'title_en' => 'created New account',
                     'user_id'  => $user->id,
                 ]); //end of create
 
+                Notification::create([
+                    'title_ar' => 'لقد قمت بانشاء حساب جديد',
+                    'title_en' => 'A new account has been created',
+                    'user_id'  => 1,
+                ]); //end of create
+
                 Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
+                // Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
 
                 notify()->success(__('dashboard.added_successfully'));
                 return redirect()->route('profile.index');

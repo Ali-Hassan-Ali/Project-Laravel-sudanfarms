@@ -3,6 +3,7 @@
 return [
 
     'count_month'             => 'عدد الاشهر',
+    'new_orders'              => 'المنتجات التي تم شرئها',
     'send_email_successfully' => 'تم ارسال اميل تاكيد',
 
     'home_page'            => 'لارئسية',

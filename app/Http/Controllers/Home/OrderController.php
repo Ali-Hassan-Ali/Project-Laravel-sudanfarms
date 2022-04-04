@@ -25,7 +25,8 @@ class OrderController extends Controller
             $orderItems = OrderItem::where('promoted_dealer_id', auth()->id())->with('product')->latest()->paginate(10);
 
             return view('home.my_acount.orders.special_requests',compact('orderItems'));
-        }
+            
+        }//end of if
 
     }//end of index
 

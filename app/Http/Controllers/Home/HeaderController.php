@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Categorey;
@@ -196,9 +197,24 @@ class HeaderController extends Controller
     public function show_category($id)
     {
 
+        $categorey = Categorey::where('id',$id)->first();
+
+        if (!$categorey->slug) {
+
+            $categorey->update(['slug' => str::slug($categorey->name_en, '_')]);
+        }
+        
+        return redirect()->route('category.show.slug', $categorey->slug);
+
+    }//end of show_category
+
+
+    public function show_category_slug($slug)
+    {
+
         if (request()->from_price || request()->to_price) {
 
-            $categorey   = Categorey::where('id',$id)->first();
+            $categorey   = Categorey::where('slug',$slug)->first();
 
             $min_product = Product::with('promotedd')
                                    // ->whereRelation('promotedd', 'status', '=', '1')
@@ -210,7 +226,7 @@ class HeaderController extends Controller
             return view('home.header.categories',compact('categorey','min_product'));
         }
 
-        $categorey   = Categorey::where('id',$id)->first();
+        $categorey   = Categorey::where('slug',$slug)->first();
 
         $min_product = Product::with('promotedd')
                                // ->whereRelation('promotedd', 'status', '=', '1')
@@ -220,8 +236,8 @@ class HeaderController extends Controller
                                ->paginate(20);
         
         return view('home.header.categories',compact('categorey','min_product'));
-
-    }//end of show_category
+        
+    }//end of show_category_slug
 
 
     public function request_custmers()

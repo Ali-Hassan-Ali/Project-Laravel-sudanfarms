@@ -137,14 +137,21 @@
                                 <i class="fas fa-shopping-basket"></i><span> @lang('home.add_cart')</span>
                             </a>
                         </div>
-                        
-                        <div class="details-action-group my-3">
-                            <a class="details-wish wish link-light" 
-                                    href="{{ route('chats.index', ['to' => $promoted_dealer->user->id]) }}">
-                                <i class="fas fa-comment-alt"></i><span> @lang('home.messages')</span>
-                            </a>
-                        </div>
+                        @auth
+                            @if ($promoted_dealer->user->id == auth()->id())
+                                
+                            @else
 
+                                <div class="details-action-group my-3">
+                                    <a class="details-wish wish link-light" 
+                                            href="{{ route('chats.index', ['to' => $promoted_dealer->user->id]) }}">
+                                        <i class="fas fa-comment-alt"></i><span> @lang('home.messages')</span>
+                                    </a>
+                                </div>                                
+
+                            @endif
+                            
+                        @endauth
                         @if ($promoted_dealer->web_site)
                             
                             <div class="details-action-group my-3">

@@ -94,7 +94,7 @@
                                                         <h6>{{ number_format($order->subtotal,2) }}</h6>
                                                     </td>
     	                                            <td class="table-price">
-    	                                                <h6>{{ $order->created_at }}</h6>
+    	                                                <h6>{{ $order->created_at->toFormattedDateString() }}</h6>
     	                                            </td>
     	                                        </tr>
 

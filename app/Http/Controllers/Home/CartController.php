@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\ImageProduct;
 use App\Models\Notification;
+use App\Models\NotificationUser;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\PromotedDealer;
@@ -120,7 +121,7 @@ class CartController extends Controller
                 'totle_price' => Cart::subtotal(),
             ]);
 
-            Notification::create([
+            NotificationUser::create([
                 'title_ar' => 'قمت بطلب منتجات من سودان فارمس',
                 'title_en' => 'I ordered products from Sudan Farms',
                 'user_id'  => auth()->id(),
@@ -135,7 +136,7 @@ class CartController extends Controller
 
             foreach (Cart::content() as $product) {
 
-            $orderItem = OrderItem::create([
+                $orderItem = OrderItem::create([
                     'order_id'           => $order->id,
                     'product_id'         => $product->model->id,
                     'quantity'           => $product->qty,
@@ -147,10 +148,10 @@ class CartController extends Controller
 
                 $data = PromotedDealer::where('user_id',$orderItem->promoted_dealer_id)->first();
 
-                Notification::create([
+                NotificationUser::create([
                     'title_ar' => 'تم طلguب منتج جديد',
                     'title_en' => 'New product ordered',
-                    'user_id'  => $product->model->user_id,
+                    'user_id'  => auth()->id(),
                 ]); //end of create
 
                 \Mail::to($data->email)->send(new \App\Mail\OrderItemEmail($orderItem));

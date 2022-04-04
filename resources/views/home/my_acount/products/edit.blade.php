@@ -75,7 +75,7 @@
 		                        <div class="form-group">
 		                        	<label>@lang('lang.width') 450px | @lang('lang.height') 450px</label>
 		                            <label>@lang('dashboard.image') | @lang('dashboard.mult_image')</label>
-		                            <input type="file" multiple required name="image[]" accept="image/*" class="form-control image" id="file-input">
+		                            <input type="file" multiple name="image[]" accept="image/*" class="form-control image" id="file-input">
 		                        </div>
 
 		                        <div class="form-group">

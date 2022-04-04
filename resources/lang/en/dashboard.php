@@ -3,6 +3,7 @@
 return [
 
     'count_month'          => 'count month',
+    'new_orders'           => 'Purchased Products',
 
     'send_email_successfully' => 'A confirmation email has been sent',
     

@@ -27,7 +27,7 @@ function () {
 
     Route::get('/dd', function() {
         
-        return dd(auth()->id());
+        return \App\Models\Categorey::first();
 
         \Mail::to('alihassanalimadny@gmail.com')->send(new \App\Mail\OrderItemEmail($order));
         return true;
@@ -79,6 +79,7 @@ function () {
     Route::get('suppliers', [HeaderController::class,'supplier'])->name('home.supplier');
     Route::get('product/{product}', [HeaderController::class,'show_product'])->name('product.show');
     Route::get('product_detail/{slug}', [HeaderController::class,'product_slug'])->name('product.slug');
+    Route::get('categoriey/{slug}', [HeaderController::class,'show_category_slug'])->name('category.show.slug');
     Route::get('category/{id}', [HeaderController::class,'show_category'])->name('category.show');
     Route::get('gallerys', [HeaderController::class,'gallerys'])->name('gallerys.index');
     Route::get('videos', [HeaderController::class,'videos'])->name('videos.index');

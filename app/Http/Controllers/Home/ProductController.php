@@ -9,6 +9,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Categorey;
+use App\Models\NotificationUser;
 use App\Models\Notification;
 use App\Models\ImageProduct;
 use App\Models\PromotedDealer;
@@ -115,13 +116,22 @@ class ProductController extends Controller
 
             }//end of foreach
 
-            $user = Notification::create([
+            $noty = Notification::create([
                 'title_ar' => 'تم اضافه منتج جديد',
                 'title_en' => 'created new product',
-                'user_id'  => auth()->user()->id,
+                'user_id'  => auth()->id(),
             ]);//end of create
 
-            \Mail::to($request->email)->send(new \App\Mail\NotyEmail($user));
+            $user = NotificationUser::create([
+                'title_ar' => 'لقم قمت باضافه منتج ',
+                'title_en' => 'created new product',
+                'user_id'  => auth()->id(),
+                'type'     => 'update_profile',
+            ]); //end of create
+
+            \Mail::to($PromotedDealer->email)->send(new \App\Mail\NotyEmail($noty));
+
+            \Mail::to(env('MAIL_USERNAME'))->send(new \App\Mail\NotyEmail($user));
 
             session()->forget('product-totle_price');
             session()->forget('product-price');
