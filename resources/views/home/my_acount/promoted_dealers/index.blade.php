@@ -74,7 +74,7 @@
 		                            <div class="form-group">
 		                            	<label class="form-label">@lang('lang.phone_master') <span class="text-danger"> : @lang('lang.required')</span></label>
 		                            	<br>
-		                            	<input id="country_selector-promoted-master-phone" class="form-control @error('phone_master') is-invalid @enderror" value="{{ old('phone_master') }}" type="number" name="phone_master" placeholder="@lang('lang.phone_master')">
+		                            	<input id="country_selector-promoted-master-phone" class="form-control @error('phone_master') is-invalid @enderror" value="{{ auth()->user()->phone }}" type="number" name="phone_master" placeholder="@lang('lang.phone_master')">
 		                            	@error('phone_master')
 			                                <span class="invalid-feedback" role="alert">
 			                                    <strong>{{ $message }}</strong>
