@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="email" name="email" value="test@gmail.com" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="@lang('dashboard.email')" required>
+                                <input type="email" name="email" value="" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="@lang('dashboard.email')" required>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

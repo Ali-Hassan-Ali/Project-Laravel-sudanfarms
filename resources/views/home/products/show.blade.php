@@ -112,6 +112,18 @@
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
                 <div class="addthis_inline_share_toolbox mb-4"></div>
             
+                        <div class="details-action-group my-3">
+                            <a class="details-wish btn btn-success link-light add-cart" 
+                                    data-url="{{ route('cart.add') }}" data-id="{{ $min_product->id }}">
+                                <i class="fas fa-shopping-basket"></i><span> @lang('home.add_cart')</span>
+                            </a>
+                        </div>
+                        <div class="details-action-group">
+                            <a class="details-wish wish link-light count-call-phone" 
+                                data-url="{{ route('count_call_phone',$promoted_dealer->id) }}" href="tel:{{ $promoted_dealer->phone }}" title="@lang('dashboard.call_me')">
+                                <i class="fas fa-phone-alt"></i><span>@lang('dashboard.call_me')</span>
+                            </a>
+                        </div>
                         <div class="details-action-group">
                             <a class="details-wish wish link-light copy-link" id="copy-link" 
                                 href="{{ route('product.slug', $min_product->slug) }}">
@@ -119,24 +131,6 @@
                             </a>
                         </div>
                         <br>
-                        <div class="details-action-group">
-                            <a class="details-wish wish link-light count-call-phone" 
-                                data-url="{{ route('count_call_phone',$promoted_dealer->id) }}" href="tel:{{ $promoted_dealer->phone }}" title="@lang('dashboard.call_me')">
-                                <i class="fas fa-phone-alt"></i><span>@lang('dashboard.call_me')</span>
-                            </a>
-                        </div>
-                        <div class="details-action-group my-3">
-                            <a class="details-wish wish link-light count-call-email" 
-                                data-url="{{ route('count_call_email',$promoted_dealer->id) }}" href="mailto:{{ $promoted_dealer->email }}" title="@lang('dashboard.call_me') @lang('dashboard.email')">
-                                <i class="icofont-ui-email"></i><span> @lang('dashboard.email')</span>
-                            </a>
-                        </div>
-                        <div class="details-action-group my-3">
-                            <a class="details-wish btn btn-success link-light add-cart" 
-                                    data-url="{{ route('cart.add') }}" data-id="{{ $min_product->id }}">
-                                <i class="fas fa-shopping-basket"></i><span> @lang('home.add_cart')</span>
-                            </a>
-                        </div>
                         @auth
                             @if ($promoted_dealer->user->id == auth()->id())
                                 
@@ -161,6 +155,12 @@
                             </div>
 
                         @endif
+                        <div class="details-action-group my-3">
+                            <a class="details-wish wish link-light count-call-email" 
+                                data-url="{{ route('count_call_email',$promoted_dealer->id) }}" href="mailto:{{ $promoted_dealer->email }}" title="@lang('dashboard.call_me') @lang('dashboard.email')">
+                                <i class="icofont-ui-email"></i><span> @lang('dashboard.email')</span>
+                            </a>
+                        </div>
 
                     </div>
                 </div>

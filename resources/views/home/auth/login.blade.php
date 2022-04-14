@@ -31,7 +31,6 @@
                     <div class="user-form-card">
                         <div class="user-form-title">
                             <h2>@lang('lang.Join')</h2>
-                            <p>@lang('lang.create_new')</p>
                         </div>
                         <form class="user-form" action="{{ route('home.login.store') }}" method="post">
                             @csrf

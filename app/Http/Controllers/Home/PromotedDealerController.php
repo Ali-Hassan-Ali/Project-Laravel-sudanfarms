@@ -33,7 +33,7 @@ class PromotedDealerController extends Controller
         }
 
         $countrys = Country::all();
-        $citys    = City::where('country_id', '181')->get();
+        $citys    = \App\Models\City::where('country_id', '181')->get();
 
         return view('home.my_acount.promoted_dealers.index',compact('countrys','citys'));
 
