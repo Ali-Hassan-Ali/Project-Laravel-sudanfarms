@@ -59,7 +59,7 @@
                                         <img src="{{ asset('icon/messages.svg') }}" width="25" class="mx-1">
                                         @lang('dashboard.messages')
                                     </h6>
-                                    <a href="{{ route('chats.index') }}">
+                                    <a href="{{ route('chat.index') }}">
                                         @lang('dashboard.messages')
                                     </a>
                                 </div>

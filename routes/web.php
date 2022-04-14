@@ -148,6 +148,15 @@ function () {
 
         //chat routes
         Route::resource('chats', ChatController::class)->except('create','show','edit','update','destroy');
+        Route::get('chat/user', [ChatController::class,'messages'])->name('chat.messages');
+
+        Route::get('/chat', function() {
+
+            $seller = App\Models\PromotedDealer::where('user_id', auth()->id())->first();
+
+            return view('home.my_acount.chats.home', compact('seller'));
+
+        })->name('chat.index');
 
         // Route::resource('users', UserController::class)->except(['show']);
 

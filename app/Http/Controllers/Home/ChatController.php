@@ -32,6 +32,27 @@ class ChatController extends Controller
 
     }//end of index
 
+    public function messages()
+    {
+        $chats = Chat::where('to', request()->to)
+                            ->where('from', auth()->id())
+                            ->get();
+
+        $chats_me = Chat::where('to', auth()->id())
+                     ->where('from', request()->to)
+                     ->get();
+
+        $chats_me_ids = Chat::where('to', auth()->id())->pluck('from');
+        $users = User::whereIn('id', $chats_me_ids)->get();
+
+        $promoted_dealer = PromotedDealer::where('user_id', '!=', auth()->id())->get();
+        $promoted        = PromotedDealer::find(request()->to);
+        $seller          = PromotedDealer::where('user_id', auth()->id())->first();
+
+        return view('home.my_acount.chats.messages', compact('chats','promoted_dealer','promoted','users','seller','chats_me'));
+
+    }//end of index
+
 
     public function store(Request $request)
     {

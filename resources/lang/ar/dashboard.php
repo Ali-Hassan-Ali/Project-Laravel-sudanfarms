@@ -5,7 +5,9 @@ return [
     'count_month'             => 'عدد الاشهر',
     'new_orders'              => 'المنتجات التي تم شرئها',
     'send_email_successfully' => 'تم ارسال اميل تاكيد',
-
+    'incoming_messages'       => 'الرسائل الوارده',
+    'sent_messages'           => 'الرسائل المرسله',
+ 
     'home_page'            => 'لارئسية',
     'confirm_delete'       => '!تأكيد الحذف',
     'added_successfully'   => 'تم اضافه البيانات بنجاح',
