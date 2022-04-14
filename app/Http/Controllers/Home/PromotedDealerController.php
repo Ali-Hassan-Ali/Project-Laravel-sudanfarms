@@ -33,8 +33,6 @@ class PromotedDealerController extends Controller
         }
 
         $countrys = Country::all();
-        $citys    = Cit::all();
-
         $citys    = \DB::table('cities')->get();
 
         return view('home.my_acount.promoted_dealers.index',compact('countrys','citys'));
