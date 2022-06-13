@@ -123,12 +123,14 @@ class AuthController extends Controller
                 $user = NotificationUser::create([
                     'title_ar' => 'تم انشاء حساب جديد',
                     'title_en' => 'created New account',
+                    'slug'     => 'users',
                     'user_id'  => auth()->id(),
                 ]); //end of create
 
                 $noty = Notification::create([
                     'title_ar' => 'لقد قمت بانشاء حساب جديد',
                     'title_en' => 'A new account has been created',
+                    'slug'     => 'users',
                     'user_id'  => 1,
                 ]); //end of create
 

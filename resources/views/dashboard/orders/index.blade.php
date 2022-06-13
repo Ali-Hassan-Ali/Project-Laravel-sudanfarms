@@ -24,7 +24,7 @@
 
                     <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.orders') <small>{{ $orders->count() }}</small></h3>
 
-                    <form action="{{ route('dashboard.categoreys.index') }}" method="get">
+                    <form action="{{ route('dashboard.orders.index') }}" method="get">
 
                         <div class="row">
 
@@ -71,7 +71,7 @@
                                         <td>{{ $order->user->name }}</td>
                                         <td>{{ $order->user->phone }}</td>
                                         <td>{{ $order->totle_price }}</td>
-                                        <td><img src="{{ $order->user->image_path }}" width="100"></td>
+                                        <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $order->user->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
                                         <td>{{ $order->created_at->toFormattedDateString() }}</td>
                                         <td>    
                                             <a href="{{ route('dashboard.orders.show', $order->id) }}" class="btn btn-info btn-sm">

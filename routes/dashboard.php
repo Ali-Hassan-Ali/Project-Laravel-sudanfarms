@@ -40,7 +40,7 @@ use App\Http\Controllers\Dashboard\Setting\SendController;
 
 
 Route::group([
-    'prefix' => LaravelLocalization::setLocale(),
+    'prefix'     => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], 
 

@@ -56,7 +56,7 @@
                                         <td>{{ $dealers->end_month }}</td>
                                         <td>{{ $dealers->package->new_price }} {{ $dealers->package->cury }}</td>
                                         <td>{{ $dealers->package->qty_product }}</td>
-                                        <td><img src="{{ $dealers->image_path }}" width="100"></td>
+                                        <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $dealers->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
                                         <td>{{ $dealers->package->name }}</td>
                                     </tr>
                                 

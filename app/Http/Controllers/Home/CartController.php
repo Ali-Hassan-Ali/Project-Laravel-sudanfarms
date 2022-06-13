@@ -124,12 +124,14 @@ class CartController extends Controller
             NotificationUser::create([
                 'title_ar' => 'قمت بطلب منتجات من سودان فارمس',
                 'title_en' => 'I ordered products from Sudan Farms',
+                'slug'     => 'orders',
                 'user_id'  => auth()->id(),
             ]); //end of create
 
             Notification::create([
                 'title_ar' => 'قمت بطلب منتجات من سودان فارمس',
                 'title_en' => 'I ordered products from Sudan Farms',
+                'slug'     => 'orders',
                 'user_id'  => '1',
             ]); //end of create
 
@@ -151,6 +153,7 @@ class CartController extends Controller
                 NotificationUser::create([
                     'title_ar' => 'تم طلguب منتج جديد',
                     'title_en' => 'New product ordered',
+                    'slug'     => 'products',
                     'user_id'  => auth()->id(),
                 ]); //end of create
 

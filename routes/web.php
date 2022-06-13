@@ -22,8 +22,11 @@ use App\Models\PromotedDealer;
 use App\Models\Product;
 
 
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
-function () {
+Route::group([
+    'prefix'     => LaravelLocalization::setLocale(), 
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    ],
+    function () {
 
     Route::get('/dd', function() {
         

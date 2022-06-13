@@ -81,6 +81,7 @@ class PromotedDealerController extends Controller
             $noty = Notification::create([
                 'title_ar' => 'تم ترقيه حساب جديد',
                 'title_en' => 'New account upgraded',
+                'slug'     => 'promoted_dealers',
                 'user_id'  => auth()->id(),
             ]); //end of create
 
@@ -88,6 +89,7 @@ class PromotedDealerController extends Controller
                 'title_ar' => 'لقد تم ترقيه حسابك ',
                 'title_en' => 'Your account has been upgraded',
                 'user_id'  => auth()->id(),
+                'slug'     => 'promoted_dealers',
                 'type'     => 'create_promoted_dealer',
             ]); //end of create
 
@@ -161,6 +163,7 @@ class PromotedDealerController extends Controller
                 'title_ar' => 'تم تحديث بيناتك ',
                 'title_en' => 'Your data has been updated',
                 'user_id'  => auth()->id(),
+                'slug'     => 'promoted_dealers',
                 'type'     => 'update_profile',
             ]); //end of create
 

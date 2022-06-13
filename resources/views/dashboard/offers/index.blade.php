@@ -70,7 +70,7 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $offer->price }}</td>
-                                        <td><img src="{{ $offer->image_path }}" width="100"></td>
+                                        <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $offer->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
                                         <td>{{ $offer->category->name }}</td>
                                         <td>{{ $offer->created_at->toFormattedDateString() }}</td>
                                         <td>

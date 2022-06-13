@@ -17,6 +17,7 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->string('title_ar')->default('تم ترقيه حساب جديد');
             $table->string('title_en')->default('New account upgraded');
+            $table->string('slug')->default('users');
             $table->longText('body')->nullable();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

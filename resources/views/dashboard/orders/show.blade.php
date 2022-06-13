@@ -53,7 +53,7 @@
                                         @php
                                             $image = App\Models\ImageProduct::where('product_id', $item->product->id)->first();
                                         @endphp
-                                        <td><img src="{{ $image->image_path }}" width="100"></td>
+                                        <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $image->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
                                         <td>{{ $item->product->name }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->quantity }}</td>

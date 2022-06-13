@@ -31,7 +31,7 @@ class HeaderController extends Controller
     public function searchs()
     {
         $products = Product::with('promotedd')
-                           ->whereRelation('promotedd', 'status', '=', '1')
+                           // ->whereRelation('promotedd', 'status', '=', '1')
                            ->whenSearch(request()->search)
                            ->orderBy('eye_count','DESC')
                            ->paginate(10)

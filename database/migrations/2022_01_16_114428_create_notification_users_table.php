@@ -17,9 +17,10 @@ class CreateNotificationUsersTable extends Migration
             $table->id();
             $table->string('title_ar')->default('تم ترقيه حساب جديد');
             $table->string('title_en')->default('New account upgraded');
-            $table->text('type', 
+            $table->enum('type', 
                 ['create_acount', 'create_promoted_dealer', 'create_packages', 'create_order', 'login'])
                 ->nullable();
+            $table->string('slug')->default('users');
             $table->longText('body')->nullable();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

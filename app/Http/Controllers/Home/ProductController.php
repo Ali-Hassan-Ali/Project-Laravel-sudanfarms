@@ -122,12 +122,14 @@ class ProductController extends Controller
             $noty = Notification::create([
                 'title_ar' => 'تم اضافه منتج جديد',
                 'title_en' => 'created new product',
+                'slug'     => 'products',
                 'user_id'  => '1',
             ]);//end of create
 
             $user = NotificationUser::create([
                 'title_ar' => 'لقم قمت باضافه منتج ',
                 'title_en' => 'created new product',
+                'slug'     => 'products',
                 'user_id'  => auth()->id(),
                 'type'     => 'update_profile',
             ]); //end of create

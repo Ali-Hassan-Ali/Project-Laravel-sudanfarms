@@ -16,7 +16,7 @@
             </ol>
         </section>
 
-        <section class="content">s
+        <section class="content">
 
             <div class="box box-primary">
 
